@@ -1,0 +1,16 @@
+<div class="page-width main-page">
+  <h1>{{ section.settings.title }}</h1>
+  <div class="product-grid" style="--columns:3">
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="card">
+        <div class="card__media">
+          {%- if collection.featured_image -%}{{ collection.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: collection.title }}{%- else -%}<img src="{{ 'product-pair-1.svg' | asset_url }}" alt="" loading="lazy" width="800" height="800">{%- endif -%}
+        </div>
+        <div class="card__body"><h2 class="card__title">{{ collection.title }}</h2><p class="card__desc">{{ 'collections.product_count' | t: count: collection.products_count }}</p></div>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{ "name": "Collections list", "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Collections" }] }
+{% endschema %}

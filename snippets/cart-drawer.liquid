@@ -1,0 +1,40 @@
+{%- assign threshold_cents = settings.free_shipping_threshold | times: 100 -%}
+<div id="cart-drawer" class="drawer drawer--right" aria-hidden="true" data-free-shipping="{{ threshold_cents }}" data-shop-url="{{ routes.all_products_collection_url }}">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+    <div class="drawer__header">
+      <h2>{{ 'cart.title' | t }}</h2>
+      <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+    </div>
+    <div class="drawer__body" data-cart-body></div>
+    {%- assign upsell = settings.cart_upsell_product -%}
+    {%- if upsell != blank and upsell.available -%}
+      <template data-upsell data-variant-id="{{ upsell.selected_or_first_available_variant.id }}">
+        <div class="cart-upsell">
+          {%- if upsell.featured_media -%}
+            {{ upsell.featured_media | image_url: width: 120 | image_tag: alt: upsell.title }}
+          {%- else -%}
+            <img src="{{ 'ebook-cover.svg' | asset_url }}" alt="{{ upsell.title | escape }}" width="56" height="56">
+          {%- endif -%}
+          <div>
+            <div class="cart-upsell__title">{{ settings.cart_upsell_heading | default: upsell.title }}</div>
+            <div class="cart-upsell__price">{{ upsell.title }} · {{ upsell.price | money }}</div>
+          </div>
+          <button type="button" class="button button--small" data-quick-add="{{ upsell.selected_or_first_available_variant.id }}">{{ 'cart.add' | t }}</button>
+        </div>
+      </template>
+    {%- endif -%}
+    <div class="drawer__footer" data-cart-footer hidden>
+      <div class="cart-savings" data-cart-savings-row hidden><span>{{ 'cart.savings' | t }}</span><span data-cart-savings></span></div>
+      <div class="cart-totals"><span>{{ 'cart.subtotal' | t }}</span><span data-cart-total>{{ cart.total_price | money }}</span></div>
+      <p class="cart-note-small">{{ 'cart.taxes_and_shipping' | t }}</p>
+      <form action="{{ routes.cart_url }}" method="post" style="margin-top:14px">
+        <button type="submit" name="checkout" class="button button--full">{% render 'icon', icon: 'lock' %} {{ 'cart.checkout' | t }}</button>
+      </form>
+      {%- if settings.cart_guarantee_text != blank -%}
+        <p class="cart-note-small">{{ settings.cart_guarantee_text }}</p>
+      {%- endif -%}
+      {% render 'payment-icons' %}
+    </div>
+  </div>
+</div>

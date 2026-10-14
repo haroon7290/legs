@@ -1,0 +1,192 @@
+{
+  "sections": {
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Slip it on",
+            "text": "Pull the wrap over your foot so the firm pad sits right under your arch."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Tighten the strap",
+            "text": "Adjust until the pressure feels firm and steady — snug, never painful."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Lie back & sleep",
+            "text": "The steady pressure gives restless nerves something calm to focus on."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "How it works",
+        "heading": "Simple pressure. Calmer legs.",
+        "text": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade and you can drift off.</p>",
+        "footnote": "<p>The one purpose-built device for this exact pressure is FDA-cleared, prescription-only, and costs over $200. HushLegs brings the same simple idea home for $44.99.</p>"
+      }
+    },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Drug-free",
+            "text": "No pills, no prescriptions, no grogginess the next morning."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "compress",
+            "title": "Targeted pressure",
+            "text": "A firm, contoured pad presses exactly where it counts — under the arch."
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "moon-outline",
+            "title": "Sleep-soft",
+            "text": "Breathable, lightweight knit you can wear all night."
+          }
+        },
+        "feature_4": {
+          "type": "feature",
+          "settings": {
+            "icon": "washing",
+            "title": "Washable",
+            "text": "Remove the pad and toss the wrap in the wash."
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
+      ],
+      "settings": {
+        "style": "default",
+        "eyebrow": "Why HushLegs",
+        "heading": "Made for the nights that won't settle",
+        "text": ""
+      }
+    },
+    "compare": {
+      "type": "comparison",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Price",
+            "value_1": "$44.99",
+            "value_2": "$200+",
+            "value_3": "$15–60/mo",
+            "value_4": "$0–20"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "No prescription needed",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "no",
+            "value_4": "yes"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Drug-free, no side effects",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "no",
+            "value_4": "yes"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Targeted pressure under the arch",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "no",
+            "value_4": "no"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Works while you sleep",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "yes",
+            "value_4": "no"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "90-night guarantee",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "no",
+            "value_4": "no"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Compare",
+        "heading": "Same idea. A fraction of the price.",
+        "text": "<p>Relief shouldn't need a prescription or a $200 price tag.</p>",
+        "col_1": "HushLegs",
+        "col_2": "Prescription wrap",
+        "col_3": "Medication",
+        "col_4": "Stretching / socks",
+        "footnote": "<p>Comparison is for general information only. Talk to your doctor about what's right for you.</p>"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "style": "alt",
+        "heading": "Sleep on it for 90 nights.",
+        "text": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "button_label": "Start my 90 nights",
+        "button_link": "",
+        "policy_link": "/policies/refund-policy"
+      }
+    }
+  },
+  "order": [
+    "how",
+    "features",
+    "compare",
+    "guarantee"
+  ]
+}

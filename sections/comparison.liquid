@@ -1,0 +1,73 @@
+{%- comment -%} Each row block holds one value per column: yes / no / any text {%- endcomment -%}
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="section-header reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+    <div class="compare reveal">
+      <div class="compare-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">{{ 'general.feature' | t }}</span></th>
+              <th scope="col" class="compare__us">{{ section.settings.col_1 }}</th>
+              <th scope="col">{{ section.settings.col_2 }}</th>
+              <th scope="col">{{ section.settings.col_3 }}</th>
+              {%- if section.settings.col_4 != blank -%}<th scope="col">{{ section.settings.col_4 }}</th>{%- endif -%}
+            </tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              <tr {{ block.shopify_attributes }}>
+                <td>{{ block.settings.label }}</td>
+                {%- for i in (1..4) -%}
+                  {%- if i == 4 and section.settings.col_4 == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign val_key = 'value_' | append: i -%}
+                  {%- assign v = block.settings[val_key] | strip -%}
+                  {%- assign v_down = v | downcase -%}
+                  <td{% if i == 1 %} class="compare__us"{% endif %}>
+                    {%- if v_down == 'yes' -%}<span class="yes">{% render 'icon', icon: 'tick' %}<span class="visually-hidden">{{ 'general.yes' | t }}</span></span>
+                    {%- elsif v_down == 'no' -%}<span class="no">{% render 'icon', icon: 'cross' %}<span class="visually-hidden">{{ 'general.no' | t }}</span></span>
+                    {%- else -%}{{ v }}{%- endif -%}
+                  </td>
+                {%- endfor -%}
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {%- if section.settings.footnote != blank -%}<div class="text-center muted rte" style="margin-top:20px;font-size:.85rem">{{ section.settings.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison table",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Compare" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Same idea. A fraction of the price." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>The one purpose-built device for this exact kind of pressure is prescription-only and costs over $200. We think relief shouldn't need a doctor's note.</p>" },
+    { "type": "text", "id": "col_1", "label": "Column 1 (highlighted)", "default": "HushLegs" },
+    { "type": "text", "id": "col_2", "label": "Column 2", "default": "Prescription wrap" },
+    { "type": "text", "id": "col_3", "label": "Column 3", "default": "Medication" },
+    { "type": "text", "id": "col_4", "label": "Column 4 (optional)", "default": "Stretching / socks" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "label", "label": "Feature", "default": "Feature" },
+      { "type": "paragraph", "content": "Type yes or no for a ✓ / ✕ icon, or any text." },
+      { "type": "text", "id": "value_1", "label": "Column 1", "default": "yes" },
+      { "type": "text", "id": "value_2", "label": "Column 2", "default": "no" },
+      { "type": "text", "id": "value_3", "label": "Column 3", "default": "no" },
+      { "type": "text", "id": "value_4", "label": "Column 4", "default": "no" }
+    ] }
+  ],
+  "presets": [{ "name": "Comparison table", "blocks": [{ "type": "row" }, { "type": "row" }, { "type": "row" }] }]
+}
+{% endschema %}

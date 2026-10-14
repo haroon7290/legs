@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "main": {
+      "type": "review-form",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-1.svg",
+            "rating": 5,
+            "title": "First full night in years",
+            "text": "<p>I've had restless legs since my second pregnancy. I was skeptical, but the pressure under my arch just… switches it off. I slept through on night two.</p>",
+            "author": "Linda R.",
+            "location": "Ohio",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "My husband noticed before I did",
+            "text": "<p>He said I stopped kicking him. That alone was worth it. Comfortable enough that I forget I'm wearing them.</p>",
+            "author": "Maria G.",
+            "location": "Texas",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-2.svg",
+            "rating": 5,
+            "title": "Cheaper than the prescription one",
+            "text": "<p>My doctor mentioned a pressure wrap that costs over $200. Found these instead. Same idea, and they actually work for me.</p>",
+            "author": "Tom B.",
+            "location": "Florida",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "title": "Takes a few nights to get the fit right",
+            "text": "<p>First night I had them too loose. Once I tightened the strap so the pad really pressed into my arch, big difference. Recommend sizing up if you're between.</p>",
+            "author": "Karen W.",
+            "location": "Oregon",
+            "verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "No more pacing the hallway",
+            "text": "<p>I used to get up 3–4 times a night to walk it off. Now it's maybe once a week. I wish I'd found these sooner.</p>",
+            "author": "James P.",
+            "location": "Arizona",
+            "verified": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-3.svg",
+            "rating": 5,
+            "title": "Great on long flights too",
+            "text": "<p>Bought a second pair for travel. Wore them on a 9-hour flight and my legs stayed calm the whole way.</p>",
+            "author": "Susan L.",
+            "location": "New York",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Real nights, real people",
+        "heading": "“I actually slept through.”",
+        "show_summary": true,
+        "score": 4.8,
+        "summary_text": "Based on 1,248 reviews",
+        "initial_count": 6,
+        "write_review_link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "reviews"
+  ]
+}

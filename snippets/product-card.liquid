@@ -1,0 +1,48 @@
+{%- comment -%}
+  Usage: {% render 'product-card', product: product, fallback_image: 'product-pair-1.svg' %}
+{%- endcomment -%}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign rating = product.metafields.reviews.rating.value.rating | default: settings.default_rating
+  assign rating_count = product.metafields.reviews.rating_count | default: settings.default_rating_count
+  if product.type == 'eBook' or product.handle contains 'ebook' or product.handle contains 'protocol'
+    assign default_fallback = 'ebook-cover.svg'
+  else
+    assign default_fallback = 'product-pair-1.svg'
+  endif
+-%}
+<div class="card">
+  <a href="{{ product.url }}" class="card__media">
+    {%- if product.compare_at_price > product.price and product.available -%}
+      {%- assign pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+      <span class="card__badge">{{ 'products.product.save_percent' | t: percent: pct }}</span>
+    {%- elsif product.available == false -%}
+      <span class="card__badge card__badge--soldout">{{ 'products.product.sold_out' | t }}</span>
+    {%- endif -%}
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, (min-width: 480px) 50vw, 100vw', widths: '400, 600, 800', alt: product.featured_media.alt | default: product.title }}
+      {%- if product.media[1] -%}
+        {{ product.media[1] | image_url: width: 800 | image_tag: loading: 'lazy', class: 'card__img-2', alt: '' }}
+      {%- endif -%}
+    {%- else -%}
+      <img src="{{ fallback_image | default: default_fallback | asset_url }}" alt="{{ product.title | escape }}" loading="lazy" width="800" height="800">
+    {%- endif -%}
+  </a>
+  <div class="card__body">
+    <div class="rating-line">{% render 'stars', rating: rating %} <span>({{ rating_count }})</span></div>
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    {%- if product.metafields.custom.subtitle != blank -%}
+      <p class="card__desc">{{ product.metafields.custom.subtitle }}</p>
+    {%- else -%}
+      <p class="card__desc">{{ product.description | strip_html | truncatewords: 14 }}</p>
+    {%- endif -%}
+    {% render 'price', product: product %}
+    <div class="card__cta">
+      {%- if product.has_only_default_variant and product.available -%}
+        <button type="button" class="button button--full button--small" data-quick-add="{{ variant.id }}">{{ 'products.product.add_to_cart' | t }}</button>
+      {%- else -%}
+        <a href="{{ product.url }}" class="button button--full button--small">{{ 'products.product.choose_options' | t }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

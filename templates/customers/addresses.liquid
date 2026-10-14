@@ -1,0 +1,34 @@
+<div class="page-width page-width--narrow main-page">
+  <p class="text-center"><a class="link" href="{{ routes.account_url }}">← {{ 'customer.account' | t }}</a></p>
+  <h1>{{ 'customer.addresses' | t }}</h1>
+  {%- paginate customer.addresses by 10 -%}
+    {%- for address in customer.addresses -%}
+      <div class="contact-card" style="text-align:left;margin-bottom:16px">
+        {%- if address == customer.default_address -%}<strong>{{ 'customer.default' | t }}</strong>{%- endif -%}
+        {{ address | format_address }}
+        <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}"><input type="hidden" name="_method" value="delete"><button class="cart-item__remove">{{ 'cart.remove' | t }}</button></form>
+      </div>
+    {%- endfor -%}
+  {%- endpaginate -%}
+  <h2 style="margin-top:40px">{{ 'customer.add_address' | t }}</h2>
+  {%- form 'customer_address', customer.new_address, class: 'form' -%}
+    {{ form.errors | default_errors }}
+    <div class="form__row">
+      <div class="field"><label for="AddrFirst">{{ 'customer.first_name' | t }}</label><input id="AddrFirst" name="address[first_name]" value="{{ form.first_name }}"></div>
+      <div class="field"><label for="AddrLast">{{ 'customer.last_name' | t }}</label><input id="AddrLast" name="address[last_name]" value="{{ form.last_name }}"></div>
+    </div>
+    <div class="field"><label for="Addr1">{{ 'customer.address1' | t }}</label><input id="Addr1" name="address[address1]" value="{{ form.address1 }}"></div>
+    <div class="field"><label for="Addr2">{{ 'customer.address2' | t }}</label><input id="Addr2" name="address[address2]" value="{{ form.address2 }}"></div>
+    <div class="form__row">
+      <div class="field"><label for="AddrCity">{{ 'customer.city' | t }}</label><input id="AddrCity" name="address[city]" value="{{ form.city }}"></div>
+      <div class="field"><label for="AddrZip">{{ 'customer.zip' | t }}</label><input id="AddrZip" name="address[zip]" value="{{ form.zip }}"></div>
+    </div>
+    <div class="form__row">
+      <div class="field"><label for="AddrCountry">{{ 'customer.country' | t }}</label><select id="AddrCountry" name="address[country]">{{ all_country_option_tags }}</select></div>
+      <div class="field"><label for="AddrProvince">{{ 'customer.province' | t }}</label><input id="AddrProvince" name="address[province]" value="{{ form.province }}"></div>
+    </div>
+    <div class="field"><label for="AddrPhone">{{ 'customer.phone' | t }}</label><input id="AddrPhone" type="tel" name="address[phone]" value="{{ form.phone }}"></div>
+    <label><input type="checkbox" name="address[default]" value="1"> {{ 'customer.set_default' | t }}</label>
+    <button class="button">{{ 'customer.add_address' | t }}</button>
+  {%- endform -%}
+</div>

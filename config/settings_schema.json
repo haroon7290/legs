@@ -1,0 +1,68 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "HushLegs",
+    "theme_version": "1.0.0",
+    "theme_author": "HushLegs",
+    "theme_documentation_url": "https://hushlegs.com",
+    "theme_support_url": "https://hushlegs.com/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#0e1424" },
+      { "type": "color", "id": "color_background_alt", "label": "Alternate background", "default": "#151d33" },
+      { "type": "color", "id": "color_surface", "label": "Cards / surfaces", "default": "#1c2642" },
+      { "type": "color", "id": "color_light", "label": "Light section background", "default": "#f6f2ea" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#e9e6f0" },
+      { "type": "color", "id": "color_text_muted", "label": "Muted text", "default": "#a8afc6" },
+      { "type": "color", "id": "color_accent", "label": "Accent / buttons", "default": "#f2c66d" },
+      { "type": "color", "id": "color_accent_text", "label": "Button text", "default": "#141a2c" },
+      { "type": "color", "id": "color_success", "label": "Success / checkmarks", "default": "#5fcf9a" },
+      { "type": "color", "id": "color_sale", "label": "Sale badges", "default": "#ff8a7a" },
+      { "type": "color", "id": "color_stars", "label": "Review stars", "default": "#f5b83d" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "type_heading_font", "label": "Headings", "default": "playfair_display_n7" },
+      { "type": "font_picker", "id": "type_body_font", "label": "Body", "default": "assistant_n4" }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 14 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "select", "id": "cart_type", "label": "Cart type", "options": [{ "value": "drawer", "label": "Drawer" }, { "value": "page", "label": "Page" }], "default": "drawer" },
+      { "type": "range", "id": "free_shipping_threshold", "label": "Free shipping bar threshold", "min": 0, "max": 200, "step": 5, "unit": "$", "default": 0, "info": "0 hides the progress bar (shipping is already free)." },
+      { "type": "product", "id": "cart_upsell_product", "label": "Cart upsell product" },
+      { "type": "text", "id": "cart_upsell_heading", "label": "Upsell heading", "default": "Add the eBook to your night routine" },
+      { "type": "text", "id": "cart_guarantee_text", "label": "Text under checkout button", "default": "🌙 Free shipping · 90-night guarantee" }
+    ]
+  },
+  {
+    "name": "Reviews",
+    "settings": [
+      { "type": "paragraph", "content": "Used on product cards and pages when a product has no reviews.rating metafield (e.g. from a reviews app)." },
+      { "type": "range", "id": "default_rating", "label": "Default rating", "min": 1, "max": 5, "step": 0.1, "default": 4.8 },
+      { "type": "text", "id": "default_rating_count", "label": "Default review count", "default": "1,248" }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "url", "id": "social_facebook_link", "label": "Facebook" },
+      { "type": "url", "id": "social_instagram_link", "label": "Instagram" },
+      { "type": "url", "id": "social_tiktok_link", "label": "TikTok" },
+      { "type": "url", "id": "social_youtube_link", "label": "YouTube" },
+      { "type": "url", "id": "social_pinterest_link", "label": "Pinterest" }
+    ]
+  }
+]

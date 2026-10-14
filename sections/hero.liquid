@@ -1,0 +1,56 @@
+<section class="hero" {{ section.shopify_attributes }}>
+  <div class="page-width hero__grid">
+    <div class="hero__content">
+      {%- if section.settings.rating_text != blank -%}
+        <div class="rating-line">{% render 'stars', rating: section.settings.rating %}<span>{{ section.settings.rating_text }}</span></div>
+      {%- endif -%}
+      <h1 class="hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<div class="hero__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="hero__bullets">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}>{% render 'icon', icon: 'check' %}<span>{{ block.settings.text }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      <div class="hero__cta">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#shop' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+        {%- endif -%}
+        {%- if section.settings.price_note != blank -%}<span class="hero__price-note">{{ section.settings.price_note }}</span>{%- endif -%}
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="media-frame">
+        {% render 'image', image: section.settings.image, fallback: 'hero.svg', alt: section.settings.heading, sizes: '(min-width: 990px) 50vw, 100vw', loading: 'eager' %}
+      </div>
+      {%- if section.settings.badge_title != blank -%}
+        <div class="hero__badge">{% render 'icon', icon: 'shield' %}<span><strong>{{ section.settings.badge_title }}</strong>{{ section.settings.badge_text }}</span></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "div",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "range", "id": "rating", "label": "Star rating", "min": 1, "max": 5, "step": 0.1, "default": 4.8 },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8/5 from 1,200+ restless sleepers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Restless legs at night? Give them something to <em>push against.</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>HushLegs is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps quiet that crawling, can't-sit-still feeling so you can finally fall asleep.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Try HushLegs tonight" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "$44.99 a pair · Free shipping · 90-night guarantee" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "badge_title", "label": "Badge title", "default": "90-night guarantee" },
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Sleep on it. If it doesn't help, it's free." }
+  ],
+  "blocks": [
+    { "type": "bullet", "name": "Bullet", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Drug-free — no pills, no prescription" }] }
+  ],
+  "presets": [{ "name": "Hero", "blocks": [{ "type": "bullet" }, { "type": "bullet" }, { "type": "bullet" }] }]
+}
+{% endschema %}

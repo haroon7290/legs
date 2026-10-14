@@ -1,0 +1,50 @@
+<div class="page-width">
+  <div class="collection-hero">
+    <h1>{{ collection.title | default: section.settings.fallback_title }}</h1>
+    {%- if collection.description != blank -%}<div class="rte">{{ collection.description }}</div>{%- elsif section.settings.fallback_text != blank -%}<div class="rte"><p>{{ section.settings.fallback_text }}</p></div>{%- endif -%}
+  </div>
+  {%- paginate collection.products by section.settings.per_page -%}
+    <div class="collection-toolbar">
+      <span>{{ 'collections.product_count' | t: count: collection.products_count }}</span>
+      {%- if section.settings.show_sort -%}
+        <label>
+          <span class="visually-hidden">{{ 'collections.sort_by' | t }}</span>
+          <select onchange="var u=new URL(location.href);u.searchParams.set('sort_by',this.value);location.href=u">
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </label>
+      {%- endif -%}
+    </div>
+    <div class="product-grid" style="--columns: {{ section.settings.columns }}">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        <p class="muted">{{ 'collections.empty' | t }}</p>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination" aria-label="{{ 'general.pagination' | t }}">
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span class="current">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+<div style="height:var(--section-space)"></div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "text", "id": "fallback_title", "label": "Fallback title", "default": "Products" },
+    { "type": "text", "id": "fallback_text", "label": "Fallback text", "default": "Everything you need for calmer, quieter nights." },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 4, "max": 48, "step": 4, "default": 12 },
+    { "type": "range", "id": "columns", "label": "Columns", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "checkbox", "id": "show_sort", "label": "Show sorting", "default": true }
+  ]
+}
+{% endschema %}

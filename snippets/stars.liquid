@@ -1,0 +1,17 @@
+{%- comment -%}
+  Usage: {% render 'stars', rating: 4.8 %}
+{%- endcomment -%}
+{%- assign rating = rating | default: 5 | times: 1.0 -%}
+<span class="stars" aria-label="{{ 'general.rating' | t: rating: rating }}" role="img">
+  {%- for i in (1..5) -%}
+    {%- assign threshold = i | minus: 0.25 -%}
+    {%- assign half_threshold = i | minus: 0.75 -%}
+    {%- if rating >= threshold -%}
+      {%- render 'icon', icon: 'star' -%}
+    {%- elsif rating >= half_threshold -%}
+      {%- render 'icon', icon: 'star-half' -%}
+    {%- else -%}
+      <span style="opacity:.25;display:inline-flex">{%- render 'icon', icon: 'star' -%}</span>
+    {%- endif -%}
+  {%- endfor -%}
+</span>

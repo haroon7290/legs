@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "columns": 2,
+        "per_page": 12,
+        "show_sort": true
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "subtitle": "On every order"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "moon-outline",
+            "title": "90-night guarantee",
+            "subtitle": "Sleep on it, risk-free"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "title": "Drug-free",
+            "subtitle": "No pills, no prescriptions"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Real support",
+            "subtitle": "Replies within 24 hours"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {}
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "style": "alt",
+        "heading": "Sleep on it for 90 nights.",
+        "text": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "button_label": "Start my 90 nights",
+        "button_link": "",
+        "policy_link": "/policies/refund-policy"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust",
+    "guarantee"
+  ]
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c2642"/><stop offset="1" stop-color="#0e1424"/></linearGradient>
+<radialGradient id="glow" cx="0.75" cy="0.2" r="0.6"><stop offset="0" stop-color="#f2c66d" stop-opacity=".28"/><stop offset="1" stop-color="#f2c66d" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/><rect width="800" height="500" fill="url(#glow)"/>
+<circle cx="80" cy="90" r="2" fill="#fff" opacity="0.6"/><circle cx="210" cy="60" r="1.5" fill="#fff" opacity="0.5"/><circle cx="640" cy="120" r="2" fill="#fff" opacity="0.7"/><circle cx="720" cy="300" r="1.5" fill="#fff" opacity="0.4"/><circle cx="120" cy="420" r="1.5" fill="#fff" opacity="0.4"/><circle cx="520" cy="70" r="1.2" fill="#fff" opacity="0.5"/><circle cx="360" cy="40" r="1.6" fill="#fff" opacity="0.6"/><circle cx="400" cy="210" r="90" fill="#f2c66d"/><text x="400" y="240" font-family="Georgia,serif" font-size="90" font-weight="700" fill="#141a2c" text-anchor="middle">3</text>
+<text x="400" y="380" font-family="Inter,Arial" font-size="34" fill="#f6f2ea" text-anchor="middle">Sleep</text><text x="400.0" y="460" font-family="Inter,Arial,sans-serif" font-size="22" fill="#fff" opacity=".45" text-anchor="middle">Dummy step image</text>
+</svg>

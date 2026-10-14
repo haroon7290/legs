@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "main": {
+      "type": "contact-form",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "mail",
+            "title": "Email",
+            "text": "support@hushlegs.com"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "title": "Response time",
+            "text": "Within 24 hours, 7 days a week"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "90-night guarantee",
+            "text": "Not sleeping better? We'll make it right."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "What exactly is HushLegs?",
+            "answer": "<p>HushLegs is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Steady pressure on specific points under the foot gives your nervous system a strong, calm signal to focus on. Many people find that it quiets the urge to move. The same idea is behind a prescription-only device that costs over $200 — we just made it simpler and affordable.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it a medical device?",
+            "answer": "<p>No. HushLegs is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "How soon will I notice a difference?",
+            "answer": "<p>Many customers feel calmer legs the first night. For others it takes a week or two of getting the fit right. That's why we ask you to try it for at least 30 nights.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Which size should I choose?",
+            "answer": "<p><strong>S/M</strong> fits US women's 5–9 / men's 4–8. <strong>L/XL</strong> fits US women's 9.5–13 / men's 8.5–14. Between sizes? Go up — the strap tightens down easily.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Do I wear one or two?",
+            "answer": "<p>Each order is a pair — one for each foot. Most people wear both, but you can wear just one on the leg that bothers you most.</p>"
+          }
+        },
+        "question_7": {
+          "type": "question",
+          "settings": {
+            "question": "Is it comfortable to sleep in?",
+            "answer": "<p>Yes. The outer is a soft, breathable knit and the pad is contoured to the arch. Tighten until the pressure feels firm but comfortable — never painful or tingling.</p>"
+          }
+        },
+        "question_8": {
+          "type": "question",
+          "settings": {
+            "question": "How do I wash it?",
+            "answer": "<p>Remove the pad, then hand or machine wash the wrap on cold and let it air dry.</p>"
+          }
+        },
+        "question_9": {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Shipping is free on every order. We ship within 24 hours, and most orders arrive in 4–8 business days. You'll get a tracking number by email.</p>"
+          }
+        },
+        "question_10": {
+          "type": "question",
+          "settings": {
+            "question": "What is the 90-night guarantee?",
+            "answer": "<p>Wear HushLegs consistently for at least 30 nights. If it doesn't help, email support@hushlegs.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6",
+        "question_7",
+        "question_8",
+        "question_9",
+        "question_10"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered",
+        "open_first": true,
+        "footer_text": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

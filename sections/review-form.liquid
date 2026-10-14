@@ -1,0 +1,41 @@
+<div class="page-width page-width--narrow main-page">
+  <h1>{{ section.settings.heading }}</h1>
+  <div class="rte text-center muted" style="margin:-16px auto 32px;max-width:620px">{{ section.settings.text }}</div>
+  {%- form 'contact', class: 'form', id: 'ReviewForm' -%}
+    {%- if form.posted_successfully? -%}
+      <div class="notice" role="status">{{ 'reviews.success' | t }}</div>
+    {%- elsif form.errors -%}
+      <div class="notice notice--error" role="alert">{{ form.errors | default_errors }}</div>
+    {%- endif -%}
+    <input type="hidden" name="contact[subject]" value="New product review">
+    <div class="field">
+      <span style="display:block;font-size:.88rem;font-weight:600;margin-bottom:6px">{{ 'reviews.rating' | t }}</span>
+      <div class="star-input">
+        {%- for i in (1..5) reversed -%}
+          <input type="radio" id="star-{{ i }}" name="contact[rating]" value="{{ i }}" {% if i == 5 %}checked{% endif %}>
+          <label for="star-{{ i }}" aria-label="{{ i }}">{% render 'icon', icon: 'star' %}</label>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="form__row">
+      <div class="field"><label for="RevName">{{ 'reviews.name' | t }} *</label><input id="RevName" type="text" name="contact[name]" required></div>
+      <div class="field"><label for="RevEmail">{{ 'contact.email' | t }} *</label><input id="RevEmail" type="email" name="contact[email]" required></div>
+    </div>
+    <div class="field"><label for="RevTitle">{{ 'reviews.title' | t }}</label><input id="RevTitle" type="text" name="contact[review_title]"></div>
+    <div class="field"><label for="RevBody">{{ 'reviews.body' | t }} *</label><textarea id="RevBody" name="contact[body]" required></textarea></div>
+    <p class="muted" style="font-size:.88rem;margin:0">{{ section.settings.photo_note }}</p>
+    <button type="submit" class="button">{{ 'reviews.submit' | t }}</button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "Write a review",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Write a Review" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tried HushLegs? We'd love to hear how your nights are going — the good and the not-so-good. We read every review ourselves before it goes on the site.</p>" },
+    { "type": "text", "id": "photo_note", "label": "Photo note", "default": "Got a photo of your HushLegs in action? Email it to support@hushlegs.com with your order number." }
+  ],
+  "presets": [{ "name": "Write a review" }]
+}
+{% endschema %}

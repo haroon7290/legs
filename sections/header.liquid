@@ -1,0 +1,70 @@
+<header class="site-header" {{ section.shopify_attributes }}>
+  <div class="page-width site-header__inner">
+    <div class="site-header__left">
+      <button type="button" class="icon-button menu-toggle" data-drawer-open="menu-drawer" aria-label="{{ 'general.menu' | t }}">{% render 'icon', icon: 'menu' %}</button>
+      <nav class="site-header__nav" aria-label="{{ 'general.main_navigation' | t }}">
+        <ul>
+          {%- for link in section.settings.menu.links -%}
+            <li><a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    </div>
+
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      {%- if section.settings.logo != blank -%}
+        {%- assign logo_h = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio | round -%}
+        {{ section.settings.logo | image_url: width: 600 | image_tag: width: section.settings.logo_width, height: logo_h, alt: shop.name, style: 'max-height:none' }}
+      {%- else -%}
+        {% render 'icon', icon: 'moon' %}<span>{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="site-header__icons">
+      {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="icon-button" aria-label="{{ 'general.account' | t }}">{% render 'icon', icon: 'account' %}</a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-button" data-drawer-open="cart-drawer" aria-label="{{ 'cart.title' | t }}">
+        {% render 'icon', icon: 'cart' %}
+        <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div id="menu-drawer" class="drawer drawer--left" aria-hidden="true">
+  <div class="drawer__overlay" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'general.menu' | t }}">
+    <div class="drawer__header">
+      <span class="site-header__logo" style="font-size:1.3rem">{% render 'icon', icon: 'moon' %}{{ shop.name }}</span>
+      <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'general.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+    </div>
+    <div class="drawer__body">
+      <ul class="mobile-nav">
+        {%- for link in section.settings.menu.links -%}
+          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- if section.settings.drawer_cta_label != blank -%}
+      <div class="drawer__footer">
+        <a href="{{ section.settings.drawer_cta_link | default: routes.all_products_collection_url }}" class="button button--full">{{ section.settings.drawer_cta_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section-header",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Leave empty to show the moon icon + store name." },
+    { "type": "range", "id": "logo_width", "label": "Logo width", "min": 60, "max": 300, "step": 10, "unit": "px", "default": 150 },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "checkbox", "id": "show_account", "label": "Show account icon", "default": false },
+    { "type": "text", "id": "drawer_cta_label", "label": "Mobile menu button label", "default": "Shop HushLegs" },
+    { "type": "url", "id": "drawer_cta_link", "label": "Mobile menu button link" }
+  ]
+}
+{% endschema %}

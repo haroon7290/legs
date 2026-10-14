@@ -1,0 +1,17 @@
+{
+  "name": "hushlegs-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HushLegs Shopify theme",
+  "scripts": {
+    "check": "node tools/theme-check.mjs",
+    "preview": "node tools/build-preview.mjs",
+    "package": "node tools/package.mjs",
+    "csv": "node tools/build-csv.mjs"
+  },
+  "devDependencies": {
+    "@shopify/theme-check-docs-updater": "^3.0.0",
+    "@shopify/theme-check-node": "^3.0.0",
+    "liquidjs": "^10.0.0"
+  }
+}

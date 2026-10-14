@@ -1,0 +1,51 @@
+{%- assign product = section.settings.product -%}
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="promo reveal">
+      <div class="promo__media">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+        {%- elsif product.featured_media -%}
+          {{ product.featured_media | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}
+        {%- else -%}
+          <img src="{{ 'ebook-cover.svg' | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy" width="600" height="800">
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="rte muted" style="margin-bottom:18px">{{ section.settings.text }}</div>
+        <div class="promo__price">
+          {%- if product != blank -%}<s>{{ product.price | money }}</s>{%- endif -%}
+          {%- if section.settings.price_label != blank -%}<strong>{{ section.settings.price_label }}</strong>{%- endif -%}
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap" class="promo__actions">
+          {%- if section.settings.button_label != blank -%}<a href="{{ section.settings.button_link | default: '#shop' }}" class="button">{{ section.settings.button_label }}</a>{%- endif -%}
+          {%- if product != blank and section.settings.show_buy_alone -%}
+            {%- assign alone_price = product.price | money -%}
+            <button type="button" class="button button--secondary" data-quick-add="{{ product.selected_or_first_available_variant.id }}">{{ 'products.product.buy_alone' | t: price: alone_price }}</button>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Promo product (eBook)",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Free bonus" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Calm Night Protocol" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with HushLegs. Yours free with any pair.</p>" },
+    { "type": "text", "id": "price_label", "label": "Price label", "default": "Free with any pair" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Claim with HushLegs" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "checkbox", "id": "show_buy_alone", "label": "Show 'buy on its own' button", "default": true }
+  ],
+  "presets": [{ "name": "Promo product" }]
+}
+{% endschema %}

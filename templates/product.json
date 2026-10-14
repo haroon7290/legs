@@ -1,0 +1,446 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "text": "[count] reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "subtitle": {
+          "type": "subtitle",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "note": "Free shipping · 90-night guarantee"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_size_guide": true
+          }
+        },
+        "quantity_breaks": {
+          "type": "quantity_breaks",
+          "settings": {}
+        },
+        "addon": {
+          "type": "addon",
+          "settings": {
+            "product": "the-calm-night-protocol-ebook"
+          }
+        },
+        "stock": {
+          "type": "stock",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_icons": true
+          }
+        },
+        "delivery": {
+          "type": "delivery",
+          "settings": {}
+        },
+        "assurance": {
+          "type": "assurance",
+          "settings": {}
+        },
+        "mini_review": {
+          "type": "mini_review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "subtitle",
+        "price",
+        "benefits",
+        "variant_picker",
+        "quantity_breaks",
+        "addon",
+        "stock",
+        "buy_buttons",
+        "delivery",
+        "assurance",
+        "mini_review"
+      ],
+      "settings": {
+        "sticky_atc": true,
+        "show_tabs": true
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping",
+            "subtitle": "On every order"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "moon-outline",
+            "title": "90-night guarantee",
+            "subtitle": "Sleep on it, risk-free"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "title": "Drug-free",
+            "subtitle": "No pills, no prescriptions"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Real support",
+            "subtitle": "Replies within 24 hours"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {}
+    },
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Slip it on",
+            "text": "Pull the wrap over your foot so the firm pad sits right under your arch."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Tighten the strap",
+            "text": "Adjust until the pressure feels firm and steady — snug, never painful."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Lie back & sleep",
+            "text": "The steady pressure gives restless nerves something calm to focus on."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "How it works",
+        "heading": "Simple pressure. Calmer legs.",
+        "text": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade and you can drift off.</p>",
+        "footnote": "<p>The one purpose-built device for this exact pressure is FDA-cleared, prescription-only, and costs over $200. HushLegs brings the same simple idea home for $44.99.</p>"
+      }
+    },
+    "compare": {
+      "type": "comparison",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Price",
+            "value_1": "$44.99",
+            "value_2": "$200+",
+            "value_3": "$15–60/mo",
+            "value_4": "$0–20"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "No prescription needed",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "no",
+            "value_4": "yes"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Drug-free, no side effects",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "no",
+            "value_4": "yes"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Targeted pressure under the arch",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "no",
+            "value_4": "no"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Works while you sleep",
+            "value_1": "yes",
+            "value_2": "yes",
+            "value_3": "yes",
+            "value_4": "no"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "90-night guarantee",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "no",
+            "value_4": "no"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Compare",
+        "heading": "Same idea. A fraction of the price.",
+        "text": "<p>Relief shouldn't need a prescription or a $200 price tag.</p>",
+        "col_1": "HushLegs",
+        "col_2": "Prescription wrap",
+        "col_3": "Medication",
+        "col_4": "Stretching / socks",
+        "footnote": "<p>Comparison is for general information only. Talk to your doctor about what's right for you.</p>"
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-1.svg",
+            "rating": 5,
+            "title": "First full night in years",
+            "text": "<p>I've had restless legs since my second pregnancy. I was skeptical, but the pressure under my arch just… switches it off. I slept through on night two.</p>",
+            "author": "Linda R.",
+            "location": "Ohio",
+            "verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "My husband noticed before I did",
+            "text": "<p>He said I stopped kicking him. That alone was worth it. Comfortable enough that I forget I'm wearing them.</p>",
+            "author": "Maria G.",
+            "location": "Texas",
+            "verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-2.svg",
+            "rating": 5,
+            "title": "Cheaper than the prescription one",
+            "text": "<p>My doctor mentioned a pressure wrap that costs over $200. Found these instead. Same idea, and they actually work for me.</p>",
+            "author": "Tom B.",
+            "location": "Florida",
+            "verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "title": "Takes a few nights to get the fit right",
+            "text": "<p>First night I had them too loose. Once I tightened the strap so the pad really pressed into my arch, big difference. Recommend sizing up if you're between.</p>",
+            "author": "Karen W.",
+            "location": "Oregon",
+            "verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "No more pacing the hallway",
+            "text": "<p>I used to get up 3–4 times a night to walk it off. Now it's maybe once a week. I wish I'd found these sooner.</p>",
+            "author": "James P.",
+            "location": "Arizona",
+            "verified": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "fallback_image": "review-3.svg",
+            "rating": 5,
+            "title": "Great on long flights too",
+            "text": "<p>Bought a second pair for travel. Wore them on a 9-hour flight and my legs stayed calm the whole way.</p>",
+            "author": "Susan L.",
+            "location": "New York",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ],
+      "settings": {
+        "style": "light",
+        "eyebrow": "Real nights, real people",
+        "heading": "“I actually slept through.”",
+        "show_summary": true,
+        "score": 4.8,
+        "summary_text": "Based on 1,248 reviews",
+        "initial_count": 6,
+        "write_review_link": "/pages/review"
+      }
+    },
+    "guarantee": {
+      "type": "guarantee",
+      "settings": {
+        "style": "alt",
+        "heading": "Sleep on it for 90 nights.",
+        "text": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "button_label": "Start my 90 nights",
+        "button_link": "",
+        "policy_link": "/policies/refund-policy"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question_1": {
+          "type": "question",
+          "settings": {
+            "question": "What exactly is HushLegs?",
+            "answer": "<p>HushLegs is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
+          }
+        },
+        "question_2": {
+          "type": "question",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Steady pressure on specific points under the foot gives your nervous system a strong, calm signal to focus on. Many people find that it quiets the urge to move. The same idea is behind a prescription-only device that costs over $200 — we just made it simpler and affordable.</p>"
+          }
+        },
+        "question_3": {
+          "type": "question",
+          "settings": {
+            "question": "Is it a medical device?",
+            "answer": "<p>No. HushLegs is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
+          }
+        },
+        "question_4": {
+          "type": "question",
+          "settings": {
+            "question": "How soon will I notice a difference?",
+            "answer": "<p>Many customers feel calmer legs the first night. For others it takes a week or two of getting the fit right. That's why we ask you to try it for at least 30 nights.</p>"
+          }
+        },
+        "question_5": {
+          "type": "question",
+          "settings": {
+            "question": "Which size should I choose?",
+            "answer": "<p><strong>S/M</strong> fits US women's 5–9 / men's 4–8. <strong>L/XL</strong> fits US women's 9.5–13 / men's 8.5–14. Between sizes? Go up — the strap tightens down easily.</p>"
+          }
+        },
+        "question_6": {
+          "type": "question",
+          "settings": {
+            "question": "Do I wear one or two?",
+            "answer": "<p>Each order is a pair — one for each foot. Most people wear both, but you can wear just one on the leg that bothers you most.</p>"
+          }
+        },
+        "question_7": {
+          "type": "question",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Shipping is free on every order. We ship within 24 hours, and most orders arrive in 4–8 business days. You'll get a tracking number by email.</p>"
+          }
+        },
+        "question_8": {
+          "type": "question",
+          "settings": {
+            "question": "What is the 90-night guarantee?",
+            "answer": "<p>Wear HushLegs consistently for at least 30 nights. If it doesn't help, email support@hushlegs.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_1",
+        "question_2",
+        "question_3",
+        "question_4",
+        "question_5",
+        "question_6",
+        "question_7",
+        "question_8"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "FAQ",
+        "heading": "Questions, answered",
+        "open_first": true,
+        "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within 24 hours.</p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust",
+    "how",
+    "compare",
+    "reviews",
+    "guarantee",
+    "faq"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "text": "[count] reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "subtitle": {
+          "type": "subtitle",
+          "settings": {
+            "text": "A 20-minute read for quieter, calmer evenings."
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "note": "Instant digital download · Free with any HushLegs pair"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {
+            "items": "The 10-minute wind-down routine\n5 gentle stretches for before bed\nWhat to avoid in the evening (and why)\nHow to get the best fit from your HushLegs"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_icons": true
+          }
+        },
+        "assurance": {
+          "type": "assurance",
+          "settings": {
+            "item_1": "Instant download",
+            "item_2": "Read in 20 minutes",
+            "item_3": "Secure checkout"
+          }
+        }
+      },
+      "block_order": [
+        "rating",
+        "title",
+        "subtitle",
+        "price",
+        "benefits",
+        "buy_buttons",
+        "assurance"
+      ],
+      "settings": {
+        "sticky_atc": false,
+        "show_tabs": true,
+        "tab_1_heading": "What's inside",
+        "tab_1_content": "<ul><li>Why legs get restless at night</li><li>The evening wind-down routine</li><li>Stretches, temperature and timing</li><li>Building a calm-night habit</li></ul>",
+        "tab_2_heading": "Format",
+        "tab_2_content": "<p>PDF eBook, 32 pages. Download link delivered by email right after purchase.</p>",
+        "tab_3_heading": "Free with HushLegs",
+        "tab_3_content": "<p>Every HushLegs Support Pair order includes this eBook free.</p>"
+      }
+    },
+    "upsell": {
+      "type": "featured-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "note": "Free shipping · 90-night guarantee"
+          }
+        },
+        "benefits": {
+          "type": "benefits",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_size_guide": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_icons": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "benefits",
+        "variant_picker",
+        "buy_buttons"
+      ],
+      "settings": {
+        "product": "hushlegs-support-pair",
+        "eyebrow": "Pair it with",
+        "heading": "Get the eBook free with HushLegs",
+        "style": "alt",
+        "link_title": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "upsell"
+  ]
+}

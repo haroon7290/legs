@@ -1,0 +1,21 @@
+<div class="page-width main-page">
+  <p class="text-center"><a class="link" href="{{ routes.account_url }}">← {{ 'customer.account' | t }}</a></p>
+  <h1>{{ order.name }}</h1>
+  <p class="text-center muted">{{ order.created_at | date: format: 'date' }}{% if order.cancelled %} · {{ 'customer.cancelled' | t }}{% endif %}</p>
+  {%- for line_item in order.line_items -%}
+    <div class="cart-item" style="grid-template-columns:1fr auto auto">
+      <span>{{ line_item.title }} × {{ line_item.quantity }}
+        {%- if line_item.fulfillment -%}<br><small class="muted">{{ line_item.fulfillment.tracking_company }} {{ line_item.fulfillment.tracking_number }}</small>{%- endif -%}
+      </span>
+      <span></span>
+      <strong>{{ line_item.final_line_price | money }}</strong>
+    </div>
+  {%- endfor -%}
+  <div class="cart-totals" style="margin-top:20px"><span>{{ 'cart.subtotal' | t }}</span><span>{{ order.line_items_subtotal_price | money }}</span></div>
+  {%- for shipping_method in order.shipping_methods -%}<div class="cart-savings" style="color:inherit"><span>{{ shipping_method.title }}</span><span>{{ shipping_method.price | money }}</span></div>{%- endfor -%}
+  <div class="cart-totals"><span>{{ 'customer.total' | t }}</span><span>{{ order.total_price | money_with_currency }}</span></div>
+  <div class="grid grid--2" style="margin-top:32px">
+    <div><h3>{{ 'customer.billing' | t }}</h3>{{ order.billing_address | format_address }}</div>
+    <div><h3>{{ 'customer.shipping' | t }}</h3>{{ order.shipping_address | format_address }}</div>
+  </div>
+</div>

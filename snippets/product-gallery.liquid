@@ -1,0 +1,62 @@
+{%- comment -%}
+  Usage: {% render 'product-gallery', product: product, section: section %}
+  Falls back to dummy theme images when the product has no media yet.
+{%- endcomment -%}
+{%- liquid
+  assign is_ebook = false
+  if product.type == 'eBook' or product.handle contains 'ebook' or product.handle contains 'protocol'
+    assign is_ebook = true
+  endif
+  if is_ebook
+    assign fallbacks = 'ebook-cover.svg' | split: ','
+  else
+    assign fallbacks = 'product-pair-1.svg,product-pair-2.svg,product-pair-3.svg,product-pair-4.svg,product-pair-5.svg' | split: ','
+  endif
+  assign featured_id = product.selected_or_first_available_variant.featured_media.id | default: product.featured_media.id
+-%}
+<div class="product-gallery">
+  <div class="product-gallery__main">
+    {%- if product.compare_at_price > product.price -%}
+      {%- assign pct = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+      <span class="product-badge">{{ 'products.product.save_percent' | t: percent: pct }}</span>
+    {%- endif -%}
+    {%- if product.media.size > 0 -%}
+      {%- for media in product.media -%}
+        <div class="product-gallery__slide{% if media.id == featured_id %} is-active{% endif %}" data-media-id="{{ media.id }}">
+          {%- if media.media_type == 'image' -%}
+            {{ media | image_url: width: 1400 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 55vw, 100vw', widths: '500, 800, 1000, 1400', alt: media.alt | default: product.title }}
+          {%- else -%}
+            {{ media | media_tag: image_size: '1400x' }}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for img in fallbacks -%}
+        <div class="product-gallery__slide{% if forloop.first %} is-active{% endif %}" data-media-id="fallback-{{ forloop.index }}">
+          <img src="{{ img | asset_url }}" alt="{{ product.title | escape }}" width="800" height="800" {% unless forloop.first %}loading="lazy"{% endunless %}>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if product.media.size > 1 or product.media.size == 0 and fallbacks.size > 1 -%}
+      <button type="button" class="product-gallery__nav product-gallery__nav--prev" data-gallery-nav="-1" aria-label="{{ 'general.previous' | t }}">{% render 'icon', icon: 'chevron-left' %}</button>
+      <button type="button" class="product-gallery__nav product-gallery__nav--next" data-gallery-nav="1" aria-label="{{ 'general.next' | t }}">{% render 'icon', icon: 'chevron-right' %}</button>
+    {%- endif -%}
+  </div>
+  {%- if product.media.size > 1 -%}
+    <div class="product-gallery__thumbs">
+      {%- for media in product.media -%}
+        <button type="button" class="product-gallery__thumb{% if media.id == featured_id %} is-active{% endif %}" data-thumb="{{ media.id }}" aria-label="{{ 'general.view_image' | t: number: forloop.index }}">
+          {{ media.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- elsif product.media.size == 0 and fallbacks.size > 1 -%}
+    <div class="product-gallery__thumbs">
+      {%- for img in fallbacks -%}
+        <button type="button" class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-thumb="fallback-{{ forloop.index }}" aria-label="{{ 'general.view_image' | t: number: forloop.index }}">
+          <img src="{{ img | asset_url }}" alt="" loading="lazy" width="200" height="200">
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

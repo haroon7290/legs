@@ -1,0 +1,9 @@
+<article class="page-width page-width--narrow main-page">
+  <p class="text-center muted">{{ article.published_at | date: format: 'date' }}</p>
+  <h1>{{ article.title }}</h1>
+  {%- if article.image -%}<div style="border-radius:var(--radius-lg);overflow:hidden;margin-bottom:32px">{{ article.image | image_url: width: 1400 | image_tag: alt: article.title }}</div>{%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+</article>
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}
