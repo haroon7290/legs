@@ -283,7 +283,7 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'assets'))) fs.copyFileSync(path.join(ROOT, 'assets', f), path.join(OUT, 'assets', f));
 
-await buildPage('index.html', 'index', { page_title: 'HushLegs — Calm restless legs at night' });
+await buildPage('index.html', 'index', { page_title: 'HushLegs Storefront' });
 for (const p of products) {
   const tplName = p.template_suffix ? `product.${p.template_suffix}` : 'product';
   await buildPage(`${p.handle}.html`, tplName, { product: p, page_title: p.title, request: { ...baseGlobals.request, page_type: 'product' } });
