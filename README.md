@@ -7,25 +7,21 @@ copy and visual identity. Images and text are dummies you can replace.
 
 ## Design
 
-A bright "bedtime poster" look: cool paper background, 2px ink outlines with hard
-offset shadows, electric blue for every button, yellow only for stickers and badges,
-lilac and peach for alternating bands, and a dark ink band for contrast sections.
-Headings use Bricolage Grotesque and body text uses Manrope (Google Fonts). You can
-switch to Shopify's own fonts in *Theme settings › Typography*. All colours are in
-*Theme settings › Colors*, and every section has a Background option
-(Default / Alternate / Contrast).
+A calm, premium sleep-wellness look: lavender-white background, deep plum text,
+a single iris-purple accent, soft shadows instead of outlines, and generous spacing.
+Headings use Plus Jakarta Sans with Instrument Serif italics for accent words
+(Google Fonts). You can switch to Shopify's own fonts in *Theme settings › Typography*.
+Every section has a Background option (Default / Alternate / Contrast).
 
-## What's included
-
-| Area | Details |
-|---|---|
-| **Homepage** | Rotating announcement bar · sticky header + mobile menu · hero with rating, bullets, CTA and guarantee badge · trust bar · "2am" problem section · how it works (3 steps) · icon features · comparison table (vs. $200+ prescription wrap, medication, stretching) · reviews wall with rating summary and "load more" · full buy box (featured product) · 90-night guarantee · eBook bonus promo · FAQ (with FAQ schema) · newsletter · footer with disclaimer and payment icons |
-| **Product page** | Gallery with thumbnails and swipe · rating · price with compare-at and "Save %" · benefits list · size picker + size guide popup · **bundle / quantity breaks** (1, 2, 3 pairs) · eBook add-on checkbox · stock note · delivery-date estimate · assurance icons · mini review · info tabs · **sticky add to cart** · Product JSON-LD |
-| **eBook page** | Separate `product.ebook` template with an upsell to the Support Pair |
-| **Cart** | Slide-out AJAX cart drawer with quantity controls, savings line, eBook upsell, optional free-shipping progress bar · full cart page fallback |
-| **Other pages** | Collection (`/collections/all`), Contact, Write a Review, FAQ, How it works, search, blog/article, 404, password, all customer account pages |
-
-Every section is editable in the theme editor (text, images, colours, blocks, order).
+**Motion** (all of it turns off automatically for visitors with "reduce motion" on):
+- Hero: staggered blur-in of the text on load, slowly drifting colour glows, gentle
+  zoom and scroll parallax on the image, floating guarantee badge
+- Scroll: sections, cards, reviews and FAQ items fade up with a stagger as they appear;
+  comparison rows slide in one by one; the review score counts up
+- Interaction: light sweep on buttons, lifting cards, underline sweeps in the menu,
+  smooth FAQ and tab opening, crossfading product gallery, animated bundle selector,
+  cart count bump, slide-in cart and menu drawers, floating sticky add-to-cart bar
+- Ambient: scrolling announcement ticker and a rotating guarantee seal
 
 ## Products (2)
 

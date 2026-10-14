@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        <a href="{{ routes.root_url }}" class="site-header__logo" style="justify-self:start">{% render 'icon', icon: 'logo-mark' %}<span>{{ shop.name }}</span></a>
+        <a href="{{ routes.root_url }}" class="site-header__logo" style="justify-self:start">{% render 'icon', icon: 'logo-mark' %}{% render 'logo-text' %}</a>
         {%- if section.settings.about != blank -%}<div class="rte"><p>{{ section.settings.about }}</p></div>{%- endif -%}
         {%- if section.settings.email != blank -%}<p style="margin-top:10px"><a class="link" href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>{%- endif -%}
         <div class="site-footer__social">
@@ -39,6 +39,7 @@
       <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}</span>
       {%- if section.settings.show_payment -%}{% render 'payment-icons' %}{%- endif -%}
     </div>
+    {%- if section.settings.show_wordmark -%}<div class="site-footer__wordmark" aria-hidden="true">{{ shop.name }}</div>{%- endif -%}
   </div>
 </footer>
 
@@ -51,7 +52,8 @@
     { "type": "textarea", "id": "about", "label": "About text", "default": "Deep-pressure foot wraps for restless, fidgety legs at night. Designed to help you settle down — without pills." },
     { "type": "text", "id": "email", "label": "Support email", "default": "support@legsnight.com" },
     { "type": "richtext", "id": "disclaimer", "label": "Disclaimer", "default": "<p>Legs Night is a comfort product, not a medical device. It is not FDA-cleared and is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. If you have a medical condition, are pregnant, have diabetes, neuropathy or circulation problems, talk to your doctor before use. Testimonials reflect individual experiences.</p>" },
-    { "type": "checkbox", "id": "show_payment", "label": "Show payment icons", "default": true }
+    { "type": "checkbox", "id": "show_payment", "label": "Show payment icons", "default": true },
+    { "type": "checkbox", "id": "show_wordmark", "label": "Show large wordmark", "default": true }
   ],
   "blocks": [
     {

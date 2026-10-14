@@ -14,13 +14,13 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#f4f5f9"
+        "default": "#f7f6fb"
       },
       {
         "type": "color",
         "id": "color_background_alt",
         "label": "Alternate background",
-        "default": "#e6e3f8"
+        "default": "#efecf8"
       },
       {
         "type": "color",
@@ -32,25 +32,25 @@
         "type": "color",
         "id": "color_light",
         "label": "Contrast band background",
-        "default": "#15122b"
+        "default": "#1b1830"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#15122b"
+        "default": "#1d1b2c"
       },
       {
         "type": "color",
         "id": "color_text_muted",
         "label": "Muted text",
-        "default": "#55526d"
+        "default": "#6a6780"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent / buttons",
-        "default": "#3d4cf5"
+        "default": "#5b47e0"
       },
       {
         "type": "color",
@@ -62,19 +62,19 @@
         "type": "color",
         "id": "color_success",
         "label": "Success / checkmarks",
-        "default": "#108a63"
+        "default": "#1f9d74"
       },
       {
         "type": "color",
         "id": "color_sale",
         "label": "Sale badges",
-        "default": "#e5533a"
+        "default": "#e0604a"
       },
       {
         "type": "color",
         "id": "color_stars",
         "label": "Review stars",
-        "default": "#f2a516"
+        "default": "#f2a93b"
       }
     ]
   },
@@ -84,7 +84,7 @@
       {
         "type": "checkbox",
         "id": "use_google_fonts",
-        "label": "Use brand fonts (Bricolage Grotesque + Manrope)",
+        "label": "Use brand fonts (Plus Jakarta Sans + Instrument Serif)",
         "default": true,
         "info": "Loaded from Google Fonts. Untick to use the font pickers below."
       },
@@ -109,11 +109,11 @@
         "type": "range",
         "id": "radius",
         "label": "Corner radius",
-        "min": 0,
-        "max": 24,
+        "min": 4,
+        "max": 28,
         "step": 2,
         "unit": "px",
-        "default": 10
+        "default": 16
       },
       {
         "type": "image_picker",

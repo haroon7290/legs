@@ -41,9 +41,9 @@
         "a4"
       ],
       "settings": {
-        "background": "#15122b",
-        "text_color": "#ffffff",
-        "speed": 4
+        "background": "#1b1830",
+        "text_color": "#e9e6f7",
+        "speed": 5
       }
     },
     "header": {

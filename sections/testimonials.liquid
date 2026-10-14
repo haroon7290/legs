@@ -6,7 +6,7 @@
     </div>
     {%- if section.settings.show_summary -%}
       <div class="reviews-summary">
-        <span class="reviews-summary__score">{{ section.settings.score }}</span>
+        <span class="reviews-summary__score" data-count="{{ section.settings.score }}" data-decimals="1">{{ section.settings.score }}</span>
         {% render 'stars', rating: section.settings.score %}
         <span class="muted">{{ section.settings.summary_text }}</span>
       </div>
