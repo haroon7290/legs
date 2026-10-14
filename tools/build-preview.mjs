@@ -2,7 +2,7 @@
 // so the design can be reviewed without a Shopify store. Usage: npm run preview
 //
 // Only the Shopify features this theme uses are mocked. The output is a
-// static demo: cart actions use a localStorage cart (window.HushTheme.preview).
+// static demo: cart actions use a localStorage cart (window.LegsNightTheme.preview).
 import { Liquid, Tag, Hash } from 'liquidjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -101,7 +101,7 @@ for (const p of products) {
 const link = (title, url) => ({ title, url, current: false });
 const linklists = {
   'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Reviews', 'index.html#reviews'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
-  footer: { links: [link('HushLegs Support Pair', 'hushlegs-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
+  footer: { links: [link('Legs Night Support Pair', 'legs-night-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
   help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Write a review', PAGE_URLS.review), link('Refund policy', '#refund-policy'), link('Shipping policy', '#shipping-policy'), link('Privacy policy', '#privacy-policy'), link('Terms of service', '#terms-of-service')] }
 };
 
@@ -135,7 +135,7 @@ engine.registerFilter('image_tag', (src, ...args) => {
 engine.registerFilter('stylesheet_tag', (u) => `<link rel="stylesheet" href="${u}">`);
 engine.registerFilter('font_face', () => '');
 engine.registerFilter('font_modify', (f) => f);
-engine.registerFilter('color_lighten', (c) => c);
+engine.registerFilter('color_darken', (c) => c);
 engine.registerFilter('payment_type_svg_tag', (type) => {
   const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', paypal: 'PayPal', apple_pay: 'Pay', shopify_pay: 'shop' }[type] || type;
   return `<svg viewBox="0 0 38 24" role="img" aria-label="${type}"><rect width="38" height="24" rx="4" fill="#fff"/><text x="19" y="15.5" font-size="8" font-family="Arial" font-weight="700" fill="#1a1f71" text-anchor="middle">${label}</text></svg>`;
@@ -250,23 +250,22 @@ settings.type_heading_font = { family: '"Fraunces"', fallback_families: 'Georgia
 settings.type_body_font = { family: '"Inter"', fallback_families: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' };
 
 const baseGlobals = {
-  shop: { name: 'HushLegs', description: 'Deep-pressure foot wraps for restless legs at night.', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'shopify_pay'], customer_accounts_enabled: false },
+  shop: { name: 'Legs Night', description: 'Deep-pressure foot wraps for restless legs at night.', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'shopify_pay'], customer_accounts_enabled: false },
   settings,
   routes: { root_url: 'index.html', cart_url: PAGE_URLS.cart, cart_add_url: '#', cart_change_url: '#', all_products_collection_url: PAGE_URLS.collection, search_url: '#', account_url: '#' },
   cart: { item_count: 0, total_price: 0, currency: { iso_code: 'USD' }, items: [] },
-  request: { locale: { iso_code: 'en' }, origin: 'https://hushlegs.com', page_type: 'index' },
+  request: { locale: { iso_code: 'en' }, origin: 'https://legsnight.com', page_type: 'index' },
   all_products: productsByHandle,
   collections: { all: allCollection },
-  canonical_url: 'https://hushlegs.com/',
+  canonical_url: 'https://legsnight.com/',
   current_page: 1
 };
 
 // Shopify exposes these objects inside {% render %}; liquidjs needs them as globals.
 Object.assign(engine.options.globals, { shop: baseGlobals.shop, settings, routes: baseGlobals.routes, cart: baseGlobals.cart, request: baseGlobals.request, all_products: productsByHandle, collections: baseGlobals.collections });
 
-const previewHead = `<script>window.HushTheme.preview = true; window.HushTheme.previewCatalog = ${JSON.stringify(previewCatalog)};</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">`;
+const previewHead = `<script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = ${JSON.stringify(previewCatalog)};</script>
+`;
 
 async function buildPage(file, templateName, extra = {}) {
   const tpl = readJson(`templates/${templateName}.json`);
@@ -283,7 +282,7 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'assets'))) fs.copyFileSync(path.join(ROOT, 'assets', f), path.join(OUT, 'assets', f));
 
-await buildPage('index.html', 'index', { page_title: 'HushLegs Storefront' });
+await buildPage('index.html', 'index', { page_title: 'Legs Night Storefront' });
 for (const p of products) {
   const tplName = p.template_suffix ? `product.${p.template_suffix}` : 'product';
   await buildPage(`${p.handle}.html`, tplName, { product: p, page_title: p.title, request: { ...baseGlobals.request, page_type: 'product' } });

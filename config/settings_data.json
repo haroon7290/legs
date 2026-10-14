@@ -2,27 +2,28 @@
   "current": "Default",
   "presets": {
     "Default": {
-      "color_background": "#0e1424",
-      "color_background_alt": "#151d33",
-      "color_surface": "#1c2642",
-      "color_light": "#f6f2ea",
-      "color_text": "#e9e6f0",
-      "color_text_muted": "#a8afc6",
-      "color_accent": "#f2c66d",
-      "color_accent_text": "#141a2c",
-      "color_success": "#5fcf9a",
-      "color_sale": "#ff8a7a",
-      "color_stars": "#f5b83d",
-      "type_heading_font": "playfair_display_n7",
+      "color_background": "#f4f5f9",
+      "color_background_alt": "#e6e3f8",
+      "color_surface": "#ffffff",
+      "color_light": "#15122b",
+      "color_text": "#15122b",
+      "color_text_muted": "#55526d",
+      "color_accent": "#3d4cf5",
+      "color_accent_text": "#ffffff",
+      "color_success": "#108a63",
+      "color_sale": "#e5533a",
+      "color_stars": "#f2a516",
+      "type_heading_font": "assistant_n4",
       "type_body_font": "assistant_n4",
-      "radius": 14,
+      "radius": 10,
       "cart_type": "drawer",
       "free_shipping_threshold": 0,
       "cart_upsell_product": "the-calm-night-protocol-ebook",
       "cart_upsell_heading": "Add the eBook to your night routine",
-      "cart_guarantee_text": "🌙 Free shipping · 90-night guarantee",
+      "cart_guarantee_text": "Free shipping · 90-night guarantee",
       "default_rating": 4.8,
-      "default_rating_count": "1,248"
+      "default_rating_count": "1,248",
+      "use_google_fonts": true
     }
   }
 }

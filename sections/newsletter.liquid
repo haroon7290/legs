@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" {{ section.shopify_attributes }}>
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="newsletter reveal">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -19,7 +19,7 @@
 {
   "name": "Newsletter",
   "settings": [
-    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Better nights, in your inbox" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Sleep tips, wind-down routines and early access to new products. No spam — unsubscribe anytime.</p>" },

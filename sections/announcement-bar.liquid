@@ -1,9 +1,13 @@
 {%- if section.blocks.size > 0 -%}
-<div class="announcement-bar" style="background:{{ section.settings.background }};color:{{ section.settings.text_color }}" data-announcement data-speed="{{ section.settings.speed }}" {{ section.shopify_attributes }}>
-  <div class="announcement-bar__inner">
-    {%- for block in section.blocks -%}
-      <div class="announcement-bar__slide{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
-        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.text }}</a>{%- else -%}{{ block.settings.text }}{%- endif -%}
+<div class="announcement-bar" style="background:{{ section.settings.background }};color:{{ section.settings.text_color }};--marquee-speed:{{ section.settings.speed | times: section.blocks.size | times: 4 }}s" {{ section.shopify_attributes }}>
+  <div class="announcement-bar__track">
+    {%- for i in (1..2) -%}
+      <div class="announcement-bar__group"{% if i == 2 %} aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <span class="announcement-bar__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{{ block.settings.text }}</a>{%- else -%}{{ block.settings.text }}{%- endif -%}
+          </span>
+        {%- endfor -%}
       </div>
     {%- endfor -%}
   </div>
@@ -16,9 +20,9 @@
   "class": "section-announcement",
   "max_blocks": 6,
   "settings": [
-    { "type": "color", "id": "background", "label": "Background", "default": "#f2c66d" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#141a2c" },
-    { "type": "range", "id": "speed", "label": "Rotate every", "min": 2, "max": 10, "step": 1, "unit": "s", "default": 4 }
+    { "type": "color", "id": "background", "label": "Background", "default": "#15122b" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "range", "id": "speed", "label": "Scroll speed (higher is slower)", "min": 2, "max": 10, "step": 1, "default": 4 }
   ],
   "blocks": [
     {

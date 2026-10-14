@@ -1,5 +1,5 @@
 {%- assign product = section.settings.product -%}
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" {{ section.shopify_attributes }}>
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="promo reveal">
       <div class="promo__media">
@@ -35,14 +35,14 @@
 {
   "name": "Promo product (eBook)",
   "settings": [
-    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
     { "type": "product", "id": "product", "label": "Product" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Free bonus" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The Calm Night Protocol" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with HushLegs. Yours free with any pair.</p>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with Legs Night. Yours free with any pair.</p>" },
     { "type": "text", "id": "price_label", "label": "Price label", "default": "Free with any pair" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Claim with HushLegs" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Claim with Legs Night" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "checkbox", "id": "show_buy_alone", "label": "Show 'buy on its own' button", "default": true }
   ],

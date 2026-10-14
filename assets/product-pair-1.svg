@@ -1,22 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c2642"/><stop offset="1" stop-color="#0e1424"/></linearGradient>
-<radialGradient id="glow" cx="0.75" cy="0.2" r="0.6"><stop offset="0" stop-color="#f2c66d" stop-opacity=".28"/><stop offset="1" stop-color="#f2c66d" stop-opacity="0"/></radialGradient></defs>
-<rect width="800" height="800" fill="url(#g)"/><rect width="800" height="800" fill="url(#glow)"/>
-<circle cx="80" cy="90" r="2" fill="#fff" opacity="0.6"/><circle cx="210" cy="60" r="1.5" fill="#fff" opacity="0.5"/><circle cx="640" cy="120" r="2" fill="#fff" opacity="0.7"/><circle cx="720" cy="300" r="1.5" fill="#fff" opacity="0.4"/><circle cx="120" cy="420" r="1.5" fill="#fff" opacity="0.4"/><circle cx="520" cy="70" r="1.2" fill="#fff" opacity="0.5"/><circle cx="360" cy="40" r="1.6" fill="#fff" opacity="0.6"/><path d="M690 150a70 70 0 1 1-60-110 56 56 0 0 0 60 110z" fill="#f2c66d" opacity=".9"/><g transform="translate(330 430) scale(1.25)">
-<path d="M-170 40 C-170 -20 -120 -60 -60 -70 L60 -90 C120 -100 170 -70 175 -20 C180 30 140 60 80 62 L-120 70 C-150 70 -170 60 -170 40Z" fill="#e9d6c6"/>
-<path d="M-90 -72 L-60 -160 L20 -170 L30 -86Z" fill="#e9d6c6"/>
-<path d="M-110 -60 C-60 -80 40 -95 70 -95 L80 64 L-100 70 Z" fill="#c9b8f2" opacity=".95"/>
-<rect x="-60" y="-96" width="40" height="166" rx="10" fill="#f2c66d" transform="rotate(-4)"/>
-<rect x="10" y="-100" width="40" height="166" rx="10" fill="#f2c66d" transform="rotate(-4)"/>
-<ellipse cx="-5" cy="66" rx="88" ry="16" fill="#8b7bd1"/>
-<text x="-5" y="22" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#141a2c" text-anchor="middle" opacity=".55">HUSH</text>
-</g><g transform="translate(500 540) scale(1.0)">
-<path d="M-170 40 C-170 -20 -120 -60 -60 -70 L60 -90 C120 -100 170 -70 175 -20 C180 30 140 60 80 62 L-120 70 C-150 70 -170 60 -170 40Z" fill="#e9d6c6"/>
-<path d="M-90 -72 L-60 -160 L20 -170 L30 -86Z" fill="#e9d6c6"/>
-<path d="M-110 -60 C-60 -80 40 -95 70 -95 L80 64 L-100 70 Z" fill="#b8a6ea" opacity=".95"/>
-<rect x="-60" y="-96" width="40" height="166" rx="10" fill="#f2c66d" transform="rotate(-4)"/>
-<rect x="10" y="-100" width="40" height="166" rx="10" fill="#f2c66d" transform="rotate(-4)"/>
-<ellipse cx="-5" cy="66" rx="88" ry="16" fill="#8b7bd1"/>
-<text x="-5" y="22" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#141a2c" text-anchor="middle" opacity=".55">HUSH</text>
-</g><text x="400.0" y="760" font-family="Inter,Arial,sans-serif" font-size="22" fill="#fff" opacity=".45" text-anchor="middle">Dummy image — HushLegs Support Pair</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800"><rect width="800" height="800" fill="#dcd8f7"/><path d="M0 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M40 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M80 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M120 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M160 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M200 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M240 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M280 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M320 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M360 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M400 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M440 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M480 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M520 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M560 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M600 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M640 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M680 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M720 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M760 0V800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 0H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 40H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 80H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 120H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 160H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 200H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 240H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 280H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 320H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 360H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 400H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 440H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 480H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 520H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 560H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 600H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 640H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 680H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 720H800" stroke="#15122b" stroke-opacity=".06"/><path d="M0 760H800" stroke="#15122b" stroke-opacity=".06"/><g transform="translate(330 470) scale(1.15)" stroke="#15122b" stroke-width="5" stroke-linejoin="round">
+<path d="M-90 -230 L-30 -230 L-20 -80 L-100 -70 Z" fill="#f1d3bf"/>
+<path d="M-110 -80 C-170 -60 -190 10 -170 50 C-150 85 -60 90 40 85 L150 80 C200 78 215 30 190 0 C160 -35 60 -60 -20 -80 Z" fill="#f1d3bf"/>
+<path d="M-115 -78 C-60 -95 20 -88 70 -60 L60 84 L-120 88 C-150 60 -150 -40 -115 -78 Z" fill="#ffffff"/>
+<rect x="-80" y="-98" width="34" height="190" rx="8" fill="#3d4cf5" transform="rotate(-6)"/>
+<rect x="-10" y="-96" width="34" height="190" rx="8" fill="#3d4cf5" transform="rotate(-6)"/>
+<path d="M-110 88 C-60 110 30 110 62 88 Z" fill="#ff8e72"/>
+</g><g transform="translate(530 560) scale(0.9)" stroke="#15122b" stroke-width="5" stroke-linejoin="round">
+<path d="M-90 -230 L-30 -230 L-20 -80 L-100 -70 Z" fill="#f1d3bf"/>
+<path d="M-110 -80 C-170 -60 -190 10 -170 50 C-150 85 -60 90 40 85 L150 80 C200 78 215 30 190 0 C160 -35 60 -60 -20 -80 Z" fill="#f1d3bf"/>
+<path d="M-115 -78 C-60 -95 20 -88 70 -60 L60 84 L-120 88 C-150 60 -150 -40 -115 -78 Z" fill="#ffffff"/>
+<rect x="-80" y="-98" width="34" height="190" rx="8" fill="#3d4cf5" transform="rotate(-6)"/>
+<rect x="-10" y="-96" width="34" height="190" rx="8" fill="#3d4cf5" transform="rotate(-6)"/>
+<path d="M-110 88 C-60 110 30 110 62 88 Z" fill="#ff8e72"/>
+</g><text x="400.0" y="766" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#15122b" fill-opacity=".45" text-anchor="middle">Dummy image — Legs Night Support Pair</text></svg>

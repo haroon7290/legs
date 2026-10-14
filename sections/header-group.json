@@ -5,17 +5,60 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "a1": { "type": "announcement", "settings": { "text": "🌙 Free shipping on every order · 90-night guarantee", "link": "" } },
-        "a2": { "type": "announcement", "settings": { "text": "Over 4,000 calmer nights and counting", "link": "" } },
-        "a3": { "type": "announcement", "settings": { "text": "Free eBook “The Calm Night Protocol” with every pair", "link": "" } }
+        "a1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on every order",
+            "link": ""
+          }
+        },
+        "a2": {
+          "type": "announcement",
+          "settings": {
+            "text": "90-night risk-free trial",
+            "link": ""
+          }
+        },
+        "a3": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free eBook with every pair",
+            "link": ""
+          }
+        },
+        "a4": {
+          "type": "announcement",
+          "settings": {
+            "text": "4.8 stars from 1,200+ restless sleepers",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["a1", "a2", "a3"],
-      "settings": { "background": "#f2c66d", "text_color": "#141a2c", "speed": 4 }
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4"
+      ],
+      "settings": {
+        "background": "#15122b",
+        "text_color": "#ffffff",
+        "speed": 4
+      }
     },
     "header": {
       "type": "header",
-      "settings": { "menu": "main-menu", "logo_width": 150, "show_account": false, "drawer_cta_label": "Shop HushLegs", "drawer_cta_link": "" }
+      "settings": {
+        "menu": "main-menu",
+        "logo_width": 150,
+        "show_account": false,
+        "drawer_cta_label": "Shop Legs Night",
+        "drawer_cta_link": ""
+      }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }

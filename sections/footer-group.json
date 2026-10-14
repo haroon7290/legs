@@ -7,7 +7,7 @@
       "blocks": {
         "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer" } },
         "help": { "type": "menu", "settings": { "heading": "Help", "menu": "help" } },
-        "support": { "type": "text", "settings": { "heading": "Support", "text": "<p>Questions? Email <a href=\"mailto:support@hushlegs.com\">support@hushlegs.com</a>.<br>We reply within 24 hours, 7 days a week.</p>" } }
+        "support": { "type": "text", "settings": { "heading": "Support", "text": "<p>Questions? Email <a href=\"mailto:support@legsnight.com\">support@legsnight.com</a>.<br>We reply within 24 hours, 7 days a week.</p>" } }
       },
       "block_order": ["shop", "help", "support"],
       "settings": {}

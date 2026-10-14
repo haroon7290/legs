@@ -38,8 +38,8 @@
         "rating": 4.8,
         "rating_text": "4.8/5 from 1,200+ restless sleepers",
         "heading": "Restless legs at night? Give them something to <em>push against.</em>",
-        "text": "<p>HushLegs is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps quiet that crawling, can't-sit-still feeling so you can finally fall asleep.</p>",
-        "button_label": "Try HushLegs tonight",
+        "text": "<p>Legs Night is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps quiet that crawling, can't-sit-still feeling so you can finally fall asleep.</p>",
+        "button_label": "Try Legs Night tonight",
         "button_link": "",
         "price_note": "<strong>$44.99</strong> a pair · Free shipping · 90-night guarantee",
         "badge_title": "90-night guarantee",
@@ -175,7 +175,7 @@
         "eyebrow": "How it works",
         "heading": "Simple pressure. Calmer legs.",
         "text": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade and you can drift off.</p>",
-        "footnote": "<p>The one purpose-built device for this exact pressure is FDA-cleared, prescription-only, and costs over $200. HushLegs brings the same simple idea home for $44.99.</p>"
+        "footnote": "<p>The one purpose-built device for this exact pressure is FDA-cleared, prescription-only, and costs over $200. Legs Night brings the same simple idea home for $44.99.</p>"
       }
     },
     "features": {
@@ -222,7 +222,7 @@
       ],
       "settings": {
         "style": "default",
-        "eyebrow": "Why HushLegs",
+        "eyebrow": "Why Legs Night",
         "heading": "Made for the nights that won't settle",
         "text": ""
       }
@@ -300,11 +300,11 @@
         "row_6"
       ],
       "settings": {
-        "style": "alt",
+        "style": "contrast",
         "eyebrow": "Compare",
         "heading": "Same idea. A fraction of the price.",
         "text": "<p>Relief shouldn't need a prescription or a $200 price tag.</p>",
-        "col_1": "HushLegs",
+        "col_1": "Legs Night",
         "col_2": "Prescription wrap",
         "col_3": "Medication",
         "col_4": "Stretching / socks",
@@ -429,7 +429,7 @@
         "review_9"
       ],
       "settings": {
-        "style": "light",
+        "style": "alt",
         "eyebrow": "Real nights, real people",
         "heading": "“I actually slept through.”",
         "show_summary": true,
@@ -501,9 +501,9 @@
         "assurance"
       ],
       "settings": {
-        "product": "hushlegs-support-pair",
+        "product": "legs-night-support-pair",
         "eyebrow": "Try it tonight",
-        "heading": "Get your HushLegs",
+        "heading": "Get your Legs Night",
         "style": "default",
         "link_title": true
       }
@@ -511,9 +511,9 @@
     "guarantee": {
       "type": "guarantee",
       "settings": {
-        "style": "alt",
+        "style": "contrast",
         "heading": "Sleep on it for 90 nights.",
-        "text": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "text": "<p>Wear Legs Night every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
         "button_label": "Start my 90 nights",
         "button_link": "",
         "policy_link": "/policies/refund-policy"
@@ -526,9 +526,9 @@
         "product": "the-calm-night-protocol-ebook",
         "eyebrow": "Free bonus",
         "heading": "The Calm Night Protocol",
-        "text": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with HushLegs. <strong>Yours free with any pair.</strong></p>",
+        "text": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with Legs Night. <strong>Yours free with any pair.</strong></p>",
         "price_label": "Free with any pair",
-        "button_label": "Claim with HushLegs",
+        "button_label": "Claim with Legs Night",
         "button_link": "",
         "show_buy_alone": true
       }
@@ -539,8 +539,8 @@
         "question_1": {
           "type": "question",
           "settings": {
-            "question": "What exactly is HushLegs?",
-            "answer": "<p>HushLegs is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
+            "question": "What exactly is Legs Night?",
+            "answer": "<p>Legs Night is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
           }
         },
         "question_2": {
@@ -554,7 +554,7 @@
           "type": "question",
           "settings": {
             "question": "Is it a medical device?",
-            "answer": "<p>No. HushLegs is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
+            "answer": "<p>No. Legs Night is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
           }
         },
         "question_4": {
@@ -603,7 +603,7 @@
           "type": "question",
           "settings": {
             "question": "What is the 90-night guarantee?",
-            "answer": "<p>Wear HushLegs consistently for at least 30 nights. If it doesn't help, email support@hushlegs.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+            "answer": "<p>Wear Legs Night consistently for at least 30 nights. If it doesn't help, email support@legsnight.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
           }
         }
       },

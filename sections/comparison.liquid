@@ -1,5 +1,5 @@
 {%- comment -%} Each row block holds one value per column: yes / no / any text {%- endcomment -%}
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" {{ section.shopify_attributes }}>
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="section-header reveal">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -48,11 +48,11 @@
   "name": "Comparison table",
   "max_blocks": 12,
   "settings": [
-    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Compare" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Same idea. A fraction of the price." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>The one purpose-built device for this exact kind of pressure is prescription-only and costs over $200. We think relief shouldn't need a doctor's note.</p>" },
-    { "type": "text", "id": "col_1", "label": "Column 1 (highlighted)", "default": "HushLegs" },
+    { "type": "text", "id": "col_1", "label": "Column 1 (highlighted)", "default": "Legs Night" },
     { "type": "text", "id": "col_2", "label": "Column 2", "default": "Prescription wrap" },
     { "type": "text", "id": "col_3", "label": "Column 3", "default": "Medication" },
     { "type": "text", "id": "col_4", "label": "Column 4 (optional)", "default": "Stretching / socks" },

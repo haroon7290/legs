@@ -1,10 +1,10 @@
-/* HushLegs theme — vanilla JS, no dependencies.
- * Works against Shopify's AJAX Cart API. When window.HushTheme.preview is true
+/* Legs Night theme — vanilla JS, no dependencies.
+ * Works against Shopify's AJAX Cart API. When window.LegsNightTheme.preview is true
  * (the static /preview pages) a localStorage cart is used instead. */
 (function () {
   'use strict';
 
-  var Theme = window.HushTheme = window.HushTheme || {};
+  var Theme = window.LegsNightTheme = window.LegsNightTheme || {};
   var routes = Theme.routes || { cart_add_url: '/cart/add', cart_change_url: '/cart/change', cart_url: '/cart' };
   var strings = Theme.strings || {};
 
@@ -43,7 +43,7 @@
 
   /* --------------------------------------------------------- cart backend */
   var PreviewCart = {
-    key: 'hushlegs-preview-cart',
+    key: 'legsnight-preview-cart',
     read: function () {
       try { return JSON.parse(localStorage.getItem(this.key)) || []; } catch (e) { return []; }
     },

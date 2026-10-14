@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" id="guarantee" {{ section.shopify_attributes }}>
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" id="guarantee" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="guarantee reveal">
       <div class="guarantee__seal">
@@ -26,10 +26,10 @@
 {
   "name": "Guarantee",
   "settings": [
-    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "default" },
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
     { "type": "image_picker", "id": "image", "label": "Seal image" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Sleep on it for 90 nights." },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Wear Legs Night every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Start my 90 nights" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "url", "id": "policy_link", "label": "Policy link", "default": "/policies/refund-policy" }

@@ -55,9 +55,9 @@
     "guarantee": {
       "type": "guarantee",
       "settings": {
-        "style": "alt",
+        "style": "contrast",
         "heading": "Sleep on it for 90 nights.",
-        "text": "<p>Wear HushLegs every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "text": "<p>Wear Legs Night every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
         "button_label": "Start my 90 nights",
         "button_link": "",
         "policy_link": "/policies/refund-policy"

@@ -22,13 +22,13 @@
         "price": {
           "type": "price",
           "settings": {
-            "note": "Instant digital download · Free with any HushLegs pair"
+            "note": "Instant digital download · Free with any Legs Night pair"
           }
         },
         "benefits": {
           "type": "benefits",
           "settings": {
-            "items": "The 10-minute wind-down routine\n5 gentle stretches for before bed\nWhat to avoid in the evening (and why)\nHow to get the best fit from your HushLegs"
+            "items": "The 10-minute wind-down routine\n5 gentle stretches for before bed\nWhat to avoid in the evening (and why)\nHow to get the best fit from your Legs Night"
           }
         },
         "buy_buttons": {
@@ -62,8 +62,8 @@
         "tab_1_content": "<ul><li>Why legs get restless at night</li><li>The evening wind-down routine</li><li>Stretches, temperature and timing</li><li>Building a calm-night habit</li></ul>",
         "tab_2_heading": "Format",
         "tab_2_content": "<p>PDF eBook, 32 pages. Download link delivered by email right after purchase.</p>",
-        "tab_3_heading": "Free with HushLegs",
-        "tab_3_content": "<p>Every HushLegs Support Pair order includes this eBook free.</p>"
+        "tab_3_heading": "Free with Legs Night",
+        "tab_3_content": "<p>Every Legs Night Support Pair order includes this eBook free.</p>"
       }
     },
     "upsell": {
@@ -104,9 +104,9 @@
         "buy_buttons"
       ],
       "settings": {
-        "product": "hushlegs-support-pair",
+        "product": "legs-night-support-pair",
         "eyebrow": "Pair it with",
-        "heading": "Get the eBook free with HushLegs",
+        "heading": "Get the eBook free with Legs Night",
         "style": "alt",
         "link_title": true
       }

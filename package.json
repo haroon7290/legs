@@ -1,8 +1,8 @@
 {
-  "name": "hushlegs-theme",
+  "name": "legs-night-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "HushLegs Shopify theme",
+  "description": "Legs Night Shopify theme",
   "scripts": {
     "check": "node tools/theme-check.mjs",
     "preview": "node tools/build-preview.mjs",

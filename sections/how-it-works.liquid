@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'light' %} section--light{% endif %}" id="how-it-works" {{ section.shopify_attributes }}>
+<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" id="how-it-works" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="section-header reveal">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -25,7 +25,7 @@
   "name": "How it works",
   "max_blocks": 6,
   "settings": [
-    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "light", "label": "Light" }], "default": "alt" },
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "alt" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Simple pressure. Calmer legs." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade.</p>" },
