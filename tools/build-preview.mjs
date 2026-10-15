@@ -146,7 +146,27 @@ engine.registerFilter('image_tag', (src, ...args) => {
 engine.registerFilter('stylesheet_tag', (u) => `<link rel="stylesheet" href="${u}">`);
 engine.registerFilter('font_face', () => '');
 engine.registerFilter('font_modify', (f) => f);
-engine.registerFilter('color_darken', (c) => c);
+// Shopify's color_lighten / color_darken change HSL lightness by N percentage points
+function shiftLightness(hex, amount) {
+  const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || ''));
+  if (!m) return hex;
+  let [r, g, b] = [0, 2, 4].map((i) => parseInt(m[1].slice(i, i + 2), 16) / 255);
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0, l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h /= 6;
+  }
+  l = Math.min(1, Math.max(0, l + amount / 100));
+  const hue = (p, q, t) => { t = (t + 1) % 1; return t < 1 / 6 ? p + (q - p) * 6 * t : t < 1 / 2 ? q : t < 2 / 3 ? p + (q - p) * (2 / 3 - t) * 6 : p; };
+  const q = l < 0.5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+  [r, g, b] = s === 0 ? [l, l, l] : [hue(p, q, h + 1 / 3), hue(p, q, h), hue(p, q, h - 1 / 3)];
+  return '#' + [r, g, b].map((v) => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
+}
+engine.registerFilter('color_lighten', (c, n) => shiftLightness(c, Number(n)));
+engine.registerFilter('color_darken', (c, n) => shiftLightness(c, -Number(n)));
 engine.registerFilter('payment_type_svg_tag', (type) => {
   const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', paypal: 'PayPal', apple_pay: 'Pay', shopify_pay: 'shop' }[type] || type;
   return `<svg viewBox="0 0 38 24" role="img" aria-label="${type}"><rect width="38" height="24" rx="4" fill="#fff"/><text x="19" y="15.5" font-size="8" font-family="Arial" font-weight="700" fill="#1a1f71" text-anchor="middle">${label}</text></svg>`;

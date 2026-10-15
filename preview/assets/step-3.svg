@@ -1,20 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" width="800" height="550"><defs>
-<linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ece8fb"/><stop offset="1" stop-color="#fbe9e2"/></linearGradient>
-<linearGradient id="bgB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f1fa"/><stop offset="1" stop-color="#e3def4"/></linearGradient>
-<linearGradient id="bgC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2348"/><stop offset="1" stop-color="#14112a"/></linearGradient>
-<linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dccd"/><stop offset="1" stop-color="#e2bea8"/></linearGradient>
-<linearGradient id="wrap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a6ae8"/><stop offset=".55" stop-color="#5b47e0"/><stop offset="1" stop-color="#3d2fae"/></linearGradient>
-<linearGradient id="wrap2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9d4ea"/><stop offset="1" stop-color="#a9a2c4"/></linearGradient>
-<linearGradient id="strap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b2460"/><stop offset="1" stop-color="#1b1640"/></linearGradient>
-<radialGradient id="glow" cx=".7" cy=".25" r=".6"><stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
-<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter>
-<filter id="softer" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"/></filter>
-</defs><rect width="800" height="550" fill="url(#bgA)"/><rect width="800" height="550" fill="url(#glow)"/><g transform="translate(400 340) scale(0.82)">
-<ellipse cx="10" cy="98" rx="210" ry="22" fill="#2a2150" opacity=".22" filter="url(#soft)"/>
-<path d="M-92 -240 C-92 -240 -40 -246 -28 -238 L-18 -84 L-102 -74 Z" fill="url(#skin)"/>
-<path d="M-112 -78 C-176 -58 -196 14 -172 52 C-150 88 -60 92 40 88 L156 84 C206 80 220 32 194 2 C164 -34 62 -60 -20 -82 Z" fill="url(#skin)"/>
-<path d="M-118 -80 C-62 -98 22 -92 74 -62 L66 88 L-122 92 C-156 62 -156 -40 -118 -80 Z" fill="url(#wrap)"/>
-<path d="M-118 -80 C-62 -98 22 -92 74 -62 L72 -40 C20 -66 -60 -72 -124 -56 Z" fill="#fff" opacity=".18"/>
-<rect x="-70" y="-96" width="26" height="186" rx="13" fill="url(#strap)" transform="rotate(-6)" opacity=".9"/>
-<rect x="0" y="-94" width="26" height="186" rx="13" fill="url(#strap)" transform="rotate(-6)" opacity=".9"/>
-</g><text x="400.0" y="520" font-family="Helvetica,Arial,sans-serif" font-size="17" letter-spacing="2" fill="#1d1b2c" fill-opacity=".35" text-anchor="middle">DUMMY STEP IMAGE · SLEEP</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600"><defs>
+<radialGradient id="paper" cx=".5" cy=".38" r=".8"><stop offset="0" stop-color="#f1e9dc"/><stop offset=".65" stop-color="#e3d7c4"/><stop offset="1" stop-color="#cdbfa9"/></radialGradient>
+<radialGradient id="paper2" cx=".5" cy=".35" r=".85"><stop offset="0" stop-color="#ece4d7"/><stop offset="1" stop-color="#c9bba4"/></radialGradient>
+<radialGradient id="night" cx=".78" cy=".2" r="1"><stop offset="0" stop-color="#25324c"/><stop offset=".5" stop-color="#142036"/><stop offset="1" stop-color="#090e19"/></radialGradient>
+<radialGradient id="lamp" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8682a" stop-opacity=".55"/><stop offset="1" stop-color="#e8682a" stop-opacity="0"/></radialGradient>
+<linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecccb2"/><stop offset="1" stop-color="#cf9f80"/></linearGradient>
+<linearGradient id="skinNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c79a7f"/><stop offset="1" stop-color="#8e6754"/></linearGradient>
+<linearGradient id="knit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3142"/><stop offset="1" stop-color="#151a26"/></linearGradient>
+<linearGradient id="strap" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9581d"/><stop offset=".5" stop-color="#ee7535"/><stop offset="1" stop-color="#cf531b"/></linearGradient>
+<linearGradient id="sheet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3956"/><stop offset="1" stop-color="#1a2640"/></linearGradient>
+<linearGradient id="sheetLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6ddd0"/></linearGradient>
+<linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<pattern id="knitTex" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 3h6" stroke="#ffffff" stroke-opacity=".06" stroke-width="1.4"/></pattern>
+<pattern id="foamTex" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#000" fill-opacity=".07"/><circle cx="8" cy="7" r=".8" fill="#000" fill-opacity=".05"/></pattern>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="blurS" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .05 0"/></filter>
+</defs><rect width="800" height="600" fill="url(#paper)"/><path d="M0 300 C200.0 282 480.0 314 800 294 L800 600 L0 600 Z" fill="url(#sheetLight)"/>
+<path d="M64.0 340 C240.0 320 360.0 370 560.0 348" stroke="#000" stroke-opacity=".12" stroke-width="10" fill="none" filter="url(#blurS)"/>
+<path d="M120.0 420 C320.0 395 440.00000000000006 450 720.0 418" stroke="#000" stroke-opacity=".1" stroke-width="12" fill="none" filter="url(#blurS)"/><rect x="40" y="220" width="280" height="100" rx="46" fill="#f7f1e7"/><g transform="translate(450 340) scale(0.62 0.62)">
+<path d="M-158 -300 C-150 -230 -150 -150 -146 -70 L-58 -60 C-62 -140 -66 -230 -66 -300 Z" fill="url(#skin)"/>
+<path d="M-176 52 C-192 10 -176 -54 -146 -72 L-58 -64 C-6 -44 70 -22 150 -6 C200 4 236 20 238 48 C240 70 220 80 196 80 L60 80 C20 70 -20 66 -60 72 L-140 80 C-160 80 -172 70 -176 52 Z" fill="url(#skin)"/>
+<path d="M186 8 C190 30 192 52 186 78 M206 14 C210 34 211 56 206 79" stroke="#000" stroke-opacity=".08" stroke-width="2" fill="none"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L104 82 C40 74 -10 70 -60 74 L-112 80 C-122 40 -118 -20 -98 -62 Z" fill="url(#knit)"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L104 82 C40 74 -10 70 -60 74 L-112 80 C-122 40 -118 -20 -98 -62 Z" fill="url(#knitTex)"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L96 22 C30 2 -40 -14 -108 -24 Z" fill="url(#hl)"/>
+<path d="M-62 -54 L-28 -46 L-20 76 L-58 76 Z" fill="url(#strap)"/>
+<path d="M22 -36 L56 -26 L62 78 L26 76 Z" fill="url(#strap)"/>
+<rect x="-56" y="-20" width="28" height="30" rx="3" fill="#000" opacity=".12"/>
+<rect x="28" y="-4" width="28" height="30" rx="3" fill="#000" opacity=".12"/>
+<path d="M-112 80 C-60 92 40 94 104 84 L104 74 C40 84 -60 82 -112 70 Z" fill="#cbbda8"/>
+<rect x="-6" y="34" width="22" height="12" rx="2" fill="#e8682a" opacity=".9"/>
+</g><g transform="translate(600 365) scale(0.55 0.55)">
+<path d="M-158 -300 C-150 -230 -150 -150 -146 -70 L-58 -60 C-62 -140 -66 -230 -66 -300 Z" fill="url(#skin)"/>
+<path d="M-176 52 C-192 10 -176 -54 -146 -72 L-58 -64 C-6 -44 70 -22 150 -6 C200 4 236 20 238 48 C240 70 220 80 196 80 L60 80 C20 70 -20 66 -60 72 L-140 80 C-160 80 -172 70 -176 52 Z" fill="url(#skin)"/>
+<path d="M186 8 C190 30 192 52 186 78 M206 14 C210 34 211 56 206 79" stroke="#000" stroke-opacity=".08" stroke-width="2" fill="none"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L104 82 C40 74 -10 70 -60 74 L-112 80 C-122 40 -118 -20 -98 -62 Z" fill="url(#knit)"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L104 82 C40 74 -10 70 -60 74 L-112 80 C-122 40 -118 -20 -98 -62 Z" fill="url(#knitTex)"/>
+<path d="M-98 -62 C-40 -48 30 -30 92 -12 L96 22 C30 2 -40 -14 -108 -24 Z" fill="url(#hl)"/>
+<path d="M-62 -54 L-28 -46 L-20 76 L-58 76 Z" fill="url(#strap)"/>
+<path d="M22 -36 L56 -26 L62 78 L26 76 Z" fill="url(#strap)"/>
+<rect x="-56" y="-20" width="28" height="30" rx="3" fill="#000" opacity=".12"/>
+<rect x="28" y="-4" width="28" height="30" rx="3" fill="#000" opacity=".12"/>
+<path d="M-112 80 C-60 92 40 94 104 84 L104 74 C40 84 -60 82 -112 70 Z" fill="#cbbda8"/>
+<rect x="-6" y="34" width="22" height="12" rx="2" fill="#e8682a" opacity=".9"/>
+</g><text x="776" y="578" font-family="Helvetica,Arial,sans-serif" font-size="13" letter-spacing="1.5" fill="#131a26" fill-opacity=".35" text-anchor="end">DUMMY PHOTO · STEP 3</text><rect width="800" height="600" filter="url(#grain)"/></svg>

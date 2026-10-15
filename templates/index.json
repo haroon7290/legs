@@ -43,7 +43,8 @@
         "button_link": "",
         "price_note": "<strong>$44.99</strong> a pair · Free shipping · 90-night guarantee",
         "badge_title": "90-night guarantee",
-        "badge_text": "Sleep on it. If it doesn't help, it's free."
+        "badge_text": "Sleep on it. If it doesn't help, it's free.",
+        "color_scheme": "dark"
       }
     },
     "trust": {

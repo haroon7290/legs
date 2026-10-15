@@ -7,21 +7,20 @@ copy and visual identity. Images and text are dummies you can replace.
 
 ## Design
 
-A calm, premium sleep-wellness look: lavender-white background, deep plum text,
-a single iris-purple accent, soft shadows instead of outlines, and generous spacing.
-Headings use Plus Jakarta Sans with Instrument Serif italics for accent words
-(Google Fonts). You can switch to Shopify's own fonts in *Theme settings › Typography*.
-Every section has a Background option (Default / Alternate / Contrast).
+A realistic DTC store look: warm **beige** backgrounds for light sections, **blue-black**
+for the dark ones (hero, comparison, guarantee, footer) and a single solid **orange** for
+buttons, prices and highlights. Flat surfaces with fine borders, no decorative gradients,
+and product-photo style dummy images. Headings use Archivo, body text uses Figtree
+(Google Fonts); switch to Shopify fonts in *Theme settings › Typography* if you prefer.
 
-**Motion** (all of it turns off automatically for visitors with "reduce motion" on):
-- Hero: staggered blur-in of the text on load, slowly drifting colour glows, gentle
-  zoom and scroll parallax on the image, floating guarantee badge
-- Scroll: sections, cards, reviews and FAQ items fade up with a stagger as they appear;
-  comparison rows slide in one by one; the review score counts up
-- Interaction: light sweep on buttons, lifting cards, underline sweeps in the menu,
-  smooth FAQ and tab opening, crossfading product gallery, animated bundle selector,
-  cart count bump, slide-in cart and menu drawers, floating sticky add-to-cart bar
-- Ambient: scrolling announcement ticker and a rotating guarantee seal
+Every section has a Background option (Default beige / Alternate beige / Contrast dark),
+and the hero has a Dark / Light colour scheme. Change the three main colours in
+*Theme settings › Colors* (Background, Dark sections, Accent).
+
+**Motion is kept light:** a short fade-in for the hero and for sections as they scroll
+into view, smooth FAQ and tab opening, the cart and menu sliding in, the review score
+counting up, and the scrolling announcement bar. All of it switches off for visitors
+with "reduce motion" turned on.
 
 ## Products (2)
 

@@ -14,43 +14,43 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#f7f6fb"
+        "default": "#f4eee4"
       },
       {
         "type": "color",
         "id": "color_background_alt",
         "label": "Alternate background",
-        "default": "#efecf8"
+        "default": "#ebe2d4"
       },
       {
         "type": "color",
         "id": "color_surface",
         "label": "Cards / surfaces",
-        "default": "#ffffff"
+        "default": "#fbf8f3"
       },
       {
         "type": "color",
         "id": "color_light",
-        "label": "Contrast band background",
-        "default": "#1b1830"
+        "label": "Dark sections (hero, contrast bands, footer)",
+        "default": "#0e1523"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Text",
-        "default": "#1d1b2c"
+        "default": "#131a26"
       },
       {
         "type": "color",
         "id": "color_text_muted",
         "label": "Muted text",
-        "default": "#6a6780"
+        "default": "#5d6270"
       },
       {
         "type": "color",
         "id": "color_accent",
         "label": "Accent / buttons",
-        "default": "#5b47e0"
+        "default": "#e8682a"
       },
       {
         "type": "color",
@@ -62,19 +62,19 @@
         "type": "color",
         "id": "color_success",
         "label": "Success / checkmarks",
-        "default": "#1f9d74"
+        "default": "#2f7d5b"
       },
       {
         "type": "color",
         "id": "color_sale",
         "label": "Sale badges",
-        "default": "#e0604a"
+        "default": "#c8461a"
       },
       {
         "type": "color",
         "id": "color_stars",
         "label": "Review stars",
-        "default": "#f2a93b"
+        "default": "#e8682a"
       }
     ]
   },
@@ -84,7 +84,7 @@
       {
         "type": "checkbox",
         "id": "use_google_fonts",
-        "label": "Use brand fonts (Plus Jakarta Sans + Instrument Serif)",
+        "label": "Use brand fonts (Archivo + Figtree)",
         "default": true,
         "info": "Loaded from Google Fonts. Untick to use the font pickers below."
       },
@@ -113,7 +113,7 @@
         "max": 28,
         "step": 2,
         "unit": "px",
-        "default": 16
+        "default": 10
       },
       {
         "type": "image_picker",
