@@ -14,6 +14,13 @@
 <div class="price">
   <span class="price__current" data-price>{{ price | money }}</span>
   <s class="price__compare" data-compare-price {% unless on_sale %}hidden{% endunless %}>{% if on_sale %}{{ compare | money }}{% endif %}</s>
+  {%- if target.unit_price_measurement -%}
+    <span class="price__unit">
+      {{- target.unit_price | money }}/
+      {%- if target.unit_price_measurement.reference_value != 1 -%}{{ target.unit_price_measurement.reference_value }}{%- endif -%}
+      {{ target.unit_price_measurement.reference_unit -}}
+    </span>
+  {%- endif -%}
   {%- if show_badge -%}
     <span class="price__save" data-save-badge {% unless on_sale %}hidden{% endunless %}>{% if on_sale %}{{ 'products.product.save_percent' | t: percent: saving_pct }}{% endif %}</span>
   {%- endif -%}

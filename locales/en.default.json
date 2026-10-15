@@ -31,7 +31,17 @@
     "store_owner": "Are you the store owner?",
     "password": "Password",
     "enter": "Enter",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "search_placeholder": "Search products, guides and help",
+    "results_count": {
+      "one": "{{ count }} result for “{{ terms }}”",
+      "other": "{{ count }} results for “{{ terms }}”"
+    },
+    "article": "Article",
+    "page": "Page",
+    "country": "Country / currency",
+    "language": "Language",
+    "update": "Update"
   },
   "products": {
     "product": {
@@ -53,7 +63,11 @@
       "other": "{{ count }} products"
     },
     "sort_by": "Sort by",
-    "empty": "No products found."
+    "empty": "No products found.",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "clear_all": "Clear all"
   },
   "cart": {
     "title": "Your cart",
@@ -122,5 +136,36 @@
     "cancelled": "Cancelled",
     "confirm_password": "Confirm password",
     "activate": "Activate account"
+  },
+  "blogs": {
+    "tags": "Filter by topic",
+    "all": "All",
+    "empty": "No articles yet.",
+    "back": "Back to {{ title }}",
+    "comments_heading": {
+      "one": "{{ count }} comment",
+      "other": "{{ count }} comments"
+    },
+    "leave_comment": "Leave a comment",
+    "comment_moderated": "Thanks! Your comment will appear once it's approved.",
+    "comment_posted": "Thanks! Your comment has been posted.",
+    "comment": "Comment",
+    "moderated_note": "Comments are reviewed before they appear.",
+    "post": "Post comment"
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Your {{ value }} gift card",
+      "heading": "Here's your gift card",
+      "initial_value": "Original value: {{ value }}",
+      "expired": "This gift card expired on {{ expiry }}",
+      "disabled": "This gift card is disabled",
+      "expires_on": "Expires on {{ expires_on }}",
+      "code": "Gift card code",
+      "copy": "Copy code",
+      "copied": "Copied",
+      "shop_link": "Start shopping",
+      "add_to_apple_wallet": "Add to Apple Wallet"
+    }
   }
 }

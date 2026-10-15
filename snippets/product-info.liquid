@@ -201,5 +201,17 @@
           </div>
         </details>
       </div>
+    {%- when 'quantity' -%}
+      <div class="option-group quantity-picker" {{ block.shopify_attributes }}>
+        <label class="option-group__label" for="Quantity-{{ section.id }}">{{ 'cart.quantity' | t }}</label>
+        <div class="qty qty--large">
+          <button type="button" data-qty-step="-1" aria-label="{{ 'cart.decrease' | t }}">−</button>
+          <input type="number" id="Quantity-{{ section.id }}" min="1" value="1" data-quantity-input>
+          <button type="button" data-qty-step="1" aria-label="{{ 'cart.increase' | t }}">+</button>
+        </div>
+      </div>
+
+    {%- when '@app' -%}
+      <div class="product__app-block" {{ block.shopify_attributes }}>{% render block %}</div>
   {%- endcase -%}
 {%- endfor -%}

@@ -110,10 +110,21 @@
         "style": "alt",
         "link_title": true
       }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "style": "default",
+        "eyebrow": "Pairs well with",
+        "heading": "You may also like",
+        "intent": "related",
+        "limit": 3
+      }
     }
   },
   "order": [
     "main",
-    "upsell"
+    "upsell",
+    "recommendations"
   ]
 }

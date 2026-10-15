@@ -4,7 +4,7 @@
   "private": true,
   "description": "Legs Night Shopify theme",
   "scripts": {
-    "check": "node tools/theme-check.mjs",
+    "check": "node tools/theme-check.mjs && node tools/validate-upload.mjs",
     "preview": "node tools/build-preview.mjs",
     "package": "node tools/package.mjs",
     "csv": "node tools/build-csv.mjs"

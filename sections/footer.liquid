@@ -35,8 +35,51 @@
       <div class="site-footer__disclaimer rte">{{ section.settings.disclaimer }}</div>
     {%- endif -%}
 
+    {%- liquid
+      assign show_countries = false
+      assign show_languages = false
+      if section.settings.show_country_selector and localization.available_countries.size > 1
+        assign show_countries = true
+      endif
+      if section.settings.show_language_selector and localization.available_languages.size > 1
+        assign show_languages = true
+      endif
+    -%}
+    {%- if show_countries or show_languages -%}
+      {%- form 'localization', class: 'localization-form', id: 'FooterLocalization' -%}
+        {%- if show_countries -%}
+          <div class="field">
+            <label for="FooterCountry">{{ 'general.country' | t }}</label>
+            <select id="FooterCountry" name="country_code" data-auto-submit>
+              {%- for country in localization.available_countries -%}
+                <option value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>{{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+        {%- if show_languages -%}
+          <div class="field">
+            <label for="FooterLanguage">{{ 'general.language' | t }}</label>
+            <select id="FooterLanguage" name="language_code" data-auto-submit>
+              {%- for language in localization.available_languages -%}
+                <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>{{ language.endonym_name | capitalize }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+        <noscript><button type="submit" class="button button--small">{{ 'general.update' | t }}</button></noscript>
+      {%- endform -%}
+    {%- endif -%}
+
     <div class="site-footer__bottom">
       <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}</span>
+      {%- if section.settings.show_policies and shop.policies.size > 0 -%}
+        <ul class="site-footer__policies">
+          {%- for policy in shop.policies -%}
+            {%- if policy != blank -%}<li><a href="{{ policy.url }}">{{ policy.title }}</a></li>{%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
       {%- if section.settings.show_payment -%}{% render 'payment-icons' %}{%- endif -%}
     </div>
     {%- if section.settings.show_wordmark -%}<div class="site-footer__wordmark" aria-hidden="true">{{ shop.name }}</div>{%- endif -%}
@@ -49,27 +92,93 @@
   "class": "shopify-section-footer",
   "max_blocks": 4,
   "settings": [
-    { "type": "textarea", "id": "about", "label": "About text", "default": "Deep-pressure foot wraps for restless, fidgety legs at night. Designed to help you settle down — without pills." },
-    { "type": "text", "id": "email", "label": "Support email", "default": "support@legsnight.com" },
-    { "type": "richtext", "id": "disclaimer", "label": "Disclaimer", "default": "<p>Legs Night is a comfort product, not a medical device. It is not FDA-cleared and is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. If you have a medical condition, are pregnant, have diabetes, neuropathy or circulation problems, talk to your doctor before use. Testimonials reflect individual experiences.</p>" },
-    { "type": "checkbox", "id": "show_payment", "label": "Show payment icons", "default": true },
-    { "type": "checkbox", "id": "show_wordmark", "label": "Show large wordmark", "default": true }
+    {
+      "type": "textarea",
+      "id": "about",
+      "label": "About text",
+      "default": "Deep-pressure foot wraps for restless, fidgety legs at night. Designed to help you settle down — without pills."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support email",
+      "default": "support@legsnight.com"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p>Legs Night is a comfort product, not a medical device. It is not FDA-cleared and is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. If you have a medical condition, are pregnant, have diabetes, neuropathy or circulation problems, talk to your doctor before use. Testimonials reflect individual experiences.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wordmark",
+      "label": "Show large wordmark",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policies",
+      "label": "Show policy links",
+      "default": true,
+      "info": "Add policies in Settings › Policies."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Show country/currency selector",
+      "default": true,
+      "info": "Shown when you sell in more than one market."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language_selector",
+      "label": "Show language selector",
+      "default": true,
+      "info": "Shown when the store has more than one language."
+    }
   ],
   "blocks": [
     {
       "type": "menu",
       "name": "Menu",
       "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
-        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
       ]
     },
     {
       "type": "text",
       "name": "Text",
       "settings": [
-        { "type": "text", "id": "heading", "label": "Heading", "default": "Support" },
-        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We reply within 24 hours, 7 days a week.</p>" }
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Support"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>We reply within 24 hours, 7 days a week.</p>"
+        }
       ]
     }
   ]

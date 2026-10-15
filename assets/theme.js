@@ -272,8 +272,19 @@
     }
     function bundleQty() {
       var b = root.querySelector('.bundle input:checked');
-      return b ? parseInt(b.value, 10) : parseInt(qtyInput.value, 10) || 1;
+      if (b) return parseInt(b.value, 10);
+      var picker = root.querySelector('[data-quantity-input]');
+      return picker ? Math.max(1, parseInt(picker.value, 10) || 1) : 1;
     }
+    var quantityPicker = root.querySelector('.quantity-picker');
+    if (quantityPicker && root.querySelector('.bundle')) quantityPicker.hidden = true;
+    root.addEventListener('click', function (e) {
+      var step = e.target.closest('[data-qty-step]');
+      if (!step) return;
+      var input = root.querySelector('[data-quantity-input]');
+      input.value = Math.max(1, (parseInt(input.value, 10) || 1) + parseInt(step.getAttribute('data-qty-step'), 10));
+      update();
+    });
     function bundleDiscount() {
       var b = root.querySelector('.bundle input:checked');
       return b ? parseFloat(b.getAttribute('data-discount') || '0') : 0;
@@ -345,7 +356,7 @@
     }
 
     root.addEventListener('change', function (e) {
-      if (e.target.closest('[data-option-index]') || e.target.closest('.bundle')) update();
+      if (e.target.closest('[data-option-index]') || e.target.closest('.bundle') || e.target.matches('[data-quantity-input]')) update();
     });
 
     form.addEventListener('submit', function (e) {
@@ -540,6 +551,43 @@
     update();
   }
 
+  // Product recommendations: swap in Shopify's picks when the API returns any
+  function initRecommendations() {
+    document.querySelectorAll('[data-recommendations]').forEach(function (section) {
+      if (Theme.preview || section.dataset.loaded) return;
+      section.dataset.loaded = 'true';
+      fetch(section.getAttribute('data-url'))
+        .then(function (r) { return r.ok ? r.text() : ''; })
+        .then(function (html) {
+          if (!html) return;
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var grid = doc.querySelector('[data-recommendations-grid]');
+          var target = section.querySelector('[data-recommendations-grid]');
+          if (grid && target && grid.children.length) {
+            target.innerHTML = grid.innerHTML;
+            target.querySelectorAll('.card').forEach(function (c) { c.classList.add('is-revealing'); });
+          }
+        })
+        .catch(function () {});
+    });
+  }
+
+  // Selects that apply immediately (sort order, country, language)
+  document.addEventListener('change', function (e) {
+    if (e.target.matches('select[data-auto-submit]') && e.target.form && !Theme.preview) e.target.form.submit();
+  });
+
+  // Close filter dropdowns when clicking elsewhere
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('details.filter[open]').forEach(function (d) { if (!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+
+  // Focus the search field when the search modal opens
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('[data-modal-open="search-modal"]')) return;
+    setTimeout(function () { var i = document.getElementById('HeaderSearch'); if (i) i.focus(); }, 60);
+  });
+
   // Smooth open/close for <details> in the FAQ and product tabs
   document.addEventListener('click', function (e) {
     var summary = e.target.closest('.faq summary, .accordion summary');
@@ -570,6 +618,7 @@
     initHeaderState();
     initParallax();
     initReveal();
+    initRecommendations();
     refreshCart();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
@@ -579,6 +628,7 @@
     e.target.querySelectorAll('[data-product]').forEach(function (root) { initProduct(root); initGallery(root); });
     initAnnouncement();
     initReveal(e.target);
+    initRecommendations();
     e.target.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
     initHero();
   });

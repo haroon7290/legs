@@ -67,7 +67,7 @@
           "type": "text",
           "id": "note",
           "label": "Note under price",
-          "default": "Free shipping \u00b7 90-night guarantee"
+          "default": "Free shipping · 90-night guarantee"
         }
       ]
     },
@@ -113,10 +113,10 @@
           "default": true
         },
         {
-          "type": "richtext",
+          "type": "html",
           "id": "size_guide",
-          "label": "Size guide",
-          "default": "<p>Measure around the widest part of your foot, just behind the toes.</p><table><tr><th>Size</th><th>US women</th><th>US men</th><th>EU</th></tr><tr><td>S/M</td><td>5 \u2013 9</td><td>4 \u2013 8</td><td>35 \u2013 40</td></tr><tr><td>L/XL</td><td>9.5 \u2013 13</td><td>8.5 \u2013 14</td><td>40 \u2013 47</td></tr></table><p>Between sizes? Pick the larger one \u2014 the strap tightens down easily.</p>"
+          "label": "Size guide (HTML)",
+          "default": "<p>Measure around the widest part of your foot, just behind the toes.</p><table><tr><th>Size</th><th>US women</th><th>US men</th><th>EU</th></tr><tr><td>S/M</td><td>5 – 9</td><td>4 – 8</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>9.5 – 13</td><td>8.5 – 14</td><td>40 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p>"
         }
       ]
     },
@@ -127,7 +127,7 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "Displayed discounts are visual only. Create matching automatic discounts in Shopify admin \u203a Discounts (e.g. 'Buy 2, get 15% off')."
+          "content": "Displayed discounts are visual only. Create matching automatic discounts in Shopify admin › Discounts (e.g. 'Buy 2, get 15% off')."
         },
         {
           "type": "text",
@@ -182,8 +182,7 @@
         {
           "type": "text",
           "id": "tag_1",
-          "label": "Tag",
-          "default": ""
+          "label": "Tag"
         },
         {
           "type": "header",
@@ -249,7 +248,7 @@
           "type": "text",
           "id": "sub_3",
           "label": "Subtitle",
-          "default": "Best value \u2014 share with family"
+          "default": "Best value — share with family"
         },
         {
           "type": "range",
@@ -278,7 +277,7 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "In stock \u2014 ships within 24 hours"
+          "default": "In stock — ships within 24 hours"
         }
       ]
     },
@@ -291,7 +290,7 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Order today, get it [min] \u2013 [max]",
+          "default": "Order today, get it [min] – [max]",
           "info": "[min] and [max] become dates."
         },
         {
@@ -328,13 +327,13 @@
           "type": "text",
           "id": "label",
           "label": "Label",
-          "default": "Add \u201cThe Calm Night Protocol\u201d eBook"
+          "default": "Add “The Calm Night Protocol” eBook"
         },
         {
           "type": "text",
           "id": "subtext",
           "label": "Sub text",
-          "default": "20-minute read \u00b7 instant download"
+          "default": "20-minute read · instant download"
         }
       ]
     },
@@ -435,6 +434,20 @@
           "default": "<p>Add details here.</p>"
         }
       ]
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity selector",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Hidden automatically while a bundle (quantity breaks) block is shown."
+        }
+      ]
+    },
+    {
+      "type": "@app"
     }
   ],
   "settings": [

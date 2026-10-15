@@ -432,6 +432,16 @@
         "open_first": true,
         "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within 24 hours.</p>"
       }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "style": "default",
+        "eyebrow": "Pairs well with",
+        "heading": "Complete your night routine",
+        "intent": "related",
+        "limit": 3
+      }
     }
   },
   "order": [
@@ -439,6 +449,7 @@
     "trust",
     "how",
     "compare",
+    "recommendations",
     "reviews",
     "guarantee",
     "faq"

@@ -51,9 +51,10 @@
       "settings": {
         "menu": "main-menu",
         "logo_width": 150,
-        "show_account": false,
+        "show_account": true,
         "drawer_cta_label": "Shop Legs Night",
-        "drawer_cta_link": ""
+        "drawer_cta_link": "",
+        "show_search": true
       }
     }
   },

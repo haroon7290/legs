@@ -80,7 +80,18 @@ const allCollection = {
     { name: 'Price, low to high', value: 'price-ascending' },
     { name: 'Price, high to low', value: 'price-descending' }
   ],
-  default_sort_by: 'manual'
+  default_sort_by: 'manual',
+  sort_by: 'manual',
+  // Sample filters so the filter UI shows in the preview (Search & Discovery provides real ones)
+  filters: [
+    { label: 'Availability', type: 'list', param_name: 'filter.v.availability', active_values: [],
+      values: [{ label: 'In stock', value: '1', count: 2, active: false, param_name: 'filter.v.availability' }] },
+    { label: 'Product type', type: 'list', param_name: 'filter.p.product_type', active_values: [],
+      values: [{ label: 'Foot Wrap', value: 'Foot Wrap', count: 1, active: false, param_name: 'filter.p.product_type' },
+               { label: 'eBook', value: 'eBook', count: 1, active: false, param_name: 'filter.p.product_type' }] },
+    { label: 'Price', type: 'price_range', param_name: 'filter.v.price', active_values: [], range_max: 4499,
+      min_value: { param_name: 'filter.v.price.gte', value: null }, max_value: { param_name: 'filter.v.price.lte', value: null } }
+  ]
 };
 
 const previewCatalog = {};
@@ -102,7 +113,7 @@ const link = (title, url) => ({ title, url, current: false });
 const linklists = {
   'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Reviews', 'index.html#reviews'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
   footer: { links: [link('Legs Night Support Pair', 'legs-night-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
-  help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Write a review', PAGE_URLS.review), link('Refund policy', '#refund-policy'), link('Shipping policy', '#shipping-policy'), link('Privacy policy', '#privacy-policy'), link('Terms of service', '#terms-of-service')] }
+  help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Write a review', PAGE_URLS.review), link('Track my order', '#track')] }
 };
 
 /* ---------------------------------------------------------------- engine */
@@ -250,9 +261,12 @@ settings.type_heading_font = { family: '"Fraunces"', fallback_families: 'Georgia
 settings.type_body_font = { family: '"Inter"', fallback_families: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' };
 
 const baseGlobals = {
-  shop: { name: 'Legs Night', description: 'Deep-pressure foot wraps for restless legs at night.', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'shopify_pay'], customer_accounts_enabled: false },
+  shop: { name: 'Legs Night', description: 'Deep-pressure foot wraps for restless legs at night.', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'shopify_pay'], customer_accounts_enabled: false,
+    policies: [{ title: 'Refund policy', url: '#refund-policy' }, { title: 'Shipping policy', url: '#shipping-policy' }, { title: 'Privacy policy', url: '#privacy-policy' }, { title: 'Terms of service', url: '#terms-of-service' }] },
   settings,
-  routes: { root_url: 'index.html', cart_url: PAGE_URLS.cart, cart_add_url: '#', cart_change_url: '#', all_products_collection_url: PAGE_URLS.collection, search_url: '#', account_url: '#' },
+  routes: { root_url: 'index.html', cart_url: PAGE_URLS.cart, cart_add_url: '#', cart_change_url: '#', all_products_collection_url: PAGE_URLS.collection, search_url: '#', account_url: '#', product_recommendations_url: '#' },
+  localization: { available_countries: [], available_languages: [] },
+  recommendations: { performed: false, products_count: 0, products: [] },
   cart: { item_count: 0, total_price: 0, currency: { iso_code: 'USD' }, items: [] },
   request: { locale: { iso_code: 'en' }, origin: 'https://legsnight.com', page_type: 'index' },
   all_products: productsByHandle,
@@ -262,7 +276,7 @@ const baseGlobals = {
 };
 
 // Shopify exposes these objects inside {% render %}; liquidjs needs them as globals.
-Object.assign(engine.options.globals, { shop: baseGlobals.shop, settings, routes: baseGlobals.routes, cart: baseGlobals.cart, request: baseGlobals.request, all_products: productsByHandle, collections: baseGlobals.collections });
+Object.assign(engine.options.globals, { shop: baseGlobals.shop, settings, routes: baseGlobals.routes, cart: baseGlobals.cart, request: baseGlobals.request, all_products: productsByHandle, collections: baseGlobals.collections, localization: baseGlobals.localization });
 
 const previewHead = `<script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = ${JSON.stringify(previewCatalog)};</script>
 `;
