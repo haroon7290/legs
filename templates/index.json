@@ -203,7 +203,7 @@
           "settings": {
             "icon": "moon-outline",
             "title": "Sleep-soft",
-            "text": "Breathable, lightweight knit you can wear all night."
+            "text": "Soft, breathable stretch elastic you can wear all night."
           }
         },
         "feature_4": {
@@ -583,7 +583,7 @@
           "type": "question",
           "settings": {
             "question": "Is it comfortable to sleep in?",
-            "answer": "<p>Yes. The outer is a soft, breathable knit and the pad is contoured to the arch. Tighten until the pressure feels firm but comfortable — never painful or tingling.</p>"
+            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is contoured to the arch. Tighten until the pressure feels firm but comfortable — never painful or tingling.</p>"
           }
         },
         "question_8": {

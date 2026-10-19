@@ -1,32 +1,42 @@
 # Homepage image prompts — Legs Night
 
-Paste-ready prompts for every image on the homepage. They match the theme's look:
-realistic photography in **warm beige**, **blue-black / navy** and a little **orange**.
+Paste-ready prompts for every image on the homepage, written to match the brand reference
+photo: a bright, airy bedroom, natural window light, beige linen bedding with navy and
+mustard accents, and the black criss-cross elastic wrap.
 
 **Before you start**
-- **Keep the product consistent.** Upload a photo of your real wrap as a reference image
-  (ChatGPT/Gemini: attach it; Midjourney: image prompt or `--oref`). Without one, every image
-  will show a slightly different product.
+- **Attach the reference.** Attach your product photo (the black criss-cross wrap on the foot) as a
+  reference image (ChatGPT/Gemini: attach it; Midjourney: image prompt or `--oref`). It is the
+  best way to keep the wrap identical in every image.
 - **Product photos should be real.** For the product gallery, AI images are placeholders only.
-  Swap in photos of the product you actually ship, so buyers see what they get.
-- **Text comes out garbled.** Every prompt says "no text". Add logos and titles afterwards in Canva.
+  Swap in photos of the product you actually ship.
+- **Text comes out garbled.** Every prompt says "no text". Add headlines and logos afterwards in Canva.
+  Your reference photo has its headline baked in, which is great for ads. For the website, use the
+  no-text versions below, because the theme puts the text next to the image.
 - **Export sizes** are listed per image. Upload JPG or WebP, under 1 MB each.
 
-Add this negative prompt where your tool supports one:
+**The product, described.** This block is already inside every prompt below; you can also reuse it for new images:
+
+> a black woven-elastic foot wrap, about 5 cm (2 in) wide, wrapped snugly around the middle of a
+> bare foot in a figure-eight: it runs under the arch and crosses in an X over the top of the foot,
+> with a small diamond-shaped opening where the bands cross. Toes and heel are left uncovered.
+> Matte black with a fine ribbed elastic texture, flat and low-profile.
+
+**Negative prompt** (if your tool supports one):
 
 ```
-text, letters, watermark, logo, extra toes, deformed feet, extra limbs, cartoon, illustration, 3D render, CGI, plastic look, oversaturated, HDR
+text, letters, watermark, logo, extra toes, six toes, deformed feet, extra limbs, shoe, sock, sandal, buckle, velcro logo, cartoon, illustration, 3D render, CGI, plastic skin, oversaturated, HDR
 ```
 
 ---
 
-## 1. Hero (dark section, top of page)
+## 1. Hero (top of page)
 
-- **Size:** 1600 × 2000 px (4:5). Keep the feet in the middle third; phones crop it to 5:4.
+- **Size:** 1600 × 2000 px (4:5). Keep the foot in the middle third; phones crop it to 5:4.
 - **Upload:** Theme editor › Hero › Image
 
 ```
-Photorealistic lifestyle photograph inside a bedroom at night, seen from the foot of the bed. Only a person's lower legs and bare feet are visible, resting on deep navy cotton sheets. Both feet wear a deep-pressure foot wrap: a snug charcoal-black knit band around the middle of the foot, two orange hook-and-loop straps across the top, and a firm beige foam pad under the arch. The only light is a warm bedside lamp on the right casting a soft orange glow; the rest of the room falls into deep blue-black shadow. Beige pillows softly out of focus in the background. Calm, cozy, quiet mood. 50mm lens, f/2, shallow depth of field, natural film grain, editorial sleep-brand photography. Colours: blue-black, navy, warm beige, touches of orange. No text, no logos. --ar 4:5
+Photorealistic lifestyle photograph in a bright, airy minimalist bedroom. A woman's bare foot rests on the edge of a bed in side profile, toes pointing left, her lower leg rising diagonally out of frame to the right. The foot wears a black woven-elastic foot wrap, about 2 inches wide, wrapped snugly around the middle of the foot in a figure-eight: under the arch and crossing in an X over the top of the foot with a small diamond-shaped opening where the bands cross; toes and heel uncovered; matte black with a fine ribbed texture. The bed has a soft oatmeal-beige linen duvet in the foreground; behind it, out of focus, navy blue pillows, a mustard-orange cushion and a mustard knit throw. White walls, soft natural daylight from a large window on the left. Camera low, at mattress height, 50mm lens, f/2, shallow depth of field, clean and calm, editorial sleep-brand photography. No text, no logos. --ar 4:5
 ```
 
 ## 2. "It's 2am and your legs won't quit" (problem section)
@@ -35,7 +45,7 @@ Photorealistic lifestyle photograph inside a bedroom at night, seen from the foo
 - **Upload:** Theme editor › Image with text › Image
 
 ```
-Photorealistic night-time photograph of a bedside table in a dark bedroom. A digital alarm clock glows orange, showing 2:14, next to a half-empty glass of water and a phone lying face down. Out of focus behind it, a rumpled bed with navy sheets, the duvet kicked aside and one bare foot hanging restlessly off the edge of the mattress. Lit only by the clock's glow and faint cool moonlight from a window. Restless, sleepless mood. 35mm lens, low light, natural grain, realistic. Colours: blue-black, navy, warm orange glow. No faces, no text except the clock digits. --ar 1:1
+Photorealistic night-time photograph of a bedroom at 2am. On the bedside table a digital alarm clock glows orange, showing 2:14, next to a half-empty glass of water. Out of focus behind it, a rumpled bed with navy sheets and a mustard throw, the duvet kicked aside and one bare foot hanging restlessly off the edge of the mattress. Lit only by the clock's glow and faint cool moonlight from a window. Restless, sleepless mood. 35mm lens, low light, natural grain, realistic. Colours: deep navy, blue-black shadows, warm orange glow. No faces, no text except the clock digits. --ar 1:1
 ```
 
 > AI often scrambles clock digits. If it does, crop the clock out or fix the digits in an editor.
@@ -47,47 +57,47 @@ Photorealistic night-time photograph of a bedside table in a dark bedroom. A dig
 
 **Step 1 — Slip it on**
 ```
-Photorealistic close-up of two hands sliding a foot wrap over a bare foot. The wrap is a charcoal-black knit band with a firm beige foam pad being positioned under the arch and two loose orange hook-and-loop straps. The person sits on the edge of a bed with light beige linen sheets. Soft warm morning window light, clean and minimal, warm beige tones, 50mm lens, f/2.8, true-to-life skin tones. No text. --ar 4:3
+Photorealistic close-up of a woman sitting on the edge of a bed with oatmeal-beige linen sheets, wrapping a black woven-elastic band, about 2 inches wide, around her bare foot: the band passes under the arch and she is bringing it across the top of the foot. Hands and foot only, natural nails. Bright, soft daylight from a window, white walls, a navy pillow blurred in the background. 50mm lens, f/2.8, clean and minimal, true-to-life skin tones. No text. --ar 4:3
 ```
 
 **Step 2 — Tighten the strap**
 ```
-Photorealistic close-up, side view of a bare foot wearing a charcoal-black knit foot wrap, fingers pressing an orange hook-and-loop strap closed across the top of the foot so the beige foam pad sits snug under the arch. Plain warm beige background, soft diffused studio light from the left, gentle shadow, sharp focus on the strap, catalogue style. No text. --ar 4:3
+Photorealistic close-up, side view of a bare foot wearing a black woven-elastic foot wrap that crosses in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered. Her fingers press the end of the band flat so the wrap sits snug under the arch. Plain warm beige background, soft diffused daylight from the left, gentle shadow, sharp focus on the wrap, catalogue style. No text. --ar 4:3
 ```
 
 **Step 3 — Lie back & sleep**
 ```
-Photorealistic photo of a person relaxing in bed in the evening, shown from the shins down: both feet wear charcoal-black knit foot wraps with orange straps and rest on crumpled light beige linen sheets. A warm bedside lamp glows softly, cozy and peaceful, the background softly blurred. 50mm lens, f/2, natural grain. Colours: beige, warm white, charcoal, small orange accents. No text. --ar 4:3
+Photorealistic photo of a person relaxing in bed, shown from the shins down, one foot crossed over the other, both feet wearing black criss-cross elastic foot wraps (an X over the top of each foot, toes and heel uncovered). Oatmeal-beige linen duvet, navy pillows and a mustard knit throw softly blurred behind, warm late-evening light from a bedside lamp, cozy and peaceful. 50mm lens, f/2, natural grain. No text. --ar 4:3
 ```
 
-## 4. Buy box product gallery (also used on the product page)
+## 4. Buy box product photos (also used on the product page)
 
 - **Size:** 2000 × 2000 px (1:1)
 - **Upload:** Shopify admin › Products › Legs Night Support Pair › Media, in this order:
 
-**Photo 1 — Main pack shot**
+**Photo 1 — Main shot (the pair)**
 ```
-Studio product photograph of a pair of deep-pressure foot wraps lying side by side at a three-quarter angle: each is a charcoal-black knit band with two orange hook-and-loop straps across the top, a firm beige contoured foam pad underneath and a small orange fabric tag on the side. Seamless warm beige paper backdrop, soft diffused light from the left, natural soft shadow, e-commerce catalogue style, sharp focus, true-to-life colours. No text. --ar 1:1
-```
-
-**Photo 2 — On the foot**
-```
-Studio photo of a bare foot in side profile wearing one charcoal-black knit foot wrap with two orange straps around the midfoot and a beige foam pad visible under the arch. The foot stands on seamless warm beige paper, soft even light, gentle floor shadow, realistic skin, sharp focus, catalogue style. No text. --ar 1:1
+Studio product photograph of two bare feet side by side in side profile, standing on a seamless warm beige paper backdrop, each wearing a black woven-elastic foot wrap, about 2 inches wide, wrapped around the middle of the foot in a figure-eight: under the arch, crossing in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered, matte black with a fine ribbed texture. Soft diffused light from the left, gentle natural floor shadow, e-commerce catalogue style, sharp focus, true-to-life colours. No text. --ar 1:1
 ```
 
-**Photo 3 — Pressure pad detail**
+**Photo 2 — Close-up on the foot**
 ```
-Macro product photograph of a firm, contoured beige memory-foam arch pad partly slid out of a charcoal-black knit wrap, showing the fine foam texture and the stitched knit edge. Warm beige background, soft side light that brings out the texture, shallow depth of field, premium detail shot. No text. --ar 1:1
+Close-up studio photograph of one bare foot in three-quarter view wearing a black criss-cross elastic foot wrap: the bands cross in an X over the top of the foot with a small diamond-shaped opening, and the wrap covers the arch underneath, toes and heel uncovered. Seamless warm beige backdrop, soft even light, realistic skin texture, sharp focus on the crossing of the bands. No text. --ar 1:1
 ```
 
-**Photo 4 — Worn to bed**
+**Photo 3 — Fabric detail**
 ```
-Lifestyle photo of feet wearing charcoal-black knit foot wraps with orange straps, resting on a neatly made bed with warm white and beige linen. Soft daylight from a window, calm and clean, slight film grain, realistic. No text. --ar 1:1
+Macro product photograph of a black woven-elastic band about 2 inches wide, showing the fine ribbed elastic weave and the neatly stitched edges, loosely curved across a warm beige linen surface. Soft side light that brings out the texture, shallow depth of field, premium detail shot. No text. --ar 1:1
+```
+
+**Photo 4 — Worn in bed**
+```
+Lifestyle photo in a bright minimalist bedroom: a bare foot rests on an oatmeal-beige linen duvet, wearing a black criss-cross elastic foot wrap (an X over the top of the foot, toes and heel uncovered), the leg rising diagonally out of frame. Navy pillows, a mustard cushion and a mustard knit throw softly out of focus behind, white walls, soft window daylight. 50mm lens, f/2. No text. --ar 1:1
 ```
 
 **Photo 5 — Packaging**
 ```
-Studio product photograph of a matte deep navy rectangular product box with a thin orange stripe near the bottom, standing upright on seamless warm beige paper, with a charcoal-black knit foot wrap with orange straps resting beside it. Soft diffused light, natural shadow, minimal premium packaging shot. Blank box with no text or logo. --ar 1:1
+Studio product photograph of a matte deep navy rectangular product box with a thin mustard-orange stripe near the bottom, standing upright on seamless warm beige paper, with a neatly rolled black woven-elastic foot wrap resting beside it. Soft diffused light, natural shadow, minimal premium packaging shot. Blank box with no text or logo. --ar 1:1
 ```
 
 > Add your logo to the box in Canva, or photograph your real packaging.
@@ -97,10 +107,11 @@ Studio product photograph of a matte deep navy rectangular product box with a th
 - **Size:** 1200 × 1600 px (3:4)
 - **Upload:** Shopify admin › Products › The Calm Night Protocol › Media (the homepage eBook section uses this image)
 
-Generate a background only, then add the title in Canva ("The Calm Night Protocol" in beige and orange, "Legs Night Guide" at the top).
+Generate a background only, then add the title in Canva ("The Calm Night Protocol" in a bold serif,
+beige and orange, "Legs Night Guide" at the top).
 
 ```
-Minimal book cover background photograph: a dark blue-black bedroom wall with a soft warm orange glow from a bedside lamp in the lower right corner, a faint out-of-focus edge of a beige pillow at the bottom. Lots of empty dark space across the top two-thirds for a title. Moody, calm, premium, subtle grain. No text. --ar 3:4
+Minimal book cover background photograph: a dark navy bedroom wall at dusk with a soft warm glow from a bedside lamp in the lower right corner and the faint out-of-focus edge of a mustard knit throw at the bottom. Lots of empty dark space across the top two-thirds for a title. Moody, calm, premium, subtle grain. No text. --ar 3:4
 ```
 
 ## 6. Reviews section photos (Linda R., Tom B., Susan L.)
@@ -108,12 +119,22 @@ Minimal book cover background photograph: a dark blue-black bedroom wall with a 
 - **Size:** 1200 × 900 px (4:3)
 - **Upload:** Theme editor › Testimonials › Review block › Photo
 
-These sit next to "Verified buyer" reviews, so use **real photos from real customers** (ask
-them by email after delivery). Don't use AI images here. Until you have real ones, clear the
-"Dummy photo asset" field on those three review blocks so the cards show text only. Also
-replace the sample review text with your real reviews before launch.
+These sit next to "Verified buyer" reviews, so use **real photos from real customers** (ask them
+by email after delivery). Don't use AI images here. Until you have real ones, clear the
+"Dummy photo asset" field on those three review blocks so the cards show text only, and replace
+the sample review text with your real reviews before launch.
 
 ---
+
+## Bonus — ad / social version of your reference photo
+
+Use this when you want the reference layout (headline on top) for ads. Generate it, then add the
+headline in Canva: **"Your legs aren't fighting sleep. They're begging to be held."** and the
+line *"Firm pressure, right under the arch. Held until morning."*
+
+```
+Photorealistic square photograph of a bright, airy minimalist bedroom. In the lower half, a woman's bare foot rests on the edge of the bed in side profile, toes pointing left, the lower leg rising diagonally out of frame to the right, wearing a black woven-elastic foot wrap that crosses in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered. Oatmeal-beige linen duvet in the foreground; navy pillows, a mustard cushion and a mustard knit throw out of focus behind. White wall and a large window with soft daylight on the left. The top 40% of the frame is clean, empty white wall for a headline. Camera at mattress height, 50mm, f/2, editorial. No text. --ar 1:1
+```
 
 ## No photo needed
 

@@ -12,7 +12,7 @@ export const products = [
     subtitle: 'The deep-pressure foot wrap for restless, fidgety legs at night.',
     description:
       '<p>Legs Night is a deep-pressure foot wrap — a firm, contoured pad held snug under each arch by an adjustable strap. Wear it to bed to help quiet the crawling, can\'t-sit-still feeling in your legs so you can finally fall asleep.</p>' +
-      '<ul><li>One pair (left + right)</li><li>Firm, removable EVA pressure pad</li><li>Soft, breathable knit wrap with adjustable strap</li><li>Machine washable</li><li>Free eBook: The Calm Night Protocol</li></ul>' +
+      '<ul><li>One pair (left + right)</li><li>Firm, removable EVA pressure pad</li><li>Soft, breathable stretch-elastic wrap that crosses over the top of the foot</li><li>Machine washable</li><li>Free eBook: The Calm Night Protocol</li></ul>' +
       '<p><em>Legs Night is a comfort product, not a medical device.</em></p>',
     option: 'Size',
     variants: [
