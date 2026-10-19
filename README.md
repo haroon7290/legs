@@ -30,6 +30,7 @@ with "reduce motion" turned on.
 | The Calm Night Protocol (eBook) | `the-calm-night-protocol-ebook` | $20.00 | `product.ebook` |
 
 Until you upload real photos, the theme shows the dummy SVG images in `assets/`.
+Prompts, sizes and upload locations for every homepage image are in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md).
 
 ## Install on Shopify
 
