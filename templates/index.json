@@ -193,33 +193,45 @@
         "feature_1": {
           "type": "feature",
           "settings": {
-            "icon": "leaf",
+            "icon": "pill",
+            "color": "light",
             "title": "Drug-free",
-            "text": "No pills, no prescriptions, no grogginess the next morning."
+            "text": "No pills, no prescriptions, no grogginess the next morning.",
+            "stat_value": "0",
+            "stat_suffix": "pills or prescriptions"
           }
         },
         "feature_2": {
           "type": "feature",
           "settings": {
-            "icon": "compress",
-            "title": "Targeted pressure",
-            "text": "A firm, contoured pad presses exactly where it counts — under the arch."
+            "icon": "moon-outline",
+            "color": "dark",
+            "title": "Sleep-soft",
+            "text": "Soft, breathable stretch elastic that stays comfortable all night.",
+            "stat_value": "",
+            "stat_suffix": ""
           }
         },
         "feature_3": {
           "type": "feature",
           "settings": {
-            "icon": "moon-outline",
-            "title": "Sleep-soft",
-            "text": "Soft, breathable stretch elastic you can wear all night."
+            "icon": "washing",
+            "color": "light",
+            "title": "Washable",
+            "text": "Machine wash cold and air dry. Fresh for every night.",
+            "stat_value": "",
+            "stat_suffix": ""
           }
         },
         "feature_4": {
           "type": "feature",
           "settings": {
-            "icon": "washing",
-            "title": "Washable",
-            "text": "Remove the pad and toss the wrap in the wash."
+            "icon": "shield",
+            "color": "accent",
+            "title": "Risk-free trial",
+            "text": "Wear it for 30 nights. If it doesn't help, you get a full refund.",
+            "stat_value": "90",
+            "stat_suffix": "nights to try it"
           }
         }
       },
@@ -233,7 +245,14 @@
         "style": "default",
         "eyebrow": "Why Legs Night",
         "heading": "Made for the nights that won't settle",
-        "text": ""
+        "text": "",
+        "show_visual": true,
+        "visual_eyebrow": "The difference",
+        "visual_heading": "Pressure, right where it counts",
+        "visual_text": "The bands cross over the top of your foot and hold firm, steady pressure right under the arch, all night.",
+        "visual_point_1": "Crosses in an X",
+        "visual_point_2": "Holds the arch",
+        "visual_point_3": "Toes and heel stay free"
       }
     },
     "compare": {
