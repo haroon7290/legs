@@ -172,13 +172,19 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "Displayed discounts are visual only. Create matching automatic discounts in Shopify admin › Discounts (e.g. 'Buy 2, get 15% off')."
+          "content": "Prices here are a preview. Create matching automatic discounts in Shopify admin › Discounts (e.g. 20% off 2+ pairs) so checkout charges the same."
         },
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Choose your bundle"
+          "default": "Bundle & save"
+        },
+        {
+          "type": "text",
+          "id": "note",
+          "label": "Note next to heading",
+          "default": "Free shipping on every bundle"
         },
         {
           "type": "range",
@@ -187,7 +193,55 @@
           "min": 1,
           "max": 3,
           "step": 1,
-          "default": 1
+          "default": 2
+        },
+        {
+          "type": "checkbox",
+          "id": "show_images",
+          "label": "Show product images",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_unit_price",
+          "label": "Show price per item",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_savings",
+          "label": "Show savings badge",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "mix_variants",
+          "label": "Pick a size for each item",
+          "default": true,
+          "info": "Lets buyers of 2+ choose a different size for each pair."
+        },
+        {
+          "type": "text",
+          "id": "unit_label",
+          "label": "Item name",
+          "default": "pair",
+          "info": "Used in \"$35.99 / pair\" and \"Pair 1\"."
+        },
+        {
+          "type": "header",
+          "content": "Free gift"
+        },
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift product",
+          "info": "Added to the cart free with tiers that include it. Make it free with a Buy X get Y discount."
+        },
+        {
+          "type": "text",
+          "id": "gift_label",
+          "label": "Gift label",
+          "default": "FREE"
         },
         {
           "type": "header",
@@ -217,7 +271,7 @@
         {
           "type": "range",
           "id": "discount_1",
-          "label": "Discount shown",
+          "label": "Discount",
           "min": 0,
           "max": 50,
           "step": 1,
@@ -227,7 +281,13 @@
         {
           "type": "text",
           "id": "tag_1",
-          "label": "Tag"
+          "label": "Badge"
+        },
+        {
+          "type": "checkbox",
+          "id": "gift_1",
+          "label": "Include free gift",
+          "default": true
         },
         {
           "type": "header",
@@ -257,18 +317,24 @@
         {
           "type": "range",
           "id": "discount_2",
-          "label": "Discount shown",
+          "label": "Discount",
           "min": 0,
           "max": 50,
           "step": 1,
           "unit": "%",
-          "default": 15
+          "default": 20
         },
         {
           "type": "text",
           "id": "tag_2",
-          "label": "Tag",
+          "label": "Badge",
           "default": "Most popular"
+        },
+        {
+          "type": "checkbox",
+          "id": "gift_2",
+          "label": "Include free gift",
+          "default": true
         },
         {
           "type": "header",
@@ -293,23 +359,29 @@
           "type": "text",
           "id": "sub_3",
           "label": "Subtitle",
-          "default": "Best value — share with family"
+          "default": "Share with family or keep a spare"
         },
         {
           "type": "range",
           "id": "discount_3",
-          "label": "Discount shown",
+          "label": "Discount",
           "min": 0,
           "max": 50,
           "step": 1,
           "unit": "%",
-          "default": 25
+          "default": 30
         },
         {
           "type": "text",
           "id": "tag_3",
-          "label": "Tag",
+          "label": "Badge",
           "default": "Best value"
+        },
+        {
+          "type": "checkbox",
+          "id": "gift_3",
+          "label": "Include free gift",
+          "default": true
         }
       ]
     },

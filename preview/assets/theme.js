@@ -58,6 +58,10 @@
       items.forEach(function (i) {
         i.final_line_price = i.price * i.quantity;
         i.original_line_price = (i.compare_at_price || i.price) * i.quantity;
+        i.line_level_discount_allocations = [];
+      });
+      if (Theme.previewPricing) Theme.previewPricing(items);
+      items.forEach(function (i) {
         total += i.final_line_price; original += i.original_line_price; count += i.quantity;
       });
       return Promise.resolve({ items: items, item_count: count, total_price: total, original_total_price: original, total_discount: original - total });
@@ -191,6 +195,9 @@
       var img = item.image ? '<img src="' + escapeHtml(item.image) + '" alt="" width="84" height="84" loading="lazy">' : '';
       var variant = item.variant_title && item.variant_title !== 'Default Title' ? '<div class="cart-item__variant">' + escapeHtml(item.variant_title) + '</div>' : '';
       var compare = item.original_line_price > item.final_line_price ? '<s>' + formatMoney(item.original_line_price) + '</s>' : '';
+      (item.line_level_discount_allocations || []).forEach(function (d) {
+        variant += '<div class="cart-item__variant cart-item__discount">' + escapeHtml(d.discount_application.title) + ' (−' + formatMoney(d.amount) + ')</div>';
+      });
       html += '<div class="cart-item" data-key="' + escapeHtml(item.key) + '">' +
         '<a class="cart-item__image" href="' + escapeHtml(item.url || '#') + '">' + img + '</a>' +
         '<div><div class="cart-item__title">' + escapeHtml(item.product_title || item.title) + '</div>' + variant +
@@ -270,14 +277,18 @@
         return checked ? checked.value : null;
       });
     }
+    function bundleInput() {
+      return root.querySelector('.bundle__input:checked');
+    }
+    if (root.querySelector('.bundle__input') && !bundleInput()) root.querySelector('.bundle__input').checked = true;
     function bundleQty() {
-      var b = root.querySelector('.bundle input:checked');
+      var b = bundleInput();
       if (b) return parseInt(b.value, 10);
       var picker = root.querySelector('[data-quantity-input]');
       return picker ? Math.max(1, parseInt(picker.value, 10) || 1) : 1;
     }
     var quantityPicker = root.querySelector('.quantity-picker');
-    if (quantityPicker && root.querySelector('.bundle')) quantityPicker.hidden = true;
+    if (quantityPicker && root.querySelector('.bundle__input')) quantityPicker.hidden = true;
     root.addEventListener('click', function (e) {
       var step = e.target.closest('[data-qty-step]');
       if (!step) return;
@@ -286,8 +297,29 @@
       update();
     });
     function bundleDiscount() {
-      var b = root.querySelector('.bundle input:checked');
+      var b = bundleInput();
       return b ? parseFloat(b.getAttribute('data-discount') || '0') : 0;
+    }
+    function variantById(id) {
+      return product.variants.filter(function (v) { return v.id == id; })[0];
+    }
+    // One variant per item in a bundle: the per-item size selects when shown, else the selected variant.
+    function bundleUnits(bundle, qty) {
+      var selects = bundle ? bundle.querySelectorAll('[data-bundle-unit-select]') : [];
+      if (selects.length) return Array.prototype.map.call(selects, function (sel) { return variantById(sel.value) || current; });
+      var units = [];
+      for (var n = 0; n < qty; n++) units.push(current);
+      return units;
+    }
+    function bundleTotals(units, discount) {
+      var price = 0, compare = 0;
+      units.forEach(function (v) { price += v.price; compare += Math.max(v.compare_at_price || 0, v.price); });
+      return { price: Math.round(price * (1 - discount / 100)), compare: compare };
+    }
+    function tick(el, text) {
+      if (!el || el.textContent === text) return;
+      el.textContent = text;
+      el.classList.remove('is-ticking'); void el.offsetWidth; el.classList.add('is-ticking');
     }
 
     function update() {
@@ -305,11 +337,16 @@
       idInput.value = current.id;
       var qty = bundleQty();
       qtyInput.value = qty;
-      submit.disabled = !current.available;
-      var lineTotal = current.price * qty * (1 - bundleDiscount() / 100);
-      submitText.textContent = current.available
-        ? (strings.addToCart || 'Add to cart') + ' — ' + formatMoney(Math.round(lineTotal))
-        : (strings.soldOut || 'Sold out');
+      // per-item size selects follow the main picker until the shopper changes them
+      root.querySelectorAll('[data-bundle-unit-select]:not([data-touched])').forEach(function (sel) { sel.value = current.id; });
+      var selectedBundle = bundleInput() ? bundleInput().closest('[data-bundle]') : null;
+      var units = bundleUnits(selectedBundle, qty);
+      var available = units.every(function (v) { return v.available; });
+      var lineTotal = bundleTotals(units, bundleDiscount()).price;
+      submit.disabled = !available;
+      tick(submitText, available
+        ? (strings.addToCart || 'Add to cart') + ' — ' + formatMoney(lineTotal)
+        : (strings.soldOut || 'Sold out'));
 
       root.querySelectorAll('[data-price]').forEach(function (el) { el.textContent = formatMoney(current.price); });
       root.querySelectorAll('[data-compare-price]').forEach(function (el) {
@@ -321,15 +358,18 @@
         el.hidden = !show;
         if (show) el.textContent = (strings.save || 'Save') + ' ' + Math.round((1 - current.price / current.compare_at_price) * 100) + '%';
       });
-      // bundle prices follow the selected variant
-      root.querySelectorAll('.bundle').forEach(function (b) {
-        var input = b.querySelector('input');
+      // bundle prices follow the selected variant (and the per-item sizes of the selected bundle)
+      root.querySelectorAll('[data-bundle]').forEach(function (b) {
+        var input = b.querySelector('.bundle__input');
         var q = parseInt(input.value, 10);
-        var d = parseFloat(input.getAttribute('data-discount') || '0');
-        var p = b.querySelector('[data-bundle-price]');
+        var t = bundleTotals(input.checked ? units : bundleUnits(null, q), parseFloat(input.getAttribute('data-discount') || '0'));
+        tick(b.querySelector('[data-bundle-price]'), formatMoney(t.price));
         var c = b.querySelector('[data-bundle-compare]');
-        if (p) p.textContent = formatMoney(Math.round(current.price * q * (1 - d / 100)));
-        if (c) c.textContent = formatMoney((current.compare_at_price || current.price) * q);
+        if (c) { c.textContent = formatMoney(t.compare); c.hidden = !(t.compare > t.price); }
+        var save = b.querySelector('[data-bundle-save]');
+        if (save) save.textContent = formatMoney(t.compare - t.price);
+        var unit = b.querySelector('[data-bundle-unit]');
+        if (unit) unit.textContent = formatMoney(Math.floor(t.price / q));
         b.classList.toggle('is-selected', input.checked);
       });
       root.querySelectorAll('[data-selected-option]').forEach(function (el) {
@@ -352,23 +392,41 @@
         window.history.replaceState({}, '', url.toString());
       }
       var sticky = document.querySelector('[data-sticky-price]');
-      if (sticky) sticky.textContent = formatMoney(current.price);
+      if (sticky && root.hasAttribute('data-update-url')) sticky.textContent = formatMoney(lineTotal);
     }
 
     root.addEventListener('change', function (e) {
-      if (e.target.closest('[data-option-index]') || e.target.closest('.bundle') || e.target.matches('[data-quantity-input]')) update();
+      if (e.target.matches('[data-bundle-unit-select]')) e.target.setAttribute('data-touched', '');
+      if (e.target.closest('[data-option-index]') || e.target.closest('[data-bundle]') || e.target.matches('[data-quantity-input]')) update();
     });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (!current || !current.available) return;
+      if (!current) return;
+      var selectedBundle = bundleInput() ? bundleInput().closest('[data-bundle]') : null;
+      var units = bundleUnits(selectedBundle, bundleQty());
+      if (!units.every(function (v) { return v.available; })) return;
       errorEl.hidden = true;
       submit.setAttribute('aria-busy', 'true');
       submit.disabled = true;
-      var items = [{ id: current.id, quantity: bundleQty() }];
+      var items = [];
+      units.forEach(function (v) {
+        var line = items.filter(function (i) { return i.id === v.id; })[0];
+        if (line) line.quantity += 1; else items.push({ id: v.id, quantity: 1 });
+      });
       var addon = root.querySelector('[data-addon]:checked');
       if (addon) items.push({ id: Number(addon.value), quantity: 1 });
-      Cart.add(items)
+      var giftInput = root.querySelector('[data-bundle-gift]');
+      var giftId = giftInput && bundleInput() && bundleInput().getAttribute('data-gift') === 'true' ? Number(giftInput.value) : null;
+      // add the free gift once: skip it when it is already in the cart
+      var ready = giftId
+        ? Cart.get().then(function (cart) {
+            var inCart = (cart.items || []).some(function (i) { return i.id === giftId || i.variant_id === giftId; });
+            if (!inCart && !items.some(function (i) { return i.id === giftId; })) items.push({ id: giftId, quantity: 1 });
+          }).catch(function () {})
+        : Promise.resolve();
+      ready
+        .then(function () { return Cart.add(items); })
         .then(function () { return refreshCart(); })
         .then(function () {
           var drawer = document.getElementById('cart-drawer');

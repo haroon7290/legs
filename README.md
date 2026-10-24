@@ -42,18 +42,21 @@ Prompts, sizes and upload locations for every homepage image are in [`IMAGE_PROM
 
    Alternatives: connect this repository with *Add theme › Connect from GitHub*, or run
    `shopify theme push --unpublished` with the Shopify CLI. The zip upload is the simplest.
-2. **Import the products:** *Products › Import* → `import/products.csv`.
-   Then open the eBook product and set *Theme template* to **ebook**, and (for a digital download) untick "This is a physical product".
+2. **Add the products.** Import `import/products.csv` (*Products › Import*), or add them by hand
+   with the copy in [`PRODUCT_LISTING.md`](PRODUCT_LISTING.md) (titles, descriptions, prices,
+   variants, SEO, image order and alt text). Keep the handles exactly as listed: the theme looks
+   the products up by handle. Then open the eBook product and set *Theme template* to **ebook**.
 3. **Create menus** (*Online Store › Navigation*):
    - `main-menu`: Shop → `/collections/all`, How it works → `/#how-it-works`, Reviews → `/#reviews`, FAQ → `/pages/faq`, Contact → `/pages/contact`
    - `footer`: Legs Night Support Pair, The Calm Night Protocol, All products
    - `help`: FAQ, Contact us
    Policy links (refund, shipping, privacy, terms) appear in the footer automatically.
 4. **Create pages** (*Online Store › Pages*) and pick their templates:
-   `Contact` → `page.contact`, `Write a Review` (handle `review`) → `page.review`, `FAQ` → `page.faq`, `How it works` → `page.how-it-works`.
-5. **Bundle discounts:** the 2-pair (15%) and 3-pair (25%) prices in the buy box are display-only.
-   Create matching automatic discounts in *Discounts* (e.g. "Buy 2 or more, 15% off").
-6. **Free eBook with a pair:** create an automatic "Buy X get Y" discount (buy Support Pair, get the eBook 100% off).
+   `Contact` → `page.contact`, `FAQ` → `page.faq`, `How it works` → `page.how-it-works`.
+5. **Bundle discounts:** the buy box shows 20% off 2 pairs and 30% off 3 pairs, and adds the
+   free eBook to the cart. Shopify only charges those prices once you create the 3 automatic
+   discounts in [`PRODUCT_LISTING.md`](PRODUCT_LISTING.md#4-bundle-discounts) (*Discounts › Create discount*).
+6. **eBook download:** install Shopify's free *Digital Downloads* app and attach the eBook PDF to the eBook product.
 7. **Policies:** add your refund (90-night guarantee), shipping, privacy and terms policies under *Settings › Policies*.
 8. **Optional:** install Shopify's free *Search & Discovery* app to turn on collection filters
    and better product recommendations. Install a reviews app and add its block to the product
@@ -66,7 +69,7 @@ Every page type Shopify uses has a template:
 | Page | Template | Highlights |
 |---|---|---|
 | Home | `index.json` | Hero, trust bar, problem, how it works, features, comparison, reviews, buy box, guarantee, eBook offer, FAQ, newsletter |
-| Product | `product.json`, `product.ebook.json` | Gallery, sizes + size guide, bundles, quantity, eBook add-on, delivery estimate, app blocks, sticky add to cart, recommendations |
+| Product | `product.json`, `product.ebook.json` | Gallery, sizes + size guide, bundle picker (1/2/3 pairs, size per pair, free gift), quantity, delivery estimate, app blocks, sticky add to cart, recommendations |
 | Collection | `collection.json`, `list-collections.json` | Filters (Search & Discovery), sorting, active-filter pills, pagination |
 | Cart | `cart.json` + slide-out cart | Upsell, savings line, notes, express checkout buttons |
 | Search | `search.json` | Header search popup; product, article and page results |

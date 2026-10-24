@@ -17,9 +17,9 @@ for (const p of products) {
     const first = i === 0;
     rows.push([
       p.handle, first ? p.title : '', first ? p.description : '', first ? p.vendor : '', first ? p.type : '', first ? p.tags.join(', ') : '',
-      first ? 'TRUE' : '', first ? (p.option || 'Title') : '', v.option, v.sku, v.grams, 'shopify', 100, 'deny', 'manual',
+      first ? 'TRUE' : '', first ? (p.option || 'Title') : '', v.option, v.sku, v.grams, v.requires_shipping ? 'shopify' : '', v.requires_shipping ? 100 : '', 'deny', 'manual',
       money(v.price), money(v.compare_at_price), v.requires_shipping ? 'TRUE' : 'FALSE', 'TRUE', 'FALSE',
-      first ? p.title : '', first ? p.subtitle : '', 'g', first ? 'active' : ''
+      first ? p.seo_title : '', first ? p.seo_description : '', 'g', first ? 'active' : ''
     ]);
   });
 }

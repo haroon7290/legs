@@ -63,7 +63,22 @@
       };
     </script>
     <script src="assets/theme.js" defer></script>
-    <script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = {"1001":{"title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"S/M","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"1002":{"title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"L/XL","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"2001":{"title":"The Calm Night Protocol (eBook)","product_title":"The Calm Night Protocol (eBook)","variant_title":"Default Title","price":2000,"compare_at_price":null,"image":"assets/ebook-cover.svg","url":"the-calm-night-protocol-ebook.html"}};</script>
+    <script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = {"1001":{"handle":"legs-night-support-pair","title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"S/M","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"1002":{"handle":"legs-night-support-pair","title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"L/XL","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"2001":{"handle":"the-calm-night-protocol-ebook","title":"The Calm Night Protocol (eBook)","product_title":"The Calm Night Protocol (eBook)","variant_title":"Default Title","price":2000,"compare_at_price":null,"image":"assets/ebook-cover.svg","url":"the-calm-night-protocol-ebook.html"}}; window.LegsNightTheme.previewPricing = function (items) {
+  var pairs = items.filter(function (i) { return i.handle === 'legs-night-support-pair'; });
+  var count = pairs.reduce(function (n, i) { return n + i.quantity; }, 0);
+  var pct = count >= 3 ? 30 : count >= 2 ? 20 : 0;
+  pairs.forEach(function (i) {
+    if (!pct) return;
+    var amount = Math.round(i.price * i.quantity * pct / 100);
+    i.final_line_price -= amount;
+    i.line_level_discount_allocations.push({ amount: amount, discount_application: { title: count + '-pair bundle' } });
+  });
+  items.forEach(function (i) {
+    if (i.handle !== 'the-calm-night-protocol-ebook' || !count) return;
+    i.final_line_price -= i.price;
+    i.line_level_discount_allocations.push({ amount: i.price, discount_application: { title: 'Free eBook with your pair' } });
+  });
+};</script>
   </head>
   <body class="template-product">
     <a class="skip-link visually-hidden" href="#MainContent">Skip to content</a>
@@ -183,41 +198,63 @@
               <h3>Size guide</h3>
               <div class="rte"><p>Measure around the widest part of your foot, just behind the toes.</p><table><tr><th>Size</th><th>US women</th><th>US men</th><th>EU</th></tr><tr><td>S/M</td><td>5 – 9</td><td>4 – 8</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>9.5 – 13</td><td>8.5 – 14</td><td>40 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p></div>
             </div>
-          </div><fieldset class="option-group" >
-        <legend>Choose your bundle</legend>
-        <div class="bundles"><label class="bundle is-selected" for="main-bundle-1">
-                <input type="radio" id="main-bundle-1" name="bundle-main" value="1" data-discount="0" checked><span class="bundle__radio" aria-hidden="true"></span>
-                <span>
-                  <span class="bundle__title">1 Pair</span><span class="bundle__sub" style="display:block">Perfect to try</span></span>
+          </div><fieldset class="option-group bundles-block" data-bundles >
+        <legend>
+          Bundle & save<span class="bundles__note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>Free shipping on every bundle</span></legend>
+        <div class="bundles"><div class="bundle" style="--i: 0" data-bundle>
+              <input class="bundle__input" type="radio" id="main-bundle-1" name="bundle-main" value="1" data-discount="0" data-gift="true" >
+              <label class="bundle__main" for="main-bundle-1"><span class="bundle__radio" aria-hidden="true"></span><span class="bundle__thumbs" aria-hidden="true"><span class="bundle__thumb" style="--n: 0"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span></span><span class="bundle__text">
+                  <span class="bundle__title">
+                    1 Pair</span><span class="bundle__sub">Perfect to try</span></span>
                 <span class="bundle__price">
-                  <s data-bundle-compare>$59.99</s>
-                  <span data-bundle-price>$44.99</span>
-                </span>
-              </label><label class="bundle" for="main-bundle-2">
-                <input type="radio" id="main-bundle-2" name="bundle-main" value="2" data-discount="15" ><span class="bundle__tag">Most popular</span><span class="bundle__radio" aria-hidden="true"></span>
-                <span>
-                  <span class="bundle__title">2 Pairs</span><span class="bundle__sub" style="display:block">One for home, one for travel</span></span>
+                  <span class="bundle__now" data-bundle-price>$44.99</span><s class="bundle__was" data-bundle-compare>$59.99</s></span><span class="bundle__gift">
+                    <span class="bundle__gift-media" aria-hidden="true"><img src="assets/ebook-cover.svg" alt="" width="24" height="32" loading="lazy"></span>
+                    <span class="bundle__gift-text">+ <strong>FREE</strong> The Calm Night Protocol (eBook)</span><s class="bundle__gift-was">$20.00</s></span></label></div><div class="bundle is-selected bundle--tagged" style="--i: 1" data-bundle>
+              <input class="bundle__input" type="radio" id="main-bundle-2" name="bundle-main" value="2" data-discount="20" data-gift="true" checked>
+              <label class="bundle__main" for="main-bundle-2"><span class="bundle__tag bundle__tag--accent">Most popular</span><span class="bundle__radio" aria-hidden="true"></span><span class="bundle__thumbs" aria-hidden="true"><span class="bundle__thumb" style="--n: 0"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span><span class="bundle__thumb" style="--n: 1"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span><span class="bundle__count">×2</span></span><span class="bundle__text">
+                  <span class="bundle__title">
+                    2 Pairs<span class="bundle__save">Save <span data-bundle-save>$48.00</span></span></span><span class="bundle__sub">One for home, one for travel</span><span class="bundle__unit"><strong data-bundle-unit>$35.99</strong> / pair</span></span>
                 <span class="bundle__price">
-                  <s data-bundle-compare>$119.98</s>
-                  <span data-bundle-price>$76.48</span>
-                </span>
-              </label><label class="bundle" for="main-bundle-3">
-                <input type="radio" id="main-bundle-3" name="bundle-main" value="3" data-discount="25" ><span class="bundle__tag">Best value</span><span class="bundle__radio" aria-hidden="true"></span>
-                <span>
-                  <span class="bundle__title">3 Pairs</span><span class="bundle__sub" style="display:block">Best value — share with family</span></span>
+                  <span class="bundle__now" data-bundle-price>$71.98</span><s class="bundle__was" data-bundle-compare>$119.98</s></span><span class="bundle__gift">
+                    <span class="bundle__gift-media" aria-hidden="true"><img src="assets/ebook-cover.svg" alt="" width="24" height="32" loading="lazy"></span>
+                    <span class="bundle__gift-text">+ <strong>FREE</strong> The Calm Night Protocol (eBook)</span><s class="bundle__gift-was">$20.00</s></span></label><div class="bundle__units">
+                  <div class="bundle__units-inner">
+                    <div class="bundle__units-body">
+                      <p class="bundle__units-title">Choose a size for each pair</p>
+                      <div class="bundle__units-grid"><div class="bundle__unit-field">
+                            <label for="main-bundle-2-unit-1">Pair 1</label>
+                            <select id="main-bundle-2-unit-1" data-bundle-unit-select><option value="1001" selected>S/M</option><option value="1002">L/XL</option></select>
+                          </div><div class="bundle__unit-field">
+                            <label for="main-bundle-2-unit-2">Pair 2</label>
+                            <select id="main-bundle-2-unit-2" data-bundle-unit-select><option value="1001" selected>S/M</option><option value="1002">L/XL</option></select>
+                          </div></div>
+                    </div>
+                  </div>
+                </div></div><div class="bundle bundle--tagged" style="--i: 2" data-bundle>
+              <input class="bundle__input" type="radio" id="main-bundle-3" name="bundle-main" value="3" data-discount="30" data-gift="true" >
+              <label class="bundle__main" for="main-bundle-3"><span class="bundle__tag">Best value</span><span class="bundle__radio" aria-hidden="true"></span><span class="bundle__thumbs" aria-hidden="true"><span class="bundle__thumb" style="--n: 0"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span><span class="bundle__thumb" style="--n: 1"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span><span class="bundle__thumb" style="--n: 2"><img src="assets/product-pair-1.svg" alt="" width="56" height="56" loading="lazy"></span><span class="bundle__count">×3</span></span><span class="bundle__text">
+                  <span class="bundle__title">
+                    3 Pairs<span class="bundle__save">Save <span data-bundle-save>$85.49</span></span></span><span class="bundle__sub">Share with family or keep a spare</span><span class="bundle__unit"><strong data-bundle-unit>$31.49</strong> / pair</span></span>
                 <span class="bundle__price">
-                  <s data-bundle-compare>$179.97</s>
-                  <span data-bundle-price>$101.23</span>
-                </span>
-              </label></div>
-      </fieldset><label class="bundle" style="grid-template-columns:auto 1fr auto;margin-bottom:18px" >
-          <input type="checkbox" value="2001" data-addon style="position:static;opacity:1;pointer-events:auto;width:20px;height:20px;accent-color:var(--color-accent)">
-          <span>
-            <span class="bundle__title">Add “The Calm Night Protocol” eBook</span>
-            <span class="bundle__sub" style="display:block">20-minute read · instant download</span>
-          </span>
-          <span class="bundle__price">$20.00</span>
-        </label><div class="stock-note" ><span class="stock-note__dot"></span><span>In stock — ships within 24 hours</span></div><form class="product-form" data-product-form action="#" method="post"><input type="hidden" name="id" value="1001">
+                  <span class="bundle__now" data-bundle-price>$94.48</span><s class="bundle__was" data-bundle-compare>$179.97</s></span><span class="bundle__gift">
+                    <span class="bundle__gift-media" aria-hidden="true"><img src="assets/ebook-cover.svg" alt="" width="24" height="32" loading="lazy"></span>
+                    <span class="bundle__gift-text">+ <strong>FREE</strong> The Calm Night Protocol (eBook)</span><s class="bundle__gift-was">$20.00</s></span></label><div class="bundle__units">
+                  <div class="bundle__units-inner">
+                    <div class="bundle__units-body">
+                      <p class="bundle__units-title">Choose a size for each pair</p>
+                      <div class="bundle__units-grid"><div class="bundle__unit-field">
+                            <label for="main-bundle-3-unit-1">Pair 1</label>
+                            <select id="main-bundle-3-unit-1" data-bundle-unit-select><option value="1001" selected>S/M</option><option value="1002">L/XL</option></select>
+                          </div><div class="bundle__unit-field">
+                            <label for="main-bundle-3-unit-2">Pair 2</label>
+                            <select id="main-bundle-3-unit-2" data-bundle-unit-select><option value="1001" selected>S/M</option><option value="1002">L/XL</option></select>
+                          </div><div class="bundle__unit-field">
+                            <label for="main-bundle-3-unit-3">Pair 3</label>
+                            <select id="main-bundle-3-unit-3" data-bundle-unit-select><option value="1001" selected>S/M</option><option value="1002">L/XL</option></select>
+                          </div></div>
+                    </div>
+                  </div>
+                </div></div></div><input type="hidden" value="2001" data-bundle-gift></fieldset><div class="stock-note" ><span class="stock-note__dot"></span><span>In stock — ships within 24 hours</span></div><form class="product-form" data-product-form action="#" method="post"><input type="hidden" name="id" value="1001">
         <input type="hidden" name="quantity" value="1">
         <div class="product-form__buttons" >
           <button type="submit" class="button button--full" data-add-to-cart >
@@ -235,7 +272,7 @@
         <span class="stars" aria-label="5 out of 5 stars" role="img"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg></span>
         <p>“First night in months I didn't get up to walk the hallway at 2am. I was honestly shocked.”</p>
         <strong>— Linda R.</strong> <span class="verified"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 9.5 4.3 6.2 4l-.8 3.2L2.6 9l1.3 3-1.3 3 2.8 1.8.8 3.2 3.3-.3L12 22l2.5-2.3 3.3.3.8-3.2 2.8-1.8-1.3-3 1.3-3-2.8-1.8-.8-3.2-3.3.3L12 2Zm-1.2 13.6-3.6-3.6 1.4-1.4 2.2 2.2 4.8-4.8 1.4 1.4-6.2 6.2Z"/></svg> Verified buyer</span>
-      </div><div class="accordion"><details open><summary>Description <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p>Legs Night is a deep-pressure foot wrap — a firm, contoured pad held snug under each arch by an adjustable strap. Wear it to bed to help quiet the crawling, can't-sit-still feeling in your legs so you can finally fall asleep.</p><ul><li>One pair (left + right)</li><li>Firm, removable EVA pressure pad</li><li>Soft, breathable stretch-elastic wrap that crosses over the top of the foot</li><li>Machine washable</li><li>Free eBook: The Calm Night Protocol</li></ul><p><em>Legs Night is a comfort product, not a medical device.</em></p></div></details><details><summary>How to use <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p><strong>1.</strong> Slip the wrap over your foot so the pad sits under your arch.</p><p><strong>2.</strong> Tighten the strap until the pressure feels firm but comfortable.</p><p><strong>3.</strong> Wear it to bed. Most people wear one on each foot.</p></div></details><details><summary>Materials & care <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><ul><li>Wrap: soft, breathable woven elastic that crosses over the top of the foot</li><li>Pad: firm, contoured EVA foam under the arch (removable)</li><li>Hand or machine wash cold, air dry</li></ul></div></details><details><summary>Shipping & returns <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p>Free shipping on every order. Orders ship within 24 hours and usually arrive in 4–8 business days.</p><p>Try it for 90 nights. If it doesn't help, email us for a full refund — no need to send it back.</p></div></details></div></div>
+      </div><div class="accordion"><details open><summary>Description <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p class="ln-lead"><strong>Firm pressure, right under the arch. Held until morning.</strong></p><p>Legs Night is a deep-pressure foot wrap for restless, fidgety legs at night. A firm, contoured pad sits under each arch, and a soft woven-elastic band crosses in an X over the top of your foot to hold it snug. That steady pressure gives your legs something calm to focus on, so you can stop shifting and finally fall asleep.</p><h3>Why it helps</h3><ul class="ln-points"><li><strong>Targeted arch pressure.</strong> The firm pad presses right where it counts: the middle of the sole.</li><li><strong>Criss-cross hold.</strong> The X-shaped wrap keeps the pressure in place all night, even when you turn over.</li><li><strong>Made for sleep.</strong> Low-profile and breathable, with toes and heel left open so your feet stay cool.</li><li><strong>Drug-free.</strong> No pills, no prescription, no side effects.</li></ul><h3>What's in the box</h3><ul class="ln-box"><li>2 Legs Night wraps (left and right)</li><li>2 firm, removable arch pads</li><li>Fit and care card</li><li>Free eBook: The Calm Night Protocol</li></ul><h3>Details</h3><table class="ln-specs"><tbody><tr><th>Wrap</th><td>Soft, breathable woven stretch elastic, matte black</td></tr><tr><th>Pad</th><td>Firm, contoured EVA foam, removable</td></tr><tr><th>Fastening</th><td>Adjustable strap that tightens to a snug fit</td></tr><tr><th>Sizes</th><td>S/M: US women's 5–9, men's 4–8<br>L/XL: US women's 9.5–13, men's 8.5–14</td></tr><tr><th>Care</th><td>Remove the pad, hand or machine wash cold, air dry</td></tr><tr><th>Guarantee</th><td>90 nights. If your legs aren't calmer, get a full refund.</td></tr></tbody></table><p class="ln-note">Legs Night is a comfort product, not a medical device. It is not intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p></div></details><details><summary>How to use <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p><strong>1.</strong> Slip the wrap over your foot so the pad sits under your arch.</p><p><strong>2.</strong> Tighten the strap until the pressure feels firm but comfortable.</p><p><strong>3.</strong> Wear it to bed. Most people wear one on each foot.</p></div></details><details><summary>Materials & care <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><ul><li>Wrap: soft, breathable woven elastic that crosses over the top of the foot</li><li>Pad: firm, contoured EVA foam under the arch (removable)</li><li>Hand or machine wash cold, air dry</li></ul></div></details><details><summary>Shipping & returns <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="accordion__content rte"><p>Free shipping on every order. Orders ship within 24 hours and usually arrive in 4–8 business days.</p><p>Try it for 90 nights. If it doesn't help, email us for a full refund — no need to send it back.</p></div></details></div></div>
     </div>
   </div>
 </section><div class="sticky-atc" data-sticky-atc>
@@ -252,7 +289,7 @@
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Legs Night Support Pair",
-    "url": "https://legsnight.comlegs-night-support-pair.html","description": "Legs Night is a deep-pressure foot wrap — a firm, contoured pad held snug under each arch by an adjustable strap. Wear it to bed to help quiet the crawling, can't-sit-still feeling in your legs so you can finally fall asleep.One pair (left + right)Firm, removable EVA pressure padSoft, breathable stretch-elastic wrap that crosses over the top of the footMachine washableFree eBook: The Calm Night ProtocolLegs Night is a comfort product, not a medical device.",
+    "url": "https://legsnight.comlegs-night-support-pair.html","description": "Firm pressure, right under the arch. Held until morning.Legs Night is a deep-pressure foot wrap for restless, fidgety legs at night. A firm, contoured pad sits under each arch, and a soft woven-elastic band crosses in an X over the top of your foot to hold it snug. That steady pressure gives your legs something calm to focus on, so you can stop shifting and finally fall asleep.Why it helpsTargeted arch pressure. The firm pad presses right where it counts: the middle of the sole.Criss-cross hold. The X-shaped wrap keeps the pressure in place all night, even when you turn over.Made for sleep. Low-profile and breathable, with toes and heel left open so your feet stay cool.Drug-free. No pills, no prescription, no side effects.What's in the box2 Legs Night wraps (left and right)2 firm, removable arch padsFit and care cardFree eBook: The Calm Night ProtocolDetailsWrapSoft, breathable woven stretch elastic, matte blackPadFirm, contoured EVA foam, removableFasteningAdjustable strap that tightens to a snug fitSizesS/M: US women's 5–9, men's 4–8L/XL: US women's 9.5–13, men's 8.5–14CareRemove the pad, hand or machine wash cold, air dryGuarantee90 nights. If your legs aren't calmer, get a full refund.Legs Night is a comfort product, not a medical device. It is not intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.",
     "brand": { "@type": "Brand", "name": "Legs Night" },
     "offers": [{
           "@type": "Offer","sku": "LN-PAIR-SM","availability": "http://schema.org/InStock",

@@ -506,12 +506,8 @@
         },
         "quantity_breaks": {
           "type": "quantity_breaks",
-          "settings": {}
-        },
-        "addon": {
-          "type": "addon",
           "settings": {
-            "product": "the-calm-night-protocol-ebook"
+            "gift_product": "the-calm-night-protocol-ebook"
           }
         },
         "buy_buttons": {
@@ -532,7 +528,6 @@
         "benefits",
         "variant_picker",
         "quantity_breaks",
-        "addon",
         "buy_buttons",
         "assurance"
       ],

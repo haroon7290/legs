@@ -98,6 +98,7 @@ const previewCatalog = {};
 for (const p of products) {
   for (const v of p.variants) {
     previewCatalog[v.id] = {
+      handle: p.handle,
       title: p.title,
       product_title: p.title,
       variant_title: v.title,
@@ -326,7 +327,25 @@ const baseGlobals = {
 // Shopify exposes these objects inside {% render %}; liquidjs needs them as globals.
 Object.assign(engine.options.globals, { shop: baseGlobals.shop, settings, routes: baseGlobals.routes, cart: baseGlobals.cart, request: baseGlobals.request, all_products: productsByHandle, collections: baseGlobals.collections, localization: baseGlobals.localization });
 
-const previewHead = `<script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = ${JSON.stringify(previewCatalog)};</script>
+// Simulates the automatic discounts the README asks merchants to create, so the preview cart
+// shows the same totals as checkout: 20% off 2+ pairs, 30% off 3+ pairs, one free eBook with a pair.
+const previewPricing = `function (items) {
+  var pairs = items.filter(function (i) { return i.handle === 'legs-night-support-pair'; });
+  var count = pairs.reduce(function (n, i) { return n + i.quantity; }, 0);
+  var pct = count >= 3 ? 30 : count >= 2 ? 20 : 0;
+  pairs.forEach(function (i) {
+    if (!pct) return;
+    var amount = Math.round(i.price * i.quantity * pct / 100);
+    i.final_line_price -= amount;
+    i.line_level_discount_allocations.push({ amount: amount, discount_application: { title: count + '-pair bundle' } });
+  });
+  items.forEach(function (i) {
+    if (i.handle !== 'the-calm-night-protocol-ebook' || !count) return;
+    i.final_line_price -= i.price;
+    i.line_level_discount_allocations.push({ amount: i.price, discount_application: { title: 'Free eBook with your pair' } });
+  });
+}`;
+const previewHead = `<script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = ${JSON.stringify(previewCatalog)}; window.LegsNightTheme.previewPricing = ${previewPricing};</script>
 `;
 
 async function buildPage(file, templateName, extra = {}) {

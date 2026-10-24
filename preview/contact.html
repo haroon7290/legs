@@ -63,7 +63,22 @@
       };
     </script>
     <script src="assets/theme.js" defer></script>
-    <script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = {"1001":{"title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"S/M","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"1002":{"title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"L/XL","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"2001":{"title":"The Calm Night Protocol (eBook)","product_title":"The Calm Night Protocol (eBook)","variant_title":"Default Title","price":2000,"compare_at_price":null,"image":"assets/ebook-cover.svg","url":"the-calm-night-protocol-ebook.html"}};</script>
+    <script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = {"1001":{"handle":"legs-night-support-pair","title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"S/M","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"1002":{"handle":"legs-night-support-pair","title":"Legs Night Support Pair","product_title":"Legs Night Support Pair","variant_title":"L/XL","price":4499,"compare_at_price":5999,"image":"assets/product-pair-1.svg","url":"legs-night-support-pair.html"},"2001":{"handle":"the-calm-night-protocol-ebook","title":"The Calm Night Protocol (eBook)","product_title":"The Calm Night Protocol (eBook)","variant_title":"Default Title","price":2000,"compare_at_price":null,"image":"assets/ebook-cover.svg","url":"the-calm-night-protocol-ebook.html"}}; window.LegsNightTheme.previewPricing = function (items) {
+  var pairs = items.filter(function (i) { return i.handle === 'legs-night-support-pair'; });
+  var count = pairs.reduce(function (n, i) { return n + i.quantity; }, 0);
+  var pct = count >= 3 ? 30 : count >= 2 ? 20 : 0;
+  pairs.forEach(function (i) {
+    if (!pct) return;
+    var amount = Math.round(i.price * i.quantity * pct / 100);
+    i.final_line_price -= amount;
+    i.line_level_discount_allocations.push({ amount: amount, discount_application: { title: count + '-pair bundle' } });
+  });
+  items.forEach(function (i) {
+    if (i.handle !== 'the-calm-night-protocol-ebook' || !count) return;
+    i.final_line_price -= i.price;
+    i.line_level_discount_allocations.push({ amount: i.price, discount_application: { title: 'Free eBook with your pair' } });
+  });
+};</script>
   </head>
   <body class="template-page">
     <a class="skip-link visually-hidden" href="#MainContent">Skip to content</a>
