@@ -147,22 +147,28 @@
         "step_1": {
           "type": "step",
           "settings": {
-            "title": "Slip it on",
-            "text": "Pull the wrap over your foot so the firm pad sits right under your arch."
+            "icon": "auto",
+            "title": "Wrap it under the arch",
+            "text": "Start with the band under your arch, then bring it across the top of your foot so it crosses in an X.",
+            "note": "Takes about 10 seconds"
           }
         },
         "step_2": {
           "type": "step",
           "settings": {
-            "title": "Tighten the strap",
-            "text": "Adjust until the pressure feels firm and steady — snug, never painful."
+            "icon": "auto",
+            "title": "Make it snug",
+            "text": "Pull it firm and press the end flat. You want steady pressure: snug, never tight or tingly.",
+            "note": "Snug, not tight"
           }
         },
         "step_3": {
           "type": "step",
           "settings": {
-            "title": "Lie back & sleep",
-            "text": "The steady pressure gives restless nerves something calm to focus on."
+            "icon": "auto",
+            "title": "Lie back and sleep",
+            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
+            "note": "Stays put until morning"
           }
         }
       },
@@ -174,9 +180,11 @@
       "settings": {
         "style": "alt",
         "eyebrow": "How it works",
-        "heading": "Simple pressure. Calmer legs.",
-        "text": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade and you can drift off.</p>",
-        "footnote": "<p>The one purpose-built device for this exact pressure is FDA-cleared, prescription-only, and costs over $200. Legs Night brings the same simple idea home for $44.99.</p>"
+        "heading": "Three steps to a calmer night",
+        "text": "<p>No pills, no setup. Just firm, steady pressure right under the arch, all night.</p>",
+        "button_label": "Try Legs Night tonight",
+        "button_link": "",
+        "footnote": "<p>The one purpose-built device for this exact pressure is prescription-only and costs over $200. Legs Night brings the same simple idea home for $44.99.</p>"
       }
     },
     "features": {

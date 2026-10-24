@@ -186,6 +186,20 @@ engine.registerTag('schema', class extends Tag {
   * render() {}
 });
 
+// {% stylesheet %} … {% endstylesheet %}: Shopify bundles this CSS; the preview inlines it
+engine.registerTag('stylesheet', class extends Tag {
+  constructor(token, remain, liquid) {
+    super(token, remain, liquid);
+    this.css = '';
+    while (remain.length) {
+      const t = remain.shift();
+      if (t.name === 'endstylesheet') return;
+      this.css += t.getText();
+    }
+  }
+  * render(ctx, emitter) { emitter.write(`<style>${this.css}</style>`); }
+});
+
 // {% form 'type', … %} … {% endform %}
 engine.registerTag('form', class extends Tag {
   constructor(token, remain, liquid) {

@@ -1,24 +1,95 @@
-<section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" id="how-it-works" {{ section.shopify_attributes }}>
+{%- comment -%}
+  How it works: numbered steps with an icon, a title, a short line and an optional note.
+  Images are optional; add one to a step only if you have it.
+  Styles are included in this file, so it works on its own.
+{%- endcomment -%}
+<section class="section hiw{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" id="how-it-works" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="section-header reveal">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
       <h2>{{ section.settings.heading }}</h2>
       {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
     </div>
-    <div class="grid grid--3 steps">
+
+    <ol class="hiw__steps">
       {%- for block in section.blocks -%}
-        <div class="step reveal" {{ block.shopify_attributes }}>
-          {%- assign fb = 'step-' | append: forloop.index | append: '.svg' -%}
-          <div class="step__media">{% render 'image', image: block.settings.image, fallback: fb, alt: block.settings.title, sizes: '(min-width: 990px) 33vw, 100vw' %}</div>
-          <span class="step__num">{{ forloop.index }}</span>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
-        </div>
+        {%- liquid
+          assign icon = block.settings.icon
+          if icon == 'auto'
+            case forloop.index
+              when 1
+                assign icon = 'feet'
+              when 2
+                assign icon = 'compress'
+              when 3
+                assign icon = 'moon-outline'
+              when 4
+                assign icon = 'clock'
+              else
+                assign icon = 'heart'
+            endcase
+          endif
+        -%}
+        <li class="hiw__step reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="hiw__media">
+              {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '400, 600, 900', alt: block.settings.title }}
+            </div>
+          {%- endif -%}
+          <div class="hiw__top">
+            <span class="hiw__num" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <span class="hiw__icon">{% render 'icon', icon: icon %}</span>
+          </div>
+          <h3 class="hiw__title"><span class="visually-hidden">Step {{ forloop.index }}: </span>{{ block.settings.title }}</h3>
+          {%- if block.settings.text != blank -%}<p class="hiw__text">{{ block.settings.text }}</p>{%- endif -%}
+          {%- if block.settings.note != blank -%}
+            <p class="hiw__note">{% render 'icon', icon: 'tick' %}<span>{{ block.settings.note }}</span></p>
+          {%- endif -%}
+        </li>
       {%- endfor -%}
-    </div>
-    {%- if section.settings.footnote != blank -%}<div class="text-center muted rte" style="margin-top:32px;font-size:.92rem">{{ section.settings.footnote }}</div>{%- endif -%}
+    </ol>
+
+    {%- if section.settings.button_label != blank or section.settings.footnote != blank -%}
+      <div class="hiw__footer reveal">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#shop' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+        {%- endif -%}
+        {%- if section.settings.footnote != blank -%}<div class="hiw__footnote rte">{{ section.settings.footnote }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </section>
+
+{% stylesheet %}
+  .hiw__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: none; }
+  .hiw__step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 28px 26px 24px; border-radius: var(--radius-lg, 14px); background: var(--color-surface, #fbf8f3); border: 1px solid var(--line, rgba(19, 26, 38, .12)); }
+  .section--contrast .hiw__step { background: var(--color-ink-2, #18233a); border-color: var(--line-dark, rgba(243, 237, 227, .14)); }
+  .hiw__media { margin: -28px -26px 14px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-lg, 14px) var(--radius-lg, 14px) 0 0; background: var(--color-bg-alt, #ebe2d4); }
+  .hiw__media img { width: 100%; height: 100%; object-fit: cover; }
+  .hiw__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .hiw__num { font-family: var(--font-heading); font-weight: 800; font-size: 2.6rem; line-height: 1; letter-spacing: -.04em; color: var(--color-accent, #e8682a); }
+  .hiw__icon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(232, 104, 42, .1); color: var(--color-accent, #e8682a); }
+  .hiw__icon svg { width: 24px; height: 24px; }
+  .hiw__title { margin: 0; font-size: 1.2rem; }
+  .hiw__text { margin: 0; color: var(--color-text-muted, #5d6270); }
+  .section--contrast .hiw__text { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+  .hiw__note { display: flex; align-items: center; gap: 8px; margin: auto 0 0; padding-top: 14px; border-top: 1px solid var(--line, rgba(19, 26, 38, .12)); font-size: .86rem; font-weight: 600; }
+  .section--contrast .hiw__note { border-top-color: var(--line-dark, rgba(243, 237, 227, .14)); }
+  .hiw__note svg { width: 16px; height: 16px; color: var(--color-accent, #e8682a); flex-shrink: 0; }
+  .hiw__footer { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 40px; text-align: center; }
+  .hiw__footnote { max-width: 640px; font-size: .9rem; color: var(--color-text-muted, #5d6270); }
+  .section--contrast .hiw__footnote { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+  @media (max-width: 989px) {
+    .hiw__steps { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .hiw__step { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; row-gap: 6px; padding: 22px 20px; }
+    .hiw__media { grid-column: 1 / -1; margin: -22px -20px 10px; }
+    .hiw__top { grid-row: span 3; flex-direction: column; align-items: flex-start; justify-content: flex-start; align-self: start; gap: 10px; margin: 0; }
+    .hiw__num { font-size: 2rem; }
+    .hiw__icon { width: 40px; height: 40px; }
+    .hiw__icon svg { width: 20px; height: 20px; }
+    .hiw__note { grid-column: 2; padding-top: 10px; margin-top: 6px; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -27,16 +98,28 @@
   "settings": [
     { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "alt" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Simple pressure. Calmer legs." },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Firm, steady pressure under the arch gives your nervous system a different signal to focus on — so the urge to move can fade.</p>" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Three steps to a calmer night" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>No pills, no setup. Just firm, steady pressure right under the arch, all night.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Try Legs Night tonight" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." },
     { "type": "richtext", "id": "footnote", "label": "Footnote" }
   ],
   "blocks": [
-    { "type": "step", "name": "Step", "settings": [
-      { "type": "image_picker", "id": "image", "label": "Image" },
-      { "type": "text", "id": "title", "label": "Title", "default": "Step" },
-      { "type": "textarea", "id": "text", "label": "Text", "default": "Describe this step." }
-    ] }
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "auto", "options": [
+          { "value": "auto", "label": "Automatic" }, { "value": "feet", "label": "Feet" }, { "value": "compress", "label": "Pressure" },
+          { "value": "moon-outline", "label": "Moon" }, { "value": "clock", "label": "Clock" }, { "value": "heart", "label": "Heart" },
+          { "value": "shield", "label": "Shield" }, { "value": "leaf", "label": "Leaf" }, { "value": "washing", "label": "Washable" }
+        ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Step" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Describe this step." },
+        { "type": "text", "id": "note", "label": "Note", "info": "Short line under the step, e.g. \"Takes 10 seconds\"." },
+        { "type": "image_picker", "id": "image", "label": "Image (optional)" }
+      ]
+    }
   ],
   "presets": [{ "name": "How it works", "blocks": [{ "type": "step" }, { "type": "step" }, { "type": "step" }] }]
 }

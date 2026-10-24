@@ -263,15 +263,7 @@ body.no-scroll { overflow: hidden; }
 .image-with-text--reverse .problem__media { order: 2; }
 @media (max-width: 849px) { .problem { grid-template-columns: minmax(0, 1fr); gap: 32px; } .image-with-text--reverse .problem__media { order: 0; } }
 
-/* How it works ----------------------------------------------------------- */
-.steps { gap: 24px; }
-.step { position: relative; }
-.step__media { aspect-ratio: 4 / 3; max-width: 100%; border-radius: var(--radius-lg); background: var(--color-bg-alt); overflow: hidden; margin-bottom: 20px; }
-.step__media img { width: 100%; height: 100%; object-fit: cover; }
-.step__num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--color-text); color: var(--color-bg); font-family: var(--font-heading); font-weight: 700; font-size: .9rem; margin-bottom: 12px; }
-.section--contrast .step__num { background: var(--color-accent); color: #fff; }
-.step p { color: var(--color-text-muted); margin-bottom: 0; }
-.section--contrast .step p { color: var(--color-on-dark-muted); }
+/* How it works: styles live in sections/how-it-works.liquid */
 
 /* Icon features ---------------------------------------------------------- */
 .feature { padding: 28px 24px; border-radius: var(--radius-lg); background: var(--color-surface); border: 1px solid var(--line); }

@@ -50,25 +50,11 @@ Photorealistic night-time photograph of a bedroom at 2am. On the bedside table a
 
 > AI often scrambles clock digits. If it does, crop the clock out or fix the digits in an editor.
 
-## 3. How it works — 3 steps
+## 3. How it works — no images needed
 
-- **Size:** 1200 × 900 px each (4:3)
-- **Upload:** Theme editor › How it works › each Step block › Image
-
-**Step 1 — Slip it on**
-```
-Photorealistic close-up of a woman sitting on the edge of a bed with oatmeal-beige linen sheets, wrapping a black woven-elastic band, about 2 inches wide, around her bare foot: the band passes under the arch and she is bringing it across the top of the foot. Hands and foot only, natural nails. Bright, soft daylight from a window, white walls, a navy pillow blurred in the background. 50mm lens, f/2.8, clean and minimal, true-to-life skin tones. No text. --ar 4:3
-```
-
-**Step 2 — Tighten the strap**
-```
-Photorealistic close-up, side view of a bare foot wearing a black woven-elastic foot wrap that crosses in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered. Her fingers press the end of the band flat so the wrap sits snug under the arch. Plain warm beige background, soft diffused daylight from the left, gentle shadow, sharp focus on the wrap, catalogue style. No text. --ar 4:3
-```
-
-**Step 3 — Lie back & sleep**
-```
-Photorealistic photo of a person relaxing in bed, shown from the shins down, one foot crossed over the other, both feet wearing black criss-cross elastic foot wraps (an X over the top of each foot, toes and heel uncovered). Oatmeal-beige linen duvet, navy pillows and a mustard knit throw softly blurred behind, warm late-evening light from a bedside lamp, cozy and peaceful. 50mm lens, f/2, natural grain. No text. --ar 4:3
-```
+This section uses step numbers and icons, so it looks complete without photos. If you ever
+have a real photo for a step, add it in Theme editor › How it works › Step › Image (optional),
+1200 × 900 px (4:3).
 
 ## 4. Buy box product photos (also used on the product page)
 
