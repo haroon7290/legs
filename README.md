@@ -47,7 +47,7 @@ Prompts, sizes and upload locations for every homepage image are in [`IMAGE_PROM
 3. **Create menus** (*Online Store › Navigation*):
    - `main-menu`: Shop → `/collections/all`, How it works → `/#how-it-works`, Reviews → `/#reviews`, FAQ → `/pages/faq`, Contact → `/pages/contact`
    - `footer`: Legs Night Support Pair, The Calm Night Protocol, All products
-   - `help`: FAQ, Contact us, Write a review
+   - `help`: FAQ, Contact us
    Policy links (refund, shipping, privacy, terms) appear in the footer automatically.
 4. **Create pages** (*Online Store › Pages*) and pick their templates:
    `Contact` → `page.contact`, `Write a Review` (handle `review`) → `page.review`, `FAQ` → `page.faq`, `How it works` → `page.how-it-works`.

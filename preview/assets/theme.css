@@ -291,22 +291,7 @@ body.no-scroll { overflow: hidden; }
 .compare svg { width: 20px; height: 20px; margin: 0 auto; }
 @media (max-width: 600px) { .compare th, .compare td { padding: 12px 8px; font-size: .82rem; } .compare table { min-width: 540px; } }
 
-/* Testimonials ----------------------------------------------------------- */
-.reviews-summary { display: flex; align-items: center; justify-content: center; gap: 14px; margin: -20px 0 44px; flex-wrap: wrap; }
-.reviews-summary__score { font-family: var(--font-heading); font-weight: 800; font-size: 2.6rem; line-height: 1; }
-.reviews-grid { columns: 3 300px; column-gap: 20px; }
-.review-card { break-inside: avoid; background: var(--color-surface); color: var(--color-text); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; }
-.review-card__media { margin: -24px -24px 20px; aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-.review-card__media img { width: 100%; height: 100%; object-fit: cover; }
-.review-card__title { font-family: var(--font-heading); font-size: 1.06rem; font-weight: 700; margin: 12px 0 8px; }
-.review-card__body { color: var(--color-text-muted); font-size: .96rem; }
-.review-card__author { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: .85rem; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
-.review-card__author strong { font-weight: 700; }
-.verified { display: inline-flex; align-items: center; gap: 4px; color: var(--color-success); font-size: .78rem; font-weight: 600; }
-.verified svg { width: 14px; height: 14px; }
-.reviews-more { text-align: center; margin-top: 16px; }
-.review-card.is-hidden { display: none; }
-.review-card.is-revealing, .card.is-revealing { animation: fadeUp .5s var(--ease) both; }
+/* Reviews: styles live in sections/testimonials.liquid */
 
 /* Guarantee -------------------------------------------------------------- */
 .guarantee { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 52px; align-items: center; max-width: 980px; margin: 0 auto; }

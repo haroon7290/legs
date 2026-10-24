@@ -100,15 +100,9 @@ beige and orange, "Legs Night Guide" at the top).
 Minimal book cover background photograph: a dark navy bedroom wall at dusk with a soft warm glow from a bedside lamp in the lower right corner and the faint out-of-focus edge of a mustard knit throw at the bottom. Lots of empty dark space across the top two-thirds for a title. Moody, calm, premium, subtle grain. No text. --ar 3:4
 ```
 
-## 6. Reviews section photos (Linda R., Tom B., Susan L.)
+## 6. Reviews section — no images needed
 
-- **Size:** 1200 × 900 px (4:3)
-- **Upload:** Theme editor › Testimonials › Review block › Photo
-
-These sit next to "Verified buyer" reviews, so use **real photos from real customers** (ask them
-by email after delivery). Don't use AI images here. Until you have real ones, clear the
-"Dummy photo asset" field on those three review blocks so the cards show text only, and replace
-the sample review text with your real reviews before launch.
+Review cards are text-only with initials avatars, so no photos are needed here.
 
 ---
 

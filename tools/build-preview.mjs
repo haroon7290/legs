@@ -113,7 +113,7 @@ const link = (title, url) => ({ title, url, current: false });
 const linklists = {
   'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Reviews', 'index.html#reviews'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
   footer: { links: [link('Legs Night Support Pair', 'legs-night-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
-  help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Write a review', PAGE_URLS.review), link('Track my order', '#track')] }
+  help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Track my order', '#track')] }
 };
 
 /* ---------------------------------------------------------------- engine */
@@ -198,6 +198,20 @@ engine.registerTag('stylesheet', class extends Tag {
     }
   }
   * render(ctx, emitter) { emitter.write(`<style>${this.css}</style>`); }
+});
+
+// {% javascript %} … {% endjavascript %}: Shopify bundles this script; the preview inlines it
+engine.registerTag('javascript', class extends Tag {
+  constructor(token, remain, liquid) {
+    super(token, remain, liquid);
+    this.js = '';
+    while (remain.length) {
+      const t = remain.shift();
+      if (t.name === 'endjavascript') return;
+      this.js += t.getText();
+    }
+  }
+  * render(ctx, emitter) { emitter.write(`<script>${this.js}</script>`); }
 });
 
 // {% form 'type', … %} … {% endform %}

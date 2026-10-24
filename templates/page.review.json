@@ -10,7 +10,6 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "fallback_image": "review-1.svg",
             "rating": 5,
             "title": "First full night in years",
             "text": "<p>I've had restless legs since my second pregnancy. I was skeptical, but the pressure under my arch just… switches it off. I slept through on night two.</p>",
@@ -33,7 +32,6 @@
         "review_3": {
           "type": "review",
           "settings": {
-            "fallback_image": "review-2.svg",
             "rating": 5,
             "title": "Cheaper than the prescription one",
             "text": "<p>My doctor mentioned a pressure wrap that costs over $200. Found these instead. Same idea, and they actually work for me.</p>",
@@ -67,7 +65,6 @@
         "review_6": {
           "type": "review",
           "settings": {
-            "fallback_image": "review-3.svg",
             "rating": 5,
             "title": "Great on long flights too",
             "text": "<p>Bought a second pair for travel. Wore them on a 9-hour flight and my legs stayed calm the whole way.</p>",
@@ -93,7 +90,18 @@
         "score": 4.8,
         "summary_text": "Based on 1,248 reviews",
         "initial_count": 6,
-        "write_review_link": ""
+        "text": "",
+        "show_breakdown": true,
+        "pct_5": 86,
+        "pct_4": 10,
+        "pct_3": 3,
+        "pct_2": 1,
+        "pct_1": 0,
+        "recommend_value": "97",
+        "recommend_text": "would recommend Legs Night",
+        "layout": "marquee",
+        "rows": "2",
+        "speed": 60
       }
     }
   },

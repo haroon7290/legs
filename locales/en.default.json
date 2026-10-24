@@ -11,7 +11,6 @@
     "rating": "{{ rating }} out of 5 stars",
     "verified": "Verified buyer",
     "load_more_reviews": "Load more reviews",
-    "write_review": "Write a review",
     "read_policy": "Read the policy",
     "feature": "Feature",
     "yes": "Yes",
