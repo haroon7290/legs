@@ -32,7 +32,7 @@
             <div class="cart-savings"><span>{{ discount.title }}</span><span>−{{ discount.total_allocated_amount | money }}</span></div>
           {%- endfor -%}
           <div class="cart-totals"><span>{{ 'cart.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></div>
-          <p class="cart-note-small" style="text-align:left">{{ 'cart.taxes_and_shipping' | t }}</p>
+          <p class="cart-note-small" style="text-align:left">{% if cart.taxes_included %}{{ 'cart.taxes_included' | t }}{% else %}{{ 'cart.taxes_and_shipping' | t }}{% endif %}</p>
           {%- if section.settings.show_note -%}
             <label for="CartNote" style="font-size:.9rem;font-weight:600;display:block;margin-top:16px">{{ 'cart.note' | t }}</label>
             <textarea id="CartNote" name="note">{{ cart.note }}</textarea>

@@ -1,9 +1,13 @@
-# Legs Night — Shopify theme
+# Legs Relief — Shopify theme
 
-A Shopify Online Store 2.0 theme for **Legs Night** (legsnight.com): a one-product store
-for a deep-pressure foot wrap for restless legs at night, plus a companion eBook.
-It sells the same two products as the store it was modelled on, with its own name,
-copy and visual identity. Images and text are dummies you can replace.
+A Shopify Online Store 2.0 theme for **Legs Relief** (legrelief.co.uk), a UK store selling a
+deep-pressure foot wrap for restless legs at night, plus a companion eBook. Prices are in
+pounds, copy is in British English, and delivery, returns and VAT follow UK rules. Only the
+photos are dummies.
+
+**Setting up the store?** Start with [`STORE_SETUP.md`](STORE_SETUP.md): every Shopify setting
+in order, with the refund and delivery policies ready to paste. Product details are in
+[`PRODUCT_LISTING.md`](PRODUCT_LISTING.md) and photo prompts in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md).
 
 ## Design
 
@@ -18,49 +22,43 @@ and the hero has a Dark / Light colour scheme. Change the three main colours in
 *Theme settings › Colors* (Background, Dark sections, Accent).
 
 **Motion is kept light:** a short fade-in for the hero and for sections as they scroll
-into view, smooth FAQ and tab opening, the cart and menu sliding in, the review score
-counting up, and the scrolling announcement bar. All of it switches off for visitors
-with "reduce motion" turned on.
+into view, smooth FAQ and tab opening, the basket and menu sliding in, the bundle picker
+animating between options, and the scrolling announcement bar. All of it switches off for
+visitors with "reduce motion" turned on.
 
 ## Products (2)
 
 | Product | Handle | Price | Template |
 |---|---|---|---|
-| Legs Night Support Pair (Size: S/M, L/XL) | `legs-night-support-pair` | $44.99 (was $59.99) | `product` |
-| The Calm Night Protocol (eBook) | `the-calm-night-protocol-ebook` | $20.00 | `product.ebook` |
+| Legs Relief Support Pair (Size: S/M, L/XL) | `legs-relief-support-pair` | £34.99 · 2 for £55.98 · 3 for £73.48 | `product` |
+| The Calm Night Protocol (eBook) | `the-calm-night-protocol-ebook` | £14.99, free with any pair | `product.ebook` |
 
 Until you upload real photos, the theme shows the dummy SVG images in `assets/`.
-Prompts, sizes and upload locations for every homepage image are in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md).
+
+## UK features
+
+- **Delivery estimate in working days:** "Order within 3h 12m for dispatch today · arrives
+  Wed 28 Oct – Thu 29 Oct", in UK time, skipping weekends and bank holidays (England and
+  Wales dates to the end of 2028 are pre-filled and editable).
+- **Bundle picker:** 1, 2 or 3 pairs at 0/20/30% off, a size for each pair, and the free eBook
+  added to the basket automatically.
+- **VAT-aware basket:** says "Prices include VAT" when your prices include tax.
+- **Honest reviews:** star ratings only appear from a real reviews app; the review sections are
+  off until you have genuine reviews (fake reviews are illegal in the UK).
+- **No invented "was" prices:** savings shown are real bundle savings.
+- **Footer business details** line for your company name, number and address.
+- British English and "basket" wording throughout, `en-GB` language tags, and Google
+  structured data for free UK delivery and the 90-day return window.
 
 ## Install on Shopify
 
-1. **Upload the theme.** Download **`legs-night-theme.zip`** from this repository (open the file
-   on GitHub and click the download button). In Shopify go to *Online Store › Themes ›
-   Add theme › Upload zip file* and pick it.
+1. **Upload the theme.** Download **`legs-relief-theme.zip`** from this repository (open the file
+   on GitHub and click **Download raw file**). In Shopify go to *Online Store › Themes ›
+   Add theme › Upload zip file*, pick it, then **Publish**.
    > Don't use GitHub's green **Code › Download ZIP** button. That zip puts everything inside
    > an extra folder and includes non-theme files, so Shopify rejects it.
-
-   Alternatives: connect this repository with *Add theme › Connect from GitHub*, or run
-   `shopify theme push --unpublished` with the Shopify CLI. The zip upload is the simplest.
-2. **Add the products.** Import `import/products.csv` (*Products › Import*), or add them by hand
-   with the copy in [`PRODUCT_LISTING.md`](PRODUCT_LISTING.md) (titles, descriptions, prices,
-   variants, SEO, image order and alt text). Keep the handles exactly as listed: the theme looks
-   the products up by handle. Then open the eBook product and set *Theme template* to **ebook**.
-3. **Create menus** (*Online Store › Navigation*):
-   - `main-menu`: Shop → `/collections/all`, How it works → `/#how-it-works`, Reviews → `/#reviews`, FAQ → `/pages/faq`, Contact → `/pages/contact`
-   - `footer`: Legs Night Support Pair, The Calm Night Protocol, All products
-   - `help`: FAQ, Contact us
-   Policy links (refund, shipping, privacy, terms) appear in the footer automatically.
-4. **Create pages** (*Online Store › Pages*) and pick their templates:
-   `Contact` → `page.contact`, `FAQ` → `page.faq`, `How it works` → `page.how-it-works`.
-5. **Bundle discounts:** the buy box shows 20% off 2 pairs and 30% off 3 pairs, and adds the
-   free eBook to the cart. Shopify only charges those prices once you create the 3 automatic
-   discounts in [`PRODUCT_LISTING.md`](PRODUCT_LISTING.md#4-bundle-discounts) (*Discounts › Create discount*).
-6. **eBook download:** install Shopify's free *Digital Downloads* app and attach the eBook PDF to the eBook product.
-7. **Policies:** add your refund (90-night guarantee), shipping, privacy and terms policies under *Settings › Policies*.
-8. **Optional:** install Shopify's free *Search & Discovery* app to turn on collection filters
-   and better product recommendations. Install a reviews app and add its block to the product
-   page (*Add block › Apps*) when you have real reviews.
+2. **Follow [`STORE_SETUP.md`](STORE_SETUP.md)** for currency, domain, VAT, delivery, payments,
+   policies, products, discounts, pages, menus and reviews.
 
 ## What's in the theme
 
@@ -68,13 +66,13 @@ Every page type Shopify uses has a template:
 
 | Page | Template | Highlights |
 |---|---|---|
-| Home | `index.json` | Hero, trust bar, problem, how it works, features, comparison, reviews, buy box, guarantee, eBook offer, FAQ, newsletter |
+| Home | `index.json` | Hero, trust bar, problem, how it works, features, comparison, reviews (off until real), buy box, guarantee, eBook offer, FAQ, newsletter |
 | Product | `product.json`, `product.ebook.json` | Gallery, sizes + size guide, bundle picker (1/2/3 pairs, size per pair, free gift), quantity, delivery estimate, app blocks, sticky add to cart, recommendations |
 | Collection | `collection.json`, `list-collections.json` | Filters (Search & Discovery), sorting, active-filter pills, pagination |
-| Cart | `cart.json` + slide-out cart | Upsell, savings line, notes, express checkout buttons |
+| Basket | `cart.json` + slide-out basket | Discount lines, savings line, VAT note, notes, express checkout buttons |
 | Search | `search.json` | Header search popup; product, article and page results |
 | Blog | `blog.json`, `article.json` | Tag filter, pagination, comments with moderation |
-| Pages | `page.json`, `page.contact.json`, `page.review.json`, `page.faq.json`, `page.how-it-works.json` | Contact form, write-a-review form, FAQ |
+| Pages | `page.json`, `page.contact.json`, `page.faq.json`, `page.how-it-works.json` | Contact form, FAQ, how it works |
 | Other | `404.json`, `password.json`, `gift_card.liquid`, `customers/*` (7 account pages) | Gift card with QR code and Apple Wallet |
 
 Also included: header and footer groups, announcement ticker, country/currency and language
@@ -88,7 +86,7 @@ structured data.
 npm install
 npm run check     # Shopify Theme Check + upload-rule validation
 npm run preview   # renders the real Liquid with dummy data into ./preview
-npm run package   # rebuild legs-night-theme.zip after changes
+npm run package   # rebuild legs-relief-theme.zip after changes
 npm run csv       # regenerate import/products.csv from tools/sample-data.mjs
 ```
 
@@ -98,7 +96,7 @@ uses a localStorage cart, and its forms don't submit.
 ## Structure
 
 ```
-legs-night-theme.zip   ready-to-upload theme (only the 7 theme folders)
+legs-relief-theme.zip   ready-to-upload theme (only the 7 theme folders)
 assets/      theme.css, theme.js, dummy SVG images
 config/      theme settings (colours, fonts, cart, reviews, social)
 layout/      theme.liquid, password.liquid
@@ -111,5 +109,5 @@ import/      products.csv for Shopify import
 preview/     generated static preview (npm run preview)
 ```
 
-> Legs Night is a comfort product, not a medical device. Keep the footer disclaimer,
+> Legs Relief is a comfort product, not a medical device. Keep the footer disclaimer,
 > and only use health claims you can back up.

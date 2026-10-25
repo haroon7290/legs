@@ -35,14 +35,18 @@
   "max_blocks": 3,
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Real people, real answers. We reply to every message within 24 hours.</p>" }
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Real people, real answers. We reply to every message within one working day.</p>" }
   ],
   "blocks": [
-    { "type": "card", "name": "Info card", "settings": [
-      { "type": "select", "id": "icon", "label": "Icon", "default": "mail", "options": [{ "value": "mail", "label": "Mail" }, { "value": "clock", "label": "Clock" }, { "value": "chat", "label": "Chat" }, { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }] },
-      { "type": "text", "id": "title", "label": "Title", "default": "Email" },
-      { "type": "text", "id": "text", "label": "Text", "default": "support@legsnight.com" }
-    ] }
+    {
+      "type": "card",
+      "name": "Info card",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "mail", "options": [{ "value": "mail", "label": "Mail" }, { "value": "clock", "label": "Clock" }, { "value": "chat", "label": "Chat" }, { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Email" },
+        { "type": "text", "id": "text", "label": "Text", "default": "support@legrelief.co.uk" }
+      ]
+    }
   ],
   "presets": [{ "name": "Contact form" }]
 }

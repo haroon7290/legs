@@ -2,7 +2,7 @@
 // so the design can be reviewed without a Shopify store. Usage: npm run preview
 //
 // Only the Shopify features this theme uses are mocked. The output is a
-// static demo: cart actions use a localStorage cart (window.LegsNightTheme.preview).
+// static demo: cart actions use a localStorage cart (window.LegsReliefTheme.preview).
 import { Liquid, Tag, Hash } from 'liquidjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -23,7 +23,6 @@ const PAGE_URLS = {
   index: 'index.html',
   collection: 'collection.html',
   contact: 'contact.html',
-  review: 'review.html',
   faq: 'faq.html',
   cart: 'cart.html'
 };
@@ -89,7 +88,7 @@ const allCollection = {
     { label: 'Product type', type: 'list', param_name: 'filter.p.product_type', active_values: [],
       values: [{ label: 'Foot Wrap', value: 'Foot Wrap', count: 1, active: false, param_name: 'filter.p.product_type' },
                { label: 'eBook', value: 'eBook', count: 1, active: false, param_name: 'filter.p.product_type' }] },
-    { label: 'Price', type: 'price_range', param_name: 'filter.v.price', active_values: [], range_max: 4499,
+    { label: 'Price', type: 'price_range', param_name: 'filter.v.price', active_values: [], range_max: 3499,
       min_value: { param_name: 'filter.v.price.gte', value: null }, max_value: { param_name: 'filter.v.price.lte', value: null } }
   ]
 };
@@ -112,9 +111,9 @@ for (const p of products) {
 
 const link = (title, url) => ({ title, url, current: false });
 const linklists = {
-  'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Reviews', 'index.html#reviews'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
-  footer: { links: [link('Legs Night Support Pair', 'legs-night-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
-  help: { links: [link('FAQ', PAGE_URLS.faq), link('Contact us', PAGE_URLS.contact), link('Track my order', '#track')] }
+  'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Guarantee', 'index.html#guarantee'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
+  footer: { links: [link('Legs Relief Support Pair', 'legs-relief-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
+  help: { links: [link('FAQ', PAGE_URLS.faq), link('Delivery', '#shipping-policy'), link('Returns', '#refund-policy'), link('Contact us', PAGE_URLS.contact)] }
 };
 
 /* ---------------------------------------------------------------- engine */
@@ -126,7 +125,7 @@ function kw(args) {
   return out;
 }
 function lookup(obj, key) { return key.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj); }
-const money = (c) => (c == null || c === '' ? '' : '$' + (Number(c) / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+const money = (c) => (c == null || c === '' ? '' : '£' + (Number(c) / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','));
 
 engine.registerFilter('t', (key, ...args) => {
   const vars = kw(args);
@@ -136,7 +135,7 @@ engine.registerFilter('t', (key, ...args) => {
   return String(s).replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => (vars[k] ?? ''));
 });
 engine.registerFilter('money', money);
-engine.registerFilter('money_with_currency', (c) => money(c) + ' USD');
+engine.registerFilter('money_with_currency', (c) => money(c) + ' GBP');
 engine.registerFilter('money_without_currency', (c) => (Number(c) / 100).toFixed(2));
 engine.registerFilter('asset_url', (f) => `assets/${f}`);
 engine.registerFilter('image_url', (img) => (typeof img === 'string' ? img : img?.src || ''));
@@ -169,8 +168,8 @@ function shiftLightness(hex, amount) {
 engine.registerFilter('color_lighten', (c, n) => shiftLightness(c, Number(n)));
 engine.registerFilter('color_darken', (c, n) => shiftLightness(c, -Number(n)));
 engine.registerFilter('payment_type_svg_tag', (type) => {
-  const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', paypal: 'PayPal', apple_pay: 'Pay', shopify_pay: 'shop' }[type] || type;
-  return `<svg viewBox="0 0 38 24" role="img" aria-label="${type}"><rect width="38" height="24" rx="4" fill="#fff"/><text x="19" y="15.5" font-size="8" font-family="Arial" font-weight="700" fill="#1a1f71" text-anchor="middle">${label}</text></svg>`;
+  const label = { visa: 'VISA', master: 'MC', american_express: 'AMEX', paypal: 'PayPal', apple_pay: 'Apple Pay', google_pay: 'G Pay', shopify_pay: 'shop' }[type] || type;
+  return `<svg viewBox="0 0 38 24" role="img" aria-label="${type}"><rect width="38" height="24" rx="4" fill="#fff"/><text x="19" y="15.5" font-size="7" font-family="Arial" font-weight="700" fill="#1a1f71" text-anchor="middle">${label}</text></svg>`;
 });
 engine.registerFilter('placeholder_svg_tag', (_, cls) => `<svg class="${cls || ''}" viewBox="0 0 100 100"><rect width="100" height="100"/></svg>`);
 engine.registerFilter('default_errors', () => '');
@@ -291,6 +290,7 @@ function resolveSettings(defs = [], values = {}) {
 }
 
 async function renderSection(id, data, globals) {
+  if (data.disabled) return ''; // Shopify skips sections switched off in the editor
   const src = read(`sections/${data.type}.liquid`);
   const schema = parseSchema(src);
   const blocks = (data.block_order || []).map((bid) => {
@@ -310,17 +310,17 @@ settings.type_heading_font = { family: '"Fraunces"', fallback_families: 'Georgia
 settings.type_body_font = { family: '"Inter"', fallback_families: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' };
 
 const baseGlobals = {
-  shop: { name: 'Legs Night', description: 'Deep-pressure foot wraps for restless legs at night.', money_format: '${{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'shopify_pay'], customer_accounts_enabled: false,
+  shop: { name: 'Legs Relief', description: 'Deep-pressure foot wraps for restless legs at night. Free tracked UK delivery and a 90-night guarantee.', money_format: '£{{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'google_pay', 'shopify_pay'], customer_accounts_enabled: false,
     policies: [{ title: 'Refund policy', url: '#refund-policy' }, { title: 'Shipping policy', url: '#shipping-policy' }, { title: 'Privacy policy', url: '#privacy-policy' }, { title: 'Terms of service', url: '#terms-of-service' }] },
   settings,
   routes: { root_url: 'index.html', cart_url: PAGE_URLS.cart, cart_add_url: '#', cart_change_url: '#', all_products_collection_url: PAGE_URLS.collection, search_url: '#', account_url: '#', product_recommendations_url: '#' },
   localization: { available_countries: [], available_languages: [] },
   recommendations: { performed: false, products_count: 0, products: [] },
-  cart: { item_count: 0, total_price: 0, currency: { iso_code: 'USD' }, items: [] },
-  request: { locale: { iso_code: 'en' }, origin: 'https://legsnight.com', page_type: 'index' },
+  cart: { item_count: 0, total_price: 0, currency: { iso_code: 'GBP' }, taxes_included: true, items: [] },
+  request: { locale: { iso_code: 'en' }, origin: 'https://legrelief.co.uk', page_type: 'index' },
   all_products: productsByHandle,
   collections: { all: allCollection },
-  canonical_url: 'https://legsnight.com/',
+  canonical_url: 'https://legrelief.co.uk/',
   current_page: 1
 };
 
@@ -330,7 +330,7 @@ Object.assign(engine.options.globals, { shop: baseGlobals.shop, settings, routes
 // Simulates the automatic discounts the README asks merchants to create, so the preview cart
 // shows the same totals as checkout: 20% off 2+ pairs, 30% off 3+ pairs, one free eBook with a pair.
 const previewPricing = `function (items) {
-  var pairs = items.filter(function (i) { return i.handle === 'legs-night-support-pair'; });
+  var pairs = items.filter(function (i) { return i.handle === 'legs-relief-support-pair'; });
   var count = pairs.reduce(function (n, i) { return n + i.quantity; }, 0);
   var pct = count >= 3 ? 30 : count >= 2 ? 20 : 0;
   pairs.forEach(function (i) {
@@ -345,7 +345,7 @@ const previewPricing = `function (items) {
     i.line_level_discount_allocations.push({ amount: i.price, discount_application: { title: 'Free eBook with your pair' } });
   });
 }`;
-const previewHead = `<script>window.LegsNightTheme.preview = true; window.LegsNightTheme.previewCatalog = ${JSON.stringify(previewCatalog)}; window.LegsNightTheme.previewPricing = ${previewPricing};</script>
+const previewHead = `<script>window.LegsReliefTheme.preview = true; window.LegsReliefTheme.previewCatalog = ${JSON.stringify(previewCatalog)}; window.LegsReliefTheme.previewPricing = ${previewPricing};</script>
 `;
 
 async function buildPage(file, templateName, extra = {}) {
@@ -363,13 +363,12 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'assets'))) fs.copyFileSync(path.join(ROOT, 'assets', f), path.join(OUT, 'assets', f));
 
-await buildPage('index.html', 'index', { page_title: 'Legs Night Storefront' });
+await buildPage('index.html', 'index', { page_title: 'Legs Relief Storefront' });
 for (const p of products) {
   const tplName = p.template_suffix ? `product.${p.template_suffix}` : 'product';
   await buildPage(`${p.handle}.html`, tplName, { product: p, page_title: p.title, request: { ...baseGlobals.request, page_type: 'product' } });
 }
 await buildPage('collection.html', 'collection', { collection: allCollection, page_title: 'Products' });
 await buildPage('contact.html', 'page.contact', { page: { title: 'Contact us', content: '' }, page_title: 'Contact' });
-await buildPage('review.html', 'page.review', { page: { title: 'Write a Review', content: '' }, page_title: 'Write a Review' });
 await buildPage('faq.html', 'page.faq', { page: { title: 'FAQ', content: '' }, page_title: 'FAQ' });
 await buildPage('404.html', '404', { page_title: 'Page not found' });

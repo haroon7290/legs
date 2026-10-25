@@ -8,7 +8,7 @@
           "settings": {
             "icon": "auto",
             "title": "Wrap it under the arch",
-            "text": "Start with the band under your arch, then bring it across the top of your foot so it crosses in an X.",
+            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
             "note": "Takes about 10 seconds"
           }
         },
@@ -40,10 +40,10 @@
         "style": "alt",
         "eyebrow": "How it works",
         "heading": "Three steps to a calmer night",
-        "text": "<p>No pills, no setup. Just firm, steady pressure right under the arch, all night.</p>",
-        "button_label": "Try Legs Night tonight",
+        "text": "<p>No pills, no fuss. Just firm, steady pressure right under the arch, all night.</p>",
+        "button_label": "Try Legs Relief tonight",
         "button_link": "",
-        "footnote": "<p>The one purpose-built device for this exact pressure is prescription-only and costs over $200. Legs Night brings the same simple idea home for $44.99.</p>"
+        "footnote": "<p>Most people get the fit right within a night or two: snug enough to feel firm pressure, never so tight it tingles.</p>"
       }
     },
     "features": {
@@ -77,7 +77,7 @@
             "icon": "washing",
             "color": "light",
             "title": "Washable",
-            "text": "Machine wash cold and air dry. Fresh for every night.",
+            "text": "Machine wash at 30°C and air dry. Fresh for every night.",
             "stat_value": "",
             "stat_suffix": ""
           }
@@ -88,7 +88,7 @@
             "icon": "shield",
             "color": "accent",
             "title": "Risk-free trial",
-            "text": "Wear it for 30 nights. If it doesn't help, you get a full refund.",
+            "text": "Wear it for 30 nights. If it doesn't help, you get your money back.",
             "stat_value": "90",
             "stat_suffix": "nights to try it"
           }
@@ -102,7 +102,7 @@
       ],
       "settings": {
         "style": "default",
-        "eyebrow": "Why Legs Night",
+        "eyebrow": "Why Legs Relief",
         "heading": "Made for the nights that won't settle",
         "text": "",
         "show_visual": true,
@@ -120,37 +120,37 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Price",
-            "value_1": "$44.99",
-            "value_2": "$200+",
-            "value_3": "$15–60/mo",
-            "value_4": "$0–20"
+            "label": "No prescription needed",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "yes",
+            "value_4": "yes"
           }
         },
         "row_2": {
           "type": "row",
           "settings": {
-            "label": "No prescription needed",
+            "label": "Drug-free",
             "value_1": "yes",
             "value_2": "no",
-            "value_3": "no",
+            "value_3": "yes",
             "value_4": "yes"
           }
         },
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Drug-free, no side effects",
+            "label": "Firm pressure right under the arch",
             "value_1": "yes",
-            "value_2": "yes",
+            "value_2": "no",
             "value_3": "no",
-            "value_4": "yes"
+            "value_4": "no"
           }
         },
         "row_4": {
           "type": "row",
           "settings": {
-            "label": "Targeted pressure under the arch",
+            "label": "Works while you sleep",
             "value_1": "yes",
             "value_2": "yes",
             "value_3": "no",
@@ -160,17 +160,17 @@
         "row_5": {
           "type": "row",
           "settings": {
-            "label": "Works while you sleep",
+            "label": "One-off cost",
             "value_1": "yes",
-            "value_2": "yes",
+            "value_2": "no",
             "value_3": "yes",
-            "value_4": "no"
+            "value_4": "yes"
           }
         },
         "row_6": {
           "type": "row",
           "settings": {
-            "label": "90-night guarantee",
+            "label": "90-night money-back guarantee",
             "value_1": "yes",
             "value_2": "no",
             "value_3": "no",
@@ -189,13 +189,13 @@
       "settings": {
         "style": "contrast",
         "eyebrow": "Compare",
-        "heading": "Same idea. A fraction of the price.",
-        "text": "<p>Relief shouldn't need a prescription or a $200 price tag.</p>",
-        "col_1": "Legs Night",
-        "col_2": "Prescription wrap",
-        "col_3": "Medication",
-        "col_4": "Stretching / socks",
-        "footnote": "<p>Comparison is for general information only. Talk to your doctor about what's right for you.</p>"
+        "heading": "Drug-free relief, made for bed.",
+        "text": "<p>How Legs Relief compares with the usual ways people try to settle restless legs.</p>",
+        "col_1": "Legs Relief",
+        "col_2": "Medication",
+        "col_3": "Compression socks",
+        "col_4": "Stretching & walking",
+        "footnote": "<p>For general information only. Speak to your GP or pharmacist about what's right for you.</p>"
       }
     },
     "guarantee": {
@@ -203,7 +203,7 @@
       "settings": {
         "style": "alt",
         "heading": "Sleep on it for 90 nights.",
-        "text": "<p>Wear Legs Night every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "text": "<p>Wear Legs Relief every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund the pair you tried in full — you don't even have to send it back.</p>",
         "button_label": "Start my 90 nights",
         "button_link": "",
         "policy_link": "/policies/refund-policy"

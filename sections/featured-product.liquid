@@ -1,5 +1,5 @@
 {%- assign product = section.settings.product -%}
-{%- if product == blank -%}{%- assign product = all_products['legs-night-support-pair'] -%}{%- endif -%}
+{%- if product == blank -%}{%- assign product = all_products['legs-relief-support-pair'] -%}{%- endif -%}
 <section class="section{% if section.settings.style == 'alt' %} section--alt{% endif %}" id="shop" {{ section.shopify_attributes }}>
   <div class="page-width">
     {%- if section.settings.heading != blank -%}
@@ -67,7 +67,7 @@
           "type": "text",
           "id": "note",
           "label": "Note under price",
-          "default": "Free shipping · 90-night guarantee"
+          "default": "Free UK delivery · 90-night guarantee"
         }
       ]
     },
@@ -79,7 +79,7 @@
           "type": "textarea",
           "id": "items",
           "label": "Benefits (one per line)",
-          "default": "Firm pressure pad sits right under the arch\nCalms the urge to move so you can drift off\nNo pills, no prescriptions, no side effects\nSoft, breathable & machine washable"
+          "default": "Firm pressure pad sits right under the arch\nHelps settle the urge to move so you can drift off\nNo pills, no prescriptions, no side effects\nSoft, breathable and machine washable at 30°C"
         }
       ]
     },
@@ -116,7 +116,7 @@
           "type": "html",
           "id": "size_guide",
           "label": "Size guide (HTML)",
-          "default": "<p>Measure around the widest part of your foot, just behind the toes.</p><table><tr><th>Size</th><th>US women</th><th>US men</th><th>EU</th></tr><tr><td>S/M</td><td>5 – 9</td><td>4 – 8</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>9.5 – 13</td><td>8.5 – 14</td><td>40 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p>"
+          "default": "<p>Go by your usual shoe size.</p><table><tr><th>Size</th><th>UK shoe size</th><th>EU</th></tr><tr><td>S/M</td><td>3 – 7</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>7½ – 12</td><td>41 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p>"
         }
       ]
     },
@@ -139,7 +139,7 @@
           "type": "text",
           "id": "note",
           "label": "Note next to heading",
-          "default": "Free shipping on every bundle"
+          "default": "Free UK delivery on every bundle"
         },
         {
           "type": "range",
@@ -180,7 +180,7 @@
           "id": "unit_label",
           "label": "Item name",
           "default": "pair",
-          "info": "Used in \"$35.99 / pair\" and \"Pair 1\"."
+          "info": "Used in \"£27.99 / pair\" and \"Pair 1\"."
         },
         {
           "type": "header",
@@ -283,7 +283,7 @@
           "type": "text",
           "id": "tag_2",
           "label": "Badge",
-          "default": "Most popular"
+          "default": "Recommended"
         },
         {
           "type": "checkbox",
@@ -349,7 +349,7 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "In stock — ships within 24 hours"
+          "default": "In stock and ready to dispatch"
         }
       ]
     },
@@ -362,26 +362,51 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Order today, get it [min] – [max]",
+          "default": "Free tracked delivery: arrives [min] – [max]",
           "info": "[min] and [max] become dates."
+        },
+        {
+          "type": "text",
+          "id": "countdown_text",
+          "label": "Countdown text",
+          "default": "Order within [time] for dispatch today",
+          "info": "Shown on working days before the cut-off. [time] becomes a countdown."
+        },
+        {
+          "type": "range",
+          "id": "cutoff_hour",
+          "label": "Same-day dispatch cut-off (UK time)",
+          "min": 0,
+          "max": 23,
+          "step": 1,
+          "unit": "h",
+          "default": 14,
+          "info": "0 means no same-day dispatch and hides the countdown."
         },
         {
           "type": "range",
           "id": "min_days",
-          "label": "Min days",
+          "label": "Fastest delivery (working days)",
           "min": 1,
-          "max": 20,
+          "max": 10,
           "step": 1,
-          "default": 4
+          "default": 2
         },
         {
           "type": "range",
           "id": "max_days",
-          "label": "Max days",
-          "min": 2,
-          "max": 30,
+          "label": "Slowest delivery (working days)",
+          "min": 1,
+          "max": 15,
           "step": 1,
-          "default": 8
+          "default": 3
+        },
+        {
+          "type": "textarea",
+          "id": "closed_days",
+          "label": "No dispatch or delivery on",
+          "default": "2026-12-25, 2026-12-28, 2027-01-01, 2027-03-26, 2027-03-29, 2027-05-03, 2027-05-31, 2027-08-30, 2027-12-27, 2027-12-28, 2028-01-03, 2028-04-14, 2028-04-17, 2028-05-01, 2028-05-29, 2028-08-28, 2028-12-25, 2028-12-26",
+          "info": "UK bank holidays as YYYY-MM-DD, separated by commas. Weekends are skipped automatically."
         }
       ]
     },
@@ -443,7 +468,7 @@
           "type": "text",
           "id": "item_1",
           "label": "Item 1",
-          "default": "Free shipping"
+          "default": "Free UK delivery"
         },
         {
           "type": "text",
@@ -464,16 +489,33 @@
       "name": "Mini review",
       "settings": [
         {
+          "type": "paragraph",
+          "content": "Only quote a genuine review from a real customer."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
           "type": "textarea",
           "id": "quote",
-          "label": "Quote",
-          "default": "First night in months I didn't get up to walk the hallway at 2am. I was honestly shocked."
+          "label": "Quote"
         },
         {
           "type": "text",
           "id": "author",
-          "label": "Author",
-          "default": "Linda R."
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show 'Verified buyer'",
+          "default": false
         }
       ]
     },
@@ -538,7 +580,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Get your Legs Night"
+      "default": "Get your Legs Relief"
     },
     {
       "type": "select",

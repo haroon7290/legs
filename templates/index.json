@@ -6,7 +6,7 @@
         "bullet_1": {
           "type": "bullet",
           "settings": {
-            "text": "Drug-free — no pills, no prescription"
+            "text": "Drug-free: no pills, no prescription"
           }
         },
         "bullet_2": {
@@ -36,12 +36,12 @@
       ],
       "settings": {
         "rating": 4.8,
-        "rating_text": "4.8/5 from 1,200+ restless sleepers",
+        "rating_text": "",
         "heading": "Restless legs at night? Give them something to <em>push against.</em>",
-        "text": "<p>Legs Night is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps quiet that crawling, can't-sit-still feeling so you can finally fall asleep.</p>",
-        "button_label": "Try Legs Night tonight",
+        "text": "<p>Legs Relief is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps settle that crawling, can't-keep-still feeling so you can finally drift off.</p>",
+        "button_label": "Try Legs Relief tonight",
         "button_link": "",
-        "price_note": "<strong>$44.99</strong> a pair · Free shipping · 90-night guarantee",
+        "price_note": "<strong>£34.99</strong> a pair · Free UK delivery · 90-night guarantee",
         "badge_title": "90-night guarantee",
         "badge_text": "Sleep on it. If it doesn't help, it's free.",
         "color_scheme": "dark"
@@ -54,8 +54,8 @@
           "type": "item",
           "settings": {
             "icon": "truck",
-            "title": "Free shipping",
-            "subtitle": "On every order"
+            "title": "Free UK delivery",
+            "subtitle": "Tracked, 2–3 working days"
           }
         },
         "item_2": {
@@ -78,8 +78,8 @@
           "type": "item",
           "settings": {
             "icon": "chat",
-            "title": "Real support",
-            "subtitle": "Replies within 24 hours"
+            "title": "UK-based support",
+            "subtitle": "Replies within one working day"
           }
         }
       },
@@ -135,7 +135,7 @@
         "style": "default",
         "eyebrow": "Sound familiar?",
         "heading": "It's 2am and your legs won't quit.",
-        "text": "<p>You're exhausted, but the moment you lie still the have-to-move feeling starts. You stretch, you kick, you pace the hallway — then do it all again tomorrow night.</p>",
+        "text": "<p>You're exhausted, but the moment you lie still the have-to-move feeling starts. You stretch, you kick, you pace the landing — then do it all again tomorrow night.</p>",
         "list_style": "negative",
         "button_label": "",
         "button_link": ""
@@ -149,7 +149,7 @@
           "settings": {
             "icon": "auto",
             "title": "Wrap it under the arch",
-            "text": "Start with the band under your arch, then bring it across the top of your foot so it crosses in an X.",
+            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
             "note": "Takes about 10 seconds"
           }
         },
@@ -181,10 +181,10 @@
         "style": "alt",
         "eyebrow": "How it works",
         "heading": "Three steps to a calmer night",
-        "text": "<p>No pills, no setup. Just firm, steady pressure right under the arch, all night.</p>",
-        "button_label": "Try Legs Night tonight",
+        "text": "<p>No pills, no fuss. Just firm, steady pressure right under the arch, all night.</p>",
+        "button_label": "Try Legs Relief tonight",
         "button_link": "",
-        "footnote": "<p>The one purpose-built device for this exact pressure is prescription-only and costs over $200. Legs Night brings the same simple idea home for $44.99.</p>"
+        "footnote": "<p>Most people get the fit right within a night or two: snug enough to feel firm pressure, never so tight it tingles.</p>"
       }
     },
     "features": {
@@ -218,7 +218,7 @@
             "icon": "washing",
             "color": "light",
             "title": "Washable",
-            "text": "Machine wash cold and air dry. Fresh for every night.",
+            "text": "Machine wash at 30°C and air dry. Fresh for every night.",
             "stat_value": "",
             "stat_suffix": ""
           }
@@ -229,7 +229,7 @@
             "icon": "shield",
             "color": "accent",
             "title": "Risk-free trial",
-            "text": "Wear it for 30 nights. If it doesn't help, you get a full refund.",
+            "text": "Wear it for 30 nights. If it doesn't help, you get your money back.",
             "stat_value": "90",
             "stat_suffix": "nights to try it"
           }
@@ -243,7 +243,7 @@
       ],
       "settings": {
         "style": "default",
-        "eyebrow": "Why Legs Night",
+        "eyebrow": "Why Legs Relief",
         "heading": "Made for the nights that won't settle",
         "text": "",
         "show_visual": true,
@@ -261,37 +261,37 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Price",
-            "value_1": "$44.99",
-            "value_2": "$200+",
-            "value_3": "$15–60/mo",
-            "value_4": "$0–20"
+            "label": "No prescription needed",
+            "value_1": "yes",
+            "value_2": "no",
+            "value_3": "yes",
+            "value_4": "yes"
           }
         },
         "row_2": {
           "type": "row",
           "settings": {
-            "label": "No prescription needed",
+            "label": "Drug-free",
             "value_1": "yes",
             "value_2": "no",
-            "value_3": "no",
+            "value_3": "yes",
             "value_4": "yes"
           }
         },
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Drug-free, no side effects",
+            "label": "Firm pressure right under the arch",
             "value_1": "yes",
-            "value_2": "yes",
+            "value_2": "no",
             "value_3": "no",
-            "value_4": "yes"
+            "value_4": "no"
           }
         },
         "row_4": {
           "type": "row",
           "settings": {
-            "label": "Targeted pressure under the arch",
+            "label": "Works while you sleep",
             "value_1": "yes",
             "value_2": "yes",
             "value_3": "no",
@@ -301,17 +301,17 @@
         "row_5": {
           "type": "row",
           "settings": {
-            "label": "Works while you sleep",
+            "label": "One-off cost",
             "value_1": "yes",
-            "value_2": "yes",
+            "value_2": "no",
             "value_3": "yes",
-            "value_4": "no"
+            "value_4": "yes"
           }
         },
         "row_6": {
           "type": "row",
           "settings": {
-            "label": "90-night guarantee",
+            "label": "90-night money-back guarantee",
             "value_1": "yes",
             "value_2": "no",
             "value_3": "no",
@@ -330,115 +330,83 @@
       "settings": {
         "style": "contrast",
         "eyebrow": "Compare",
-        "heading": "Same idea. A fraction of the price.",
-        "text": "<p>Relief shouldn't need a prescription or a $200 price tag.</p>",
-        "col_1": "Legs Night",
-        "col_2": "Prescription wrap",
-        "col_3": "Medication",
-        "col_4": "Stretching / socks",
-        "footnote": "<p>Comparison is for general information only. Talk to your doctor about what's right for you.</p>"
+        "heading": "Drug-free relief, made for bed.",
+        "text": "<p>How Legs Relief compares with the usual ways people try to settle restless legs.</p>",
+        "col_1": "Legs Relief",
+        "col_2": "Medication",
+        "col_3": "Compression socks",
+        "col_4": "Stretching & walking",
+        "footnote": "<p>For general information only. Speak to your GP or pharmacist about what's right for you.</p>"
       }
     },
     "reviews": {
       "type": "testimonials",
+      "disabled": true,
       "blocks": {
         "review_1": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "title": "First full night in years",
-            "text": "<p>I've had restless legs since my second pregnancy. I was skeptical, but the pressure under my arch just… switches it off. I slept through on night two.</p>",
-            "author": "Linda R.",
-            "location": "Ohio",
-            "verified": true
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "title": "My husband noticed before I did",
-            "text": "<p>He said I stopped kicking him. That alone was worth it. Comfortable enough that I forget I'm wearing them.</p>",
-            "author": "Maria G.",
-            "location": "Texas",
-            "verified": true
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "title": "Cheaper than the prescription one",
-            "text": "<p>My doctor mentioned a pressure wrap that costs over $200. Found these instead. Same idea, and they actually work for me.</p>",
-            "author": "Tom B.",
-            "location": "Florida",
-            "verified": true
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "rating": 4,
-            "title": "Takes a few nights to get the fit right",
-            "text": "<p>First night I had them too loose. Once I tightened the strap so the pad really pressed into my arch, big difference. Recommend sizing up if you're between.</p>",
-            "author": "Karen W.",
-            "location": "Oregon",
-            "verified": true
+            "rating": 5,
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "title": "No more pacing the hallway",
-            "text": "<p>I used to get up 3–4 times a night to walk it off. Now it's maybe once a week. I wish I'd found these sooner.</p>",
-            "author": "James P.",
-            "location": "Arizona",
-            "verified": true
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
             "rating": 5,
-            "title": "Great on long flights too",
-            "text": "<p>Bought a second pair for travel. Wore them on a 9-hour flight and my legs stayed calm the whole way.</p>",
-            "author": "Susan L.",
-            "location": "New York",
-            "verified": true
-          }
-        },
-        "review_7": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "title": "Simple and it works",
-            "text": "<p>No pills, no side effects. Slip them on, tighten, sleep. That's it.</p>",
-            "author": "Robert H.",
-            "location": "Georgia",
-            "verified": true
-          }
-        },
-        "review_8": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "title": "The eBook is a nice bonus",
-            "text": "<p>The wind-down routine in the guide plus the wraps has made evenings so much calmer.</p>",
-            "author": "Denise M.",
-            "location": "Michigan",
-            "verified": true
-          }
-        },
-        "review_9": {
-          "type": "review",
-          "settings": {
-            "rating": 4,
-            "title": "Helps most nights",
-            "text": "<p>Not a miracle every single night, but way more good nights than bad now. Customer service was lovely when I asked about sizing.</p>",
-            "author": "Paul D.",
-            "location": "Colorado",
-            "verified": true
+            "title": "Sample review",
+            "text": "<p>Replace this with a real review from a real customer.</p>",
+            "author": "Customer name",
+            "location": "Town",
+            "verified": false
           }
         }
       },
@@ -448,31 +416,28 @@
         "review_3",
         "review_4",
         "review_5",
-        "review_6",
-        "review_7",
-        "review_8",
-        "review_9"
+        "review_6"
       ],
       "settings": {
         "style": "alt",
-        "eyebrow": "Real nights, real people",
-        "heading": "“I actually slept through.”",
-        "show_summary": true,
-        "score": 4.8,
-        "summary_text": "Based on 1,248 reviews",
-        "initial_count": 6,
+        "eyebrow": "Reviews",
+        "heading": "What our customers say",
         "text": "",
-        "show_breakdown": true,
-        "pct_5": 86,
-        "pct_4": 10,
-        "pct_3": 3,
-        "pct_2": 1,
+        "show_summary": false,
+        "score": 5,
+        "summary_text": "Based on verified reviews",
+        "show_breakdown": false,
+        "pct_5": 0,
+        "pct_4": 0,
+        "pct_3": 0,
+        "pct_2": 0,
         "pct_1": 0,
-        "recommend_value": "97",
-        "recommend_text": "would recommend Legs Night",
+        "recommend_value": "",
+        "recommend_text": "would recommend Legs Relief",
         "layout": "marquee",
         "rows": "2",
-        "speed": 60
+        "speed": 60,
+        "initial_count": 6
       }
     },
     "product": {
@@ -491,7 +456,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "note": "Free shipping · 90-night guarantee"
+            "note": "Free UK delivery · 90-night guarantee"
           }
         },
         "benefits": {
@@ -516,6 +481,10 @@
             "show_payment_icons": true
           }
         },
+        "delivery": {
+          "type": "delivery",
+          "settings": {}
+        },
         "assurance": {
           "type": "assurance",
           "settings": {}
@@ -529,12 +498,13 @@
         "variant_picker",
         "quantity_breaks",
         "buy_buttons",
+        "delivery",
         "assurance"
       ],
       "settings": {
-        "product": "legs-night-support-pair",
+        "product": "legs-relief-support-pair",
         "eyebrow": "Try it tonight",
-        "heading": "Get your Legs Night",
+        "heading": "Get your Legs Relief",
         "style": "default",
         "link_title": true
       }
@@ -544,7 +514,7 @@
       "settings": {
         "style": "contrast",
         "heading": "Sleep on it for 90 nights.",
-        "text": "<p>Wear Legs Night every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund you in full — you don't even have to send it back.</p>",
+        "text": "<p>Wear Legs Relief every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund the pair you tried in full — you don't even have to send it back.</p>",
         "button_label": "Start my 90 nights",
         "button_link": "",
         "policy_link": "/policies/refund-policy"
@@ -557,9 +527,9 @@
         "product": "the-calm-night-protocol-ebook",
         "eyebrow": "Free bonus",
         "heading": "The Calm Night Protocol",
-        "text": "<p>Our 20-minute guide to quieter evenings: the simple wind-down routine, stretches, and sleep habits that pair perfectly with Legs Night. <strong>Yours free with any pair.</strong></p>",
+        "text": "<p>Our 20-minute guide to calmer evenings: a simple wind-down routine, gentle stretches and sleep habits that pair perfectly with Legs Relief. <strong>Yours free with any pair.</strong></p>",
         "price_label": "Free with any pair",
-        "button_label": "Claim with Legs Night",
+        "button_label": "Get it free with Legs Relief",
         "button_link": "",
         "show_buy_alone": true
       }
@@ -570,71 +540,71 @@
         "question_1": {
           "type": "question",
           "settings": {
-            "question": "What exactly is Legs Night?",
-            "answer": "<p>Legs Night is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
+            "question": "What exactly is Legs Relief?",
+            "answer": "<p>Legs Relief is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by a soft, criss-cross elastic wrap. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
           }
         },
         "question_2": {
           "type": "question",
           "settings": {
             "question": "How does it work?",
-            "answer": "<p>Steady pressure on specific points under the foot gives your nervous system a strong, calm signal to focus on. Many people find that it quiets the urge to move. The same idea is behind a prescription-only device that costs over $200 — we just made it simpler and affordable.</p>"
+            "answer": "<p>Steady pressure under the arch gives your legs a strong, calm signal to focus on, and many people find it settles the urge to move. It's a simple, drug-free idea: firm pressure, held in place all night.</p>"
           }
         },
         "question_3": {
           "type": "question",
           "settings": {
             "question": "Is it a medical device?",
-            "answer": "<p>No. Legs Night is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
+            "answer": "<p>No. Legs Relief is a comfort product, not a medical device. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, or you're pregnant, speak to your GP or midwife before use.</p>"
           }
         },
         "question_4": {
           "type": "question",
           "settings": {
             "question": "How soon will I notice a difference?",
-            "answer": "<p>Many customers feel calmer legs the first night. For others it takes a week or two of getting the fit right. That's why we ask you to try it for at least 30 nights.</p>"
+            "answer": "<p>Some people feel calmer legs on the first night. For others it takes a week or two to get the fit right, which is why we ask you to try it for at least 30 nights.</p>"
           }
         },
         "question_5": {
           "type": "question",
           "settings": {
             "question": "Which size should I choose?",
-            "answer": "<p><strong>S/M</strong> fits US women's 5–9 / men's 4–8. <strong>L/XL</strong> fits US women's 9.5–13 / men's 8.5–14. Between sizes? Go up — the strap tightens down easily.</p>"
+            "answer": "<p><strong>S/M</strong> fits UK shoe sizes 3–7 (EU 35–40). <strong>L/XL</strong> fits UK sizes 7½–12 (EU 41–47). Between sizes? Go up — the strap tightens down easily.</p>"
           }
         },
         "question_6": {
           "type": "question",
           "settings": {
-            "question": "Do I wear one or two?",
-            "answer": "<p>Each order is a pair — one for each foot. Most people wear both, but you can wear just one on the leg that bothers you most.</p>"
+            "question": "Is it comfortable to sleep in?",
+            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is shaped to the arch. Tighten it until the pressure feels firm but comfortable — never painful or tingly.</p>"
           }
         },
         "question_7": {
           "type": "question",
           "settings": {
-            "question": "Is it comfortable to sleep in?",
-            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is contoured to the arch. Tighten until the pressure feels firm but comfortable — never painful or tingling.</p>"
+            "question": "How long does delivery take?",
+            "answer": "<p>Delivery is free and tracked on every UK order. Order by 2pm, Monday to Friday, and we dispatch the same day. Most orders arrive in 2–3 working days, and you'll get a tracking link by email.</p>"
           }
         },
         "question_8": {
           "type": "question",
           "settings": {
-            "question": "How do I wash it?",
-            "answer": "<p>Remove the pad, then hand or machine wash the wrap on cold and let it air dry.</p>"
+            "question": "What is the 90-night guarantee?",
+            "answer": "<p>Wear Legs Relief for at least 30 nights. If it doesn't help, email support@legrelief.co.uk within 90 nights of delivery and we'll refund the pair you tried in full — you don't need to send it back. Unopened extra pairs from a bundle can be returned for a full refund too. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
           }
         },
         "question_9": {
           "type": "question",
           "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Shipping is free on every order. We ship within 24 hours, and most orders arrive in 4–8 business days. You'll get a tracking number by email.</p>"
+            "question": "Can I return it if I change my mind?",
+            "answer": "<p>Yes. As well as the 90-night guarantee, UK law gives you 14 days from delivery to change your mind. Email us within that time and we'll explain how to send it back for a full refund.</p>"
           }
         },
         "question_10": {
           "type": "question",
           "settings": {
-            "question": "What is the 90-night guarantee?",
-            "answer": "<p>Wear Legs Night consistently for at least 30 nights. If it doesn't help, email support@legsnight.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+            "question": "Are there any extra costs?",
+            "answer": "<p>No. The price you see is the price you pay. Delivery is free, and there's nothing extra to pay at checkout.</p>"
           }
         }
       },
@@ -655,7 +625,7 @@
         "eyebrow": "FAQ",
         "heading": "Questions, answered",
         "open_first": true,
-        "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within 24 hours.</p>"
+        "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within one working day.</p>"
       }
     },
     "newsletter": {
@@ -664,7 +634,7 @@
         "style": "default",
         "eyebrow": "",
         "heading": "Better nights, in your inbox",
-        "text": "<p>Sleep tips, wind-down routines and early access to new products. No spam — unsubscribe anytime.</p>",
+        "text": "<p>Sleep tips, wind-down routines and early access to new products. No spam — unsubscribe any time.</p>",
         "button_label": "Subscribe"
       }
     }

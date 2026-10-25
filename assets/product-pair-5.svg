@@ -18,5 +18,5 @@
 </defs><rect width="800" height="800" fill="url(#paper)"/><ellipse cx="400" cy="640" rx="250" ry="24" fill="#3a2f22" opacity=".3" filter="url(#blur)"/>
 <path d="M230 250 L570 250 L590 630 L210 630 Z" fill="#0e1523"/><path d="M230 250 L570 250 L575 300 L225 300 Z" fill="#18233a"/>
 <rect x="210" y="560" width="380" height="14" fill="#e8682a"/>
-<text x="400" y="420" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="46" letter-spacing="-1" fill="#f3ede3" text-anchor="middle">Legs <tspan font-weight="400">Night</tspan></text>
+<text x="400" y="420" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="46" letter-spacing="-1" fill="#f3ede3" text-anchor="middle">Legs <tspan font-weight="400">Relief</tspan></text>
 <text x="400" y="460" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="4" fill="#f3ede3" fill-opacity=".6" text-anchor="middle">SUPPORT PAIR · S/M</text><text x="776" y="778" font-family="Helvetica,Arial,sans-serif" font-size="13" letter-spacing="1.5" fill="#131a26" fill-opacity=".35" text-anchor="end">DUMMY PHOTO · PACKAGING</text><rect width="800" height="800" filter="url(#grain)"/></svg>

@@ -1,11 +1,13 @@
 {%- comment -%}
   Product buy box. Renders section.blocks in order.
+  Star ratings appear only when a reviews app (e.g. Judge.me) has filled the standard
+  reviews.rating / reviews.rating_count metafields from real reviews.
   Usage: {% render 'product-info', product: product, section: section %}
 {%- endcomment -%}
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
-  assign rating = product.metafields.reviews.rating.value.rating | default: settings.default_rating
-  assign rating_count = product.metafields.reviews.rating_count | default: settings.default_rating_count
+  assign rating = product.metafields.reviews.rating.value.rating
+  assign rating_count = product.metafields.reviews.rating_count.value | plus: 0
   assign form_id = 'product-form-' | append: section.id
 -%}
 
@@ -32,10 +34,12 @@
   {%- case block.type -%}
 
     {%- when 'rating' -%}
-      <div class="rating-line" {{ block.shopify_attributes }}>
-        {% render 'stars', rating: rating %}
-        <span><strong>{{ rating }}</strong> · {{ block.settings.text | replace: '[count]', rating_count }}</span>
-      </div>
+      {%- if rating != blank and rating_count > 0 -%}
+        <a href="#reviews" class="rating-line" {{ block.shopify_attributes }}>
+          {% render 'stars', rating: rating %}
+          <span><strong>{{ rating | round: 1 }}</strong> · {{ block.settings.text | replace: '[count]', rating_count }}</span>
+        </a>
+      {%- endif -%}
 
     {%- when 'title' -%}
       {%- if section.settings.link_title -%}
@@ -230,14 +234,23 @@
       <div class="stock-note" {{ block.shopify_attributes }}><span class="stock-note__dot"></span><span>{{ block.settings.text }}</span></div>
 
     {%- when 'delivery' -%}
-      {%- assign min_secs = block.settings.min_days | times: 86400 -%}
-      {%- assign max_secs = block.settings.max_days | times: 86400 -%}
-      {%- assign now_secs = 'now' | date: '%s' | times: 1 -%}
-      {%- assign min_date = now_secs | plus: min_secs | date: '%b %-d' -%}
-      {%- assign max_date = now_secs | plus: max_secs | date: '%b %-d' -%}
-      <div class="delivery-note" {{ block.shopify_attributes }}>
+      {%- comment -%}
+        The server renders a rough estimate (calendar days); theme.js replaces it with working days
+        in UK time, skipping weekends and the closed days, plus the same-day dispatch countdown.
+      {%- endcomment -%}
+      {%- liquid
+        assign min_secs = block.settings.min_days | plus: 1 | times: 86400
+        assign max_secs = block.settings.max_days | plus: 2 | times: 86400
+        assign now_secs = 'now' | date: '%s' | times: 1
+        assign min_date = now_secs | plus: min_secs | date: '%a %-d %b'
+        assign max_date = now_secs | plus: max_secs | date: '%a %-d %b'
+      -%}
+      <div class="delivery-note" data-delivery data-min="{{ block.settings.min_days }}" data-max="{{ block.settings.max_days }}" data-cutoff="{{ block.settings.cutoff_hour }}" data-closed="{{ block.settings.closed_days | strip_newlines | escape }}" data-text="{{ block.settings.text | escape }}" data-countdown-text="{{ block.settings.countdown_text | escape }}" {{ block.shopify_attributes }}>
         {% render 'icon', icon: 'truck' %}
-        <span>{{ block.settings.text | replace: '[min]', min_date | replace: '[max]', max_date }}</span>
+        <span class="delivery-note__body">
+          <span class="delivery-note__countdown" data-delivery-countdown hidden></span>
+          <span data-delivery-text>{{ block.settings.text | replace: '[min]', min_date | replace: '[max]', max_date }}</span>
+        </span>
       </div>
 
     {%- when 'addon' -%}
@@ -275,11 +288,14 @@
       </div>
 
     {%- when 'mini_review' -%}
-      <div class="mini-review" {{ block.shopify_attributes }}>
-        {% render 'stars', rating: 5 %}
-        <p>“{{ block.settings.quote }}”</p>
-        <strong>— {{ block.settings.author }}</strong> <span class="verified">{% render 'icon', icon: 'verified' %} {{ 'general.verified' | t }}</span>
-      </div>
+      {%- if block.settings.quote != blank -%}
+        <div class="mini-review" {{ block.shopify_attributes }}>
+          {% render 'stars', rating: block.settings.rating %}
+          <p>“{{ block.settings.quote }}”</p>
+          <strong>— {{ block.settings.author }}</strong>
+          {%- if block.settings.verified %} <span class="verified">{% render 'icon', icon: 'verified' %} {{ 'general.verified' | t }}</span>{% endif -%}
+        </div>
+      {%- endif -%}
 
     {%- when 'collapsible' -%}
       <div class="accordion" style="margin-top:0;border-top:0" {{ block.shopify_attributes }}>

@@ -1,10 +1,10 @@
-/* Legs Night theme — vanilla JS, no dependencies.
- * Works against Shopify's AJAX Cart API. When window.LegsNightTheme.preview is true
+/* Legs Relief theme — vanilla JS, no dependencies.
+ * Works against Shopify's AJAX Cart API. When window.LegsReliefTheme.preview is true
  * (the static /preview pages) a localStorage cart is used instead. */
 (function () {
   'use strict';
 
-  var Theme = window.LegsNightTheme = window.LegsNightTheme || {};
+  var Theme = window.LegsReliefTheme = window.LegsReliefTheme || {};
   var routes = Theme.routes || { cart_add_url: '/cart/add', cart_change_url: '/cart/change', cart_url: '/cart' };
   var strings = Theme.strings || {};
 
@@ -43,7 +43,7 @@
 
   /* --------------------------------------------------------- cart backend */
   var PreviewCart = {
-    key: 'legsnight-preview-cart',
+    key: 'legsrelief-preview-cart',
     read: function () {
       try { return JSON.parse(localStorage.getItem(this.key)) || []; } catch (e) { return []; }
     },
@@ -487,6 +487,68 @@
     });
   }
 
+  /* ------------------------------------------------------ delivery estimate */
+  // Working days in UK time: weekends and the block's closed days (bank holidays) are skipped.
+  function ukNow() {
+    var parts = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).forEach(function (p) { parts[p.type] = parseInt(p.value, 10); });
+    return { date: new Date(Date.UTC(parts.year, parts.month - 1, parts.day, 12)), seconds: parts.hour * 3600 + parts.minute * 60 + parts.second };
+  }
+  function initDelivery(scope) {
+    (scope || document).querySelectorAll('[data-delivery]').forEach(function (el) {
+      if (el._deliveryTimer) clearInterval(el._deliveryTimer);
+      var closed = (el.getAttribute('data-closed') || '').split(/[\s,]+/).filter(Boolean);
+      var minDays = parseInt(el.getAttribute('data-min'), 10) || 2;
+      var maxDays = Math.max(minDays, parseInt(el.getAttribute('data-max'), 10) || minDays);
+      var cutoff = (parseInt(el.getAttribute('data-cutoff'), 10) || 0) * 3600;
+      var textEl = el.querySelector('[data-delivery-text]');
+      var countdownEl = el.querySelector('[data-delivery-countdown]');
+      function isWorkingDay(d) {
+        var day = d.getUTCDay();
+        return day !== 0 && day !== 6 && closed.indexOf(d.toISOString().slice(0, 10)) === -1;
+      }
+      function nextWorkingDay(d) {
+        var next = new Date(d.getTime());
+        do { next.setUTCDate(next.getUTCDate() + 1); } while (!isWorkingDay(next));
+        return next;
+      }
+      function addWorkingDays(d, n) {
+        var out = d;
+        for (var i = 0; i < n; i++) out = nextWorkingDay(out);
+        return out;
+      }
+      function label(d) {
+        var p = {};
+        new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' })
+          .formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+        return p.weekday + ' ' + p.day + ' ' + p.month;
+      }
+      function render() {
+        var now = ukNow();
+        var sameDay = cutoff > 0 && isWorkingDay(now.date) && now.seconds < cutoff;
+        var dispatch = sameDay ? now.date : nextWorkingDay(now.date);
+        textEl.textContent = (el.getAttribute('data-text') || '')
+          .replace('[min]', label(addWorkingDays(dispatch, minDays)))
+          .replace('[max]', label(addWorkingDays(dispatch, maxDays)));
+        if (!countdownEl || cutoff === 0) return;
+        if (sameDay) {
+          var mins = Math.ceil((cutoff - now.seconds) / 60);
+          var h = Math.floor(mins / 60), m = mins % 60;
+          countdownEl.innerHTML = escapeHtml(el.getAttribute('data-countdown-text') || '')
+            .replace('[time]', '<strong>' + [h ? h + 'h' : '', m || !h ? m + 'm' : ''].join(' ').trim() + '</strong>');
+        } else {
+          var tomorrow = nextWorkingDay(now.date).getTime() === new Date(now.date.getTime() + 864e5).getTime();
+          var day = tomorrow ? (strings.tomorrow || 'tomorrow') : dispatch.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'UTC' });
+          countdownEl.textContent = (strings.dispatchNext || 'Order now for dispatch [day]').replace('[day]', day);
+        }
+        countdownEl.hidden = false;
+      }
+      render();
+      el._deliveryTimer = setInterval(render, 30000);
+    });
+  }
+
   /* ---------------------------------------------------- announcement bar */
   function initAnnouncement() {
     document.querySelectorAll('[data-announcement]').forEach(function (bar) {
@@ -672,6 +734,7 @@
     initAnnouncement();
     document.querySelectorAll('[data-product]').forEach(function (root) { initProduct(root); initGallery(root); });
     initStickyAtc();
+    initDelivery();
     initHero();
     initHeaderState();
     initParallax();
@@ -684,6 +747,7 @@
   // Re-initialise sections when edited in the theme editor
   document.addEventListener('shopify:section:load', function (e) {
     e.target.querySelectorAll('[data-product]').forEach(function (root) { initProduct(root); initGallery(root); });
+    initDelivery(e.target);
     initAnnouncement();
     initReveal(e.target);
     initRecommendations();

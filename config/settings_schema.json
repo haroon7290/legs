@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Legs Night",
+    "theme_name": "Legs Relief",
     "theme_version": "1.0.0",
-    "theme_author": "Legs Night",
-    "theme_documentation_url": "https://legsnight.com",
-    "theme_support_url": "https://legsnight.com/pages/contact"
+    "theme_author": "Legs Relief",
+    "theme_documentation_url": "https://legrelief.co.uk",
+    "theme_support_url": "https://legrelief.co.uk/pages/contact"
   },
   {
     "name": "Colors",
@@ -167,7 +167,7 @@
         "type": "text",
         "id": "cart_guarantee_text",
         "label": "Text under checkout button",
-        "default": "Free shipping · 90-night guarantee"
+        "default": "Free UK delivery · 90-night guarantee"
       }
     ]
   },
@@ -176,22 +176,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Used on product cards and pages when a product has no reviews.rating metafield (e.g. from a reviews app)."
-      },
-      {
-        "type": "range",
-        "id": "default_rating",
-        "label": "Default rating",
-        "min": 1,
-        "max": 5,
-        "step": 0.1,
-        "default": 4.8
-      },
-      {
-        "type": "text",
-        "id": "default_rating_count",
-        "label": "Default review count",
-        "default": "1,248"
+        "content": "Star ratings show automatically once a reviews app (for example Judge.me or Shopify Product Reviews) has real reviews for a product. Nothing is shown until then."
       }
     ]
   },

@@ -1,8 +1,8 @@
 {
-  "name": "legs-night-theme",
+  "name": "legs-relief-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "Legs Night Shopify theme",
+  "description": "Legs Relief Shopify theme",
   "scripts": {
     "check": "node tools/theme-check.mjs && node tools/validate-upload.mjs",
     "preview": "node tools/build-preview.mjs",

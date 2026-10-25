@@ -1,4 +1,4 @@
-# Homepage image prompts — Legs Night
+# Homepage image prompts — Legs Relief
 
 Paste-ready prompts for every image on the homepage, written to match the brand reference
 photo: a bright, airy bedroom, natural window light, beige linen bedding with navy and
@@ -59,7 +59,7 @@ have a real photo for a step, add it in Theme editor › How it works › Step �
 ## 4. Buy box product photos (also used on the product page)
 
 - **Size:** 2000 × 2000 px (1:1)
-- **Upload:** Shopify admin › Products › Legs Night Support Pair › Media, in this order:
+- **Upload:** Shopify admin › Products › Legs Relief Support Pair › Media, in this order:
 
 **Photo 1 — Main shot (the pair)**
 ```
@@ -94,7 +94,7 @@ Studio product photograph of a matte deep navy rectangular product box with a th
 - **Upload:** Shopify admin › Products › The Calm Night Protocol › Media (the homepage eBook section uses this image)
 
 Generate a background only, then add the title in Canva ("The Calm Night Protocol" in a bold serif,
-beige and orange, "Legs Night Guide" at the top).
+beige and orange, "Legs Relief Guide" at the top).
 
 ```
 Minimal book cover background photograph: a dark navy bedroom wall at dusk with a soft warm glow from a bedside lamp in the lower right corner and the faint out-of-focus edge of a mustard knit throw at the bottom. Lots of empty dark space across the top two-thirds for a title. Moody, calm, premium, subtle grain. No text. --ar 3:4

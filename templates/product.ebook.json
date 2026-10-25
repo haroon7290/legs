@@ -22,13 +22,13 @@
         "price": {
           "type": "price",
           "settings": {
-            "note": "Instant digital download · Free with any Legs Night pair"
+            "note": "Instant download · Free with any Legs Relief pair"
           }
         },
         "benefits": {
           "type": "benefits",
           "settings": {
-            "items": "The 10-minute wind-down routine\n5 gentle stretches for before bed\nWhat to avoid in the evening (and why)\nHow to get the best fit from your Legs Night"
+            "items": "The 10-minute wind-down routine\n5 gentle stretches for before bed\nWhat to avoid in the evening (and why)\nHow to get the best fit from your Legs Relief wraps"
           }
         },
         "buy_buttons": {
@@ -59,11 +59,11 @@
         "sticky_atc": false,
         "show_tabs": true,
         "tab_1_heading": "What's inside",
-        "tab_1_content": "<ul><li>Why legs get restless at night</li><li>The evening wind-down routine</li><li>Stretches, temperature and timing</li><li>Building a calm-night habit</li></ul>",
+        "tab_1_content": "<ul><li>Why legs get restless at night</li><li>The 10-minute wind-down routine</li><li>Gentle stretches, temperature and timing</li><li>Building a calm-night habit</li></ul>",
         "tab_2_heading": "Format",
-        "tab_2_content": "<p>PDF eBook, 32 pages. Download link delivered by email right after purchase.</p>",
-        "tab_3_heading": "Free with Legs Night",
-        "tab_3_content": "<p>Every Legs Night Support Pair order includes this eBook free.</p>"
+        "tab_2_content": "<p>PDF eBook, about 20 minutes to read. The download link arrives by email straight after checkout.</p>",
+        "tab_3_heading": "Free with Legs Relief",
+        "tab_3_content": "<p>Every Legs Relief Support Pair order includes this eBook free. It's added to your basket automatically.</p>"
       }
     },
     "upsell": {
@@ -76,7 +76,7 @@
         "price": {
           "type": "price",
           "settings": {
-            "note": "Free shipping · 90-night guarantee"
+            "note": "Free UK delivery · 90-night guarantee"
           }
         },
         "benefits": {
@@ -104,9 +104,9 @@
         "buy_buttons"
       ],
       "settings": {
-        "product": "legs-night-support-pair",
+        "product": "legs-relief-support-pair",
         "eyebrow": "Pair it with",
-        "heading": "Get the eBook free with Legs Night",
+        "heading": "Get the eBook free with Legs Relief",
         "style": "alt",
         "link_title": true
       }

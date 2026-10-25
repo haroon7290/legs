@@ -3,8 +3,8 @@
 {%- endcomment -%}
 {%- liquid
   assign variant = product.selected_or_first_available_variant
-  assign rating = product.metafields.reviews.rating.value.rating | default: settings.default_rating
-  assign rating_count = product.metafields.reviews.rating_count | default: settings.default_rating_count
+  assign rating = product.metafields.reviews.rating.value.rating
+  assign rating_count = product.metafields.reviews.rating_count.value | plus: 0
   if product.type == 'eBook' or product.handle contains 'ebook' or product.handle contains 'protocol'
     assign default_fallback = 'ebook-cover.svg'
   else
@@ -29,7 +29,9 @@
     {%- endif -%}
   </a>
   <div class="card__body">
-    <div class="rating-line">{% render 'stars', rating: rating %} <span>({{ rating_count }})</span></div>
+    {%- if rating != blank and rating_count > 0 -%}
+      <div class="rating-line">{% render 'stars', rating: rating %} <span>({{ rating_count }})</span></div>
+    {%- endif -%}
     <h3 class="card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
     {%- if product.metafields.custom.subtitle != blank -%}
       <p class="card__desc">{{ product.metafields.custom.subtitle }}</p>

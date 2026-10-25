@@ -49,6 +49,11 @@
     {%- if product.featured_media -%}"image": [{{ product.featured_media | image_url: width: 1200 | prepend: 'https:' | json }}],{%- endif -%}
     "description": {{ product.description | strip_html | json }},
     "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- assign rating = product.metafields.reviews.rating.value.rating -%}
+    {%- assign rating_count = product.metafields.reviews.rating_count.value | plus: 0 -%}
+    {%- if rating != blank and rating_count > 0 -%}
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": {{ rating | json }}, "reviewCount": {{ rating_count }} },
+    {%- endif -%}
     "offers": [
       {%- for variant in product.variants -%}
         {
@@ -58,6 +63,25 @@
           "price": {{ variant.price | divided_by: 100.00 | json }},
           "priceCurrency": {{ cart.currency.iso_code | json }},
           "url": {{ request.origin | append: variant.url | json }}
+          {%- if variant.requires_shipping -%},
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": {{ cart.currency.iso_code | json }} },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "GB" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 3, "unitCode": "DAY" }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "GB",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 90,
+            "returnFees": "https://schema.org/FreeReturn"
+          }
+          {%- endif %}
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]
@@ -112,7 +136,7 @@
           "type": "text",
           "id": "note",
           "label": "Note under price",
-          "default": "Free shipping · 90-night guarantee"
+          "default": "Free UK delivery · 90-night guarantee"
         }
       ]
     },
@@ -124,7 +148,7 @@
           "type": "textarea",
           "id": "items",
           "label": "Benefits (one per line)",
-          "default": "Firm pressure pad sits right under the arch\nCalms the urge to move so you can drift off\nNo pills, no prescriptions, no side effects\nSoft, breathable & machine washable"
+          "default": "Firm pressure pad sits right under the arch\nHelps settle the urge to move so you can drift off\nNo pills, no prescriptions, no side effects\nSoft, breathable and machine washable at 30°C"
         }
       ]
     },
@@ -161,7 +185,7 @@
           "type": "html",
           "id": "size_guide",
           "label": "Size guide (HTML)",
-          "default": "<p>Measure around the widest part of your foot, just behind the toes.</p><table><tr><th>Size</th><th>US women</th><th>US men</th><th>EU</th></tr><tr><td>S/M</td><td>5 – 9</td><td>4 – 8</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>9.5 – 13</td><td>8.5 – 14</td><td>40 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p>"
+          "default": "<p>Go by your usual shoe size.</p><table><tr><th>Size</th><th>UK shoe size</th><th>EU</th></tr><tr><td>S/M</td><td>3 – 7</td><td>35 – 40</td></tr><tr><td>L/XL</td><td>7½ – 12</td><td>41 – 47</td></tr></table><p>Between sizes? Pick the larger one — the strap tightens down easily.</p>"
         }
       ]
     },
@@ -184,7 +208,7 @@
           "type": "text",
           "id": "note",
           "label": "Note next to heading",
-          "default": "Free shipping on every bundle"
+          "default": "Free UK delivery on every bundle"
         },
         {
           "type": "range",
@@ -225,7 +249,7 @@
           "id": "unit_label",
           "label": "Item name",
           "default": "pair",
-          "info": "Used in \"$35.99 / pair\" and \"Pair 1\"."
+          "info": "Used in \"£27.99 / pair\" and \"Pair 1\"."
         },
         {
           "type": "header",
@@ -328,7 +352,7 @@
           "type": "text",
           "id": "tag_2",
           "label": "Badge",
-          "default": "Most popular"
+          "default": "Recommended"
         },
         {
           "type": "checkbox",
@@ -394,7 +418,7 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "In stock — ships within 24 hours"
+          "default": "In stock and ready to dispatch"
         }
       ]
     },
@@ -407,26 +431,51 @@
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Order today, get it [min] – [max]",
+          "default": "Free tracked delivery: arrives [min] – [max]",
           "info": "[min] and [max] become dates."
+        },
+        {
+          "type": "text",
+          "id": "countdown_text",
+          "label": "Countdown text",
+          "default": "Order within [time] for dispatch today",
+          "info": "Shown on working days before the cut-off. [time] becomes a countdown."
+        },
+        {
+          "type": "range",
+          "id": "cutoff_hour",
+          "label": "Same-day dispatch cut-off (UK time)",
+          "min": 0,
+          "max": 23,
+          "step": 1,
+          "unit": "h",
+          "default": 14,
+          "info": "0 means no same-day dispatch and hides the countdown."
         },
         {
           "type": "range",
           "id": "min_days",
-          "label": "Min days",
+          "label": "Fastest delivery (working days)",
           "min": 1,
-          "max": 20,
+          "max": 10,
           "step": 1,
-          "default": 4
+          "default": 2
         },
         {
           "type": "range",
           "id": "max_days",
-          "label": "Max days",
-          "min": 2,
-          "max": 30,
+          "label": "Slowest delivery (working days)",
+          "min": 1,
+          "max": 15,
           "step": 1,
-          "default": 8
+          "default": 3
+        },
+        {
+          "type": "textarea",
+          "id": "closed_days",
+          "label": "No dispatch or delivery on",
+          "default": "2026-12-25, 2026-12-28, 2027-01-01, 2027-03-26, 2027-03-29, 2027-05-03, 2027-05-31, 2027-08-30, 2027-12-27, 2027-12-28, 2028-01-03, 2028-04-14, 2028-04-17, 2028-05-01, 2028-05-29, 2028-08-28, 2028-12-25, 2028-12-26",
+          "info": "UK bank holidays as YYYY-MM-DD, separated by commas. Weekends are skipped automatically."
         }
       ]
     },
@@ -488,7 +537,7 @@
           "type": "text",
           "id": "item_1",
           "label": "Item 1",
-          "default": "Free shipping"
+          "default": "Free UK delivery"
         },
         {
           "type": "text",
@@ -509,16 +558,33 @@
       "name": "Mini review",
       "settings": [
         {
+          "type": "paragraph",
+          "content": "Only quote a genuine review from a real customer."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
           "type": "textarea",
           "id": "quote",
-          "label": "Quote",
-          "default": "First night in months I didn't get up to walk the hallway at 2am. I was honestly shocked."
+          "label": "Quote"
         },
         {
           "type": "text",
           "id": "author",
-          "label": "Author",
-          "default": "Linda R."
+          "label": "Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show 'Verified buyer'",
+          "default": false
         }
       ]
     },
@@ -590,7 +656,7 @@
       "type": "richtext",
       "id": "tab_1_content",
       "label": "Tab 1 content",
-      "default": "<p><strong>1.</strong> Slip the wrap over your foot so the pad sits under your arch.</p><p><strong>2.</strong> Tighten the strap until the pressure feels firm but comfortable.</p><p><strong>3.</strong> Wear it to bed. Most people wear one on each foot.</p>"
+      "default": "<p><strong>1.</strong> Place the pad under your arch and bring the band across the top of your foot so it crosses in an X.</p><p><strong>2.</strong> Tighten the strap until the pressure feels firm but comfortable, never tingly.</p><p><strong>3.</strong> Wear it to bed. Most people wear one on each foot.</p>"
     },
     {
       "type": "text",
@@ -602,19 +668,19 @@
       "type": "richtext",
       "id": "tab_2_content",
       "label": "Tab 2 content",
-      "default": "<ul><li>Wrap: soft, breathable woven elastic that crosses over the top of the foot</li><li>Pad: firm, contoured EVA foam under the arch (removable)</li><li>Hand or machine wash cold, air dry</li></ul>"
+      "default": "<ul><li>Wrap: soft, breathable woven stretch elastic that crosses over the top of the foot</li><li>Pad: firm, contoured EVA foam under the arch (removable)</li><li>Remove the pad, then hand or machine wash at 30°C and air dry</li></ul>"
     },
     {
       "type": "text",
       "id": "tab_3_heading",
       "label": "Tab 3 heading",
-      "default": "Shipping & returns"
+      "default": "Delivery & returns"
     },
     {
       "type": "richtext",
       "id": "tab_3_content",
       "label": "Tab 3 content",
-      "default": "<p>Free shipping on every order. Orders ship within 24 hours and usually arrive in 4–8 business days.</p><p>Try it for 90 nights. If it doesn't help, email us for a full refund — no need to send it back.</p>"
+      "default": "<p>Free tracked UK delivery on every order. Order by 2pm, Monday to Friday, for same-day dispatch. Most orders arrive in 2–3 working days.</p><p>Try it for 90 nights. If it doesn't help, email us for a full refund on the pair you tried — no need to send it back. You can also cancel within 14 days of delivery under UK law.</p>"
     }
   ]
 }

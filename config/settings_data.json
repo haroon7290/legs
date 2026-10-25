@@ -20,9 +20,7 @@
       "free_shipping_threshold": 0,
       "cart_upsell_product": "the-calm-night-protocol-ebook",
       "cart_upsell_heading": "Add the eBook to your night routine",
-      "cart_guarantee_text": "Free shipping · 90-night guarantee",
-      "default_rating": 4.8,
-      "default_rating_count": "1,248",
+      "cart_guarantee_text": "Free UK delivery · 90-night guarantee",
       "use_google_fonts": true
     }
   }

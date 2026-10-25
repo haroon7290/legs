@@ -27,7 +27,7 @@
     <div class="drawer__footer" data-cart-footer hidden>
       <div class="cart-savings" data-cart-savings-row hidden><span>{{ 'cart.savings' | t }}</span><span data-cart-savings></span></div>
       <div class="cart-totals"><span>{{ 'cart.subtotal' | t }}</span><span data-cart-total>{{ cart.total_price | money }}</span></div>
-      <p class="cart-note-small">{{ 'cart.taxes_and_shipping' | t }}</p>
+      <p class="cart-note-small">{% if cart.taxes_included %}{{ 'cart.taxes_included' | t }}{% else %}{{ 'cart.taxes_and_shipping' | t }}{% endif %}</p>
       <form action="{{ routes.cart_url }}" method="post" style="margin-top:14px">
         <button type="submit" name="checkout" class="button button--full">{% render 'icon', icon: 'lock' %} {{ 'cart.checkout' | t }}</button>
       </form>

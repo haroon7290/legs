@@ -6,71 +6,106 @@
         "question_1": {
           "type": "question",
           "settings": {
-            "question": "What exactly is Legs Night?",
-            "answer": "<p>Legs Night is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by an adjustable strap. You wear it in bed to help calm restless, fidgety legs so you can fall asleep.</p>"
+            "question": "What exactly is Legs Relief?",
+            "answer": "<p>Legs Relief is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by a soft, criss-cross elastic wrap. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
           }
         },
         "question_2": {
           "type": "question",
           "settings": {
             "question": "How does it work?",
-            "answer": "<p>Steady pressure on specific points under the foot gives your nervous system a strong, calm signal to focus on. Many people find that it quiets the urge to move. The same idea is behind a prescription-only device that costs over $200 — we just made it simpler and affordable.</p>"
+            "answer": "<p>Steady pressure under the arch gives your legs a strong, calm signal to focus on, and many people find it settles the urge to move. It's a simple, drug-free idea: firm pressure, held in place all night.</p>"
           }
         },
         "question_3": {
           "type": "question",
           "settings": {
             "question": "Is it a medical device?",
-            "answer": "<p>No. Legs Night is a comfort product, not a medical device, and it is not FDA-cleared. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, talk to your doctor before use.</p>"
+            "answer": "<p>No. Legs Relief is a comfort product, not a medical device. It isn't intended to diagnose, treat, cure or prevent any disease. If you have a medical condition, or you're pregnant, speak to your GP or midwife before use.</p>"
           }
         },
         "question_4": {
           "type": "question",
           "settings": {
             "question": "How soon will I notice a difference?",
-            "answer": "<p>Many customers feel calmer legs the first night. For others it takes a week or two of getting the fit right. That's why we ask you to try it for at least 30 nights.</p>"
+            "answer": "<p>Some people feel calmer legs on the first night. For others it takes a week or two to get the fit right, which is why we ask you to try it for at least 30 nights.</p>"
           }
         },
         "question_5": {
           "type": "question",
           "settings": {
             "question": "Which size should I choose?",
-            "answer": "<p><strong>S/M</strong> fits US women's 5–9 / men's 4–8. <strong>L/XL</strong> fits US women's 9.5–13 / men's 8.5–14. Between sizes? Go up — the strap tightens down easily.</p>"
+            "answer": "<p><strong>S/M</strong> fits UK shoe sizes 3–7 (EU 35–40). <strong>L/XL</strong> fits UK sizes 7½–12 (EU 41–47). Between sizes? Go up — the strap tightens down easily.</p>"
           }
         },
         "question_6": {
           "type": "question",
           "settings": {
             "question": "Do I wear one or two?",
-            "answer": "<p>Each order is a pair — one for each foot. Most people wear both, but you can wear just one on the leg that bothers you most.</p>"
+            "answer": "<p>Each order is a pair, one for each foot. Most people wear both, but you can wear just one on the leg that bothers you most.</p>"
           }
         },
         "question_7": {
           "type": "question",
           "settings": {
             "question": "Is it comfortable to sleep in?",
-            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is contoured to the arch. Tighten until the pressure feels firm but comfortable — never painful or tingling.</p>"
+            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is shaped to the arch. Tighten it until the pressure feels firm but comfortable — never painful or tingly.</p>"
           }
         },
         "question_8": {
           "type": "question",
           "settings": {
             "question": "How do I wash it?",
-            "answer": "<p>Remove the pad, then hand or machine wash the wrap on cold and let it air dry.</p>"
+            "answer": "<p>Take out the pad, then hand wash or machine wash the wrap at 30°C and let it air dry. Please don't tumble dry it.</p>"
           }
         },
         "question_9": {
           "type": "question",
           "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Shipping is free on every order. We ship within 24 hours, and most orders arrive in 4–8 business days. You'll get a tracking number by email.</p>"
+            "question": "How long does delivery take?",
+            "answer": "<p>Delivery is free and tracked on every UK order. Order by 2pm, Monday to Friday, and we dispatch the same day. Most orders arrive in 2–3 working days, and you'll get a tracking link by email.</p>"
           }
         },
         "question_10": {
           "type": "question",
           "settings": {
+            "question": "Do you deliver outside the UK?",
+            "answer": "<p>Not yet. We deliver to every UK address, including Northern Ireland and the Scottish Highlands and islands.</p>"
+          }
+        },
+        "question_11": {
+          "type": "question",
+          "settings": {
             "question": "What is the 90-night guarantee?",
-            "answer": "<p>Wear Legs Night consistently for at least 30 nights. If it doesn't help, email support@legsnight.com within 90 nights of delivery for a full refund on one unit. Because it's worn against the skin, you don't need to send it back. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+            "answer": "<p>Wear Legs Relief for at least 30 nights. If it doesn't help, email support@legrelief.co.uk within 90 nights of delivery and we'll refund the pair you tried in full — you don't need to send it back. Unopened extra pairs from a bundle can be returned for a full refund too. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+          }
+        },
+        "question_12": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return it if I change my mind?",
+            "answer": "<p>Yes. As well as the 90-night guarantee, UK law gives you 14 days from delivery to change your mind. Email us within that time and we'll explain how to send it back for a full refund.</p>"
+          }
+        },
+        "question_13": {
+          "type": "question",
+          "settings": {
+            "question": "How do I get the free eBook?",
+            "answer": "<p>It's added to your basket automatically with any pair, free of charge. The download link arrives by email straight after checkout.</p>"
+          }
+        },
+        "question_14": {
+          "type": "question",
+          "settings": {
+            "question": "Are there any extra costs?",
+            "answer": "<p>No. The price you see is the price you pay. Delivery is free, and there's nothing extra to pay at checkout.</p>"
+          }
+        },
+        "question_15": {
+          "type": "question",
+          "settings": {
+            "question": "How can I pay?",
+            "answer": "<p>You can pay securely by debit or credit card, Apple Pay, Google Pay, PayPal or Shop Pay. Payments are handled by Shopify's secure checkout, so we never see your card details.</p>"
           }
         }
       },
@@ -84,14 +119,19 @@
         "question_7",
         "question_8",
         "question_9",
-        "question_10"
+        "question_10",
+        "question_11",
+        "question_12",
+        "question_13",
+        "question_14",
+        "question_15"
       ],
       "settings": {
         "style": "alt",
         "eyebrow": "FAQ",
         "heading": "Questions, answered",
         "open_first": true,
-        "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within 24 hours.</p>"
+        "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within one working day.</p>"
       }
     }
   },

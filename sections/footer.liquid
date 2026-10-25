@@ -72,7 +72,7 @@
     {%- endif -%}
 
     <div class="site-footer__bottom">
-      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}</span>
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.rights' | t }}{% if section.settings.business_details != blank %}<span class="site-footer__business">{{ section.settings.business_details }}</span>{% endif %}</span>
       {%- if section.settings.show_policies and shop.policies.size > 0 -%}
         <ul class="site-footer__policies">
           {%- for policy in shop.policies -%}
@@ -96,19 +96,26 @@
       "type": "textarea",
       "id": "about",
       "label": "About text",
-      "default": "Deep-pressure foot wraps for restless, fidgety legs at night. Designed to help you settle down — without pills."
+      "default": "Legs Relief is a UK brand making deep-pressure foot wraps for restless, fidgety legs at night. Designed to help you settle — without pills."
     },
     {
       "type": "text",
       "id": "email",
       "label": "Support email",
-      "default": "support@legsnight.com"
+      "default": "support@legrelief.co.uk"
     },
     {
       "type": "richtext",
       "id": "disclaimer",
       "label": "Disclaimer",
-      "default": "<p>Legs Night is a comfort product, not a medical device. It is not FDA-cleared and is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. If you have a medical condition, are pregnant, have diabetes, neuropathy or circulation problems, talk to your doctor before use. Testimonials reflect individual experiences.</p>"
+      "default": "<p>Legs Relief is a comfort product, not a medical device. It is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. If you have a medical condition, are pregnant, or have diabetes, neuropathy or circulation problems, speak to your GP before use.</p>"
+    },
+    {
+      "type": "text",
+      "id": "business_details",
+      "label": "Business details",
+      "default": "Legs Relief · United Kingdom",
+      "info": "Shown at the bottom. A limited company must show its registered name, number and office address."
     },
     {
       "type": "checkbox",
@@ -177,7 +184,7 @@
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "<p>We reply within 24 hours, 7 days a week.</p>"
+          "default": "<p>We reply within one working day, Monday to Friday.</p>"
         }
       ]
     }

@@ -37,16 +37,20 @@
     { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Sound familiar?" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "It's 2am and your legs won't quit." },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>You're exhausted, but the moment you lie still the creepy-crawly, have-to-move feeling starts. You stretch, you kick, you pace the hallway. Then you do it again tomorrow.</p>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>You're exhausted, but the moment you lie still the creepy-crawly, have-to-move feeling starts. You stretch, you kick, you pace the landing. Then you do it all again tomorrow.</p>" },
     { "type": "select", "id": "list_style", "label": "List style", "options": [{ "value": "negative", "label": "Problems (✕)" }, { "value": "positive", "label": "Benefits (✓)" }], "default": "negative" },
     { "type": "text", "id": "button_label", "label": "Button label" },
     { "type": "url", "id": "button_link", "label": "Button link" }
   ],
   "blocks": [
-    { "type": "item", "name": "List item", "settings": [
-      { "type": "text", "id": "title", "label": "Bold text" },
-      { "type": "text", "id": "text", "label": "Text", "default": "List item" }
-    ] }
+    {
+      "type": "item",
+      "name": "List item",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Bold text" },
+        { "type": "text", "id": "text", "label": "Text", "default": "List item" }
+      ]
+    }
   ],
   "presets": [{ "name": "Image with text", "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }] }]
 }

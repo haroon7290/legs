@@ -5,13 +5,37 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer" } },
-        "help": { "type": "menu", "settings": { "heading": "Help", "menu": "help" } },
-        "support": { "type": "text", "settings": { "heading": "Support", "text": "<p>Questions? Email <a href=\"mailto:support@legsnight.com\">support@legsnight.com</a>.<br>We reply within 24 hours, 7 days a week.</p>" } }
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer"
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": "help"
+          }
+        },
+        "support": {
+          "type": "text",
+          "settings": {
+            "heading": "Support",
+            "text": "<p>Questions? Email <a href=\"mailto:support@legrelief.co.uk\">support@legrelief.co.uk</a>.<br>We reply within one working day, Monday to Friday.</p>"
+          }
+        }
       },
-      "block_order": ["shop", "help", "support"],
+      "block_order": [
+        "shop",
+        "help",
+        "support"
+      ],
       "settings": {}
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

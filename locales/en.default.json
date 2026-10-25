@@ -44,7 +44,7 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "Add to basket",
       "choose_options": "Choose options",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
@@ -53,7 +53,9 @@
       "size_guide": "Size guide",
       "description": "Description",
       "buy_alone": "Buy on its own · {{ price }}",
-      "select_product": "Select a product in the theme editor."
+      "select_product": "Select a product in the theme editor.",
+      "dispatch_next": "Order now for dispatch [day]",
+      "tomorrow": "tomorrow"
     }
   },
   "collections": {
@@ -69,24 +71,25 @@
     "clear_all": "Clear all"
   },
   "cart": {
-    "title": "Your cart",
-    "empty": "Your cart is empty",
+    "title": "Your basket",
+    "empty": "Your basket is empty",
     "empty_text": "Calmer nights are just a click away.",
-    "continue_shopping": "Shop Legs Night",
+    "continue_shopping": "Shop Legs Relief",
     "subtotal": "Subtotal",
     "savings": "You save",
-    "taxes_and_shipping": "Taxes calculated at checkout. Shipping is free.",
+    "taxes_and_shipping": "Free UK delivery. Any taxes are calculated at checkout.",
     "checkout": "Secure checkout",
     "add": "Add",
     "remove": "Remove",
     "quantity": "Quantity",
     "increase": "Increase quantity",
     "decrease": "Decrease quantity",
-    "update": "Update cart",
+    "update": "Update basket",
     "note": "Order note",
     "error": "Something went wrong. Please try again.",
-    "free_shipping_away_html": "You're [amount] away from free shipping",
-    "free_shipping_unlocked": "You've unlocked free shipping!"
+    "free_shipping_away_html": "You're [amount] away from free delivery",
+    "free_shipping_unlocked": "You've unlocked free delivery!",
+    "taxes_included": "Prices include VAT. Free UK delivery."
   },
   "contact": {
     "name": "Name",
@@ -94,15 +97,7 @@
     "order": "Order number (optional)",
     "message": "Message",
     "send": "Send message",
-    "success": "Thanks! We'll get back to you within 24 hours."
-  },
-  "reviews": {
-    "rating": "Your rating",
-    "name": "Your name",
-    "title": "Review title",
-    "body": "Your review",
-    "submit": "Submit review",
-    "success": "Thank you! We read every review before it goes live."
+    "success": "Thanks! We'll get back to you within one working day."
   },
   "customer": {
     "login": "Log in",
@@ -122,12 +117,12 @@
     "add_address": "Add a new address",
     "default": "Default",
     "set_default": "Set as default address",
-    "address1": "Address",
-    "address2": "Apartment, suite, etc.",
-    "city": "City",
-    "zip": "Postal / ZIP code",
+    "address1": "Address line 1",
+    "address2": "Flat, suite or house name",
+    "city": "Town or city",
+    "zip": "Postcode",
     "country": "Country",
-    "province": "State / Province",
+    "province": "County",
     "phone": "Phone",
     "total": "Total",
     "billing": "Billing address",
