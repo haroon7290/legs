@@ -122,7 +122,7 @@
     closeDrawer();
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
+    document.documentElement.classList.add('no-scroll'); document.body.classList.add('no-scroll');
     openDrawer = drawer;
     var focusTarget = drawer.querySelector('[data-drawer-close]');
     if (focusTarget) setTimeout(function () { focusTarget.focus(); }, 50);
@@ -131,7 +131,7 @@
     if (!openDrawer) return;
     openDrawer.classList.remove('is-open');
     openDrawer.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no-scroll');
+    document.documentElement.classList.remove('no-scroll'); document.body.classList.remove('no-scroll');
     openDrawer = null;
   }
   document.addEventListener('click', function (e) {
@@ -150,13 +150,13 @@
 
   /* ---------------------------------------------------------------- modal */
   var openModalEl = null;
-  function closeModal() { if (openModalEl) { openModalEl.classList.remove('is-open'); document.body.classList.remove('no-scroll'); openModalEl = null; } }
+  function closeModal() { if (openModalEl) { openModalEl.classList.remove('is-open'); document.documentElement.classList.remove('no-scroll'); document.body.classList.remove('no-scroll'); openModalEl = null; } }
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-modal-open]');
     if (!t) return;
     e.preventDefault();
     var m = document.getElementById(t.getAttribute('data-modal-open'));
-    if (m) { m.classList.add('is-open'); document.body.classList.add('no-scroll'); openModalEl = m; }
+    if (m) { m.classList.add('is-open'); document.documentElement.classList.add('no-scroll'); document.body.classList.add('no-scroll'); openModalEl = m; }
   });
 
   /* ----------------------------------------------------------- cart drawer */

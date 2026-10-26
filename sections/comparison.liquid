@@ -12,10 +12,10 @@
           <thead>
             <tr>
               <th scope="col"><span class="visually-hidden">{{ 'general.feature' | t }}</span></th>
-              <th scope="col" class="compare__us">{{ section.settings.col_1 }}</th>
-              <th scope="col">{{ section.settings.col_2 }}</th>
-              <th scope="col">{{ section.settings.col_3 }}</th>
-              {%- if section.settings.col_4 != blank -%}<th scope="col">{{ section.settings.col_4 }}</th>{%- endif -%}
+              <th scope="col" class="compare__us"><span class="compare__head">{{ section.settings.col_1 }}</span></th>
+              <th scope="col"><span class="compare__head">{{ section.settings.col_2 }}</span></th>
+              <th scope="col"><span class="compare__head">{{ section.settings.col_3 }}</span></th>
+              {%- if section.settings.col_4 != blank -%}<th scope="col"><span class="compare__head">{{ section.settings.col_4 }}</span></th>{%- endif -%}
             </tr>
           </thead>
           <tbody>
