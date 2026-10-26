@@ -1,53 +1,181 @@
-<div class="page-width page-width--narrow main-page">
-  <h1>{{ section.settings.heading | default: page.title }}</h1>
-  {%- if section.settings.text != blank -%}<div class="rte text-center muted" style="margin:-16px auto 32px;max-width:600px">{{ section.settings.text }}</div>{%- endif -%}
-  {%- if section.blocks.size > 0 -%}
-    <div class="contact-cards">
-      {%- for block in section.blocks -%}
-        <div class="contact-card" {{ block.shopify_attributes }}>
-          {% render 'icon', icon: block.settings.icon %}
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.text }}</p>
+{%- comment -%}
+  Contact page: intro, contact details and the contact form.
+  Two columns on desktop (details left, form right), one column on phones.
+  Styles are included in this file, so it works on its own.
+{%- endcomment -%}
+<div class="contact-page">
+  <div class="page-width">
+    <div class="contact-page__intro">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="contact-page__title">{{ section.settings.heading | default: page.title }}</h1>
+      {%- if section.settings.text != blank -%}<div class="contact-page__text rte">{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="contact-page__grid">
+      {%- if section.blocks.size > 0 or section.settings.faq_text != blank -%}
+        <div class="contact-page__details">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign link = block.settings.link
+              if link == blank and block.settings.text contains '@'
+                assign link = 'mailto:' | append: block.settings.text
+              endif
+            -%}
+            <div class="contact-detail" {{ block.shopify_attributes }}>
+              <span class="contact-detail__icon">{% render 'icon', icon: block.settings.icon %}</span>
+              <div class="contact-detail__body">
+                <h2 class="contact-detail__title">{{ block.settings.title }}</h2>
+                {%- if link != blank -%}
+                  <a class="contact-detail__text contact-detail__link" href="{{ link }}">{{ block.settings.text }}</a>
+                {%- else -%}
+                  <p class="contact-detail__text">{{ block.settings.text }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+          {%- if section.settings.faq_text != blank -%}<div class="contact-page__faq rte">{{ section.settings.faq_text }}</div>{%- endif -%}
         </div>
-      {%- endfor -%}
+      {%- endif -%}
+
+      <div class="contact-page__card">
+        {%- if page.content != blank -%}<div class="contact-page__content rte">{{ page.content }}</div>{%- endif -%}
+        {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="contact-form__notice contact-form__notice--success" role="status">{% render 'icon', icon: 'tick' %}<span>{{ 'contact.success' | t }}</span></div>
+          {%- elsif form.errors -%}
+            <div class="contact-form__notice contact-form__notice--error" role="alert">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="ContactName">{{ 'contact.name' | t }}</label>
+              <input id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}">
+            </div>
+            <div class="contact-form__field">
+              <label for="ContactEmail">{{ 'contact.email' | t }} <span aria-hidden="true">*</span></label>
+              <input id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}"{% if form.errors contains 'email' %} aria-invalid="true"{% endif %}>
+            </div>
+          </div>
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label for="ContactOrder">{{ 'contact.order' | t }}</label>
+              <input id="ContactOrder" type="text" name="contact[order]" placeholder="#1001">
+            </div>
+            {%- if section.settings.topics != blank -%}
+              {%- assign topics = section.settings.topics | newline_to_br | split: '<br />' -%}
+              <div class="contact-form__field">
+                <label for="ContactTopic">{{ section.settings.topic_label }}</label>
+                <select id="ContactTopic" name="contact[topic]">
+                  {%- for topic in topics -%}
+                    {%- assign topic = topic | strip -%}
+                    {%- if topic != blank -%}<option value="{{ topic | escape }}">{{ topic }}</option>{%- endif -%}
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="contact-form__field">
+            <label for="ContactBody">{{ 'contact.message' | t }} <span aria-hidden="true">*</span></label>
+            <textarea id="ContactBody" name="contact[body]" rows="6" required{% if form.errors contains 'body' %} aria-invalid="true"{% endif %}>{{ form.body }}</textarea>
+          </div>
+
+          <button type="submit" class="button contact-form__submit">{{ 'contact.send' | t }} {% render 'icon', icon: 'arrow-right' %}</button>
+          {%- if section.settings.privacy_text != blank -%}<div class="contact-form__privacy rte">{{ section.settings.privacy_text }}</div>{%- endif -%}
+        {%- endform -%}
+      </div>
     </div>
-  {%- endif -%}
-  {%- if page.content != blank -%}<div class="rte" style="margin-bottom:28px">{{ page.content }}</div>{%- endif -%}
-  {%- form 'contact', class: 'form', id: 'ContactForm' -%}
-    {%- if form.posted_successfully? -%}
-      <div class="notice" role="status">{{ 'contact.success' | t }}</div>
-    {%- elsif form.errors -%}
-      <div class="notice notice--error" role="alert">{{ form.errors | default_errors }}</div>
-    {%- endif -%}
-    <div class="form__row">
-      <div class="field"><label for="ContactName">{{ 'contact.name' | t }}</label><input id="ContactName" type="text" name="contact[name]" autocomplete="name" value="{{ form.name }}"></div>
-      <div class="field"><label for="ContactEmail">{{ 'contact.email' | t }} *</label><input id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}"></div>
-    </div>
-    <div class="field"><label for="ContactOrder">{{ 'contact.order' | t }}</label><input id="ContactOrder" type="text" name="contact[order]" placeholder="#1001"></div>
-    <div class="field"><label for="ContactBody">{{ 'contact.message' | t }} *</label><textarea id="ContactBody" name="contact[body]" required>{{ form.body }}</textarea></div>
-    <button type="submit" class="button">{{ 'contact.send' | t }}</button>
-  {%- endform -%}
+  </div>
 </div>
+
+{% stylesheet %}
+  .contact-page { padding: 56px 0 var(--section-space, 80px); }
+  .contact-page__intro { max-width: 640px; margin: 0 auto 40px; text-align: center; }
+  .contact-page__title { margin: 0 0 12px; }
+  .contact-page__text { font-size: 1.06rem; color: var(--color-text-muted, #5d6270); }
+
+  .contact-page__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 32px; max-width: 1040px; margin: 0 auto; align-items: start; }
+  .contact-page__grid > :only-child { grid-column: 1 / -1; max-width: 720px; width: 100%; justify-self: center; }
+
+  /* Contact details */
+  .contact-page__details { display: grid; gap: 12px; }
+  .contact-detail { display: flex; align-items: center; gap: 14px; padding: 18px; border-radius: var(--radius-lg, 14px); background: var(--color-surface, #fbf8f3); border: 1px solid var(--line, rgba(19, 26, 38, .12)); }
+  .contact-detail__icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(232, 104, 42, .1); color: var(--color-accent, #e8682a); }
+  .contact-detail__icon svg { width: 22px; height: 22px; }
+  .contact-detail__body { min-width: 0; }
+  .contact-detail__title { margin: 0 0 2px; font-family: var(--font-body); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-muted, #5d6270); }
+  .contact-detail__text { display: block; margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  .contact-detail__link { color: var(--color-text, #131a26); text-decoration: underline; text-decoration-color: rgba(232, 104, 42, .55); text-underline-offset: 3px; transition: color .2s; }
+  .contact-detail__link:hover { color: var(--color-accent, #e8682a); }
+  .contact-page__faq { padding: 6px 4px 0; font-size: .92rem; color: var(--color-text-muted, #5d6270); }
+  .contact-page__faq a { color: var(--color-text, #131a26); }
+
+  /* Form */
+  .contact-page__card { padding: 32px; border-radius: var(--radius-lg, 14px); background: var(--color-surface, #fbf8f3); border: 1px solid var(--line, rgba(19, 26, 38, .12)); box-shadow: var(--shadow-sm, 0 1px 2px rgba(14, 21, 35, .06)); }
+  .contact-page__content { margin-bottom: 20px; }
+  .contact-form { display: grid; gap: 18px; }
+  .contact-form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .contact-form__row > :only-child { grid-column: 1 / -1; }
+  .contact-form__field { display: grid; gap: 6px; min-width: 0; }
+  .contact-form__field label { font-size: .86rem; font-weight: 600; }
+  .contact-form__field label span { color: var(--color-accent, #e8682a); }
+  .contact-form__field input, .contact-form__field select, .contact-form__field textarea { width: 100%; min-height: 50px; padding: 12px 14px; border-radius: var(--radius-sm, 8px); border: 1px solid var(--line-strong, rgba(19, 26, 38, .22)); background: var(--color-bg, #f4eee4); color: var(--color-text, #131a26); font: inherit; font-size: 16px; transition: border-color .2s, box-shadow .2s; }
+  .contact-form__field select { -webkit-appearance: none; appearance: none; padding-right: 40px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23131a26' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; }
+  .contact-form__field textarea { min-height: 150px; resize: vertical; }
+  .contact-form__field input:focus, .contact-form__field select:focus, .contact-form__field textarea:focus { outline: none; border-color: var(--color-accent, #e8682a); box-shadow: 0 0 0 3px rgba(232, 104, 42, .15); }
+  .contact-form__field [aria-invalid="true"] { border-color: var(--color-sale, #c8461a); }
+  .contact-form__submit { justify-self: start; min-width: 220px; }
+  .contact-form__privacy { font-size: .8rem; color: var(--color-text-muted, #5d6270); }
+  .contact-form__privacy a { color: inherit; }
+  .contact-form__notice { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; border-radius: var(--radius-sm, 8px); font-size: .95rem; font-weight: 600; }
+  .contact-form__notice svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+  .contact-form__notice ul { margin: 0; padding-left: 18px; }
+  .contact-form__notice--success { background: rgba(47, 125, 91, .1); color: var(--color-success, #2f7d5b); }
+  .contact-form__notice--error { background: rgba(200, 70, 26, .1); color: var(--color-sale, #c8461a); }
+
+  @media (max-width: 849px) {
+    .contact-page__grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  }
+  @media (max-width: 749px) {
+    .contact-page { padding-top: 36px; }
+    .contact-page__intro { margin-bottom: 28px; }
+    .contact-page__details { gap: 10px; }
+    .contact-detail { padding: 14px 16px; }
+    .contact-detail__icon { width: 40px; height: 40px; }
+    .contact-page__card { padding: 22px 18px; }
+    .contact-form { gap: 16px; }
+    .contact-form__row { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .contact-form__submit { justify-self: stretch; min-width: 0; width: 100%; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "Contact form",
-  "max_blocks": 3,
+  "max_blocks": 4,
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact us" },
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Real people, real answers. We reply to every message within one working day.</p>" }
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contact us" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We're here to help" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Real people, real answers. We reply to every message within one working day.</p>" },
+    { "type": "richtext", "id": "faq_text", "label": "Text under the contact details", "default": "<p>Quick question? Most answers about delivery, sizing and the 90-night guarantee are in our <a href=\"/pages/faq\">FAQ</a>.</p>" },
+    { "type": "header", "content": "Form" },
+    { "type": "text", "id": "topic_label", "label": "Topic label", "default": "What's it about?" },
+    { "type": "textarea", "id": "topics", "label": "Topics (one per line)", "default": "Order or delivery\nReturns or the 90-night guarantee\nSizing and fit\nSomething else", "info": "Leave empty to hide the topic menu." },
+    { "type": "richtext", "id": "privacy_text", "label": "Privacy note", "default": "<p>We'll only use your details to reply to your message. See our <a href=\"/policies/privacy-policy\">privacy policy</a>.</p>" }
   ],
   "blocks": [
     {
       "type": "card",
-      "name": "Info card",
+      "name": "Contact detail",
       "settings": [
         { "type": "select", "id": "icon", "label": "Icon", "default": "mail", "options": [{ "value": "mail", "label": "Mail" }, { "value": "clock", "label": "Clock" }, { "value": "chat", "label": "Chat" }, { "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }] },
         { "type": "text", "id": "title", "label": "Title", "default": "Email" },
-        { "type": "text", "id": "text", "label": "Text", "default": "support@legrelief.co.uk" }
+        { "type": "text", "id": "text", "label": "Text", "default": "support@legrelief.co.uk" },
+        { "type": "url", "id": "link", "label": "Link (optional)", "info": "Email addresses link automatically." }
       ]
     }
   ],
-  "presets": [{ "name": "Contact form" }]
+  "presets": [{ "name": "Contact form", "blocks": [{ "type": "card" }] }]
 }
 {% endschema %}
