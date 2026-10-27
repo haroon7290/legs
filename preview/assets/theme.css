@@ -133,7 +133,9 @@ p { margin: 0 0 1em; }
 .site-header__left { grid-area: nav; justify-self: center; }
 .site-header__logo { grid-area: logo; display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; letter-spacing: -.03em; text-transform: none; }
 .site-header__logo em { font-style: normal; font-weight: 500; }
-.site-header__logo img { max-height: 40px; width: auto; }
+/* Uploaded logo image: shown at the header's "Logo width" setting, a little smaller on phones */
+.site-header__logo-img { width: var(--logo-width, 150px); max-width: 100%; height: auto; }
+@media (max-width: 749px) { .site-header__logo-img { width: min(var(--logo-width, 150px), 140px); } }
 .logo-mark { width: 28px; height: 28px; flex-shrink: 0; }
 /* Round orange dot over the "i" in the logo text (Archivo's dot position, drawn on a dotless i) */
 .logo-i::before { content: ""; display: inline-block; width: .12em; height: .12em; margin: 0 -.179em 0 .059em; border-radius: 50%; background: var(--color-accent); vertical-align: .61em; }

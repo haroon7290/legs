@@ -11,10 +11,10 @@
       </nav>
     </div>
 
-    <a href="{{ routes.root_url }}" class="site-header__logo">
+    <a href="{{ routes.root_url }}" class="site-header__logo" style="--logo-width: {{ section.settings.logo_width }}px">
       {%- if section.settings.logo != blank -%}
         {%- assign logo_h = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio | round -%}
-        {{ section.settings.logo | image_url: width: 600 | image_tag: width: section.settings.logo_width, height: logo_h, alt: shop.name, style: 'max-height:none' }}
+        {{ section.settings.logo | image_url: width: 900 | image_tag: width: section.settings.logo_width, height: logo_h, alt: shop.name, class: 'site-header__logo-img' }}
       {%- else -%}
         {% render 'icon', icon: 'logo-mark' %}{% render 'logo-text' %}
       {%- endif -%}
