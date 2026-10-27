@@ -135,6 +135,8 @@ p { margin: 0 0 1em; }
 .site-header__logo em { font-style: normal; font-weight: 500; }
 .site-header__logo img { max-height: 40px; width: auto; }
 .logo-mark { width: 28px; height: 28px; flex-shrink: 0; }
+/* Round orange dot over the "i" in the logo text (Archivo's dot position, drawn on a dotless i) */
+.logo-i::before { content: ""; display: inline-block; width: .12em; height: .12em; margin: 0 -.179em 0 .059em; border-radius: 50%; background: var(--color-accent); vertical-align: .61em; }
 .site-header__nav ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
 .site-header__nav a { display: block; white-space: nowrap; font-size: .94rem; font-weight: 500; color: var(--color-text); padding: 6px 0; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
 .site-header__nav a:hover, .site-header__nav a[aria-current="page"] { border-bottom-color: var(--color-accent); }

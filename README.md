@@ -7,7 +7,8 @@ photos are dummies.
 
 **Setting up the store?** Start with [`STORE_SETUP.md`](STORE_SETUP.md): every Shopify setting
 in order, with the refund and delivery policies ready to paste. Product details are in
-[`PRODUCT_LISTING.md`](PRODUCT_LISTING.md) and photo prompts in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md).
+[`PRODUCT_LISTING.md`](PRODUCT_LISTING.md), photo prompts in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md) and the
+logo files in [`brand/`](brand/README.md).
 
 ## Design
 

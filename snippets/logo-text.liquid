@@ -1,3 +1,6 @@
-{%- comment -%} Store name with everything after the first word set in a lighter weight. {%- endcomment -%}
+{%- comment -%}
+  Store name with everything after the first word set in a lighter weight. The "i" there gets
+  the brand's round orange dot, as in the logo files. Screen readers get the plain name.
+{%- endcomment -%}
 {%- assign name_parts = shop.name | split: ' ' -%}
-<span>{{ name_parts.first }}{% if name_parts.size > 1 %} <em>{% for part in name_parts offset: 1 %}{{ part }}{% unless forloop.last %} {% endunless %}{% endfor %}</em>{% endif %}</span>
+<span class="visually-hidden">{{ shop.name | escape }}</span><span aria-hidden="true">{{ name_parts.first | escape }}{% if name_parts.size > 1 %} <em>{% for part in name_parts offset: 1 %}{{ part | escape | replace: 'i', '<span class="logo-i">ı</span>' }}{% unless forloop.last %} {% endunless %}{% endfor %}</em>{% endif %}</span>
