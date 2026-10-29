@@ -17,15 +17,19 @@ mustard accents, and the black criss-cross elastic wrap.
 
 **The product, described.** This block is already inside every prompt below; you can also reuse it for new images:
 
-> a black woven-elastic foot wrap, about 5 cm (2 in) wide, wrapped snugly around the middle of a
-> bare foot in a figure-eight: it runs under the arch and crosses in an X over the top of the foot,
-> with a small diamond-shaped opening where the bands cross. Toes and heel are left uncovered.
-> Matte black with a fine ribbed elastic texture, flat and low-profile.
+> a black woven-elastic foot wrap, about 5 cm (2 in) wide, that stays on the middle of the foot
+> only: it loops under the arch and crosses in an X on top of the foot, with a small diamond-shaped
+> opening where the bands cross. It does not go around the ankle: the ankle bone, the back of the
+> heel and the Achilles tendon are bare. Toes and heel are left uncovered. Matte black with a fine
+> ribbed elastic texture, flat and low-profile.
+
+Keep the "does not go around the ankle" sentence. Without it, image AIs tend to draw an ankle
+brace with a strap looping behind the heel, because that's the wrap they've seen most.
 
 **Negative prompt** (if your tool supports one):
 
 ```
-text, letters, watermark, logo, extra toes, six toes, deformed feet, extra limbs, shoe, sock, sandal, buckle, velcro logo, cartoon, illustration, 3D render, CGI, plastic skin, oversaturated, HDR
+text, letters, watermark, logo, extra toes, six toes, deformed feet, extra limbs, shoe, sock, sandal, buckle, velcro logo, ankle brace, ankle strap, strap behind the heel, strap around the Achilles tendon, sports tape, kinesiology tape, cartoon, illustration, 3D render, CGI, plastic skin, oversaturated, HDR
 ```
 
 ---
@@ -36,7 +40,7 @@ text, letters, watermark, logo, extra toes, six toes, deformed feet, extra limbs
 - **Upload:** Theme editor › Hero › Image
 
 ```
-Photorealistic lifestyle photograph in a bright, airy minimalist bedroom. A woman's bare foot rests on the edge of a bed in side profile, toes pointing left, her lower leg rising diagonally out of frame to the right. The foot wears a black woven-elastic foot wrap, about 2 inches wide, wrapped snugly around the middle of the foot in a figure-eight: under the arch and crossing in an X over the top of the foot with a small diamond-shaped opening where the bands cross; toes and heel uncovered; matte black with a fine ribbed texture. The bed has a soft oatmeal-beige linen duvet in the foreground; behind it, out of focus, navy blue pillows, a mustard-orange cushion and a mustard knit throw. White walls, soft natural daylight from a large window on the left. Camera low, at mattress height, 50mm lens, f/2, shallow depth of field, clean and calm, editorial sleep-brand photography. No text, no logos. --ar 4:5
+Photorealistic lifestyle photograph in a bright, airy minimalist bedroom. A woman's bare foot rests on the edge of a bed in side profile, toes pointing left, her lower leg rising diagonally out of frame to the right. The foot wears a black woven-elastic foot wrap, about 2 inches wide, staying on the middle of the foot only: looping under the arch and crossing in an X on top of the foot with a small diamond-shaped opening where the bands cross; it does not go around the ankle, so the ankle, the back of the heel and the Achilles tendon are bare; toes and heel uncovered; matte black with a fine ribbed texture. The bed has a soft oatmeal-beige linen duvet in the foreground; behind it, out of focus, navy blue pillows, a mustard-orange cushion and a mustard knit throw. White walls, soft natural daylight from a large window on the left. Camera low, at mattress height, 50mm lens, f/2, shallow depth of field, clean and calm, editorial sleep-brand photography. No text, no logos. --ar 4:5
 ```
 
 ## 2. "It's 2am and your legs won't quit" (problem section)
@@ -63,12 +67,12 @@ have a real photo for a step, add it in Theme editor › How it works › Step �
 
 **Photo 1 — Main shot (the pair)**
 ```
-Studio product photograph of two bare feet side by side in side profile, standing on a seamless warm beige paper backdrop, each wearing a black woven-elastic foot wrap, about 2 inches wide, wrapped around the middle of the foot in a figure-eight: under the arch, crossing in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered, matte black with a fine ribbed texture. Soft diffused light from the left, gentle natural floor shadow, e-commerce catalogue style, sharp focus, true-to-life colours. No text. --ar 1:1
+Studio product photograph of two bare feet side by side in side profile, standing on a seamless warm beige paper backdrop, each wearing a black woven-elastic foot wrap, about 2 inches wide, on the middle of the foot only: looping under the arch and crossing in an X on top of the foot with a small diamond-shaped opening, nothing around the ankle or behind the heel, toes and heel uncovered, matte black with a fine ribbed texture. Soft diffused light from the left, gentle natural floor shadow, e-commerce catalogue style, sharp focus, true-to-life colours. No text. --ar 1:1
 ```
 
 **Photo 2 — Close-up on the foot**
 ```
-Close-up studio photograph of one bare foot in three-quarter view wearing a black criss-cross elastic foot wrap: the bands cross in an X over the top of the foot with a small diamond-shaped opening, and the wrap covers the arch underneath, toes and heel uncovered. Seamless warm beige backdrop, soft even light, realistic skin texture, sharp focus on the crossing of the bands. No text. --ar 1:1
+Close-up studio photograph of one bare foot in three-quarter view wearing a black criss-cross elastic foot wrap: the bands cross in an X over the top of the foot with a small diamond-shaped opening, and the wrap covers the arch underneath, toes and heel uncovered. Nothing goes around the ankle or behind the heel; the ankle and Achilles tendon are bare. Seamless warm beige backdrop, soft even light, realistic skin texture, sharp focus on the crossing of the bands. No text. --ar 1:1
 ```
 
 **Photo 3 — Fabric detail**
@@ -78,7 +82,7 @@ Macro product photograph of a black woven-elastic band about 2 inches wide, show
 
 **Photo 4 — Worn in bed**
 ```
-Lifestyle photo in a bright minimalist bedroom: a bare foot rests on an oatmeal-beige linen duvet, wearing a black criss-cross elastic foot wrap (an X over the top of the foot, toes and heel uncovered), the leg rising diagonally out of frame. Navy pillows, a mustard cushion and a mustard knit throw softly out of focus behind, white walls, soft window daylight. 50mm lens, f/2. No text. --ar 1:1
+Lifestyle photo in a bright minimalist bedroom: a bare foot rests on an oatmeal-beige linen duvet, wearing a black criss-cross elastic foot wrap (on the middle of the foot only, an X over the top of the foot, toes and heel uncovered, nothing around the ankle or behind the heel), the leg rising diagonally out of frame. Navy pillows, a mustard cushion and a mustard knit throw softly out of focus behind, white walls, soft window daylight. 50mm lens, f/2. No text. --ar 1:1
 ```
 
 **Photo 5 — Packaging**
@@ -113,7 +117,7 @@ headline in Canva: **"Your legs aren't fighting sleep. They're begging to be hel
 line *"Firm pressure, right under the arch. Held until morning."*
 
 ```
-Photorealistic square photograph of a bright, airy minimalist bedroom. In the lower half, a woman's bare foot rests on the edge of the bed in side profile, toes pointing left, the lower leg rising diagonally out of frame to the right, wearing a black woven-elastic foot wrap that crosses in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered. Oatmeal-beige linen duvet in the foreground; navy pillows, a mustard cushion and a mustard knit throw out of focus behind. White wall and a large window with soft daylight on the left. The top 40% of the frame is clean, empty white wall for a headline. Camera at mattress height, 50mm, f/2, editorial. No text. --ar 1:1
+Photorealistic square photograph of a bright, airy minimalist bedroom. In the lower half, a woman's bare foot rests on the edge of the bed in side profile, toes pointing left, the lower leg rising diagonally out of frame to the right, wearing a black woven-elastic foot wrap that stays on the middle of the foot only and crosses in an X over the top of the foot with a small diamond-shaped opening, toes and heel uncovered, nothing around the ankle or behind the heel. Oatmeal-beige linen duvet in the foreground; navy pillows, a mustard cushion and a mustard knit throw out of focus behind. White wall and a large window with soft daylight on the left. The top 40% of the frame is clean, empty white wall for a headline. Camera at mattress height, 50mm, f/2, editorial. No text. --ar 1:1
 ```
 
 ## No photo needed
