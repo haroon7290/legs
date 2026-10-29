@@ -610,7 +610,28 @@ html.no-scroll, body.no-scroll { overflow: hidden; }
 .rte ul, .rte ol { padding-left: 20px; }
 .rte img, .rte iframe, .rte video, .rte embed, .rte object { max-width: 100%; }
 .rte pre { max-width: 100%; overflow-x: auto; }
-.shopify-policy__container { padding-left: var(--gutter); padding-right: var(--gutter); }
+/* Policy pages (Settings › Policies). Shopify supplies the markup: container › title h1 + body .rte */
+body .shopify-policy__container { max-width: 840px; margin: 0 auto; padding: 56px var(--gutter) var(--section-space); }
+.shopify-policy__title { margin-bottom: 32px; text-align: center; }
+.shopify-policy__title h1 { margin: 0; }
+.shopify-policy__title h1::after { content: ""; display: block; width: 48px; height: 3px; margin: 18px auto 0; border-radius: 2px; background: var(--color-accent); }
+.shopify-policy__body { padding: 44px 48px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--color-surface); line-height: 1.7; overflow-wrap: anywhere; }
+.shopify-policy__body .rte > :first-child { margin-top: 0; }
+.shopify-policy__body p:has(> em:only-child) { color: var(--color-text-muted); font-size: .88rem; }
+.shopify-policy__body h2, .shopify-policy__body h3 { margin: 1.9em 0 .6em; padding-top: 1.5em; border-top: 1px solid var(--line); font-size: 1.22rem; line-height: 1.3; }
+.shopify-policy__body h3 { font-size: 1.05rem; }
+.shopify-policy__body ul { padding-left: 0; list-style: none; }
+.shopify-policy__body ul li { position: relative; padding-left: 22px; }
+.shopify-policy__body ul li::before { content: ""; position: absolute; left: 4px; top: .68em; width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); }
+.shopify-policy__body ol { padding-left: 22px; }
+.shopify-policy__body ol li::marker { color: var(--color-accent); font-weight: 700; }
+.shopify-policy__body li + li { margin-top: .45em; }
+.shopify-policy__body strong { color: var(--color-text); }
+.shopify-policy__body a { color: var(--color-text); text-decoration-color: var(--color-accent); }
+@media (max-width: 749px) {
+  body .shopify-policy__container { padding-top: 36px; }
+  .shopify-policy__body { padding: 26px 20px; }
+}
 .rte table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0 0 1em; }
 .rte th, .rte td { overflow-wrap: anywhere; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 

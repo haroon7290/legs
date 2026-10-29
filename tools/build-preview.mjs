@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { products as rawProducts } from './sample-data.mjs';
+import { POLICIES, policyHtml } from './policy-html.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'preview');
@@ -26,6 +27,7 @@ const PAGE_URLS = {
   faq: 'faq.html',
   cart: 'cart.html'
 };
+const policyUrl = (handle) => `policy-${handle}.html`;
 
 function buildProduct(p) {
   const variants = p.variants.map((v) => ({
@@ -113,7 +115,7 @@ const link = (title, url) => ({ title, url, current: false });
 const linklists = {
   'main-menu': { links: [link('Shop', PAGE_URLS.collection), link('How it works', 'index.html#how-it-works'), link('Guarantee', 'index.html#guarantee'), link('FAQ', PAGE_URLS.faq), link('Contact', PAGE_URLS.contact)] },
   footer: { links: [link('Legs Relief Support Pair', 'legs-relief-support-pair.html'), link('The Calm Night Protocol', 'the-calm-night-protocol-ebook.html'), link('All products', PAGE_URLS.collection)] },
-  help: { links: [link('FAQ', PAGE_URLS.faq), link('Delivery', '#shipping-policy'), link('Returns', '#refund-policy'), link('Contact us', PAGE_URLS.contact)] }
+  help: { links: [link('FAQ', PAGE_URLS.faq), link('Delivery', policyUrl('shipping-policy')), link('Returns', policyUrl('refund-policy')), link('Contact us', PAGE_URLS.contact)] }
 };
 
 /* ---------------------------------------------------------------- engine */
@@ -311,7 +313,7 @@ settings.type_body_font = { family: '"Inter"', fallback_families: '-apple-system
 
 const baseGlobals = {
   shop: { name: 'Legs Relief', description: 'Deep-pressure foot wraps for restless legs at night. Free tracked UK delivery and a 90-night guarantee.', money_format: '£{{amount}}', enabled_payment_types: ['visa', 'master', 'american_express', 'paypal', 'apple_pay', 'google_pay', 'shopify_pay'], customer_accounts_enabled: false,
-    policies: [{ title: 'Refund policy', url: '#refund-policy' }, { title: 'Shipping policy', url: '#shipping-policy' }, { title: 'Privacy policy', url: '#privacy-policy' }, { title: 'Terms of service', url: '#terms-of-service' }] },
+    policies: POLICIES.map((p) => ({ title: p.title, url: policyUrl(p.handle) })) },
   settings,
   routes: { root_url: 'index.html', cart_url: PAGE_URLS.cart, cart_add_url: '#', cart_change_url: '#', all_products_collection_url: PAGE_URLS.collection, search_url: '#', account_url: '#', product_recommendations_url: '#' },
   localization: { available_countries: [], available_languages: [] },
@@ -355,8 +357,17 @@ async function buildPage(file, templateName, extra = {}) {
   for (const id of tpl.order) content += await renderSection(id, tpl.sections[id], globals);
   const layout = read('layout/theme.liquid');
   const html = await engine.parseAndRender(layout, { ...globals, content_for_layout: content, content_for_header: previewHead });
-  fs.writeFileSync(path.join(OUT, file), html.replace(/\n\s*\n/g, '\n'));
+  fs.writeFileSync(path.join(OUT, file), html.replace(/\n\s*\n/g, '\n').replace(/href="\/policies\/([a-z-]+)"/g, (m, h) => `href="${policyUrl(h)}"`));
   console.log('built', file);
+}
+
+// Policy pages: Shopify renders Settings › Policies inside the layout with this markup.
+async function buildPolicy({ handle, title }) {
+  const content = `<div class="shopify-policy__container"><div class="shopify-policy__title"><h1>${title}</h1></div><div class="shopify-policy__body"><div class="rte">${policyHtml(handle)}</div></div></div>`;
+  const globals = { ...baseGlobals, template: { name: 'policy' }, page_title: title, request: { ...baseGlobals.request, page_type: 'policy' } };
+  const html = await engine.parseAndRender(read('layout/theme.liquid'), { ...globals, content_for_layout: content, content_for_header: previewHead });
+  fs.writeFileSync(path.join(OUT, policyUrl(handle)), html.replace(/\n\s*\n/g, '\n'));
+  console.log('built', policyUrl(handle));
 }
 
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -372,3 +383,4 @@ await buildPage('collection.html', 'collection', { collection: allCollection, pa
 await buildPage('contact.html', 'page.contact', { page: { title: 'Contact us', content: '' }, page_title: 'Contact' });
 await buildPage('faq.html', 'page.faq', { page: { title: 'FAQ', content: '' }, page_title: 'FAQ' });
 await buildPage('404.html', '404', { page_title: 'Page not found' });
+for (const p of POLICIES) await buildPolicy(p);

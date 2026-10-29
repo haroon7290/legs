@@ -6,7 +6,8 @@ pounds, copy is in British English, and delivery, returns and VAT follow UK rule
 photos are dummies.
 
 **Setting up the store?** Start with [`STORE_SETUP.md`](STORE_SETUP.md): every Shopify setting
-in order, with the refund and delivery policies ready to paste. Product details are in
+in order. All five UK policies (refund, shipping, privacy, terms, contact) are ready to paste
+in [`policies/`](policies/README.md). Product details are in
 [`PRODUCT_LISTING.md`](PRODUCT_LISTING.md), photo prompts in [`IMAGE_PROMPTS.md`](IMAGE_PROMPTS.md) and the
 logo files in [`brand/`](brand/README.md).
 

@@ -8,7 +8,7 @@
           "settings": {
             "icon": "mail",
             "title": "Email",
-            "text": "support@legrelief.co.uk"
+            "text": "support@legsrelief.co.uk"
           }
         },
         "card_2": {
@@ -63,7 +63,7 @@
           "type": "question",
           "settings": {
             "question": "What is the 90-night guarantee?",
-            "answer": "<p>Wear Legs Relief for at least 30 nights. If it doesn't help, email support@legrelief.co.uk within 90 nights of delivery and we'll refund the pair you tried in full — you don't need to send it back. Unopened extra pairs from a bundle can be returned for a full refund too. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
+            "answer": "<p>Wear Legs Relief for at least 30 nights. If it doesn't help, email support@legsrelief.co.uk within 90 nights of delivery and we'll refund the pair you tried in full — you don't need to send it back. Unopened extra pairs from a bundle can be returned for a full refund too. See our <a href=\"/policies/refund-policy\">refund policy</a> for details.</p>"
           }
         },
         "question_5": {

@@ -4,7 +4,7 @@ Everything to set up in Shopify admin, in order. Work through it on a computer. 
 products, copy, discounts and policies are all written for you; the only things you add are your
 photos and your own business details (marked **[like this]**).
 
-Domain: **legrelief.co.uk** · Support email: **support@legrelief.co.uk** · Currency: **GBP (£)**
+Domain: **legrelief.co.uk** (and **legsrelief.co.uk**) · Support email: **support@legsrelief.co.uk** · Currency: **GBP (£)**
 
 ---
 
@@ -13,7 +13,7 @@ Domain: **legrelief.co.uk** · Support email: **support@legrelief.co.uk** · Cur
 | Field | Set to |
 |---|---|
 | Store name | `Legs Relief` (the theme uses this as the logo) |
-| Store email / Sender email | `support@legrelief.co.uk` |
+| Store email / Sender email | `support@legsrelief.co.uk` |
 | Legal business name | **[your company or your own name if you're a sole trader]** |
 | Business address | **[your UK business address]** (shown on invoices and policies) |
 | Store currency | **British pound (GBP £)**. Set this before your first sale; it can't be changed afterwards. |
@@ -24,11 +24,13 @@ Domain: **legrelief.co.uk** · Support email: **support@legrelief.co.uk** · Cur
 
 1. **Connect existing domain** › `legrelief.co.uk`, follow the DNS steps for your registrar,
    then set it as the **primary domain**.
-2. Your brand is "Legs Relief" but the domain is "legrelief" (no **s**). Buy
-   `legsrelief.co.uk` too if it's free and connect it here; Shopify redirects it to the primary
-   domain, so customers who type the "s" still find you.
-3. Set up the `support@legrelief.co.uk` mailbox with your domain provider (or Google Workspace /
-   Zoho Mail) so you can reply to customers from it.
+2. Your support email is on `legsrelief.co.uk` (with an **s**). Connect that domain here too;
+   Shopify redirects it to the primary domain, so customers who type either address find the
+   shop. If you'd rather have `legsrelief.co.uk` as the main web address, set it as primary
+   instead. Nothing in the theme or the policies needs changing either way.
+3. Set up the `support@legsrelief.co.uk` mailbox with your domain provider (or Google Workspace /
+   Zoho Mail) so you can reply to customers from it. Use the same address as the store and
+   sender email in step 1, so order emails and policy contact details all match.
 
 ## 3. Markets — *Settings › Markets*
 
@@ -52,7 +54,7 @@ Domain: **legrelief.co.uk** · Support email: **support@legrelief.co.uk** · Cur
 
 If you can't dispatch the same day, change the countdown in *Customize › Default product ›
 Delivery estimate* (set the cut-off to 0 to hide it) and edit the "Order by 2pm" line in the
-announcement bar and the delivery policy below.
+announcement bar and in `policies/shipping-policy.md`.
 
 ## 6. Payments — *Settings › Payments*
 
@@ -70,55 +72,21 @@ announcement bar and the delivery policy below.
 
 ## 8. Policies — *Settings › Policies*
 
-Paste these two. For **Privacy policy** and **Terms of service**, click *Create from template*,
-then replace any placeholder with your business name and address. Fill in **Contact
-information** with your business details.
+All five policies are written for you in the [`policies/`](policies/) folder, with the store
+name and **support@legsrelief.co.uk** already in them:
 
-### Refund policy
+| Policy | File |
+|---|---|
+| Refund policy (90-night guarantee, 14-day cancellation, faulty items) | [`policies/refund-policy.md`](policies/refund-policy.md) |
+| Shipping policy | [`policies/shipping-policy.md`](policies/shipping-policy.md) |
+| Privacy policy (UK GDPR and cookies) | [`policies/privacy-policy.md`](policies/privacy-policy.md) |
+| Terms of service | [`policies/terms-of-service.md`](policies/terms-of-service.md) |
+| Contact information | [`policies/contact-information.md`](policies/contact-information.md) |
 
-```
-90-NIGHT GUARANTEE
-We want Legs Relief to help you sleep. Wear it consistently for at least 30 nights. If your legs aren't calmer, email support@legrelief.co.uk within 90 nights of delivery with your order number, and we'll refund the pair you tried in full. You don't need to send it back.
-
-The guarantee covers one pair per customer. If you bought a bundle, send back any extra pairs unopened and in their original packaging and we'll refund those too.
-
-YOUR RIGHT TO CANCEL (14 DAYS)
-Under the Consumer Contracts Regulations 2013 you can cancel your order for any reason within 14 days of receiving it. Email support@legrelief.co.uk to tell us. You then have a further 14 days to send the items back unused and in their original packaging to:
-[your returns address]
-We'll refund you, including the original delivery charge, within 14 days of receiving the items (or proof that you've sent them). Unless the item is faulty or we sent you the wrong one, you pay the cost of returning it.
-
-FAULTY OR WRONG ITEMS
-If your order arrives damaged, faulty or isn't what you ordered, email us within 30 days of delivery with a photo and we'll replace it or refund you in full, including return postage. This doesn't affect your statutory rights under the Consumer Rights Act 2015.
-
-THE EBOOK
-The Calm Night Protocol eBook is free with every pair. If you bought it on its own and you're not happy with it, email us within 14 days and we'll refund you.
-
-HOW REFUNDS ARE PAID
-Refunds go back to your original payment method. Your bank may take 3–5 working days to show it.
-
-CONTACT
-Legs Relief, [your business address]
-support@legrelief.co.uk
-```
-
-### Shipping policy
-
-```
-DELIVERY IN THE UK
-- Free tracked delivery on every order.
-- Order by 2pm (UK time), Monday to Friday, and we dispatch the same day. Orders placed after 2pm, at weekends or on bank holidays are dispatched the next working day.
-- Most orders arrive within 2–3 working days of dispatch. You'll get a tracking link by email as soon as your order is on its way.
-- We deliver to every UK address, including Northern Ireland and the Scottish Highlands and islands. These areas can take 1–2 extra days.
-
-OUTSIDE THE UK
-We don't deliver outside the UK yet.
-
-LATE OR MISSING PARCELS
-If your order hasn't arrived within 7 working days of dispatch, email support@legrelief.co.uk and we'll track it down or send a replacement.
-
-DIGITAL PRODUCTS
-The eBook download link is emailed to you straight after checkout.
-```
+Replace **[Legal business name]**, **[Business address]**, and **[Company number]** /
+**[VAT number]** if they apply (delete those lines if not), then paste each one into its
+policy and save. [`policies/README.md`](policies/README.md) has the details. Once saved, they
+appear as links at the bottom of the footer automatically.
 
 ## 9. Theme — *Online Store › Themes*
 
