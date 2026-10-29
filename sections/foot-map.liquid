@@ -1,0 +1,178 @@
+{%- comment -%}
+  Foot map: the animated foot drawing with numbered hotspots. Tapping a hotspot (or its line
+  in the list) explains that part of the wrap. The hotspots take turns until the visitor
+  picks one. Hotspot positions are percentages over the drawing, editable per block.
+  Styles and script are included in this file, so it works on its own.
+{%- endcomment -%}
+<section class="section fm{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="section-header reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="fm__layout" data-foot-map>
+      <div class="fm__visual reveal">
+        <div class="fm__art-wrap">
+          <svg class="fm__art" viewBox="0 0 420 290" aria-hidden="true">
+            <defs>
+              <clipPath id="FmFootClip-{{ section.id }}">
+                <path d="M88 10 C86 70 88 120 84 160 C80 185 66 200 66 222 C66 244 82 254 104 254 C150 254 170 238 210 238 C250 238 270 256 300 256 L330 256 C362 256 380 248 380 234 C380 220 366 212 344 208 C300 200 250 186 210 166 C188 155 172 138 166 110 C162 80 164 40 166 10 Z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#FmFootClip-{{ section.id }})">
+              <path class="fm-band fm-band--1" d="M146 262 L252 168"/>
+              <path class="fm-band fm-band--2" d="M270 262 L190 150"/>
+              <path class="fm-band fm-band--3" d="M296 262 L288 182"/>
+              <path class="fm-band fm-band--sole" d="M120 252 C160 246 180 236 210 236 C250 236 272 250 312 252"/>
+            </g>
+            <path class="fm-foot" d="M88 10 C86 70 88 120 84 160 C80 185 66 200 66 222 C66 244 82 254 104 254 C150 254 170 238 210 238 C250 238 270 256 300 256 L330 256 C362 256 380 248 380 234 C380 220 366 212 344 208 C300 200 250 186 210 166 C188 155 172 138 166 110 C162 80 164 40 166 10"/>
+            <line class="fm-ground" x1="30" y1="272" x2="400" y2="272"/>
+          </svg>
+          {%- for block in section.blocks -%}
+            <button type="button" class="fm__spot" style="left: {{ block.settings.x }}%; top: {{ block.settings.y }}%; --i: {{ forloop.index0 }}" data-fm-spot="{{ forloop.index0 }}" aria-label="{{ block.settings.title | escape }}" aria-controls="FmItem-{{ section.id }}-{{ forloop.index }}">{{ forloop.index }}</button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <ol class="fm__list">
+        {%- for block in section.blocks -%}
+          <li class="fm-item" id="FmItem-{{ section.id }}-{{ forloop.index }}" data-fm-item="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <button type="button" class="fm-item__head" data-fm-spot="{{ forloop.index0 }}">
+              <span class="fm-item__num">{{ forloop.index }}</span>
+              <span class="fm-item__title">{{ block.settings.title }}</span>
+            </button>
+            {%- if block.settings.text != blank -%}
+              <div class="fm-item__body"><div><p>{{ block.settings.text }}</p></div></div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .fm__layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: center; }
+  .fm__visual { padding: 32px; border-radius: var(--radius-lg, 14px); background: var(--color-ink-2, #18233a); border: 1px solid var(--line-dark, rgba(243, 237, 227, .14)); }
+  .fm__art-wrap { position: relative; }
+  .fm__art { display: block; width: 100%; height: auto; overflow: visible; }
+  .fm-foot { fill: none; stroke: #f3ede3; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .fm-ground { stroke: #f3ede3; stroke-opacity: .15; stroke-width: 1.5; stroke-dasharray: 4 7; }
+  .fm-band { fill: none; stroke: var(--color-accent, #e8682a); stroke-width: 22; }
+  .fm-band--sole { stroke-width: 16; }
+  .js .fm__visual .fm-foot { stroke-dasharray: 1600; stroke-dashoffset: 1600; }
+  .js .fm__visual .fm-band { stroke-dasharray: 220; stroke-dashoffset: 220; }
+  .fm__visual.is-visible .fm-foot { animation: fmDraw 1.8s cubic-bezier(.45, .05, .25, 1) .2s forwards; }
+  .fm__visual.is-visible .fm-band { animation: fmDraw .7s var(--ease, ease) forwards; }
+  .fm__visual.is-visible .fm-band--sole { animation-delay: 1.15s; }
+  .fm__visual.is-visible .fm-band--1 { animation-delay: 1.3s; }
+  .fm__visual.is-visible .fm-band--2 { animation-delay: 1.55s; }
+  .fm__visual.is-visible .fm-band--3 { animation-delay: 1.8s; }
+
+  .fm__spot { position: absolute; z-index: 1; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: -15px 0 0 -15px; padding: 0; border-radius: 50%; border: 2px solid #f3ede3; background: var(--color-ink, #0e1523); color: #f3ede3; font: inherit; font-size: .8rem; font-weight: 800; cursor: pointer; transition: transform .3s var(--ease, ease), background-color .3s, border-color .3s; }
+  .fm__spot::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--color-accent, #e8682a); opacity: 0; }
+  .fm__spot:hover, .fm__spot:focus-visible { transform: scale(1.12); outline: none; }
+  .fm__spot.is-active { background: var(--color-accent, #e8682a); border-color: var(--color-accent, #e8682a); color: #fff; transform: scale(1.15); }
+  .fm__spot.is-active::after { animation: fmPing 1.6s cubic-bezier(.2, .6, .35, 1) infinite; }
+  .js .fm__visual:not(.is-visible) .fm__spot { opacity: 0; }
+  .fm__visual.is-visible .fm__spot { animation: fmSpotIn .5s cubic-bezier(.3, 1.5, .5, 1) backwards; animation-delay: calc(2.1s + var(--i, 0) * 120ms); }
+
+  .fm__list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .fm-item { border-radius: var(--radius, 10px); border: 1px solid var(--line, rgba(19, 26, 38, .12)); background: var(--color-surface, #fbf8f3); color: var(--color-text, #131a26); transition: border-color .3s, box-shadow .3s; }
+  .fm-item.is-active { border-color: var(--color-accent, #e8682a); box-shadow: 0 0 0 1px var(--color-accent, #e8682a); }
+  .fm-item__head { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  .fm-item__num { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--color-bg-alt, #ebe2d4); font-size: .78rem; font-weight: 800; transition: background-color .3s, color .3s; }
+  .fm-item.is-active .fm-item__num { background: var(--color-accent, #e8682a); color: #fff; }
+  .fm-item__title { font-weight: 700; }
+  .fm-item__body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease, ease); }
+  .fm-item__body > div { min-height: 0; overflow: hidden; }
+  .fm-item__body p { margin: 0; padding: 0 16px 16px 54px; font-size: .94rem; color: var(--color-text-muted, #5d6270); }
+  .fm-item.is-active .fm-item__body { grid-template-rows: 1fr; }
+  html:not(.js) .fm-item__body { grid-template-rows: 1fr; }
+
+  @keyframes fmDraw { to { stroke-dashoffset: 0; } }
+  @keyframes fmSpotIn { from { opacity: 0; transform: scale(.4); } }
+  @keyframes fmPing { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(1.9); opacity: 0; } }
+  @media (max-width: 849px) {
+    .fm__layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .fm__visual { padding: 18px 14px; }
+    .fm__spot { width: 26px; height: 26px; margin: -13px 0 0 -13px; font-size: .74rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .fm__visual .fm-foot, .js .fm__visual .fm-band { stroke-dashoffset: 0; animation: none; }
+    .js .fm__visual:not(.is-visible) .fm__spot { opacity: 1; }
+    .fm__visual.is-visible .fm__spot { animation: none; }
+    .fm__spot.is-active::after { animation: none; }
+    .fm-item__body { transition: none; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    function init(root) {
+      if (root.hasAttribute('data-ready')) return;
+      root.setAttribute('data-ready', '');
+      var spots = root.querySelectorAll('.fm__spot');
+      var items = root.querySelectorAll('[data-fm-item]');
+      var count = items.length;
+      var current = -1, timer = null, userPicked = false;
+      function activate(i) {
+        current = i;
+        spots.forEach(function (s, n) { s.classList.toggle('is-active', n === i); s.setAttribute('aria-pressed', n === i); });
+        items.forEach(function (it, n) {
+          it.classList.toggle('is-active', n === i);
+          var head = it.querySelector('.fm-item__head');
+          if (head) head.setAttribute('aria-expanded', n === i);
+        });
+      }
+      function stop() { userPicked = true; if (timer) clearInterval(timer); }
+      root.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-fm-spot]');
+        if (!t) return;
+        stop();
+        activate(parseInt(t.getAttribute('data-fm-spot'), 10));
+      });
+      activate(0);
+      // take turns through the hotspots while the section is on screen, until someone picks one
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (timer) { clearInterval(timer); timer = null; }
+            if (e.isIntersecting && !userPicked && count > 1) timer = setInterval(function () { activate((current + 1) % count); }, 4200);
+          });
+        }, { threshold: .4 }).observe(root);
+      }
+    }
+    function boot(scope) { (scope || document).querySelectorAll('[data-foot-map]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { boot(); }); else boot();
+    document.addEventListener('shopify:section:load', function (e) { boot(e.target); });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Foot map",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "contrast" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Take a closer look" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every part has a job." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tap a number to see what each part of the wrap does.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "spot",
+      "name": "Hotspot",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Part of the wrap" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "range", "id": "x", "label": "Position across", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "range", "id": "y", "label": "Position down", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 80 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Foot map", "blocks": [{ "type": "spot" }, { "type": "spot" }, { "type": "spot" }] }]
+}
+{% endschema %}

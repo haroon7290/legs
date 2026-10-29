@@ -3,6 +3,7 @@
   - plain: label, title and text
   - icon: an icon beside the title
   - quote: the title is a question in quotes, the text answers it
+  - flip: the question is on the front; tapping the card turns it over to the answer
   Optional pill badges, footnote and button underneath.
   Styles are included in this file, so it works on its own.
 {%- endcomment -%}
@@ -16,6 +17,22 @@
 
     <div class="cg__grid" style="--cols: {{ section.settings.columns }}">
       {%- for block in section.blocks -%}
+        {%- if section.settings.card_style == 'flip' -%}
+          <div class="cg-card cg-card--flip reveal" style="--d: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <button type="button" class="cg-flip" aria-pressed="false" data-cg-flip>
+              <span class="cg-flip__face cg-flip__front">
+                {%- if block.settings.label != blank -%}<span class="cg-card__label">{{ block.settings.label }}</span>{%- endif -%}
+                <span class="cg-card__title">“{{ block.settings.title }}”</span>
+                <span class="cg-flip__hint">{% render 'icon', icon: 'refresh' %}{{ section.settings.flip_hint }}</span>
+              </span>
+              <span class="cg-flip__face cg-flip__back">
+                <span class="cg-card__text">{{ block.settings.text }}</span>
+                <span class="cg-flip__hint">{% render 'icon', icon: 'refresh' %}{{ section.settings.flip_back }}</span>
+              </span>
+            </button>
+          </div>
+          {%- continue -%}
+        {%- endif -%}
         <div class="cg-card reveal" style="--d: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
           {%- if section.settings.card_style == 'icon' and block.settings.icon != 'none' -%}
             <span class="cg-card__icon">{% render 'icon', icon: block.settings.icon %}</span>
@@ -69,6 +86,27 @@
   .cg__footnote { color: var(--color-text-muted, #5d6270); }
   .section--contrast .cg__footnote { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
   .cg__footnote p { margin: 0; }
+  /* Flip cards */
+  .cg-card--flip { padding: 0; border: 0; background: none; perspective: 1200px; }
+  .cg-card--flip:hover { border-color: transparent; box-shadow: none; }
+  .cg-flip { display: grid; width: 100%; height: 100%; min-height: 210px; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.3, .7, .2, 1); }
+  .cg-flip:focus-visible { outline: 2px solid var(--color-accent, #e8682a); outline-offset: 3px; border-radius: var(--radius-lg, 14px); }
+  .cg-flip.is-flipped { transform: rotateY(180deg); }
+  .cg-flip__face { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 10px; padding: 24px 22px 20px; border-radius: var(--radius-lg, 14px); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  .cg-flip__front { background: var(--color-surface, #fbf8f3); border: 1px solid var(--line, rgba(19, 26, 38, .12)); border-top: 3px solid var(--color-accent, #e8682a); }
+  .cg-flip__front .cg-card__title { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; }
+  .cg-flip__back { background: var(--color-ink, #0e1523); color: var(--color-on-dark, #f3ede3); transform: rotateY(180deg); }
+  .cg-flip__back .cg-card__text { color: var(--color-on-dark, #f3ede3); font-size: 1rem; }
+  .cg-flip__hint { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 8px; font-size: .8rem; font-weight: 600; color: var(--color-text-muted, #5d6270); }
+  .cg-flip__back .cg-flip__hint { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+  .cg-flip__hint svg { width: 14px; height: 14px; color: var(--color-accent, #e8682a); }
+  .section--contrast .cg-flip__front { background: var(--color-ink-2, #18233a); border-color: var(--line-dark, rgba(243, 237, 227, .14)); }
+  @media (prefers-reduced-motion: reduce) {
+    .cg-flip { transition: none; transform: none !important; }
+    .cg-flip__back { transform: none; visibility: hidden; }
+    .cg-flip.is-flipped .cg-flip__back { visibility: visible; }
+    .cg-flip.is-flipped .cg-flip__front { visibility: hidden; }
+  }
   @media (max-width: 989px) { .cg__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 599px) {
     .cg__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
@@ -76,6 +114,15 @@
     .cg--icon .cg-card__icon { flex-shrink: 0; width: 40px; height: 40px; }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('[data-cg-flip]');
+    if (!card) return;
+    var flipped = card.classList.toggle('is-flipped');
+    card.setAttribute('aria-pressed', flipped);
+  });
+{% endjavascript %}
 
 {% schema %}
 {
@@ -86,8 +133,10 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Cards" },
     { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "select", "id": "card_style", "label": "Card style", "options": [{ "value": "plain", "label": "Label and text" }, { "value": "icon", "label": "With icon" }, { "value": "quote", "label": "Question in quotes" }], "default": "plain" },
+    { "type": "select", "id": "card_style", "label": "Card style", "options": [{ "value": "plain", "label": "Label and text" }, { "value": "icon", "label": "With icon" }, { "value": "quote", "label": "Question in quotes" }, { "value": "flip", "label": "Flip cards (question / answer)" }], "default": "plain" },
     { "type": "range", "id": "columns", "label": "Columns on desktop", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "flip_hint", "label": "Flip card hint", "default": "Tap for the answer" },
+    { "type": "text", "id": "flip_back", "label": "Flip back hint", "default": "Tap to turn back" },
     { "type": "text", "id": "badge_1", "label": "Badge 1" },
     { "type": "text", "id": "badge_2", "label": "Badge 2" },
     { "type": "richtext", "id": "footnote", "label": "Text under the cards" },

@@ -51,6 +51,26 @@ Until you upload real photos, the theme shows the dummy SVG images in `assets/`.
 - British English and "basket" wording throughout, `en-GB` language tags, and Google
   structured data for free UK delivery and the 90-day return window.
 
+## Interactive product page
+
+Below the buy box, each section gives the visitor something to do, not just to read:
+
+- **Fit finder:** three taps (shoe size, who it's for, when legs act up) and it picks the size
+  and bundle in the buy box for them.
+- **A night with Legs Relief:** a sticky night-sky panel; the clock, sky and moon change from
+  10:30pm to morning as you scroll.
+- **Every part has a job:** numbered hotspots on a drawn foot, synced with a list; it cycles
+  on its own until someone taps.
+- **How it stacks up:** tabs for compression socks, heat pad, stretching and medication,
+  compared on the same four questions.
+- **Still on the fence?:** flip cards, a doubt on the front and the answer on the back.
+- **What a calmer night costs:** a slider spreading the price over 30–365 nights (39p a night
+  over 90).
+
+All of them are normal sections with editable text, and stay readable when "reduce motion"
+is turned on. The customer video and review sections are in the template but
+switched off until you have real ones.
+
 ## Install on Shopify
 
 1. **Upload the theme.** Download **`legs-relief-theme.zip`** from this repository (open the file

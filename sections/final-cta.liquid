@@ -8,6 +8,24 @@
     <div class="fc__card reveal">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
       <h2 class="fc__title">{{ section.settings.heading }}</h2>
+      {%- assign calc_product = section.settings.calc_product | default: product -%}
+      {%- if section.settings.show_calc and calc_product != blank -%}
+        {%- liquid
+          assign calc_price = calc_product.selected_or_first_available_variant.price
+          assign per_night = calc_price | times: 1.0 | divided_by: section.settings.calc_default | round
+          if cart.currency.iso_code == 'GBP' and per_night < 100
+            assign per_label = per_night | append: 'p'
+          else
+            assign per_label = per_night | money
+          endif
+        -%}
+        <div class="fc__calc" data-fc-calc data-price="{{ calc_price }}">
+          <p class="fc__calc-figure"><span data-fc-per>{{ per_label }}</span><small>{{ section.settings.calc_unit }}</small></p>
+          <label class="fc__calc-label" for="FcRange-{{ section.id }}">{{ section.settings.calc_label }} <strong data-fc-nights>{{ section.settings.calc_default }}</strong> nights</label>
+          <input class="fc__range" type="range" id="FcRange-{{ section.id }}" min="30" max="365" step="5" value="{{ section.settings.calc_default }}" data-fc-range>
+          <p class="fc__calc-sum">{{ calc_price | money }} ÷ <span data-fc-nights>{{ section.settings.calc_default }}</span> nights</p>
+        </div>
+      {%- endif -%}
       {%- if section.blocks.size > 0 -%}
         <ul class="fc__list">
           {%- for block in section.blocks -%}
@@ -40,9 +58,35 @@
   .fc__text p { margin: 0; }
   .fc__button { min-height: 58px; font-size: 1.04rem; }
   .fc__note { margin: 12px 0 0; font-size: .82rem; opacity: .7; }
+  /* Cost per night slider */
+  .fc__calc { margin: 0 0 24px; padding: 20px; border-radius: var(--radius, 10px); background: rgba(232, 104, 42, .1); }
+  .fc__calc-figure { display: flex; align-items: baseline; justify-content: center; gap: 8px; margin: 0 0 6px; }
+  .fc__calc-figure span { display: inline-block; font-family: var(--font-heading); font-size: clamp(2.6rem, 6vw, 3.4rem); font-weight: 800; line-height: 1; letter-spacing: -.04em; color: var(--color-accent, #e8682a); font-variant-numeric: tabular-nums; }
+  .fc__calc-figure small { font-size: .95rem; font-weight: 600; opacity: .75; }
+  .fc__calc-label { display: block; margin-bottom: 10px; font-size: .92rem; }
+  .fc__range { width: 100%; height: 28px; margin: 0; accent-color: var(--color-accent, #e8682a); cursor: pointer; }
+  .fc__calc-sum { margin: 6px 0 0; font-size: .8rem; opacity: .65; font-variant-numeric: tabular-nums; }
   @media (max-width: 749px) { .fc__card { padding: 28px 20px; } .fc__list li { font-size: .95rem; } }
   @media (prefers-reduced-motion: reduce) { .js .fc__card .fc__list li { opacity: 1; transform: none; transition: none; } }
 {% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('input', function (e) {
+    if (!e.target.matches('[data-fc-range]')) return;
+    var calc = e.target.closest('[data-fc-calc]');
+    var nights = parseInt(e.target.value, 10);
+    var pence = parseInt(calc.getAttribute('data-price'), 10) / nights;
+    var theme = window.LegsReliefTheme || {};
+    var gbp = /£/.test(theme.moneyFormat || '£');
+    var per = gbp && pence < 100 ? Math.round(pence) + 'p' : (theme.formatMoney ? theme.formatMoney(Math.round(pence)) : (pence / 100).toFixed(2));
+    calc.querySelectorAll('[data-fc-nights]').forEach(function (el) { el.textContent = nights; });
+    var out = calc.querySelector('[data-fc-per]');
+    if (out.textContent !== per) {
+      out.textContent = per;
+      out.classList.remove('is-ticking'); void out.offsetWidth; out.classList.add('is-ticking');
+    }
+  });
+{% endjavascript %}
 
 {% schema %}
 {
@@ -55,7 +99,13 @@
     { "type": "richtext", "id": "text", "label": "Text under the list" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Try it for 90 nights" },
     { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." },
-    { "type": "text", "id": "note", "label": "Small print" }
+    { "type": "text", "id": "note", "label": "Small print" },
+    { "type": "header", "content": "Cost per night" },
+    { "type": "checkbox", "id": "show_calc", "label": "Show cost-per-night slider", "default": false },
+    { "type": "product", "id": "calc_product", "label": "Product", "info": "On a product page, leave empty to use that product." },
+    { "type": "text", "id": "calc_label", "label": "Slider label", "default": "Spread over" },
+    { "type": "text", "id": "calc_unit", "label": "Unit", "default": "a night" },
+    { "type": "range", "id": "calc_default", "label": "Starting nights", "min": 30, "max": 365, "step": 5, "default": 90 }
   ],
   "blocks": [
     {

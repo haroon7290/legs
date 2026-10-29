@@ -1,0 +1,174 @@
+{%- comment -%}
+  Head to head: tabs for the usual alternatives. Each tab shows Legs Relief and that alternative
+  side by side on the same four questions, plus a one-line verdict. Arrow keys move between tabs.
+  Styles and script are included in this file, so it works on its own.
+{%- endcomment -%}
+<section class="section vs{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="section-header reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="vs__wrap reveal" data-versus>
+      <div class="vs__tabs">
+        {%- if section.settings.tabs_label != blank -%}<span class="vs__tabs-label" aria-hidden="true">{{ section.settings.tabs_label }}</span>{%- endif -%}
+        <div class="vs__tablist" role="tablist" aria-label="{{ section.settings.tabs_label | default: section.settings.heading | escape }}">
+        {%- for block in section.blocks -%}
+          <button type="button" class="vs__tab" role="tab" id="VsTab-{{ section.id }}-{{ forloop.index }}" aria-controls="VsPanel-{{ section.id }}-{{ forloop.index }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.name }}</button>
+        {%- endfor -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div class="vs__panel" role="tabpanel" id="VsPanel-{{ section.id }}-{{ forloop.index }}" aria-labelledby="VsTab-{{ section.id }}-{{ forloop.index }}"{% unless forloop.first %} hidden{% endunless %}>
+          <div class="vs__head" aria-hidden="true">
+            <span></span>
+            <span class="vs__name vs__name--us">{{ section.settings.us_name }}</span>
+            <span class="vs__name">{{ block.settings.name }}</span>
+          </div>
+          <dl class="vs__rows">
+            {%- for i in (1..4) -%}
+              {%- assign q_key = 'question_' | append: i -%}
+              {%- assign u_key = 'us_' | append: i -%}
+              {%- assign t_key = 'them_' | append: i -%}
+              {%- if section.settings[q_key] != blank -%}
+                <div class="vs__row" style="--r: {{ i }}">
+                  <dt>{{ section.settings[q_key] }}</dt>
+                  <dd class="vs__us"><span class="vs__mobile-name">{{ section.settings.us_name }}</span>{{ section.settings[u_key] }}</dd>
+                  <dd class="vs__them"><span class="vs__mobile-name">{{ block.settings.name }}</span>{{ block.settings[t_key] }}</dd>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </dl>
+          {%- if block.settings.verdict != blank -%}<p class="vs__verdict">{% render 'icon', icon: 'chat' %}<span>{{ block.settings.verdict }}</span></p>{%- endif -%}
+        </div>
+      {%- endfor -%}
+      {%- if section.settings.footnote != blank -%}<div class="vs__footnote">{{ section.settings.footnote }}</div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .vs__wrap { max-width: 960px; margin: 0 auto; }
+  .vs__tabs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
+  .vs__tablist { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .vs__tabs-label { margin-right: 6px; font-size: .86rem; font-weight: 600; color: var(--color-text-muted, #5d6270); }
+  .vs__tab { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-strong, rgba(19, 26, 38, .22)); background: var(--color-surface, #fbf8f3); color: var(--color-text, #131a26); font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; transition: background-color .25s, color .25s, border-color .25s; }
+  .vs__tab:hover { border-color: var(--color-text, #131a26); }
+  .vs__tab:focus-visible { outline: 2px solid var(--color-accent, #e8682a); outline-offset: 2px; }
+  .vs__tab[aria-selected="true"] { background: var(--color-ink, #0e1523); border-color: var(--color-ink, #0e1523); color: var(--color-on-dark, #f3ede3); }
+
+  .vs__panel { overflow: hidden; border-radius: var(--radius-lg, 14px); border: 1px solid var(--line, rgba(19, 26, 38, .12)); background: var(--color-surface, #fbf8f3); color: var(--color-text, #131a26); animation: vsIn .45s var(--ease, ease); }
+  .vs__head, .vs__row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); }
+  .vs__head span { padding: 14px 18px; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .vs__name--us { background: var(--color-accent, #e8682a); color: #fff; }
+  .vs__head .vs__name:last-child { background: var(--color-bg-alt, #ebe2d4); }
+  .vs__rows { margin: 0; }
+  .vs__row { border-top: 1px solid var(--line, rgba(19, 26, 38, .12)); }
+  .vs__row dt, .vs__row dd { margin: 0; padding: 16px 18px; font-size: .95rem; }
+  .vs__row dt { font-weight: 700; }
+  .vs__us { background: rgba(232, 104, 42, .07); font-weight: 600; }
+  .vs__them { color: var(--color-text-muted, #5d6270); }
+  .vs__mobile-name { display: none; }
+  .vs__panel .vs__row { animation: vsRow .5s var(--ease, ease) both; animation-delay: calc(var(--r, 0) * 70ms); }
+  .vs__verdict { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 16px 18px; border-top: 1px solid var(--line, rgba(19, 26, 38, .12)); background: var(--color-ink, #0e1523); color: var(--color-on-dark, #f3ede3); font-size: .95rem; }
+  .vs__verdict svg { flex-shrink: 0; width: 20px; height: 20px; margin-top: 1px; color: var(--color-accent, #e8682a); }
+  .vs__footnote { margin-top: 14px; text-align: center; font-size: .82rem; color: var(--color-text-muted, #5d6270); }
+  .vs__footnote p { margin: 0; }
+  .section--contrast .vs__tabs-label, .section--contrast .vs__footnote { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+
+  @keyframes vsIn { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes vsRow { from { opacity: 0; transform: translateX(-6px); } }
+  @media (max-width: 699px) {
+    .vs__tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--gutter, 16px) * -1) 16px; padding: 2px var(--gutter, 16px) 6px; scrollbar-width: none; }
+    .vs__tabs::-webkit-scrollbar { display: none; }
+    .vs__tabs-label { display: none; }
+    .vs__tablist { flex-wrap: nowrap; }
+    .vs__tab { flex-shrink: 0; }
+    .vs__head { display: none; }
+    .vs__row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .vs__row dt { grid-column: 1 / -1; padding-bottom: 6px; }
+    .vs__row dd { padding-top: 8px; font-size: .9rem; }
+    .vs__mobile-name { display: block; margin-bottom: 3px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent, #e8682a); }
+    .vs__them .vs__mobile-name { color: var(--color-text-muted, #5d6270); }
+  }
+  @media (prefers-reduced-motion: reduce) { .vs__panel, .vs__panel .vs__row { animation: none; } }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    function init(root) {
+      if (root.hasAttribute('data-ready')) return;
+      root.setAttribute('data-ready', '');
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+      function select(tab, focus) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on);
+          t.tabIndex = on ? 0 : -1;
+          var panel = root.querySelector('#' + t.getAttribute('aria-controls'));
+          if (panel) panel.hidden = !on;
+        });
+        if (focus) tab.focus();
+        tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      }
+      root.addEventListener('click', function (e) {
+        var tab = e.target.closest('[role="tab"]');
+        if (tab) select(tab);
+      });
+      root.addEventListener('keydown', function (e) {
+        var i = tabs.indexOf(document.activeElement);
+        if (i < 0) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          select(tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length], true);
+        }
+      });
+    }
+    function boot(scope) { (scope || document).querySelectorAll('[data-versus]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { boot(); }); else boot();
+    document.addEventListener('shopify:section:load', function (e) { boot(e.target); });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Head to head",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Weigh it up" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How it stacks up." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "tabs_label", "label": "Label before the tabs", "default": "Compare with:" },
+    { "type": "richtext", "id": "footnote", "label": "Small print" },
+    { "type": "header", "content": "Your product" },
+    { "type": "text", "id": "us_name", "label": "Name", "default": "Legs Relief" },
+    { "type": "text", "id": "question_1", "label": "Question 1", "default": "Where the pressure goes" },
+    { "type": "text", "id": "us_1", "label": "Your answer 1", "default": "Right under the arch" },
+    { "type": "text", "id": "question_2", "label": "Question 2", "default": "Made for" },
+    { "type": "text", "id": "us_2", "label": "Your answer 2", "default": "Lying down, all night" },
+    { "type": "text", "id": "question_3", "label": "Question 3", "default": "Comfortable in bed?" },
+    { "type": "text", "id": "us_3", "label": "Your answer 3", "default": "Yes: low-profile, toes and heel free" },
+    { "type": "text", "id": "question_4", "label": "Question 4", "default": "Cost" },
+    { "type": "text", "id": "us_4", "label": "Your answer 4", "default": "One-off, with a 90-night guarantee" }
+  ],
+  "blocks": [
+    {
+      "type": "alternative",
+      "name": "Alternative",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Alternative" },
+        { "type": "text", "id": "them_1", "label": "Answer 1" },
+        { "type": "text", "id": "them_2", "label": "Answer 2" },
+        { "type": "text", "id": "them_3", "label": "Answer 3" },
+        { "type": "text", "id": "them_4", "label": "Answer 4" },
+        { "type": "text", "id": "verdict", "label": "Verdict" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Head to head", "blocks": [{ "type": "alternative" }, { "type": "alternative" }] }]
+}
+{% endschema %}

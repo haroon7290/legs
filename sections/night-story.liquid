@@ -1,0 +1,165 @@
+{%- comment -%}
+  Night story: one night told step by step. On desktop a sticky panel shows a big clock and a
+  sky that changes colour (dusk, night, small hours, dawn, morning) as each step scrolls into
+  view; the moon or sun moves along an arc. On phones each step carries its own coloured time.
+  Styles and script are included in this file, so it works on its own.
+{%- endcomment -%}
+{%- assign first = section.blocks.first -%}
+<section class="section ns{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width">
+    <div class="section-header reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
+    </div>
+
+    <div class="ns__layout" data-night-story>
+      <div class="ns__panel ns-sky--{{ first.settings.sky | default: 'night' }}" data-ns-panel aria-hidden="true">
+        <span class="ns__stars"></span>
+        <span class="ns__orb" data-ns-orb style="--pos: 0"></span>
+        <div class="ns__clock">
+          <span class="ns__time" data-ns-time>{{ first.settings.time }}</span>
+          <span class="ns__label" data-ns-label>{{ first.settings.label }}</span>
+        </div>
+        <div class="ns__dots">
+          {%- for block in section.blocks -%}<span class="ns__dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
+        </div>
+      </div>
+
+      <ol class="ns__steps">
+        {%- for block in section.blocks -%}
+          <li class="ns-step" data-ns-step data-time="{{ block.settings.time | escape }}" data-label="{{ block.settings.label | escape }}" data-sky="{{ block.settings.sky }}" {{ block.shopify_attributes }}>
+            <span class="ns-step__chip ns-sky--{{ block.settings.sky }}">{{ block.settings.time }}{% if block.settings.label != blank %} · {{ block.settings.label }}{% endif %}</span>
+            <h3 class="ns-step__title">{{ block.settings.title }}</h3>
+            {%- if block.settings.text != blank -%}<p class="ns-step__text">{{ block.settings.text }}</p>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ol>
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="ns__cta reveal">
+        <a href="{{ section.settings.button_link | default: '#buy' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+  .ns__layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
+  .ns__panel { position: sticky; top: calc(var(--header-height, 72px) + 32px); overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; min-height: 440px; padding: 32px; border-radius: var(--radius-lg, 14px); color: #f3ede3; transition: background-color 1s ease, color 1s ease; }
+  .ns__clock { position: relative; z-index: 1; display: grid; gap: 6px; }
+  .ns__time { font-family: var(--font-heading); font-size: clamp(3.4rem, 6vw, 5.2rem); font-weight: 800; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; transition: opacity .3s, transform .3s var(--ease, ease); }
+  .ns__time.is-changing { opacity: 0; transform: translateY(8px); }
+  .ns__label { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+  .ns__dots { position: relative; z-index: 1; display: flex; gap: 6px; margin-top: 22px; }
+  .ns__dot { width: 22px; height: 4px; border-radius: 4px; background: currentColor; opacity: .25; transition: opacity .4s, width .4s var(--ease, ease); }
+  .ns__dot.is-active { width: 40px; opacity: .9; }
+  /* moon or sun travelling along an arc */
+  .ns__orb { position: absolute; top: 0; left: 0; width: 64px; height: 64px; border-radius: 50%; background: #f3ede3; transform: translate(calc(30px + var(--pos) * (100cqw - 124px)), calc(170px - sin(var(--pos) * 180deg) * 120px)); transition: transform 1.2s cubic-bezier(.3, .7, .3, 1), background-color 1s, box-shadow 1s; }
+  .ns__panel { container-type: inline-size; }
+  .ns__stars { position: absolute; inset: 0; background-image: radial-gradient(1.5px 1.5px at 18% 22%, #fff, transparent), radial-gradient(1px 1px at 42% 12%, #fff, transparent), radial-gradient(1.5px 1.5px at 72% 30%, #fff, transparent), radial-gradient(1px 1px at 86% 14%, #fff, transparent), radial-gradient(1px 1px at 60% 44%, #fff, transparent), radial-gradient(1.5px 1.5px at 28% 50%, #fff, transparent); opacity: .5; transition: opacity 1s; }
+  .ns-sky--dusk { background-color: #2a3350; }
+  .ns-sky--night { background-color: #0e1523; }
+  .ns-sky--small-hours { background-color: #070b13; }
+  .ns-sky--dawn { background-color: #4a4560; }
+  .ns-sky--morning { background-color: #efe3cf; color: #131a26; }
+  .ns__panel.ns-sky--small-hours .ns__stars { opacity: .8; }
+  .ns__panel.ns-sky--dawn .ns__stars { opacity: .15; }
+  .ns__panel.ns-sky--morning .ns__stars { opacity: 0; }
+  .ns__panel.ns-sky--dusk .ns__orb { box-shadow: inset -18px -6px 0 0 #2a3350; }
+  .ns__panel.ns-sky--night .ns__orb { box-shadow: inset -18px -6px 0 0 #0e1523; }
+  .ns__panel.ns-sky--small-hours .ns__orb { box-shadow: inset -18px -6px 0 0 #070b13; }
+  .ns__panel.ns-sky--dawn .ns__orb { background: #e8a46f; }
+  .ns__panel.ns-sky--morning .ns__orb { background: #e8682a; box-shadow: 0 0 0 10px rgba(232, 104, 42, .15); }
+
+  .ns__steps { margin: 0; padding: 0; list-style: none; }
+  .ns-step { display: flex; flex-direction: column; justify-content: center; min-height: 52vh; padding: 24px 0 24px 28px; border-left: 2px solid var(--line, rgba(19, 26, 38, .12)); opacity: .35; transition: opacity .5s, border-color .5s; }
+  .section--contrast .ns-step { border-left-color: var(--line-dark, rgba(243, 237, 227, .14)); }
+  .ns-step.is-active { opacity: 1; border-left-color: var(--color-accent, #e8682a); }
+  .ns-step__chip { display: none; align-self: flex-start; margin-bottom: 12px; padding: 5px 12px; border-radius: 999px; color: #f3ede3; font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ns-step__chip.ns-sky--morning { color: #131a26; box-shadow: inset 0 0 0 1px rgba(19, 26, 38, .16); }
+  .ns-step__title { margin: 0 0 10px; font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+  .ns-step__text { margin: 0; max-width: 460px; font-size: 1.05rem; color: var(--color-text-muted, #5d6270); }
+  .section--contrast .ns-step__text { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+  .ns__cta { margin-top: 32px; text-align: center; }
+
+  @media (max-width: 849px) {
+    .ns__layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .ns__panel { display: none; }
+    .ns-step { min-height: 0; padding: 0 0 28px 20px; opacity: 1; }
+    .ns-step__chip { display: inline-block; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ns__panel, .ns__orb, .ns__time, .ns-step { transition: none; } }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    var ORDER = ['dusk', 'night', 'small-hours', 'dawn', 'morning'];
+    function init(root) {
+      if (root.hasAttribute('data-ready')) return;
+      root.setAttribute('data-ready', '');
+      var panel = root.querySelector('[data-ns-panel]');
+      var time = root.querySelector('[data-ns-time]');
+      var label = root.querySelector('[data-ns-label]');
+      var orb = root.querySelector('[data-ns-orb]');
+      var dots = root.querySelectorAll('.ns__dot');
+      var steps = Array.prototype.slice.call(root.querySelectorAll('[data-ns-step]'));
+      var active = -1;
+      function activate(i) {
+        if (i === active || !steps[i]) return;
+        active = i;
+        var step = steps[i];
+        steps.forEach(function (s, n) { s.classList.toggle('is-active', n === i); });
+        dots.forEach(function (d, n) { d.classList.toggle('is-active', n === i); });
+        ORDER.forEach(function (sky) { panel.classList.remove('ns-sky--' + sky); });
+        panel.classList.add('ns-sky--' + step.getAttribute('data-sky'));
+        orb.style.setProperty('--pos', steps.length > 1 ? i / (steps.length - 1) : 0);
+        time.classList.add('is-changing');
+        setTimeout(function () {
+          time.textContent = step.getAttribute('data-time');
+          label.textContent = step.getAttribute('data-label');
+          time.classList.remove('is-changing');
+        }, 250);
+      }
+      if (!('IntersectionObserver' in window)) { activate(0); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) activate(steps.indexOf(e.target)); });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      steps.forEach(function (s) { io.observe(s); });
+      activate(0);
+    }
+    function boot(scope) { (scope || document).querySelectorAll('[data-night-story]').forEach(init); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { boot(); }); else boot();
+    document.addEventListener('shopify:section:load', function (e) { boot(e.target); });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Night story",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "default" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A night with Legs Relief" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "From lights out to alarm." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." }
+  ],
+  "blocks": [
+    {
+      "type": "moment",
+      "name": "Moment",
+      "settings": [
+        { "type": "text", "id": "time", "label": "Time", "default": "10:30pm" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Wrap on" },
+        { "type": "select", "id": "sky", "label": "Sky", "default": "night", "options": [{ "value": "dusk", "label": "Dusk" }, { "value": "night", "label": "Night" }, { "value": "small-hours", "label": "Small hours" }, { "value": "dawn", "label": "Dawn" }, { "value": "morning", "label": "Morning" }] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Moment title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Night story", "blocks": [{ "type": "moment" }, { "type": "moment" }, { "type": "moment" }] }]
+}
+{% endschema %}
