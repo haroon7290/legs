@@ -1,0 +1,89 @@
+{%- comment -%}
+  "Nothing in your drawer": small cards for the usual remedies (what each is good for, and
+  its catch) beside a block of text. One card can be highlighted as yours.
+  Styles are included in this file, so it works on its own.
+{%- endcomment -%}
+<section class="section dc{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width dc__grid">
+    <div class="dc__visual reveal">
+      {%- if section.settings.visual_caption != blank -%}<p class="dc__caption">{{ section.settings.visual_caption }}</p>{%- endif -%}
+      <div class="dc__items">
+        {%- for block in section.blocks -%}
+          <div class="dc-item{% if block.settings.highlight %} dc-item--us{% endif %}" style="--d: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            <p class="dc-item__name">{{ block.settings.name }}</p>
+            {%- if block.settings.pro != blank -%}<p class="dc-item__line dc-item__line--pro">{% render 'icon', icon: 'tick' %}<span>{{ block.settings.pro }}</span></p>{%- endif -%}
+            {%- if block.settings.con != blank -%}
+              {%- if block.settings.highlight -%}
+                <p class="dc-item__line dc-item__line--pro">{% render 'icon', icon: 'tick' %}<span>{{ block.settings.con }}</span></p>
+              {%- else -%}
+                <p class="dc-item__line dc-item__line--con">{% render 'icon', icon: 'cross' %}<span>{{ block.settings.con }}</span></p>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="dc__copy reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="dc__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="dc__text rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#buy' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .dc__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 56px; }
+  .dc__caption { margin: 0 0 14px; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-muted, #5d6270); }
+  .dc__items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .dc-item { padding: 16px; border-radius: var(--radius, 10px); background: var(--color-surface, #fbf8f3); border: 1px solid var(--line, rgba(19, 26, 38, .12)); }
+  .dc-item__name { margin: 0 0 10px; font-weight: 700; font-size: .98rem; }
+  .dc-item__line { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0 0; font-size: .84rem; line-height: 1.4; color: var(--color-text-muted, #5d6270); }
+  .dc-item__line svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 2px; }
+  .dc-item__line--pro svg { color: var(--color-success, #2f7d5b); }
+  .dc-item__line--con svg { color: var(--color-sale, #c8461a); }
+  .dc-item--us { grid-column: 1 / -1; background: var(--color-ink, #0e1523); color: var(--color-on-dark, #f3ede3); border-color: transparent; box-shadow: 0 18px 36px -24px rgba(14, 21, 35, .7); }
+  .dc-item--us .dc-item__name { color: var(--color-accent, #e8682a); }
+  .dc-item--us .dc-item__line { color: var(--color-on-dark, #f3ede3); }
+  .dc-item--us .dc-item__line svg { color: var(--color-accent, #e8682a); }
+  .dc__title { margin-bottom: 18px; }
+  .dc__text { margin-bottom: 26px; color: var(--color-text-muted, #5d6270); font-size: 1.04rem; }
+  .dc__text strong { color: var(--color-text, #131a26); }
+  .js .dc__visual .dc-item { opacity: 0; transform: translateY(10px); transition: opacity .5s var(--ease, ease), transform .5s var(--ease, ease); transition-delay: calc(var(--d, 0) * 90ms + 150ms); }
+  .dc__visual.is-visible .dc-item { opacity: 1; transform: none; }
+  @media (max-width: 849px) { .dc__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } .dc__copy { order: -1; } }
+  @media (max-width: 399px) { .dc__items { grid-template-columns: minmax(0, 1fr); } }
+  @media (prefers-reduced-motion: reduce) { .js .dc__visual .dc-item { opacity: 1; transform: none; transition: none; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Remedies compared",
+  "max_blocks": 7,
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "alt" },
+    { "type": "text", "id": "visual_caption", "label": "Label above the cards", "default": "What's in the drawer" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "It's not you. Nothing in your drawer was made for lying still." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Remedy",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Remedy" },
+        { "type": "text", "id": "pro", "label": "Good for" },
+        { "type": "text", "id": "con", "label": "The catch", "info": "On the highlighted card this shows as a second plus." },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight (your product)", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Remedies compared", "blocks": [{ "type": "item" }, { "type": "item" }, { "type": "item" }] }]
+}
+{% endschema %}

@@ -48,7 +48,7 @@
 
 /* Reset ------------------------------------------------------------------ */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 16px); }
 body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); font-size: 16.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img, svg, video { display: block; max-width: 100%; height: auto; }
 /* Nothing may widen the page sideways on phones. `clip` (unlike `hidden`) keeps the sticky header
@@ -380,6 +380,23 @@ html.no-scroll, body.no-scroll { overflow: hidden; }
 .product__info .rating-line { margin-bottom: 12px; color: var(--color-text-muted); }
 .product__title { font-size: clamp(1.9rem, 3.4vw, 2.7rem); margin-bottom: 10px; }
 .product__subtitle { color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 18px; }
+.product__title--label { margin-bottom: 12px; font-family: var(--font-body); font-size: .8rem; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; color: var(--color-accent); }
+.product__headline { margin: 0 0 16px; font-family: var(--font-heading); font-size: clamp(1.65rem, 2.8vw, 2.3rem); font-weight: 700; line-height: 1.12; letter-spacing: -.02em; text-wrap: balance; }
+.product__headline em { font-style: normal; color: var(--color-accent); }
+.product__callout { margin: 0 0 20px; padding: 12px 16px; border-left: 3px solid var(--color-accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: var(--color-surface); font-size: .95rem; }
+.product__callout p { margin: 0; }
+/* "Why it works" card in the buy box */
+.why-box { margin: 4px 0 26px; padding: 22px 22px 20px; border-radius: var(--radius-lg); background: var(--color-ink); color: var(--color-on-dark); }
+.why-box__eyebrow { display: block; margin-bottom: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); }
+.why-box__heading { margin: 0 0 16px; font-family: var(--font-heading); font-size: 1.18rem; font-weight: 700; line-height: 1.25; }
+.why-box__points { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.why-box__points li { display: flex; align-items: flex-start; gap: 12px; }
+.why-box__tick { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%; background: rgba(232, 104, 42, .18); color: var(--color-accent); }
+.why-box__tick svg { width: 14px; height: 14px; }
+.why-box__points strong { display: block; font-size: .97rem; }
+.why-box__text { display: block; margin-top: 2px; font-size: .88rem; line-height: 1.5; color: var(--color-on-dark-muted); }
+.why-box__note { margin-top: 18px; padding: 12px 14px; border-left: 3px solid var(--color-accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; background: rgba(243, 237, 227, .07); font-size: .9rem; }
+.why-box__note p { margin: 0; }
 .price { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 .price__current { font-size: 1.6rem; font-weight: 700; letter-spacing: -.01em; }
 .price__compare { color: var(--color-text-muted); text-decoration: line-through; font-size: 1.05rem; }

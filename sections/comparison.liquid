@@ -40,6 +40,9 @@
       </div>
     </div>
     {%- if section.settings.footnote != blank -%}<div class="text-center muted rte" style="margin-top:20px;font-size:.85rem">{{ section.settings.footnote }}</div>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <div class="text-center reveal" style="margin-top:28px"><a href="{{ section.settings.button_link | default: '#buy' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a></div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -56,7 +59,9 @@
     { "type": "text", "id": "col_2", "label": "Column 2", "default": "Medication" },
     { "type": "text", "id": "col_3", "label": "Column 3", "default": "Compression socks" },
     { "type": "text", "id": "col_4", "label": "Column 4 (optional)", "default": "Stretching & walking" },
-    { "type": "richtext", "id": "footnote", "label": "Footnote" }
+    { "type": "richtext", "id": "footnote", "label": "Footnote" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." }
   ],
   "blocks": [
     {

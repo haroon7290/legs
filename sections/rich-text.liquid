@@ -1,9 +1,16 @@
+{%- liquid
+  # buttons without a link scroll to the buy box: #buy on product pages, #shop on the homepage
+  assign cta_fallback = '#shop'
+  if template.name == 'product'
+    assign cta_fallback = '#buy'
+  endif
+-%}
 <section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
   <div class="page-width page-width--narrow text-center reveal">
     {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
     {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
     <div class="rte{% if section.settings.style != 'contrast' %} muted{% endif %}" style="font-size:1.08rem">{{ section.settings.text }}</div>
-    {%- if section.settings.button_label != blank -%}<a href="{{ section.settings.button_link | default: '#shop' }}" class="button" style="margin-top:24px">{{ section.settings.button_label }}</a>{%- endif -%}
+    {%- if section.settings.button_label != blank -%}<a href="{{ section.settings.button_link | default: cta_fallback }}" class="button" style="margin-top:24px">{{ section.settings.button_label }}</a>{%- endif -%}
   </div>
 </section>
 

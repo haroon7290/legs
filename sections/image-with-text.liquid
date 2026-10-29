@@ -1,3 +1,10 @@
+{%- liquid
+  # buttons without a link scroll to the buy box: #buy on product pages, #shop on the homepage
+  assign cta_fallback = '#shop'
+  if template.name == 'product'
+    assign cta_fallback = '#buy'
+  endif
+-%}
 <section class="section{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
   <div class="page-width">
     <div class="problem reveal{% if section.settings.image_position == 'right' %} image-with-text--reverse{% endif %}">
@@ -19,7 +26,7 @@
           </ul>
         {%- endif -%}
         {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link | default: '#shop' }}" class="button" style="margin-top:28px">{{ section.settings.button_label }}</a>
+          <a href="{{ section.settings.button_link | default: cta_fallback }}" class="button" style="margin-top:28px">{{ section.settings.button_label }}</a>
         {%- endif -%}
       </div>
     </div>

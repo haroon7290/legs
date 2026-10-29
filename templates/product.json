@@ -3,19 +3,29 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "style": "label"
+          }
+        },
+        "headline": {
+          "type": "headline",
+          "settings": {
+            "text": "Firm, steady pressure on the spot restless legs crave. <em>Felt in seconds. Held until morning.</em>"
+          }
+        },
         "rating": {
           "type": "rating",
           "settings": {
             "text": "[count] reviews"
           }
         },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "subtitle": {
-          "type": "subtitle",
-          "settings": {}
+        "callout": {
+          "type": "callout",
+          "settings": {
+            "text": "<p>Made for the moment restless legs start: lying down, lights off. It goes on in about ten seconds and stays put until morning.</p>"
+          }
         },
         "price": {
           "type": "price",
@@ -23,8 +33,8 @@
             "note": "Free UK delivery · 90-night guarantee"
           }
         },
-        "benefits": {
-          "type": "benefits",
+        "why": {
+          "type": "why_card",
           "settings": {}
         },
         "variant_picker": {
@@ -56,24 +66,57 @@
         "assurance": {
           "type": "assurance",
           "settings": {}
+        },
+        "q_1": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "“Will it help me tonight?”",
+            "use_description": false,
+            "open": false,
+            "content": "<p>Some people feel calmer legs on the very first night. For others it takes a week or two to get the fit right. That's why you get 90 nights to try it, not 30 days.</p>"
+          }
+        },
+        "q_2": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "“How is it different from compression socks?”",
+            "use_description": false,
+            "open": false,
+            "content": "<p>Compression socks squeeze the whole lower leg and are made for daytime circulation. Legs Relief puts firm, focused pressure right under the arch, and it's made to be worn lying down, all night.</p>"
+          }
+        },
+        "q_3": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "“What if it doesn't work for me?”",
+            "use_description": false,
+            "open": false,
+            "content": "<p>Wear it for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund the pair you tried in full. You don't need to send it back.</p>"
+          }
         }
       },
       "block_order": [
-        "rating",
         "title",
-        "subtitle",
+        "headline",
+        "rating",
+        "callout",
         "price",
-        "benefits",
+        "why",
         "variant_picker",
         "quantity_breaks",
         "stock",
         "buy_buttons",
         "delivery",
-        "assurance"
+        "assurance",
+        "q_1",
+        "q_2",
+        "q_3"
       ],
       "settings": {
         "sticky_atc": true,
-        "show_tabs": true
+        "show_tabs": true,
+        "tab_1_heading": "",
+        "description_open": false
       }
     },
     "trust": {
@@ -120,50 +163,82 @@
       ],
       "settings": {}
     },
-    "how": {
-      "type": "how-it-works",
+    "videos": {
+      "type": "video-reviews",
+      "settings": {
+        "style": "contrast",
+        "score": "",
+        "score_text": "",
+        "eyebrow": "Real customers",
+        "heading": "Real nights. Press play.",
+        "text": "<p>Short videos from people who wear Legs Relief to bed.</p>",
+        "button_label": "Try it for 90 nights",
+        "button_link": ""
+      },
       "blocks": {
-        "step_1": {
-          "type": "step",
+        "video_1": {
+          "type": "video",
           "settings": {
-            "icon": "auto",
-            "title": "Wrap it under the arch",
-            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
-            "note": "Takes about 10 seconds"
+            "rating": 5,
+            "quote": "",
+            "name": "Customer name",
+            "detail": "",
+            "verified": false
           }
         },
-        "step_2": {
-          "type": "step",
+        "video_2": {
+          "type": "video",
           "settings": {
-            "icon": "auto",
-            "title": "Make it snug",
-            "text": "Pull it firm and press the end flat. You want steady pressure: snug, never tight or tingly.",
-            "note": "Snug, not tight"
+            "rating": 5,
+            "quote": "",
+            "name": "Customer name",
+            "detail": "",
+            "verified": false
           }
         },
-        "step_3": {
-          "type": "step",
+        "video_3": {
+          "type": "video",
           "settings": {
-            "icon": "auto",
-            "title": "Lie back and sleep",
-            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
-            "note": "Stays put until morning"
+            "rating": 5,
+            "quote": "",
+            "name": "Customer name",
+            "detail": "",
+            "verified": false
+          }
+        },
+        "video_4": {
+          "type": "video",
+          "settings": {
+            "rating": 5,
+            "quote": "",
+            "name": "Customer name",
+            "detail": "",
+            "verified": false
           }
         }
       },
       "block_order": [
-        "step_1",
-        "step_2",
-        "step_3"
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4"
       ],
+      "disabled": true
+    },
+    "before_after": {
+      "type": "before-after",
       "settings": {
-        "style": "alt",
-        "eyebrow": "How it works",
-        "heading": "Three steps to a calmer night",
-        "text": "<p>No pills, no fuss. Just firm, steady pressure right under the arch, all night.</p>",
-        "button_label": "",
+        "style": "contrast",
+        "eyebrow": "The difference",
+        "heading": "Same bed. Same legs. A different night.",
+        "text": "<p>Restless legs at 2am, and the same bed with firm pressure held under each arch.</p>",
+        "label_before": "2:47am. Again.",
+        "label_after": "With Legs Relief",
+        "caption_heading": "The only thing that changed is under the duvet.",
+        "caption": "<p>Same bedtime, same mattress, same legs. Just firm, steady pressure under each arch, held there all night.</p>",
+        "button_label": "Try it for 90 nights",
         "button_link": "",
-        "footnote": "<p>Most people get the fit right within a night or two: snug enough to feel firm pressure, never so tight it tingles.</p>"
+        "note": "Illustration. Everyone is different."
       }
     },
     "compare": {
@@ -239,16 +314,345 @@
         "row_6"
       ],
       "settings": {
-        "style": "contrast",
+        "style": "default",
         "eyebrow": "Compare",
-        "heading": "Drug-free relief, made for bed.",
+        "heading": "Built for bed. That's the whole difference.",
         "text": "<p>How Legs Relief compares with the usual ways people try to settle restless legs.</p>",
         "col_1": "Legs Relief",
         "col_2": "Medication",
         "col_3": "Compression socks",
         "col_4": "Stretching & walking",
-        "footnote": "<p>For general information only. Speak to your GP or pharmacist about what's right for you.</p>"
+        "footnote": "<p>For general information only. Speak to your GP or pharmacist about what's right for you.</p>",
+        "button_label": "Try Legs Relief tonight",
+        "button_link": ""
       }
+    },
+    "story": {
+      "type": "cards-grid",
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Sound familiar?",
+        "heading": "People with restless legs found the idea before we did.",
+        "text": "<p>Ask anyone with restless legs what helps and you hear the same tricks. They all come down to one thing: firm pressure.</p>",
+        "card_style": "plain",
+        "columns": 4,
+        "badge_1": "Firm pressure under the arch",
+        "badge_2": "Held in place until morning",
+        "footnote": "<p>Legs Relief takes that same idea and makes it work lying down: firm pressure right under the arch, held by a soft criss-cross wrap until morning.</p>",
+        "button_label": "",
+        "button_link": ""
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "The footboard press",
+            "title": "Pushing against the bed",
+            "text": "Feet jammed hard against the end of the bed, because the pressure takes the edge off."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "The tight socks",
+            "title": "The tightest pair you own",
+            "text": "Pulled on at midnight, hoping a squeeze will quieten things down."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "The towel wrap",
+            "title": "Wrapped up tight",
+            "text": "A towel or bandage wound round the feet before bed, and hoping it stays on."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "The 3am walk",
+            "title": "Pacing the landing",
+            "text": "Up again, walking it off, because moving is the only thing that helps."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "drawer": {
+      "type": "drawer-compare",
+      "settings": {
+        "style": "default",
+        "visual_caption": "What's in the drawer",
+        "eyebrow": "The problem",
+        "heading": "It's not you. Nothing in your drawer was made for lying still.",
+        "text": "<p>Compression socks, heat pads, massage guns and stretches all have their place, mostly during the day. But restless legs tend to start when you lie down and keep still.</p><p><strong>Legs Relief is made for exactly that moment:</strong> put it on in bed and the pressure stays right under the arch until morning.</p>",
+        "button_label": "Try Legs Relief tonight",
+        "button_link": ""
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "name": "Compression socks",
+            "pro": "Made for daytime circulation",
+            "con": "Squeeze the whole lower leg",
+            "highlight": false
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "name": "Heat pad",
+            "pro": "Soothing for a while",
+            "con": "Goes cold, and not for sleeping on",
+            "highlight": false
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "name": "Massage gun",
+            "pro": "Good after exercise",
+            "con": "You can't use it while you sleep",
+            "highlight": false
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "name": "Stretching",
+            "pro": "Worth doing before bed",
+            "con": "Over once you get into bed",
+            "highlight": false
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "name": "Legs Relief",
+            "pro": "Made to wear lying down, all night",
+            "con": "Firm pressure right under the arch",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ]
+    },
+    "pressure": {
+      "type": "pressure-explainer",
+      "settings": {
+        "style": "contrast",
+        "eyebrow": "The idea",
+        "heading": "Firm pressure, right under the arch.",
+        "text": "<p>When your legs won't settle, steady pressure gives them something calm to focus on. It's why people press their feet against the footboard or pull on tight socks.</p><p><strong>Legs Relief puts that pressure on the spot that counts</strong>, the middle of the sole, and the criss-cross wrap holds it there while you sleep.</p>",
+        "button_label": "Try it for 90 nights",
+        "button_link": "",
+        "visual_label": "Where the pressure goes",
+        "point_1": "Crosses in an X",
+        "point_2": "Holds the arch",
+        "point_3": "Toes and heel stay free"
+      }
+    },
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "auto",
+            "title": "Wrap it under the arch",
+            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
+            "note": "Takes about 10 seconds"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "auto",
+            "title": "Make it snug",
+            "text": "Pull it firm and press the end flat. You want steady pressure: snug, never tight or tingly.",
+            "note": "Snug, not tight"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "auto",
+            "title": "Lie back and sleep",
+            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
+            "note": "Stays put until morning"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Every night",
+        "heading": "The nightly routine is deliberately simple.",
+        "text": "<p>No pills, no gadgets, nothing to charge. Three steps and you're done.</p>",
+        "button_label": "Try Legs Relief tonight",
+        "button_link": "",
+        "footnote": ""
+      }
+    },
+    "benefits": {
+      "type": "cards-grid",
+      "settings": {
+        "style": "default",
+        "eyebrow": "Tonight, instead",
+        "heading": "The other version of tonight.",
+        "text": "<p>What bedtime can look like when your legs have something to settle into.</p>",
+        "card_style": "icon",
+        "columns": 4,
+        "badge_1": "",
+        "badge_2": "",
+        "footnote": "",
+        "button_label": "",
+        "button_link": ""
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "moon-outline",
+            "label": "",
+            "title": "Lie down without dreading it",
+            "text": "Get into bed knowing you've got something made for this exact moment."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "leaf",
+            "label": "",
+            "title": "No pills, no grogginess",
+            "text": "Nothing to swallow and nothing to wear off. Just steady pressure."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "heart",
+            "label": "",
+            "title": "A quieter bed for two",
+            "text": "Fewer kicks and fidgets can mean a calmer night for whoever's next to you."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "label": "",
+            "title": "In bed, not on the landing",
+            "text": "Designed to help you stay put instead of getting up to walk it off."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "objections": {
+      "type": "cards-grid",
+      "settings": {
+        "style": "alt",
+        "eyebrow": "Your doubts",
+        "heading": "Made for the nights that won't settle.",
+        "text": "<p>The questions we hear most, answered straight.</p>",
+        "card_style": "quote",
+        "columns": 3,
+        "badge_1": "",
+        "badge_2": "",
+        "footnote": "",
+        "button_label": "Try it for 90 nights",
+        "button_link": ""
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "I've tried everything already.",
+            "text": "Most people have: socks, stretches, hot baths. Legs Relief is different because it's made to be worn lying down, with the pressure exactly under the arch, all night."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "Won't it be uncomfortable in bed?",
+            "text": "It's soft, breathable and low-profile, with toes and heel left free. Snug, never tight: if it tingles, loosen it a little."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "What if it just doesn't work for me?",
+            "text": "Then you don't pay for it. Try it for at least 30 nights, and if your legs aren't calmer, we refund the pair you tried."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "Is it safe to wear every night?",
+            "text": "It's drug-free, so there's nothing to take. If you have diabetes, neuropathy or circulation problems, check with your GP first."
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "Is one pair enough?",
+            "text": "Each order is a pair, one for each foot. Some people like a second pair so one's always clean, or one for travel."
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "none",
+            "label": "",
+            "title": "How soon will it arrive?",
+            "text": "Order by 2pm on a weekday and it goes out the same day. Delivery is free and tracked, usually 2–3 working days."
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ]
     },
     "reviews": {
       "type": "testimonials",
@@ -330,9 +734,9 @@
         "review_6"
       ],
       "settings": {
-        "style": "alt",
+        "style": "contrast",
         "eyebrow": "Reviews",
-        "heading": "What our customers say",
+        "heading": "In their own words.",
         "text": "",
         "show_summary": false,
         "score": 5,
@@ -345,17 +749,78 @@
         "pct_1": 0,
         "recommend_value": "",
         "recommend_text": "would recommend Legs Relief",
-        "layout": "marquee",
+        "layout": "grid",
         "rows": "1",
         "speed": 60,
         "initial_count": 6
       }
     },
+    "timeline": {
+      "type": "timeline",
+      "settings": {
+        "style": "default",
+        "eyebrow": "What to expect",
+        "heading": "The first 90 nights, honestly.",
+        "text": "<p>No miracle promises. Here's what trying Legs Relief actually looks like.</p>",
+        "note": "Everyone's legs are different. That's why you get 90 nights.",
+        "button_label": "Start my 90 nights",
+        "button_link": ""
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "label": "Night 1",
+            "title": "Getting the fit right",
+            "text": "Most people spend the first night or two finding the right tightness: snug enough to feel firm pressure, never so tight it tingles."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "label": "Nights 2–7",
+            "title": "Making it a habit",
+            "text": "Put it on as part of getting into bed. The more consistently you wear it, the easier it is to tell whether it helps."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "label": "Weeks 2–4",
+            "title": "Noticing the pattern",
+            "text": "By now you'll have a feel for how your nights are going. The free eBook has a simple wind-down routine to go with it."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "label": "Night 30",
+            "title": "Deciding if it's for you",
+            "text": "If your legs aren't calmer after 30 nights of wear, email us. We'll refund the pair you tried, and you don't need to send it back."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "label": "Night 90",
+            "title": "Your guarantee ends",
+            "text": "You have until 90 nights after delivery to ask for that refund. No forms, no hoops."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "step_5"
+      ]
+    },
     "guarantee": {
       "type": "guarantee",
       "settings": {
         "style": "contrast",
-        "heading": "Sleep on it for 90 nights.",
+        "heading": "Calmer legs and better sleep, or your money back.",
         "text": "<p>Wear Legs Relief every night for at least 30 nights. If your legs aren't calmer, email us within 90 nights of delivery and we'll refund the pair you tried in full — you don't even have to send it back.</p>",
         "button_label": "Start my 90 nights",
         "button_link": "",
@@ -451,30 +916,84 @@
       "settings": {
         "style": "default",
         "eyebrow": "FAQ",
-        "heading": "Questions, answered",
+        "heading": "Questions, answered honestly.",
         "open_first": true,
         "footer_text": "<p>Still have a question? <a href=\"/pages/contact\">Contact us</a> — we reply within one working day.</p>"
       }
     },
-    "recommendations": {
-      "type": "product-recommendations",
+    "final": {
+      "type": "final-cta",
       "settings": {
-        "style": "default",
-        "eyebrow": "Pairs well with",
-        "heading": "Complete your night routine",
-        "intent": "related",
-        "limit": 3
-      }
+        "style": "contrast",
+        "eyebrow": "The bottom line",
+        "heading": "What finding out costs.",
+        "text": "<p>Compare that with another month of broken nights.</p>",
+        "button_label": "Try Legs Relief tonight",
+        "button_link": "",
+        "note": "Secure checkout · Card, Apple Pay, Google Pay or PayPal"
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "tick",
+            "text": "<strong>£34.99</strong>, about 39p a night over 90 nights"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "Free tracked UK delivery, out the same day if you order by 2pm"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "book",
+            "text": "Free eBook: <strong>The Calm Night Protocol</strong>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "90 nights to decide. If it doesn't help, your money back."
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "text": "No prescription, no subscription, nothing to swallow"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5"
+      ]
     }
   },
   "order": [
     "main",
     "trust",
-    "how",
+    "videos",
+    "before_after",
     "compare",
-    "recommendations",
+    "story",
+    "drawer",
+    "pressure",
+    "how",
+    "benefits",
+    "objections",
     "reviews",
+    "timeline",
     "guarantee",
-    "faq"
+    "faq",
+    "final"
   ]
 }

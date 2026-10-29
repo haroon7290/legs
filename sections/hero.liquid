@@ -1,3 +1,10 @@
+{%- liquid
+  # buttons without a link scroll to the buy box: #buy on product pages, #shop on the homepage
+  assign cta_fallback = '#shop'
+  if template.name == 'product'
+    assign cta_fallback = '#buy'
+  endif
+-%}
 <section class="hero hero--{{ section.settings.color_scheme }}" data-hero {{ section.shopify_attributes }}>
   <div class="page-width hero__grid">
     <div class="hero__content">
@@ -15,7 +22,7 @@
       {%- endif -%}
       <div class="hero__cta" data-hero-item style="--i:4">
         {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link | default: '#shop' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+          <a href="{{ section.settings.button_link | default: cta_fallback }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
         {%- endif -%}
         {%- if section.settings.price_note != blank -%}<span class="hero__price-note">{{ section.settings.price_note }}</span>{%- endif -%}
       </div>

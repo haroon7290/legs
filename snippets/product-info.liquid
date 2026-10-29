@@ -42,11 +42,38 @@
       {%- endif -%}
 
     {%- when 'title' -%}
+      {%- assign title_class = 'product__title' -%}
+      {%- if block.settings.style == 'label' -%}{%- assign title_class = 'product__title product__title--label' -%}{%- endif -%}
       {%- if section.settings.link_title -%}
-        <h2 class="product__title" {{ block.shopify_attributes }}><a href="{{ product.url }}">{{ product.title | escape }}</a></h2>
+        <h2 class="{{ title_class }}" {{ block.shopify_attributes }}><a href="{{ product.url }}">{{ product.title | escape }}</a></h2>
       {%- else -%}
-        <h1 class="product__title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+        <h1 class="{{ title_class }}" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
       {%- endif -%}
+
+    {%- when 'headline' -%}
+      <p class="product__headline" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+    {%- when 'callout' -%}
+      <div class="product__callout rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+
+    {%- when 'why_card' -%}
+      <div class="why-box" {{ block.shopify_attributes }}>
+        {%- if block.settings.eyebrow != blank -%}<span class="why-box__eyebrow">{{ block.settings.eyebrow }}</span>{%- endif -%}
+        {%- if block.settings.heading != blank -%}<p class="why-box__heading">{{ block.settings.heading }}</p>{%- endif -%}
+        <ul class="why-box__points">
+          {%- for i in (1..3) -%}
+            {%- assign t_key = 'point_' | append: i | append: '_title' -%}
+            {%- assign x_key = 'point_' | append: i | append: '_text' -%}
+            {%- if block.settings[t_key] != blank -%}
+              <li>
+                <span class="why-box__tick">{% render 'icon', icon: 'tick' %}</span>
+                <span><strong>{{ block.settings[t_key] }}</strong>{% if block.settings[x_key] != blank %}<span class="why-box__text">{{ block.settings[x_key] }}</span>{% endif %}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        {%- if block.settings.note != blank -%}<div class="why-box__note">{{ block.settings.note }}</div>{%- endif -%}
+      </div>
 
     {%- when 'subtitle' -%}
       <p class="product__subtitle" {{ block.shopify_attributes }}>{{ product.metafields.custom.subtitle | default: block.settings.text }}</p>

@@ -1,0 +1,118 @@
+{%- comment -%}
+  Pressure explainer: text and a button beside an animated drawing — the foot outline draws,
+  the criss-cross bands wrap around it and pressure rings pulse under the arch.
+  Styles are included in this file, so it works on its own.
+{%- endcomment -%}
+<section class="section px{% if section.settings.style == 'alt' %} section--alt{% elsif section.settings.style == 'contrast' %} section--contrast{% endif %}" {{ section.shopify_attributes }}>
+  <div class="page-width px__grid">
+    <div class="px__copy reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="px__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="px__text rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#buy' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="px__visual reveal">
+      {%- if section.settings.visual_label != blank -%}<p class="px__label">{{ section.settings.visual_label }}</p>{%- endif -%}
+      <svg class="px__art" viewBox="0 0 420 290" role="img" aria-label="{{ section.settings.heading | strip_html | escape }}">
+        <defs>
+          <clipPath id="PxFootClip-{{ section.id }}">
+            <path d="M88 10 C86 70 88 120 84 160 C80 185 66 200 66 222 C66 244 82 254 104 254 C150 254 170 238 210 238 C250 238 270 256 300 256 L330 256 C362 256 380 248 380 234 C380 220 366 212 344 208 C300 200 250 186 210 166 C188 155 172 138 166 110 C162 80 164 40 166 10 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#PxFootClip-{{ section.id }})">
+          <path class="px-band px-band--1" d="M146 262 L252 168"/>
+          <path class="px-band px-band--2" d="M270 262 L190 150"/>
+          <path class="px-band px-band--3" d="M296 262 L288 182"/>
+          <path class="px-band px-band--sole" d="M120 252 C160 246 180 236 210 236 C250 236 272 250 312 252"/>
+        </g>
+        <path class="px-foot" d="M88 10 C86 70 88 120 84 160 C80 185 66 200 66 222 C66 244 82 254 104 254 C150 254 170 238 210 238 C250 238 270 256 300 256 L330 256 C362 256 380 248 380 234 C380 220 366 212 344 208 C300 200 250 186 210 166 C188 155 172 138 166 110 C162 80 164 40 166 10"/>
+        <line class="px-ground" x1="30" y1="272" x2="400" y2="272"/>
+        <g transform="translate(210 240)">
+          <circle class="px-ring px-ring--1" r="46"/>
+          <circle class="px-ring px-ring--2" r="46"/>
+          <circle class="px-ring px-ring--3" r="46"/>
+          <circle class="px-dot" r="6"/>
+        </g>
+      </svg>
+      <ul class="px__points">
+        {%- for i in (1..3) -%}
+          {%- assign key = 'point_' | append: i -%}
+          {%- if section.settings[key] != blank -%}<li style="--p: {{ i }}">{{ section.settings[key] }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .px__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 56px; }
+  .px__title { margin-bottom: 18px; }
+  .px__text { margin-bottom: 26px; font-size: 1.04rem; color: var(--color-text-muted, #5d6270); }
+  .section--contrast .px__text { color: var(--color-on-dark-muted, rgba(243, 237, 227, .66)); }
+  .section--contrast .px__text strong { color: var(--color-on-dark, #f3ede3); }
+  .px__visual { display: grid; gap: 16px; padding: 28px; border-radius: var(--radius-lg, 14px); background: var(--color-ink-2, #18233a); color: var(--color-on-dark, #f3ede3); border: 1px solid var(--line-dark, rgba(243, 237, 227, .14)); }
+  .px__label { margin: 0; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent, #e8682a); }
+  .px__art { display: block; width: 100%; height: auto; overflow: visible; }
+  .px-foot { fill: none; stroke: #f3ede3; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .px-ground { stroke: #f3ede3; stroke-opacity: .15; stroke-width: 1.5; stroke-dasharray: 4 7; }
+  .px-band { fill: none; stroke: var(--color-accent, #e8682a); stroke-width: 22; }
+  .px-band--sole { stroke-width: 16; }
+  .px-ring { fill: none; stroke: var(--color-accent, #e8682a); stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .px-dot { fill: var(--color-accent, #e8682a); }
+  .px__points { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .px__points li { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line-dark, rgba(243, 237, 227, .14)); font-size: .84rem; font-weight: 600; }
+  .px__points li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent, #e8682a); }
+
+  /* Outline draws, bands wrap in, chips appear, then the rings pulse */
+  .js .px__visual .px-foot { stroke-dasharray: 1600; stroke-dashoffset: 1600; }
+  .js .px__visual .px-band { stroke-dasharray: 220; stroke-dashoffset: 220; }
+  .js .px__visual .px-dot { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+  .js .px__visual .px__points li { opacity: 0; transform: translateY(8px); transition: opacity .5s var(--ease, ease), transform .5s var(--ease, ease); }
+  .px__visual.is-visible .px-foot { animation: pxDraw 1.8s cubic-bezier(.45, .05, .25, 1) .2s forwards; }
+  .px__visual.is-visible .px-band { animation: pxDraw .7s var(--ease, ease) forwards; }
+  .px__visual.is-visible .px-band--sole { animation-delay: 1.15s; }
+  .px__visual.is-visible .px-band--1 { animation-delay: 1.3s; }
+  .px__visual.is-visible .px-band--2 { animation-delay: 1.55s; }
+  .px__visual.is-visible .px-band--3 { animation-delay: 1.8s; }
+  .px__visual.is-visible .px-dot { animation: pxPop .5s var(--ease, ease) 2.2s forwards, pxBeat 2.4s ease-in-out 2.8s infinite; }
+  .px__visual.is-visible .px-ring { animation: pxPulse 3s cubic-bezier(.2, .6, .35, 1) infinite; }
+  .px__visual.is-visible .px-ring--1 { animation-delay: 2.4s; }
+  .px__visual.is-visible .px-ring--2 { animation-delay: 3.4s; }
+  .px__visual.is-visible .px-ring--3 { animation-delay: 4.4s; }
+  .px__visual.is-visible .px__points li { opacity: 1; transform: none; transition-delay: calc(1.9s + var(--p, 0) * 140ms); }
+  @keyframes pxDraw { to { stroke-dashoffset: 0; } }
+  @keyframes pxPop { to { transform: scale(1); } }
+  @keyframes pxBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  @keyframes pxPulse { 0% { transform: scale(.15); opacity: 1; } 80% { opacity: .05; } 100% { transform: scale(1.25); opacity: 0; } }
+
+  @media (max-width: 849px) { .px__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } .px__visual { padding: 20px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .js .px__visual .px-foot, .js .px__visual .px-band { stroke-dashoffset: 0; animation: none; }
+    .js .px__visual .px-dot { transform: none; animation: none; }
+    .px-ring { animation: none !important; }
+    .js .px__visual .px__points li { opacity: 1; transform: none; transition: none; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pressure explainer",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Background", "options": [{ "value": "default", "label": "Default" }, { "value": "alt", "label": "Alternate" }, { "value": "contrast", "label": "Contrast (dark band)" }], "default": "contrast" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Firm pressure, right under the arch." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link", "info": "Leave empty to scroll to the buy box." },
+    { "type": "header", "content": "Drawing" },
+    { "type": "text", "id": "visual_label", "label": "Label", "default": "Where the pressure goes" },
+    { "type": "text", "id": "point_1", "label": "Point 1", "default": "Crosses in an X" },
+    { "type": "text", "id": "point_2", "label": "Point 2", "default": "Holds the arch" },
+    { "type": "text", "id": "point_3", "label": "Point 3", "default": "Toes and heel stay free" }
+  ],
+  "presets": [{ "name": "Pressure explainer" }]
+}
+{% endschema %}

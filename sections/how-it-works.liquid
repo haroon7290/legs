@@ -52,7 +52,13 @@
     {%- if section.settings.button_label != blank or section.settings.footnote != blank -%}
       <div class="hiw__footer reveal">
         {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link | default: '#shop' }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
+          {%- liquid
+            assign cta_fallback = '#shop'
+            if template.name == 'product'
+              assign cta_fallback = '#buy'
+            endif
+          -%}
+          <a href="{{ section.settings.button_link | default: cta_fallback }}" class="button">{{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}</a>
         {%- endif -%}
         {%- if section.settings.footnote != blank -%}<div class="hiw__footnote rte">{{ section.settings.footnote }}</div>{%- endif -%}
       </div>
