@@ -7,8 +7,8 @@
           "type": "step",
           "settings": {
             "icon": "auto",
-            "title": "Wrap it under the arch",
-            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
+            "title": "Wrap it round your foot",
+            "text": "Start just behind your toes and wrap the band around the middle of your foot so it crosses in an X.",
             "note": "Takes about 10 seconds"
           }
         },
@@ -26,7 +26,7 @@
           "settings": {
             "icon": "auto",
             "title": "Lie back and sleep",
-            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
+            "text": "Get into bed as usual. The steady pressure around your foot stays with you through the night.",
             "note": "Stays put until morning"
           }
         }
@@ -40,7 +40,7 @@
         "style": "alt",
         "eyebrow": "How it works",
         "heading": "Three steps to a calmer night",
-        "text": "<p>No pills, no fuss. Just firm, steady pressure right under the arch, all night.</p>",
+        "text": "<p>No pills, no fuss. Just firm, steady pressure around the foot, all night.</p>",
         "button_label": "Try Legs Relief tonight",
         "button_link": "",
         "footnote": "<p>Most people get the fit right within a night or two: snug enough to feel firm pressure, never so tight it tingles.</p>"
@@ -108,9 +108,9 @@
         "show_visual": true,
         "visual_eyebrow": "The difference",
         "visual_heading": "Pressure, right where it counts",
-        "visual_text": "The bands cross over the top of your foot and hold firm, steady pressure right under the arch, all night.",
+        "visual_text": "The bands cross over the top of your foot and hold firm, steady pressure around the foot, all night.",
         "visual_point_1": "Crosses in an X",
-        "visual_point_2": "Holds the arch",
+        "visual_point_2": "Wraps all the way round",
         "visual_point_3": "Toes and heel stay free"
       }
     },
@@ -140,7 +140,7 @@
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Firm pressure right under the arch",
+            "label": "Firm pressure around the foot",
             "value_1": "yes",
             "value_2": "no",
             "value_3": "no",

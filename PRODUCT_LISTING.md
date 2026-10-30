@@ -10,7 +10,7 @@ category, the eBook template and the discounts.
 > **Keep the URL handles exactly as written:** `legs-relief-support-pair` and
 > `the-calm-night-protocol-ebook`. The theme finds the products by handle.
 
-**Check before you publish.** The materials, the pad, the sizes, what's in the box and the
+**Check before you publish.** The materials, the sizes, what's in the box and the
 weights are written for the product in the photos. Change any line that doesn't match what you
 actually sell.
 
@@ -29,12 +29,12 @@ Legs Relief Support Pair
 In the description box, click **Show HTML** (`</>`), delete what's there and paste this:
 
 ```html
-<p class="lr-lead"><strong>Firm pressure, right under the arch. Held until morning.</strong></p>
-<p>Legs Relief is a deep-pressure foot wrap for restless, fidgety legs at night. A firm, contoured pad sits under each arch, and a soft woven-elastic band crosses in an X over the top of your foot to hold it snug. That steady pressure gives your legs something calm to focus on, so you can stop fidgeting and finally drift off.</p>
+<p class="lr-lead"><strong>Firm pressure, wrapped all the way round. Held until morning.</strong></p>
+<p>Legs Relief is a deep-pressure foot wrap for restless, fidgety legs at night. A soft, wide woven-elastic band wraps in layers around the middle of your foot and crosses in an X over the top, holding firm, steady pressure all night. That steady pressure gives your legs something calm to focus on, so you can stop fidgeting and finally drift off.</p>
 
 <h3>Why it helps</h3>
 <ul class="lr-points">
-  <li><strong>Targeted arch pressure.</strong> The firm pad presses right where it counts: the middle of the sole.</li>
+  <li><strong>Wrap-around pressure.</strong> Wide elastic layers press evenly around the middle of the foot.</li>
   <li><strong>Criss-cross hold.</strong> The X-shaped wrap keeps the pressure in place all night, even when you turn over.</li>
   <li><strong>Made for sleep.</strong> Low-profile and breathable, with toes and heel left open so your feet stay cool.</li>
   <li><strong>Drug-free.</strong> No pills, no prescription, no side effects.</li>
@@ -43,7 +43,6 @@ In the description box, click **Show HTML** (`</>`), delete what's there and pas
 <h3>What's in the box</h3>
 <ul class="lr-box">
   <li>2 Legs Relief wraps (left and right)</li>
-  <li>2 firm, removable arch pads</li>
   <li>Fit and care card</li>
   <li>Free eBook: The Calm Night Protocol</li>
 </ul>
@@ -52,10 +51,9 @@ In the description box, click **Show HTML** (`</>`), delete what's there and pas
 <table class="lr-specs">
   <tbody>
     <tr><th>Wrap</th><td>Soft, breathable woven stretch elastic, matte black</td></tr>
-    <tr><th>Pad</th><td>Firm, contoured EVA foam, removable</td></tr>
     <tr><th>Fastening</th><td>Adjustable strap that tightens to a snug fit</td></tr>
     <tr><th>Sizes</th><td>S/M: UK 3–7 (EU 35–40)<br>L/XL: UK 7½–12 (EU 41–47)</td></tr>
-    <tr><th>Care</th><td>Remove the pad, hand or machine wash at 30°C, air dry</td></tr>
+    <tr><th>Care</th><td>Hand or machine wash at 30°C, air dry</td></tr>
     <tr><th>Delivery</th><td>Free tracked UK delivery, usually 2–3 working days</td></tr>
     <tr><th>Guarantee</th><td>90 nights. If your legs aren't calmer, get your money back.</td></tr>
   </tbody>
@@ -128,7 +126,7 @@ Barcode (GTIN/EAN) is optional. Leave it empty unless you've bought barcodes.
 | Field | Value |
 |---|---|
 | Page title | `Legs Relief Support Pair \| Foot Wrap for Restless Legs \| UK` |
-| Meta description | `Firm pressure right under the arch, held all night. A drug-free foot wrap for restless legs. Free tracked UK delivery and a 90-night guarantee.` |
+| Meta description | `Firm pressure around the foot, held all night. A drug-free foot wrap for restless legs. Free tracked UK delivery and a 90-night guarantee.` |
 | URL handle | `legs-relief-support-pair` |
 
 ### Right-hand column

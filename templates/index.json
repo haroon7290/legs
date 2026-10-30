@@ -12,7 +12,7 @@
         "bullet_2": {
           "type": "bullet",
           "settings": {
-            "text": "Firm pad sits right under the arch, where it counts"
+            "text": "Firm, even pressure around the foot, all night"
           }
         },
         "bullet_3": {
@@ -38,7 +38,7 @@
         "rating": 4.8,
         "rating_text": "",
         "heading": "Restless legs at night? Give them something to <em>push against.</em>",
-        "text": "<p>Legs Relief is a deep-pressure foot wrap — a firm pad held snug under each arch — that helps settle that crawling, can't-keep-still feeling so you can finally drift off.</p>",
+        "text": "<p>Legs Relief is a deep-pressure foot wrap — soft elastic layers that hold firm pressure around each foot — that helps settle that crawling, can't-keep-still feeling so you can finally drift off.</p>",
         "button_label": "Try Legs Relief tonight",
         "button_link": "",
         "price_note": "<strong>£34.99</strong> a pair · Free UK delivery · 90-night guarantee",
@@ -148,8 +148,8 @@
           "type": "step",
           "settings": {
             "icon": "auto",
-            "title": "Wrap it under the arch",
-            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
+            "title": "Wrap it round your foot",
+            "text": "Start just behind your toes and wrap the band around the middle of your foot so it crosses in an X.",
             "note": "Takes about 10 seconds"
           }
         },
@@ -167,7 +167,7 @@
           "settings": {
             "icon": "auto",
             "title": "Lie back and sleep",
-            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
+            "text": "Get into bed as usual. The steady pressure around your foot stays with you through the night.",
             "note": "Stays put until morning"
           }
         }
@@ -181,7 +181,7 @@
         "style": "alt",
         "eyebrow": "How it works",
         "heading": "Three steps to a calmer night",
-        "text": "<p>No pills, no fuss. Just firm, steady pressure right under the arch, all night.</p>",
+        "text": "<p>No pills, no fuss. Just firm, steady pressure around the foot, all night.</p>",
         "button_label": "Try Legs Relief tonight",
         "button_link": "",
         "footnote": "<p>Most people get the fit right within a night or two: snug enough to feel firm pressure, never so tight it tingles.</p>"
@@ -249,9 +249,9 @@
         "show_visual": true,
         "visual_eyebrow": "The difference",
         "visual_heading": "Pressure, right where it counts",
-        "visual_text": "The bands cross over the top of your foot and hold firm, steady pressure right under the arch, all night.",
+        "visual_text": "The bands cross over the top of your foot and hold firm, steady pressure around the foot, all night.",
         "visual_point_1": "Crosses in an X",
-        "visual_point_2": "Holds the arch",
+        "visual_point_2": "Wraps all the way round",
         "visual_point_3": "Toes and heel stay free"
       }
     },
@@ -281,7 +281,7 @@
         "row_3": {
           "type": "row",
           "settings": {
-            "label": "Firm pressure right under the arch",
+            "label": "Firm pressure around the foot",
             "value_1": "yes",
             "value_2": "no",
             "value_3": "no",
@@ -541,14 +541,14 @@
           "type": "question",
           "settings": {
             "question": "What exactly is Legs Relief?",
-            "answer": "<p>Legs Relief is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by a soft, criss-cross elastic wrap. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
+            "answer": "<p>Legs Relief is a deep-pressure foot wrap: soft, wide elastic that wraps in layers around the middle of each foot and crosses in an X to hold firm, steady pressure. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
           }
         },
         "question_2": {
           "type": "question",
           "settings": {
             "question": "How does it work?",
-            "answer": "<p>Steady pressure under the arch gives your legs a strong, calm signal to focus on, and many people find it settles the urge to move. It's a simple, drug-free idea: firm pressure, held in place all night.</p>"
+            "answer": "<p>Steady pressure around the foot gives your legs a strong, calm signal to focus on, and many people find it settles the urge to move. It's a simple, drug-free idea: firm pressure, held in place all night.</p>"
           }
         },
         "question_3": {
@@ -576,7 +576,7 @@
           "type": "question",
           "settings": {
             "question": "Is it comfortable to sleep in?",
-            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic and the pad is shaped to the arch. Tighten it until the pressure feels firm but comfortable — never painful or tingly.</p>"
+            "answer": "<p>Yes. The wrap is a soft, breathable stretch elastic, and your toes, heel and ankle stay free. Tighten it until the pressure feels firm but comfortable — never painful or tingly.</p>"
           }
         },
         "question_7": {

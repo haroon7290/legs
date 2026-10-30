@@ -24,7 +24,7 @@
         "callout": {
           "type": "callout",
           "settings": {
-            "text": "<p>Firm, steady pressure under each arch, from lights out to alarm. About ten seconds to put on, and nothing to take.</p>"
+            "text": "<p>Firm, steady pressure around each foot, from lights out to alarm. About ten seconds to put on, and nothing to take.</p>"
           }
         },
         "price": {
@@ -38,8 +38,8 @@
           "settings": {
             "eyebrow": "What makes it different",
             "heading": "Pressure in the right place, made for bed",
-            "point_1_title": "The arch, not the whole leg",
-            "point_1_text": "A firm pad presses into the middle of the sole, instead of squeezing your whole calf.",
+            "point_1_title": "The foot, not the whole leg",
+            "point_1_text": "Wide elastic layers wrap the middle of the foot, instead of squeezing your whole calf.",
             "point_2_title": "Built for lying down",
             "point_2_text": "Low-profile and breathable, with toes and heel left free, so you can sleep in it.",
             "point_3_title": "Nothing to take",
@@ -92,7 +92,7 @@
             "heading": "Why not just wear compression socks?",
             "use_description": false,
             "open": false,
-            "content": "<p>Compression socks squeeze the whole lower leg and are mostly made for daytime. Legs Relief puts firm, focused pressure right under the arch, and it's made to be worn lying down, all night.</p>"
+            "content": "<p>Compression socks squeeze the whole lower leg and are mostly made for daytime. Legs Relief puts firm, focused pressure around the middle of the foot, and it's made to be worn lying down, all night.</p>"
           }
         },
         "q_3": {
@@ -197,7 +197,7 @@
             "label": "Getting into bed",
             "sky": "dusk",
             "title": "Wrap on in ten seconds",
-            "text": "Pad under the arch, band across the top so it crosses in an X, end pressed flat. Then the other foot."
+            "text": "Wrap the band round the middle of your foot so it crosses in an X, end pressed flat. Then the other foot."
           }
         },
         "moment_2": {
@@ -237,7 +237,7 @@
             "label": "Morning",
             "sky": "morning",
             "title": "Ready for tonight",
-            "text": "Take out the pad and wash the wrap at 30°C when it needs it. That's the whole routine."
+            "text": "Wash the wrap at 30°C when it needs it. That's the whole routine."
           }
         }
       },
@@ -261,8 +261,8 @@
         "spot_1": {
           "type": "spot",
           "settings": {
-            "title": "Firm arch pad",
-            "text": "A contoured, removable pad presses into the middle of the sole, right where the pressure counts.",
+            "title": "All the way round",
+            "text": "The wrap passes under the foot and back over the top, so the pressure is even on every side.",
             "x": 50,
             "y": 83
           }
@@ -271,7 +271,7 @@
           "type": "spot",
           "settings": {
             "title": "Criss-cross bands",
-            "text": "The bands cross in an X over the top of the foot, so the pad can't slide off as you turn over.",
+            "text": "The bands cross in an X over the top of the foot, so the wrap can't slide off as you turn over.",
             "x": 53,
             "y": 67
           }
@@ -323,7 +323,7 @@
         "footnote": "<p>For general information only. Speak to your GP or pharmacist about what's right for you.</p>",
         "us_name": "Legs Relief",
         "question_1": "Where the pressure goes",
-        "us_1": "Right under the arch",
+        "us_1": "Around the middle of the foot",
         "question_2": "Made for",
         "us_2": "Lying down, all night",
         "question_3": "Comfortable in bed?",
@@ -340,7 +340,7 @@
             "them_2": "Mostly daytime and travel",
             "them_3": "Many aren't meant for sleeping in",
             "them_4": "Varies; replaced as they wear out",
-            "verdict": "Good for long days on your feet. Not designed to put pressure under the arch at night."
+            "verdict": "Good for long days on your feet. Not designed to wrap the foot with firm pressure at night."
           }
         },
         "alt_2": {
@@ -391,8 +391,8 @@
           "type": "step",
           "settings": {
             "icon": "auto",
-            "title": "Wrap it under the arch",
-            "text": "Start with the pad under your arch, then bring the band across the top of your foot so it crosses in an X.",
+            "title": "Wrap it round your foot",
+            "text": "Start just behind your toes and wrap the band around the middle of your foot so it crosses in an X.",
             "note": "Takes about 10 seconds"
           }
         },
@@ -410,7 +410,7 @@
           "settings": {
             "icon": "auto",
             "title": "Lie back and sleep",
-            "text": "Get into bed as usual. The steady pressure under your arch stays with you through the night.",
+            "text": "Get into bed as usual. The steady pressure around your foot stays with you through the night.",
             "note": "Stays put until morning"
           }
         }
@@ -454,7 +454,7 @@
             "icon": "none",
             "label": "You might be thinking",
             "title": "I've tried everything already.",
-            "text": "Most people have: socks, stretches, hot baths. Legs Relief is different because it's made to be worn lying down, with the pressure right under the arch, all night."
+            "text": "Most people have: socks, stretches, hot baths. Legs Relief is different because it's made to be worn lying down, with firm pressure around the foot, all night."
           }
         },
         "card_2": {
@@ -693,7 +693,7 @@
           "type": "question",
           "settings": {
             "question": "What exactly is Legs Relief?",
-            "answer": "<p>Legs Relief is a deep-pressure foot wrap: a firm, contoured pad held snug under each arch by a soft, criss-cross elastic wrap. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
+            "answer": "<p>Legs Relief is a deep-pressure foot wrap: soft, wide elastic that wraps in layers around the middle of each foot and crosses in an X to hold firm, steady pressure. You wear it in bed to help calm restless, fidgety legs so you can drift off.</p>"
           }
         },
         "question_2": {
@@ -728,7 +728,7 @@
           "type": "question",
           "settings": {
             "question": "How do I wash it?",
-            "answer": "<p>Take out the pad, then hand wash or machine wash the wrap at 30°C and let it air dry. Please don't tumble dry it.</p>"
+            "answer": "<p>Hand wash or machine wash the wrap at 30°C and let it air dry. Please don't tumble dry it.</p>"
           }
         },
         "question_7": {
